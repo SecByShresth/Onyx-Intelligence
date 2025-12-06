@@ -19,7 +19,8 @@ import requests
 CURRENT_YEAR = datetime.utcnow().year
 YEARS_TO_KEEP = 3  # Keep last 3 years of vulnerabilities (reduced from 5)
 CUTOFF_YEAR = CURRENT_YEAR - (YEARS_TO_KEEP - 1)  # e.g., 2025 - 2 = 2023
-MAX_VULNS_PER_ECOSYSTEM = 3000  # Maximum vulnerabilities per ecosystem (reduced from 5000)
+MAX_VULNS_PER_ECOSYSTEM = 150  # Maximum vulnerabilities per ecosystem (browser-friendly size)
+MAX_LINUX_KERNEL_VULNS = 100  # Linux kernel has many vulns, limit more aggressively
 
 # OSV Ecosystems to fetch
 # NOTE: Excluding AlmaLinux, Debian, Rocky Linux, Ubuntu, SUSE 
@@ -211,10 +212,11 @@ def fetch_osv_ecosystem(ecosystem: str) -> List[Dict[str, Any]]:
             reverse=True
         )
         
-        # Limit to prevent huge files
-        if len(vulnerabilities) > MAX_VULNS_PER_ECOSYSTEM:
-            print(f"⚠️  {ecosystem}: Limiting from {len(vulnerabilities)} to {MAX_VULNS_PER_ECOSYSTEM} (most critical)")
-            vulnerabilities = vulnerabilities[:MAX_VULNS_PER_ECOSYSTEM]
+        # Limit to prevent huge files (special handling for Linux kernel)
+        max_limit = MAX_LINUX_KERNEL_VULNS if ecosystem == 'Linux' else MAX_VULNS_PER_ECOSYSTEM
+        if len(vulnerabilities) > max_limit:
+            print(f"⚠️  {ecosystem}: Limiting from {len(vulnerabilities)} to {max_limit} (most critical)")
+            vulnerabilities = vulnerabilities[:max_limit]
         
         # Save to file (compact format to reduce size)
         output_file = DATA_DIR / f"{ecosystem_file}.json"
@@ -242,7 +244,7 @@ def main():
     print("   (Already fetched by separate workflows)")
     print(f"📅 Rolling Window: {CUTOFF_YEAR}-{CURRENT_YEAR} ({YEARS_TO_KEEP} years)")
     print(f"   Older vulnerabilities automatically excluded")
-    print(f"📊 Limit: Max {MAX_VULNS_PER_ECOSYSTEM} per ecosystem (most critical first)")
+    print(f"📊 Limits: Max {MAX_VULNS_PER_ECOSYSTEM} per ecosystem, {MAX_LINUX_KERNEL_VULNS} for Linux kernel")
     print("=" * 60)
     
     total_vulnerabilities = 0
