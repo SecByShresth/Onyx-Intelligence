@@ -273,24 +273,29 @@ function renderDashboard() {
                     severityDistribution.unknown++;
                 }
 
-                // Track latest update
+                // Track latest update from vulnerability metadata
                 const fetchedAt = v._metadata?.fetched_at || v.fetched_at;
                 if (fetchedAt) {
                     const fetchDate = new Date(fetchedAt);
-                    if (!latestFetchDate || fetchDate > latestFetchDate) {
+                    if (!isNaN(fetchDate.getTime()) && (!latestFetchDate || fetchDate > latestFetchDate)) {
                         latestFetchDate = fetchDate;
                     }
                 }
             });
         }
 
-        // Check CISA KEV metadata
+        // Check CISA KEV metadata for dateReleased
         if (source === 'cisa-kev' && data.dateReleased) {
             const releaseDate = new Date(data.dateReleased);
-            if (!latestFetchDate || releaseDate > latestFetchDate) {
+            if (!isNaN(releaseDate.getTime()) && (!latestFetchDate || releaseDate > latestFetchDate)) {
                 latestFetchDate = releaseDate;
             }
         }
+    }
+
+    // If no metadata found, use current date as fallback
+    if (!latestFetchDate) {
+        latestFetchDate = new Date();
     }
 
     // Update stats
