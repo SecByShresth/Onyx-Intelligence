@@ -1,5 +1,715 @@
 [
   {
+    "id": "DEBIAN-CVE-2026-4105",
+    "details": "A flaw was found in systemd. The systemd-machined service contains an Improper Access Control vulnerability due to insufficient validation of the class parameter in the RegisterMachine D-Bus (Desktop Bus) method. A local unprivileged user can exploit this by attempting to register a machine with a specific class value, which may leave behind a usable, attacker-controlled machine object. This allows the attacker to invoke methods on the privileged object, leading to the execution of arbitrary commands with root privileges on the host system.",
+    "modified": "2026-03-14T17:00:22.108541Z",
+    "published": "2026-03-13T19:55:13.673Z",
+    "upstream": [
+      "CVE-2026-4105"
+    ],
+    "references": [
+      {
+        "type": "ADVISORY",
+        "url": "https://security-tracker.debian.org/tracker/CVE-2026-4105"
+      }
+    ],
+    "affected": [
+      {
+        "package": {
+          "name": "systemd",
+          "ecosystem": "Debian:11",
+          "purl": "pkg:deb/debian/systemd?arch=source"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "247.3-6",
+          "247.3-7",
+          "247.3-7+deb11u1",
+          "247.3-7+deb11u2",
+          "247.3-7+deb11u3",
+          "247.3-7+deb11u4",
+          "247.3-7+deb11u5",
+          "247.3-7+deb11u6",
+          "247.3-7+deb11u7",
+          "247.9-1",
+          "247.9-2",
+          "247.9-3",
+          "247.9-4",
+          "248-1",
+          "248.1-1",
+          "248.2-1",
+          "248.3-1",
+          "249-1",
+          "249.1-1",
+          "249.2-1",
+          "249.2-2",
+          "249.3-1",
+          "249.3-2",
+          "249.3-3",
+          "249.3-4",
+          "249.4-1",
+          "249.4-2",
+          "249.5-1",
+          "249.5-2",
+          "249.6-1",
+          "249.6-2",
+          "249.6-3",
+          "249.7-1",
+          "249~rc1-1",
+          "249~rc2-1",
+          "249~rc3-1",
+          "250-1",
+          "250-2",
+          "250.1-2",
+          "250.2-1",
+          "250.2-2",
+          "250.2-3",
+          "250.3-1",
+          "250.3-2",
+          "250.3-2~bpo11+1",
+          "250.4-1",
+          "250.4-1~bpo11+1",
+          "250~rc3-1",
+          "251-1",
+          "251-2",
+          "251.1-1",
+          "251.2-1",
+          "251.2-2",
+          "251.2-3",
+          "251.2-4",
+          "251.2-5",
+          "251.2-6",
+          "251.2-7",
+          "251.2-8",
+          "251.3-1",
+          "251.3-1~bpo11+1",
+          "251.3-2",
+          "251.3-2~exp1",
+          "251.3-2~exp2",
+          "251.4-1",
+          "251.4-2",
+          "251.4-3",
+          "251.5-1",
+          "251.5-2",
+          "251.5-3",
+          "251.6-1",
+          "251~rc1-1",
+          "251~rc1-2",
+          "251~rc1-3",
+          "251~rc2-1",
+          "251~rc2-2",
+          "251~rc3-1",
+          "251~rc3-2",
+          "252-1",
+          "252-2",
+          "252-3",
+          "252.1-1",
+          "252.11-1",
+          "252.11-1~deb12u1",
+          "252.12-1~deb12u1",
+          "252.14-1~deb12u1",
+          "252.16-1~deb12u1",
+          "252.17-1~deb12u1",
+          "252.18-1~deb12u1",
+          "252.19-1~deb12u1",
+          "252.2-1",
+          "252.2-2",
+          "252.20-1~deb12u1",
+          "252.21-1~deb12u1",
+          "252.22-1~deb12u1",
+          "252.23-1~deb12u1",
+          "252.24-1~deb12u1",
+          "252.25-1~deb12u1",
+          "252.26-1~deb12u1",
+          "252.26-1~deb12u2",
+          "252.26-1~deb12u2~bpo11+1",
+          "252.27-1~deb12u1",
+          "252.28-1~deb12u1",
+          "252.29-1~deb12u1",
+          "252.29-1~deb12u1~bpo11+1",
+          "252.3-1",
+          "252.3-2",
+          "252.30-1~deb12u1",
+          "252.30-1~deb12u2",
+          "252.31-1~deb12u1",
+          "252.32-1~deb12u1",
+          "252.33-1~deb12u1",
+          "252.36-1~deb12u1",
+          "252.38-1~deb12u1",
+          "252.39-1~deb12u1",
+          "252.4-1",
+          "252.4-1~bpo11+1",
+          "252.4-2",
+          "252.5-1",
+          "252.5-2",
+          "252.5-2~bpo11+1",
+          "252.6-1",
+          "252.6-1+loong64",
+          "252~rc2-1",
+          "252~rc3-1",
+          "252~rc3-2",
+          "253-1",
+          "253-2",
+          "253-3",
+          "253-4",
+          "253.5-1",
+          "253~rc2-1",
+          "253~rc3-1",
+          "254-1",
+          "254.1-1",
+          "254.1-2",
+          "254.1-3",
+          "254.14-1~bpo12+1",
+          "254.15-1~bpo12+1",
+          "254.16-1~bpo12+1",
+          "254.22-1~bpo12+1",
+          "254.26-1~bpo12+1",
+          "254.3-1",
+          "254.4-1",
+          "254.5-1",
+          "254.5-1~bpo12+1",
+          "254.5-1~bpo12+2",
+          "254.5-1~bpo12+3",
+          "254~rc1-1",
+          "254~rc1-2",
+          "254~rc1-3",
+          "254~rc1-4",
+          "254~rc2-1",
+          "254~rc2-2",
+          "254~rc2-3",
+          "254~rc3-1",
+          "254~rc3-2",
+          "254~rc3-3",
+          "255-1",
+          "255.1-1",
+          "255.1-2",
+          "255.1-3",
+          "255.2-1",
+          "255.2-2",
+          "255.2-3",
+          "255.2-4",
+          "255.3-1",
+          "255.3-2",
+          "255.4-1",
+          "255.5-1",
+          "255~rc1-1",
+          "255~rc1-2",
+          "255~rc1-3",
+          "255~rc1-4",
+          "255~rc2-1",
+          "255~rc2-2",
+          "255~rc2-3",
+          "255~rc3-1",
+          "255~rc3-2",
+          "255~rc3-3",
+          "255~rc4-1",
+          "255~rc4-2",
+          "256-1",
+          "256-2",
+          "256.1-1",
+          "256.1-2",
+          "256.2-1",
+          "256.4-1",
+          "256.4-2",
+          "256.4-3",
+          "256.5-1",
+          "256.5-2",
+          "256.6-1",
+          "256.7-1",
+          "256.7-2",
+          "256.7-3",
+          "256~rc1-1~exp",
+          "256~rc1-1~exp2",
+          "256~rc2-1",
+          "256~rc2-2",
+          "256~rc2-3",
+          "256~rc3-1",
+          "256~rc3-2",
+          "256~rc3-3",
+          "256~rc3-4",
+          "256~rc3-5",
+          "256~rc3-6",
+          "256~rc3-7",
+          "256~rc4-1",
+          "257-1",
+          "257-2",
+          "257.1-1",
+          "257.1-2",
+          "257.1-3",
+          "257.1-4",
+          "257.1-5",
+          "257.1-6",
+          "257.1-7",
+          "257.2-1",
+          "257.2-2",
+          "257.2-3",
+          "257.3-1",
+          "257.4-1",
+          "257.4-2",
+          "257.4-3",
+          "257.4-4",
+          "257.4-5",
+          "257.4-6",
+          "257.4-7",
+          "257.4-8",
+          "257.4-9",
+          "257.5-1",
+          "257.5-2",
+          "257.6-1",
+          "257.7-1",
+          "257.8-1~deb13u1",
+          "257.8-1~deb13u2",
+          "257.9-1~deb13u1",
+          "257~rc1-1",
+          "257~rc1-2",
+          "257~rc1-3",
+          "257~rc1-4",
+          "257~rc2-1",
+          "257~rc2-2",
+          "257~rc2-3",
+          "257~rc3-1",
+          "258-1",
+          "258.1-1",
+          "258.1-2",
+          "258~rc1-1",
+          "258~rc2-1",
+          "258~rc2-2",
+          "258~rc3-1",
+          "258~rc4-1",
+          "259-1",
+          "259.1-1",
+          "259~rc1-1",
+          "259~rc2-1",
+          "259~rc3-1",
+          "260~rc1-1",
+          "260~rc1-2",
+          "260~rc2-1",
+          "260~rc3-1",
+          "260~rc4-1"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-4105.json"
+        }
+      },
+      {
+        "package": {
+          "name": "systemd",
+          "ecosystem": "Debian:12",
+          "purl": "pkg:deb/debian/systemd?arch=source"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "252.11-1",
+          "252.11-1~deb12u1",
+          "252.12-1~deb12u1",
+          "252.14-1~deb12u1",
+          "252.16-1~deb12u1",
+          "252.17-1~deb12u1",
+          "252.18-1~deb12u1",
+          "252.19-1~deb12u1",
+          "252.20-1~deb12u1",
+          "252.21-1~deb12u1",
+          "252.22-1~deb12u1",
+          "252.23-1~deb12u1",
+          "252.24-1~deb12u1",
+          "252.25-1~deb12u1",
+          "252.26-1~deb12u1",
+          "252.26-1~deb12u2",
+          "252.26-1~deb12u2~bpo11+1",
+          "252.27-1~deb12u1",
+          "252.28-1~deb12u1",
+          "252.29-1~deb12u1",
+          "252.29-1~deb12u1~bpo11+1",
+          "252.30-1~deb12u1",
+          "252.30-1~deb12u2",
+          "252.31-1~deb12u1",
+          "252.32-1~deb12u1",
+          "252.33-1~deb12u1",
+          "252.36-1~deb12u1",
+          "252.38-1~deb12u1",
+          "252.39-1~deb12u1",
+          "252.6-1",
+          "252.6-1+loong64",
+          "253-1",
+          "253-2",
+          "253-3",
+          "253-4",
+          "253.5-1",
+          "253~rc2-1",
+          "253~rc3-1",
+          "254-1",
+          "254.1-1",
+          "254.1-2",
+          "254.1-3",
+          "254.14-1~bpo12+1",
+          "254.15-1~bpo12+1",
+          "254.16-1~bpo12+1",
+          "254.22-1~bpo12+1",
+          "254.26-1~bpo12+1",
+          "254.3-1",
+          "254.4-1",
+          "254.5-1",
+          "254.5-1~bpo12+1",
+          "254.5-1~bpo12+2",
+          "254.5-1~bpo12+3",
+          "254~rc1-1",
+          "254~rc1-2",
+          "254~rc1-3",
+          "254~rc1-4",
+          "254~rc2-1",
+          "254~rc2-2",
+          "254~rc2-3",
+          "254~rc3-1",
+          "254~rc3-2",
+          "254~rc3-3",
+          "255-1",
+          "255.1-1",
+          "255.1-2",
+          "255.1-3",
+          "255.2-1",
+          "255.2-2",
+          "255.2-3",
+          "255.2-4",
+          "255.3-1",
+          "255.3-2",
+          "255.4-1",
+          "255.5-1",
+          "255~rc1-1",
+          "255~rc1-2",
+          "255~rc1-3",
+          "255~rc1-4",
+          "255~rc2-1",
+          "255~rc2-2",
+          "255~rc2-3",
+          "255~rc3-1",
+          "255~rc3-2",
+          "255~rc3-3",
+          "255~rc4-1",
+          "255~rc4-2",
+          "256-1",
+          "256-2",
+          "256.1-1",
+          "256.1-2",
+          "256.2-1",
+          "256.4-1",
+          "256.4-2",
+          "256.4-3",
+          "256.5-1",
+          "256.5-2",
+          "256.6-1",
+          "256.7-1",
+          "256.7-2",
+          "256.7-3",
+          "256~rc1-1~exp",
+          "256~rc1-1~exp2",
+          "256~rc2-1",
+          "256~rc2-2",
+          "256~rc2-3",
+          "256~rc3-1",
+          "256~rc3-2",
+          "256~rc3-3",
+          "256~rc3-4",
+          "256~rc3-5",
+          "256~rc3-6",
+          "256~rc3-7",
+          "256~rc4-1",
+          "257-1",
+          "257-2",
+          "257.1-1",
+          "257.1-2",
+          "257.1-3",
+          "257.1-4",
+          "257.1-5",
+          "257.1-6",
+          "257.1-7",
+          "257.2-1",
+          "257.2-2",
+          "257.2-3",
+          "257.3-1",
+          "257.4-1",
+          "257.4-2",
+          "257.4-3",
+          "257.4-4",
+          "257.4-5",
+          "257.4-6",
+          "257.4-7",
+          "257.4-8",
+          "257.4-9",
+          "257.5-1",
+          "257.5-2",
+          "257.6-1",
+          "257.7-1",
+          "257.8-1~deb13u1",
+          "257.8-1~deb13u2",
+          "257.9-1~deb13u1",
+          "257~rc1-1",
+          "257~rc1-2",
+          "257~rc1-3",
+          "257~rc1-4",
+          "257~rc2-1",
+          "257~rc2-2",
+          "257~rc2-3",
+          "257~rc3-1",
+          "258-1",
+          "258.1-1",
+          "258.1-2",
+          "258~rc1-1",
+          "258~rc2-1",
+          "258~rc2-2",
+          "258~rc3-1",
+          "258~rc4-1",
+          "259-1",
+          "259.1-1",
+          "259~rc1-1",
+          "259~rc2-1",
+          "259~rc3-1",
+          "260~rc1-1",
+          "260~rc1-2",
+          "260~rc2-1",
+          "260~rc3-1",
+          "260~rc4-1"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-4105.json"
+        }
+      },
+      {
+        "package": {
+          "name": "systemd",
+          "ecosystem": "Debian:13",
+          "purl": "pkg:deb/debian/systemd?arch=source"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "257.7-1",
+          "257.8-1~deb13u1",
+          "257.8-1~deb13u2",
+          "257.9-1~deb13u1",
+          "258-1",
+          "258.1-1",
+          "258.1-2",
+          "258~rc1-1",
+          "258~rc2-1",
+          "258~rc2-2",
+          "258~rc3-1",
+          "258~rc4-1",
+          "259-1",
+          "259.1-1",
+          "259~rc1-1",
+          "259~rc2-1",
+          "259~rc3-1",
+          "260~rc1-1",
+          "260~rc1-2",
+          "260~rc2-1",
+          "260~rc3-1",
+          "260~rc4-1"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-4105.json"
+        }
+      },
+      {
+        "package": {
+          "name": "systemd",
+          "ecosystem": "Debian:14",
+          "purl": "pkg:deb/debian/systemd?arch=source"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "257.7-1",
+          "257.8-1~deb13u1",
+          "257.8-1~deb13u2",
+          "257.9-1~deb13u1",
+          "258-1",
+          "258.1-1",
+          "258.1-2",
+          "258~rc1-1",
+          "258~rc2-1",
+          "258~rc2-2",
+          "258~rc3-1",
+          "258~rc4-1",
+          "259-1",
+          "259.1-1",
+          "259~rc1-1",
+          "259~rc2-1",
+          "259~rc3-1",
+          "260~rc1-1",
+          "260~rc1-2",
+          "260~rc2-1",
+          "260~rc3-1",
+          "260~rc4-1"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-4105.json"
+        }
+      }
+    ],
+    "schema_version": "1.7.5",
+    "severity": [
+      {
+        "type": "CVSS_V3",
+        "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:R/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "_metadata": {
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
+      "source_package": "Debian/systemd",
+      "distribution": "debian"
+    }
+  },
+  {
+    "id": "DEBIAN-CVE-2026-2673",
+    "details": "Issue summary: An OpenSSL TLS 1.3 server may fail to negotiate the expected preferred key exchange group when its key exchange group configuration includes the default by using the 'DEFAULT' keyword.  Impact summary: A less preferred key exchange may be used even when a more preferred group is supported by both client and server, if the group was not included among the client's initial predicated keyshares. This will sometimes be the case with the new hybrid post-quantum groups, if the client chooses to defer their use until specifically requested by the server.  If an OpenSSL TLS 1.3 server's configuration uses the 'DEFAULT' keyword to interpolate the built-in default group list into its own configuration, perhaps adding or removing specific elements, then an implementation defect causes the 'DEFAULT' list to lose its 'tuple' structure, and all server-supported groups were treated as a single sufficiently secure 'tuple', with the server not sending a Hello Retry Request (HRR) even when a group in a more preferred tuple was mutually supported.  As a result, the client and server might fail to negotiate a mutually supported post-quantum key agreement group, such as 'X25519MLKEM768', if the client's configuration results in only 'classical' groups (such as 'X25519' being the only ones in the client's initial keyshare prediction).  OpenSSL 3.5 and later support a new syntax for selecting the most preferred TLS 1.3 key agreement group on TLS servers.  The old syntax had a single 'flat' list of groups, and treated all the supported groups as sufficiently secure. If any of the keyshares predicted by the client were supported by the server the most preferred among these was selected, even if other groups supported by the client, but not included in the list of predicted keyshares would have been more preferred, if included.  The new syntax partitions the groups into distinct 'tuples' of roughly equivalent security.  Within each tuple the most preferred group included among the client's predicted keyshares is chosen, but if the client supports a group from a more preferred tuple, but did not predict any corresponding keyshares, the server will ask the client to retry the ClientHello (by issuing a Hello Retry Request or HRR) with the most preferred mutually supported group.  The above works as expected when the server's configuration uses the built-in default group list, or explicitly defines its own list by directly defining the various desired groups and group 'tuples'.  No OpenSSL FIPS modules are affected by this issue, the code in question lies outside the FIPS boundary.  OpenSSL 3.6 and 3.5 are vulnerable to this issue.  OpenSSL 3.6 users should upgrade to OpenSSL 3.6.2 once it is released. OpenSSL 3.5 users should upgrade to OpenSSL 3.5.6 once it is released.  OpenSSL 3.4, 3.3, 3.0, 1.0.2 and 1.1.1 are not affected by this issue.",
+    "modified": "2026-03-14T16:48:13.279039Z",
+    "published": "2026-03-13T19:54:34.033Z",
+    "upstream": [
+      "CVE-2026-2673"
+    ],
+    "references": [
+      {
+        "type": "ADVISORY",
+        "url": "https://security-tracker.debian.org/tracker/CVE-2026-2673"
+      }
+    ],
+    "affected": [
+      {
+        "package": {
+          "name": "openssl",
+          "ecosystem": "Debian:13",
+          "purl": "pkg:deb/debian/openssl?arch=source"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "3.5.1-1",
+          "3.5.1-1+deb13u1",
+          "3.5.2-1",
+          "3.5.3-1",
+          "3.5.4-1",
+          "3.5.4-1~deb13u1",
+          "3.5.4-1~deb13u2",
+          "3.5.5-1",
+          "3.5.5-1~deb13u1",
+          "3.6.0-1",
+          "3.6.0-2",
+          "3.6.0~~alpha1-1",
+          "3.6.0~~beta1-1",
+          "3.6.1-1",
+          "3.6.1-2",
+          "4.0.0~alpha1-1"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-2673.json"
+        }
+      },
+      {
+        "package": {
+          "name": "openssl",
+          "ecosystem": "Debian:14",
+          "purl": "pkg:deb/debian/openssl?arch=source"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "3.5.1-1",
+          "3.5.2-1",
+          "3.5.3-1",
+          "3.5.4-1",
+          "3.5.4-1~deb13u1",
+          "3.5.4-1~deb13u2",
+          "3.5.5-1",
+          "3.5.5-1~deb13u1",
+          "3.6.0-1",
+          "3.6.0-2",
+          "3.6.0~~alpha1-1",
+          "3.6.0~~beta1-1",
+          "3.6.1-1",
+          "3.6.1-2",
+          "4.0.0~alpha1-1"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-2673.json"
+        }
+      }
+    ],
+    "schema_version": "1.7.5",
+    "_metadata": {
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
+      "source_package": "Debian/openssl",
+      "distribution": "debian"
+    }
+  },
+  {
     "id": "DEBIAN-CVE-2026-3805",
     "details": "When doing a second SMB request to the same host again, curl would wrongly use a data pointer pointing into already freed memory.",
     "modified": "2026-03-13T20:03:55.994702Z",
@@ -148,7 +858,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -680,7 +1390,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -1212,7 +1922,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -1744,7 +2454,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -1855,7 +2565,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -1930,7 +2640,7 @@
     ],
     "schema_version": "1.7.3",
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -2004,7 +2714,7 @@
     ],
     "schema_version": "1.7.3",
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -2216,7 +2926,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -2407,7 +3117,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -2598,7 +3308,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -2789,7 +3499,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -2980,7 +3690,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -3171,7 +3881,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -3362,7 +4072,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -3553,7 +4263,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -3650,7 +4360,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -3747,7 +4457,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -3844,7 +4554,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -3987,7 +4697,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -4084,7 +4794,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -4189,7 +4899,7 @@
     ],
     "schema_version": "1.7.3",
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -4714,7 +5424,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -5237,7 +5947,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -5549,7 +6259,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -6071,7 +6781,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -6593,7 +7303,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -6739,7 +7449,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -6799,7 +7509,7 @@
     ],
     "schema_version": "1.7.3",
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -7315,7 +8025,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -7377,7 +8087,7 @@
     ],
     "schema_version": "1.7.3",
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -7464,7 +8174,7 @@
     ],
     "schema_version": "1.7.3",
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -7599,7 +8309,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -7690,7 +8400,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -7872,7 +8582,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -7967,7 +8677,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -8231,7 +8941,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -8435,7 +9145,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -8690,7 +9400,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/docker.io",
       "distribution": "debian"
     }
@@ -8741,7 +9451,7 @@
     ],
     "schema_version": "1.7.3",
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/systemd",
       "distribution": "debian"
     }
@@ -8791,7 +9501,7 @@
     ],
     "schema_version": "1.7.3",
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -9109,7 +9819,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -9164,7 +9874,7 @@
     ],
     "schema_version": "1.7.3",
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -9245,7 +9955,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -9419,7 +10129,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/systemd",
       "distribution": "debian"
     }
@@ -9491,7 +10201,7 @@
     ],
     "schema_version": "1.7.3",
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/systemd",
       "distribution": "debian"
     }
@@ -9572,7 +10282,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -9653,7 +10363,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -9714,7 +10424,7 @@
     ],
     "schema_version": "1.7.3",
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -9795,7 +10505,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -10016,7 +10726,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -10065,7 +10775,7 @@
     ],
     "schema_version": "1.7.3",
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -10146,7 +10856,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -10288,7 +10998,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -10745,7 +11455,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -10826,7 +11536,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -10949,7 +11659,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -11357,7 +12067,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -11480,7 +12190,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -11707,7 +12417,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/docker.io",
       "distribution": "debian"
     }
@@ -11934,7 +12644,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/docker.io",
       "distribution": "debian"
     }
@@ -11992,7 +12702,7 @@
     ],
     "schema_version": "1.7.3",
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -12156,7 +12866,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -12489,7 +13199,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -12559,7 +13269,7 @@
     ],
     "schema_version": "1.7.3",
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -12623,7 +13333,7 @@
     ],
     "schema_version": "1.7.3",
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -12789,7 +13499,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -12835,7 +13545,7 @@
     ],
     "schema_version": "1.7.3",
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/docker.io",
       "distribution": "debian"
     }
@@ -12999,7 +13709,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -13119,7 +13829,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -13173,7 +13883,7 @@
     ],
     "schema_version": "1.7.3",
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -13227,7 +13937,7 @@
     ],
     "schema_version": "1.7.3",
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/systemd",
       "distribution": "debian"
     }
@@ -13370,7 +14080,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -13532,7 +14242,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -13673,7 +14383,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/docker.io",
       "distribution": "debian"
     }
@@ -13754,7 +14464,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -13835,7 +14545,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -13968,7 +14678,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/linux",
       "distribution": "debian"
     }
@@ -14134,7 +14844,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -14215,7 +14925,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -14296,7 +15006,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -14377,7 +15087,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -14458,7 +15168,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -14577,7 +15287,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -14694,7 +15404,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -14921,7 +15631,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/docker.io",
       "distribution": "debian"
     }
@@ -15085,7 +15795,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -15166,7 +15876,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -15326,7 +16036,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -15783,7 +16493,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -15902,7 +16612,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -16129,7 +16839,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/docker.io",
       "distribution": "debian"
     }
@@ -16181,7 +16891,7 @@
     ],
     "schema_version": "1.7.3",
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -16262,7 +16972,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -16343,7 +17053,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -17272,7 +17982,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/systemd",
       "distribution": "debian"
     }
@@ -18201,7 +18911,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/systemd",
       "distribution": "debian"
     }
@@ -18282,7 +18992,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -18509,287 +19219,8 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
+      "fetched_at": "2026-03-15T05:26:15.577621+00:00",
       "source_package": "Debian/docker.io",
-      "distribution": "debian"
-    }
-  },
-  {
-    "id": "DEBIAN-CVE-2024-0727",
-    "details": "Issue summary: Processing a maliciously formatted PKCS12 file may lead OpenSSL to crash leading to a potential Denial of Service attack  Impact summary: Applications loading files in the PKCS12 format from untrusted sources might terminate abruptly.  A file in PKCS12 format can contain certificates and keys and may come from an untrusted source. The PKCS12 specification allows certain fields to be NULL, but OpenSSL does not correctly check for this case. This can lead to a NULL pointer dereference that results in OpenSSL crashing. If an application processes PKCS12 files from an untrusted source using the OpenSSL APIs then that application will be vulnerable to this issue.  OpenSSL APIs that are vulnerable to this are: PKCS12_parse(), PKCS12_unpack_p7data(), PKCS12_unpack_p7encdata(), PKCS12_unpack_authsafes() and PKCS12_newpass().  We have also fixed a similar issue in SMIME_write_PKCS7(). However since this function is related to writing data we do not consider it security significant.  The FIPS modules in 3.2, 3.1 and 3.0 are not affected by this issue.",
-    "modified": "2025-11-19T01:04:40.537945Z",
-    "published": "2024-01-26T09:15:07.637Z",
-    "upstream": [
-      "CVE-2024-0727"
-    ],
-    "references": [
-      {
-        "type": "ADVISORY",
-        "url": "https://security-tracker.debian.org/tracker/CVE-2024-0727"
-      }
-    ],
-    "affected": [
-      {
-        "package": {
-          "name": "openssl",
-          "ecosystem": "Debian:11",
-          "purl": "pkg:deb/debian/openssl?arch=source"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "1.1.1w-0+deb11u2"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "1.1.1k-1",
-          "1.1.1k-1+deb11u1",
-          "1.1.1k-1+deb11u2",
-          "1.1.1l-1",
-          "1.1.1m-0+deb11u1",
-          "1.1.1m-1",
-          "1.1.1n-0+deb11u1",
-          "1.1.1n-0+deb11u2",
-          "1.1.1n-0+deb11u3",
-          "1.1.1n-0+deb11u4",
-          "1.1.1n-0+deb11u5",
-          "1.1.1n-0+deb11u6",
-          "1.1.1n-1",
-          "1.1.1o-1",
-          "1.1.1v-0~deb11u1",
-          "1.1.1w-0+deb11u1",
-          "1.1.1w-0~deb11u1"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2024-0727.json"
-        }
-      },
-      {
-        "package": {
-          "name": "openssl",
-          "ecosystem": "Debian:12",
-          "purl": "pkg:deb/debian/openssl?arch=source"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "3.0.13-1~deb12u1"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "3.0.10-1",
-          "3.0.10-1~deb12u1",
-          "3.0.11-1",
-          "3.0.11-1~deb12u1",
-          "3.0.11-1~deb12u2",
-          "3.0.12-1",
-          "3.0.12-2",
-          "3.0.9-1"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2024-0727.json"
-        }
-      },
-      {
-        "package": {
-          "name": "openssl",
-          "ecosystem": "Debian:13",
-          "purl": "pkg:deb/debian/openssl?arch=source"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "3.1.5-1"
-              }
-            ]
-          }
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2024-0727.json"
-        }
-      },
-      {
-        "package": {
-          "name": "openssl",
-          "ecosystem": "Debian:14",
-          "purl": "pkg:deb/debian/openssl?arch=source"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "3.1.5-1"
-              }
-            ]
-          }
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2024-0727.json"
-        }
-      }
-    ],
-    "schema_version": "1.7.3",
-    "severity": [
-      {
-        "type": "CVSS_V3",
-        "score": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H"
-      }
-    ],
-    "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
-      "source_package": "Debian/openssl",
-      "distribution": "debian"
-    }
-  },
-  {
-    "id": "DEBIAN-CVE-2023-6129",
-    "details": "Issue summary: The POLY1305 MAC (message authentication code) implementation contains a bug that might corrupt the internal state of applications running on PowerPC CPU based platforms if the CPU provides vector instructions.  Impact summary: If an attacker can influence whether the POLY1305 MAC algorithm is used, the application state might be corrupted with various application dependent consequences.  The POLY1305 MAC (message authentication code) implementation in OpenSSL for PowerPC CPUs restores the contents of vector registers in a different order than they are saved. Thus the contents of some of these vector registers are corrupted when returning to the caller. The vulnerable code is used only on newer PowerPC processors supporting the PowerISA 2.07 instructions.  The consequences of this kind of internal application state corruption can be various - from no consequences, if the calling application does not depend on the contents of non-volatile XMM registers at all, to the worst consequences, where the attacker could get complete control of the application process. However unless the compiler uses the vector registers for storing pointers, the most likely consequence, if any, would be an incorrect result of some application dependent calculations or a crash leading to a denial of service.  The POLY1305 MAC algorithm is most frequently used as part of the CHACHA20-POLY1305 AEAD (authenticated encryption with associated data) algorithm. The most common usage of this AEAD cipher is with TLS protocol versions 1.2 and 1.3. If this cipher is enabled on the server a malicious client can influence whether this AEAD cipher is used. This implies that TLS server applications using OpenSSL can be potentially impacted. However we are currently not aware of any concrete application that would be affected by this issue therefore we consider this a Low severity security issue.",
-    "modified": "2025-11-19T01:01:55.283596Z",
-    "published": "2024-01-09T17:15:12.147Z",
-    "upstream": [
-      "CVE-2023-6129"
-    ],
-    "references": [
-      {
-        "type": "ADVISORY",
-        "url": "https://security-tracker.debian.org/tracker/CVE-2023-6129"
-      }
-    ],
-    "affected": [
-      {
-        "package": {
-          "name": "openssl",
-          "ecosystem": "Debian:12",
-          "purl": "pkg:deb/debian/openssl?arch=source"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "3.0.13-1~deb12u1"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "3.0.10-1",
-          "3.0.10-1~deb12u1",
-          "3.0.11-1",
-          "3.0.11-1~deb12u1",
-          "3.0.11-1~deb12u2",
-          "3.0.12-1",
-          "3.0.12-2",
-          "3.0.9-1"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2023-6129.json"
-        }
-      },
-      {
-        "package": {
-          "name": "openssl",
-          "ecosystem": "Debian:13",
-          "purl": "pkg:deb/debian/openssl?arch=source"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "3.1.5-1"
-              }
-            ]
-          }
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2023-6129.json"
-        }
-      },
-      {
-        "package": {
-          "name": "openssl",
-          "ecosystem": "Debian:14",
-          "purl": "pkg:deb/debian/openssl?arch=source"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "3.1.5-1"
-              }
-            ]
-          }
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2023-6129.json"
-        }
-      }
-    ],
-    "schema_version": "1.7.3",
-    "severity": [
-      {
-        "type": "CVSS_V3",
-        "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:H"
-      }
-    ],
-    "_metadata": {
-      "fetched_at": "2026-03-14T05:08:49.485779+00:00",
-      "source_package": "Debian/openssl",
       "distribution": "debian"
     }
   }
