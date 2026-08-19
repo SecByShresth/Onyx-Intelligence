@@ -1,5 +1,127 @@
 [
   {
+    "id": "RLSA-2026:55764",
+    "summary": "Important: kernel security, bug fix, and enhancement update",
+    "details": "The kernel packages contain the Linux kernel, the core of any Linux operating system.\n\nSecurity Fix(es):\n\n* kernel: mm/slub: avoid accessing metadata when pointer is invalid in object_err() (CVE-2025-39902)\n\n* kernel: drm/amdkfd: Fix out-of-bounds write in kfd_event_page_set() (CVE-2026-43206)\n\n* kernel: crypto: ccp - copy IV using skcipher ivsize (CVE-2026-53016)\n\n* kernel: drm/amd/display: Clamp VBIOS HDMI retimer register count to array size (CVE-2026-53136)\n\n* kernel: drm/amd/display: Use krealloc_array() in dal_vector_reserve() (CVE-2026-53329)\n\n* kernel: drm/amdgpu: zero-initialize GART table on allocation (CVE-2026-53374)\n\n* kernel: drm/i915: Fix potential UAF in TTM object purge (CVE-2026-63884)\n\n* kernel: drm/amdgpu: fix amdgpu_hmm_range_get_pages (CVE-2026-63879)\n\n* kernel: drm/amd/display: Validate payload length and link_index in dc_process_dmub_aux_transfer_async (CVE-2026-64219)\n\n* kernel: can:bcm: arbitrary kernel code execution leading to escalate privileges (CVE-2026-17523)\n\nBug Fix(es) and Enhancement(s):\n\n* Backport \"sched/deadline: Fix bandwidth reclaim equation in GRUB\" to Rocky Linux 8.10 (JIRA:Rocky Linux-189997)\n\n* vhost: reset the vring metadata cache on vring reconfiguration [rhel-8.10.z] (JIRA:Rocky Linux-224556)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
+    "modified": "2026-08-18T06:30:07.549776095Z",
+    "published": "2026-08-18T06:00:58.283966Z",
+    "upstream": [
+      "CVE-2025-39902",
+      "CVE-2026-17523",
+      "CVE-2026-43206",
+      "CVE-2026-53016",
+      "CVE-2026-53136",
+      "CVE-2026-53329",
+      "CVE-2026-53374",
+      "CVE-2026-63879",
+      "CVE-2026-63884",
+      "CVE-2026-64219"
+    ],
+    "database_specific": {
+      "license": "CC-BY-4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "source_advisory": "RHSA-2026:55764"
+    },
+    "references": [
+      {
+        "type": "ADVISORY",
+        "url": "https://errata.rockylinux.org/RLSA-2026:55764"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2400594"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2467156"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2492269"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2492768"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2495941"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2502188"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2502321"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2502463"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2506790"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2507407"
+      },
+      {
+        "type": "ADVISORY",
+        "url": "https://access.redhat.com/errata/RHSA-2026:55764"
+      }
+    ],
+    "affected": [
+      {
+        "package": {
+          "name": "kernel",
+          "ecosystem": "Rocky Linux:8",
+          "purl": "pkg:rpm/rocky-linux/kernel?distro=rocky-linux-8&epoch=0"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "0:4.18.0-553.156.1.el8_10"
+              }
+            ],
+            "database_specific": {
+              "yum_repository": "BaseOS"
+            }
+          }
+        ],
+        "database_specific": {
+          "source": "https://storage.googleapis.com/resf-osv-data/RLSA-2026:55764.json"
+        }
+      }
+    ],
+    "schema_version": "1.9.0",
+    "severity": [
+      {
+        "type": "CVSS_V3",
+        "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+      }
+    ],
+    "credits": [
+      {
+        "name": "Rocky Enterprise Software Foundation"
+      },
+      {
+        "name": "Red Hat"
+      }
+    ],
+    "_metadata": {
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
+      "source_package": "Rocky Linux/kernel",
+      "distribution": "rocky"
+    }
+  },
+  {
     "id": "RLSA-2026:55432",
     "summary": "Important: curl security update",
     "details": "The curl packages provide the libcurl library and the curl utility for downloading files from servers using various protocols, including HTTP, FTP, and LDAP.\n\nSecurity Fix(es):\n\n* curl: Information disclosure due to uncleared proxy authentication state (CVE-2026-8927)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
@@ -71,7 +193,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/curl",
       "distribution": "rocky"
     }
@@ -89,9 +211,9 @@
       "CVE-2026-9547"
     ],
     "database_specific": {
-      "source_advisory": "RHSA-2026:55439",
       "license": "CC-BY-4.0",
-      "license_url": "https://creativecommons.org/licenses/by/4.0/"
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "source_advisory": "RHSA-2026:55439"
     },
     "references": [
       {
@@ -163,7 +285,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/curl",
       "distribution": "rocky"
     }
@@ -245,7 +367,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/kernel",
       "distribution": "rocky"
     }
@@ -337,7 +459,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/kernel",
       "distribution": "rocky"
     }
@@ -419,7 +541,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/kernel",
       "distribution": "rocky"
     }
@@ -440,9 +562,9 @@
       "CVE-2026-64531"
     ],
     "database_specific": {
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
       "source_advisory": "RHSA-2026:53330",
-      "license": "CC-BY-4.0",
-      "license_url": "https://creativecommons.org/licenses/by/4.0/"
+      "license": "CC-BY-4.0"
     },
     "references": [
       {
@@ -526,7 +648,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/kernel",
       "distribution": "rocky"
     }
@@ -618,7 +740,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/kernel",
       "distribution": "rocky"
     }
@@ -686,7 +808,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/kernel",
       "distribution": "rocky"
     }
@@ -754,7 +876,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/kernel",
       "distribution": "rocky"
     }
@@ -827,7 +949,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/kernel",
       "distribution": "rocky"
     }
@@ -895,7 +1017,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/kernel",
       "distribution": "rocky"
     }
@@ -968,7 +1090,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/kernel",
       "distribution": "rocky"
     }
@@ -1036,7 +1158,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/kernel",
       "distribution": "rocky"
     }
@@ -1109,7 +1231,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/kernel",
       "distribution": "rocky"
     }
@@ -1177,7 +1299,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/kernel",
       "distribution": "rocky"
     }
@@ -1245,7 +1367,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/kernel",
       "distribution": "rocky"
     }
@@ -1313,7 +1435,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/kernel",
       "distribution": "rocky"
     }
@@ -1381,7 +1503,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/kernel",
       "distribution": "rocky"
     }
@@ -1464,7 +1586,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/kernel",
       "distribution": "rocky"
     }
@@ -1542,7 +1664,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/kernel",
       "distribution": "rocky"
     }
@@ -1620,7 +1742,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/kernel",
       "distribution": "rocky"
     }
@@ -1708,7 +1830,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/kernel",
       "distribution": "rocky"
     }
@@ -1791,7 +1913,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/kernel",
       "distribution": "rocky"
     }
@@ -1859,7 +1981,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/nginx",
       "distribution": "rocky"
     }
@@ -1927,7 +2049,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/kernel",
       "distribution": "rocky"
     }
@@ -2015,7 +2137,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/kernel",
       "distribution": "rocky"
     }
@@ -2093,7 +2215,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/kernel",
       "distribution": "rocky"
     }
@@ -2181,7 +2303,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/kernel",
       "distribution": "rocky"
     }
@@ -2274,7 +2396,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/kernel",
       "distribution": "rocky"
     }
@@ -2352,7 +2474,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/kernel",
       "distribution": "rocky"
     }
@@ -2470,7 +2592,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/kernel",
       "distribution": "rocky"
     }
@@ -2558,7 +2680,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/kernel",
       "distribution": "rocky"
     }
@@ -2636,7 +2758,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/glibc",
       "distribution": "rocky"
     }
@@ -2714,7 +2836,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/glibc",
       "distribution": "rocky"
     }
@@ -2787,7 +2909,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/kernel",
       "distribution": "rocky"
     }
@@ -2865,7 +2987,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/glibc",
       "distribution": "rocky"
     }
@@ -2933,7 +3055,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/kernel",
       "distribution": "rocky"
     }
@@ -3006,7 +3128,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/kernel",
       "distribution": "rocky"
     }
@@ -3074,7 +3196,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/python3",
       "distribution": "rocky"
     }
@@ -3152,7 +3274,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/kernel",
       "distribution": "rocky"
     }
@@ -3240,7 +3362,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/kernel",
       "distribution": "rocky"
     }
@@ -3308,7 +3430,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/openssl",
       "distribution": "rocky"
     }
@@ -3428,7 +3550,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/nginx",
       "distribution": "rocky"
     }
@@ -3506,7 +3628,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/kernel",
       "distribution": "rocky"
     }
@@ -3589,7 +3711,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/kernel",
       "distribution": "rocky"
     }
@@ -3707,7 +3829,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/kernel",
       "distribution": "rocky"
     }
@@ -3775,7 +3897,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/kernel",
       "distribution": "rocky"
     }
@@ -3869,7 +3991,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/nginx",
       "distribution": "rocky"
     }
@@ -3937,7 +4059,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/nginx",
       "distribution": "rocky"
     }
@@ -4031,7 +4153,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/nginx",
       "distribution": "rocky"
     }
@@ -4099,7 +4221,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/glibc",
       "distribution": "rocky"
     }
@@ -4167,7 +4289,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/glibc",
       "distribution": "rocky"
     }
@@ -4235,7 +4357,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/glibc",
       "distribution": "rocky"
     }
@@ -4338,7 +4460,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/kernel",
       "distribution": "rocky"
     }
@@ -4406,7 +4528,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/nginx",
       "distribution": "rocky"
     }
@@ -4554,7 +4676,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/kernel",
       "distribution": "rocky"
     }
@@ -4622,7 +4744,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/nginx",
       "distribution": "rocky"
     }
@@ -4690,7 +4812,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/kernel",
       "distribution": "rocky"
     }
@@ -4784,7 +4906,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/nginx",
       "distribution": "rocky"
     }
@@ -4887,7 +5009,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/kernel",
       "distribution": "rocky"
     }
@@ -4955,7 +5077,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/nginx",
       "distribution": "rocky"
     }
@@ -5093,7 +5215,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/kernel",
       "distribution": "rocky"
     }
@@ -5196,7 +5318,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/kernel",
       "distribution": "rocky"
     }
@@ -5269,7 +5391,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/openssl",
       "distribution": "rocky"
     }
@@ -5387,7 +5509,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/kernel",
       "distribution": "rocky"
     }
@@ -5515,7 +5637,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/kernel",
       "distribution": "rocky"
     }
@@ -5613,7 +5735,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/kernel",
       "distribution": "rocky"
     }
@@ -5751,7 +5873,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/openssl",
       "distribution": "rocky"
     }
@@ -5869,7 +5991,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/kernel",
       "distribution": "rocky"
     }
@@ -6007,7 +6129,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/openssl",
       "distribution": "rocky"
     }
@@ -6135,7 +6257,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/kernel",
       "distribution": "rocky"
     }
@@ -6203,7 +6325,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/kernel",
       "distribution": "rocky"
     }
@@ -6271,7 +6393,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/openssl",
       "distribution": "rocky"
     }
@@ -6424,7 +6546,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/kernel",
       "distribution": "rocky"
     }
@@ -6492,7 +6614,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/glibc",
       "distribution": "rocky"
     }
@@ -6560,7 +6682,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/openssl",
       "distribution": "rocky"
     }
@@ -6628,7 +6750,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/systemd",
       "distribution": "rocky"
     }
@@ -6781,7 +6903,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/kernel",
       "distribution": "rocky"
     }
@@ -6939,7 +7061,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/kernel",
       "distribution": "rocky"
     }
@@ -7017,7 +7139,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/glibc",
       "distribution": "rocky"
     }
@@ -7085,7 +7207,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/nginx",
       "distribution": "rocky"
     }
@@ -7940,7 +8062,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/kernel",
       "distribution": "rocky"
     }
@@ -8068,7 +8190,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/kernel",
       "distribution": "rocky"
     }
@@ -8141,7 +8263,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/glibc",
       "distribution": "rocky"
     }
@@ -8209,7 +8331,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/openssl",
       "distribution": "rocky"
     }
@@ -8277,7 +8399,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/nginx",
       "distribution": "rocky"
     }
@@ -8345,7 +8467,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/systemd",
       "distribution": "rocky"
     }
@@ -8413,7 +8535,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/systemd",
       "distribution": "rocky"
     }
@@ -8481,7 +8603,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/glibc",
       "distribution": "rocky"
     }
@@ -8629,7 +8751,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/kernel",
       "distribution": "rocky"
     }
@@ -8697,7 +8819,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/openssl",
       "distribution": "rocky"
     }
@@ -8765,7 +8887,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/nginx",
       "distribution": "rocky"
     }
@@ -8833,7 +8955,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/nginx",
       "distribution": "rocky"
     }
@@ -8906,7 +9028,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/kernel",
       "distribution": "rocky"
     }
@@ -8994,7 +9116,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/kernel",
       "distribution": "rocky"
     }
@@ -9092,7 +9214,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/kernel",
       "distribution": "rocky"
     }
@@ -9160,7 +9282,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/systemd",
       "distribution": "rocky"
     }
@@ -9228,7 +9350,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/nginx",
       "distribution": "rocky"
     }
@@ -9311,76 +9433,8 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
+      "fetched_at": "2026-08-19T04:32:41.919971+00:00",
       "source_package": "Rocky Linux/nginx",
-      "distribution": "rocky"
-    }
-  },
-  {
-    "id": "RLSA-2025:22660",
-    "summary": "Moderate: systemd security update",
-    "details": "The systemd packages contain systemd, a system and service manager for Linux, compatible with the SysV and LSB init scripts. It provides aggressive parallelism capabilities, uses socket and D-Bus activation for starting services, offers on-demand starting of daemons, and keeps track of processes using Linux cgroups. In addition, it supports snapshotting and restoring of the system state, maintains mount and automount points, and implements an elaborate transactional dependency-based service control logic. It can also work as a drop-in replacement for sysvinit.\n\nSecurity Fix(es):\n\n* systemd-coredump: race condition that allows a local attacker to crash a SUID program and gain read access to the resulting core dump (CVE-2025-4598)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.",
-    "modified": "2026-05-21T17:00:05.350837261Z",
-    "published": "2026-05-21T16:27:07.119420Z",
-    "upstream": [
-      "CVE-2025-4598"
-    ],
-    "references": [
-      {
-        "type": "ADVISORY",
-        "url": "https://errata.rockylinux.org/RLSA-2025:22660"
-      },
-      {
-        "type": "REPORT",
-        "url": "https://bugzilla.redhat.com/show_bug.cgi?id=2369242"
-      }
-    ],
-    "affected": [
-      {
-        "package": {
-          "name": "systemd",
-          "ecosystem": "Rocky Linux:9",
-          "purl": "pkg:rpm/rocky-linux/systemd?distro=rocky-linux-9&epoch=0"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "0:252-55.el9_7.7.rocky.0.1"
-              }
-            ],
-            "database_specific": {
-              "yum_repository": "BaseOS"
-            }
-          }
-        ],
-        "database_specific": {
-          "source": "https://storage.googleapis.com/resf-osv-data/RLSA-2025:22660.json"
-        }
-      }
-    ],
-    "schema_version": "1.7.5",
-    "severity": [
-      {
-        "type": "CVSS_V3",
-        "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:N/A:N"
-      }
-    ],
-    "credits": [
-      {
-        "name": "Rocky Enterprise Software Foundation"
-      },
-      {
-        "name": "Red Hat"
-      }
-    ],
-    "_metadata": {
-      "fetched_at": "2026-08-18T04:31:14.196503+00:00",
-      "source_package": "Rocky Linux/systemd",
       "distribution": "rocky"
     }
   }
