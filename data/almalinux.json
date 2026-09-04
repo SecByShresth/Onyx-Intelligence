@@ -1,5 +1,733 @@
 [
   {
+    "id": "ALSA-2026:63014",
+    "summary": "Important: kernel security, bug fix, and enhancement update",
+    "details": "The kernel packages contain the Linux kernel, the core of any Linux operating system.  \n\nSecurity Fix(es):  \n\n  * kernel: s390/cpum_sf: Handle CPU hotplug remove during sampling (CVE-2024-57849)\n  * kernel: smc91x: fix broken irq-context in PREEMPT_RT (CVE-2025-71132)\n  * kernel: bonding: alb: fix UAF in rlb_arp_recv during bond up/down (CVE-2026-45970)\n  * kernel: zram: fix use-after-free in zram_bvec_write_partial() (CVE-2026-53185)\n  * kernel: pNFS: Fix use-after-free in pnfs_update_layout() (CVE-2026-63800)\n  * kernel: nfsd: fix posix_acl leak on SETACL decode failure (CVE-2026-53397)\n  * kernel: nfsd: release layout stid on setlease failure (CVE-2026-53399)\n  * kernel: NFSv4/flexfiles: reject zero filehandle version count (CVE-2026-53392)\n  * kernel: NFSv4/pNFS: reject zero-length r_addr in nfs4_decode_mp_ds_addr (CVE-2026-53391)\n  * kernel: net: mana: validate rx_req_idx to prevent out-of-bounds array access (CVE-2026-64018)\n  * kernel: Kernel: Remote out-of-bounds write in RDMA/siw (CVE-2026-64268)\n  * kernel: NFSv4: include MAY_WRITE in open permission mask for O_TRUNC (CVE-2026-64298)\n  * kernel: AMD-SN-7061: Safe RET Interrupt Vulnerability (CVE-2026-68480)\n  * kernel: net: ipv6: use-after-free in fib6_rule_suppress due to stale res->rt6 pointer (CVE-2026-74581)\n\n\nBug Fix(es) and Enhancement(s):  \n\n  * qede: build_skb failure causes off-by-one BD ring corruption and kernel panic [almalinux-8.10.z] (JIRA:AlmaLinux-193045)\n  * powerpc/pseries: lparcfg - fix kbuf[] underflow (JIRA:AlmaLinux-240144)\n\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.\n",
+    "modified": "2026-09-03T10:55:57.396721598Z",
+    "published": "2026-09-03T00:00:00Z",
+    "related": [
+      "CVE-2024-57849",
+      "CVE-2025-71132",
+      "CVE-2026-45970",
+      "CVE-2026-53185",
+      "CVE-2026-53391",
+      "CVE-2026-53392",
+      "CVE-2026-53397",
+      "CVE-2026-53399",
+      "CVE-2026-63800",
+      "CVE-2026-64018",
+      "CVE-2026-64268",
+      "CVE-2026-64298",
+      "CVE-2026-68480",
+      "CVE-2026-74581"
+    ],
+    "references": [
+      {
+        "type": "ADVISORY",
+        "url": "https://access.redhat.com/errata/RHSA-2026:63014"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://access.redhat.com/security/cve/CVE-2024-57849"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://access.redhat.com/security/cve/CVE-2025-71132"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://access.redhat.com/security/cve/CVE-2026-45970"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://access.redhat.com/security/cve/CVE-2026-53185"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://access.redhat.com/security/cve/CVE-2026-53391"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://access.redhat.com/security/cve/CVE-2026-53392"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://access.redhat.com/security/cve/CVE-2026-53397"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://access.redhat.com/security/cve/CVE-2026-53399"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://access.redhat.com/security/cve/CVE-2026-63800"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://access.redhat.com/security/cve/CVE-2026-64018"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://access.redhat.com/security/cve/CVE-2026-64268"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://access.redhat.com/security/cve/CVE-2026-64298"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://access.redhat.com/security/cve/CVE-2026-68480"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://access.redhat.com/security/cve/CVE-2026-74581"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://bugzilla.redhat.com/2337144"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://bugzilla.redhat.com/2429603"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://bugzilla.redhat.com/2482006"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://bugzilla.redhat.com/2492735"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://bugzilla.redhat.com/2502219"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://bugzilla.redhat.com/2502227"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://bugzilla.redhat.com/2502239"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://bugzilla.redhat.com/2502240"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://bugzilla.redhat.com/2502260"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://bugzilla.redhat.com/2502421"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://bugzilla.redhat.com/2507089"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://bugzilla.redhat.com/2507208"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://bugzilla.redhat.com/2508363"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://bugzilla.redhat.com/2520980"
+      },
+      {
+        "type": "ADVISORY",
+        "url": "https://errata.almalinux.org/8/ALSA-2026-63014.html"
+      }
+    ],
+    "affected": [
+      {
+        "package": {
+          "name": "bpftool",
+          "ecosystem": "AlmaLinux:8",
+          "purl": "pkg:rpm/almalinux/bpftool"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "4.18.0-553.159.1.el8_10"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux8/ALSA-2026:63014.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel",
+          "ecosystem": "AlmaLinux:8",
+          "purl": "pkg:rpm/almalinux/kernel"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "4.18.0-553.159.1.el8_10"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux8/ALSA-2026:63014.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-abi-stablelists",
+          "ecosystem": "AlmaLinux:8",
+          "purl": "pkg:rpm/almalinux/kernel-abi-stablelists"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "4.18.0-553.159.1.el8_10"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux8/ALSA-2026:63014.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-core",
+          "ecosystem": "AlmaLinux:8",
+          "purl": "pkg:rpm/almalinux/kernel-core"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "4.18.0-553.159.1.el8_10"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux8/ALSA-2026:63014.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-cross-headers",
+          "ecosystem": "AlmaLinux:8",
+          "purl": "pkg:rpm/almalinux/kernel-cross-headers"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "4.18.0-553.159.1.el8_10"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux8/ALSA-2026:63014.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-debug",
+          "ecosystem": "AlmaLinux:8",
+          "purl": "pkg:rpm/almalinux/kernel-debug"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "4.18.0-553.159.1.el8_10"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux8/ALSA-2026:63014.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-debug-core",
+          "ecosystem": "AlmaLinux:8",
+          "purl": "pkg:rpm/almalinux/kernel-debug-core"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "4.18.0-553.159.1.el8_10"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux8/ALSA-2026:63014.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-debug-devel",
+          "ecosystem": "AlmaLinux:8",
+          "purl": "pkg:rpm/almalinux/kernel-debug-devel"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "4.18.0-553.159.1.el8_10"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux8/ALSA-2026:63014.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-debug-modules",
+          "ecosystem": "AlmaLinux:8",
+          "purl": "pkg:rpm/almalinux/kernel-debug-modules"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "4.18.0-553.159.1.el8_10"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux8/ALSA-2026:63014.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-debug-modules-extra",
+          "ecosystem": "AlmaLinux:8",
+          "purl": "pkg:rpm/almalinux/kernel-debug-modules-extra"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "4.18.0-553.159.1.el8_10"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux8/ALSA-2026:63014.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-devel",
+          "ecosystem": "AlmaLinux:8",
+          "purl": "pkg:rpm/almalinux/kernel-devel"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "4.18.0-553.159.1.el8_10"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux8/ALSA-2026:63014.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-doc",
+          "ecosystem": "AlmaLinux:8",
+          "purl": "pkg:rpm/almalinux/kernel-doc"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "4.18.0-553.159.1.el8_10"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux8/ALSA-2026:63014.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-headers",
+          "ecosystem": "AlmaLinux:8",
+          "purl": "pkg:rpm/almalinux/kernel-headers"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "4.18.0-553.159.1.el8_10"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux8/ALSA-2026:63014.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-modules",
+          "ecosystem": "AlmaLinux:8",
+          "purl": "pkg:rpm/almalinux/kernel-modules"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "4.18.0-553.159.1.el8_10"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux8/ALSA-2026:63014.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-modules-extra",
+          "ecosystem": "AlmaLinux:8",
+          "purl": "pkg:rpm/almalinux/kernel-modules-extra"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "4.18.0-553.159.1.el8_10"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux8/ALSA-2026:63014.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-tools",
+          "ecosystem": "AlmaLinux:8",
+          "purl": "pkg:rpm/almalinux/kernel-tools"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "4.18.0-553.159.1.el8_10"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux8/ALSA-2026:63014.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-tools-libs",
+          "ecosystem": "AlmaLinux:8",
+          "purl": "pkg:rpm/almalinux/kernel-tools-libs"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "4.18.0-553.159.1.el8_10"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux8/ALSA-2026:63014.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-tools-libs-devel",
+          "ecosystem": "AlmaLinux:8",
+          "purl": "pkg:rpm/almalinux/kernel-tools-libs-devel"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "4.18.0-553.159.1.el8_10"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux8/ALSA-2026:63014.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-zfcpdump",
+          "ecosystem": "AlmaLinux:8",
+          "purl": "pkg:rpm/almalinux/kernel-zfcpdump"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "4.18.0-553.159.1.el8_10"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux8/ALSA-2026:63014.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-zfcpdump-core",
+          "ecosystem": "AlmaLinux:8",
+          "purl": "pkg:rpm/almalinux/kernel-zfcpdump-core"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "4.18.0-553.159.1.el8_10"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux8/ALSA-2026:63014.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-zfcpdump-devel",
+          "ecosystem": "AlmaLinux:8",
+          "purl": "pkg:rpm/almalinux/kernel-zfcpdump-devel"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "4.18.0-553.159.1.el8_10"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux8/ALSA-2026:63014.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-zfcpdump-modules",
+          "ecosystem": "AlmaLinux:8",
+          "purl": "pkg:rpm/almalinux/kernel-zfcpdump-modules"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "4.18.0-553.159.1.el8_10"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux8/ALSA-2026:63014.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-zfcpdump-modules-extra",
+          "ecosystem": "AlmaLinux:8",
+          "purl": "pkg:rpm/almalinux/kernel-zfcpdump-modules-extra"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "4.18.0-553.159.1.el8_10"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux8/ALSA-2026:63014.json"
+        }
+      },
+      {
+        "package": {
+          "name": "perf",
+          "ecosystem": "AlmaLinux:8",
+          "purl": "pkg:rpm/almalinux/perf"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "4.18.0-553.159.1.el8_10"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux8/ALSA-2026:63014.json"
+        }
+      },
+      {
+        "package": {
+          "name": "python3-perf",
+          "ecosystem": "AlmaLinux:8",
+          "purl": "pkg:rpm/almalinux/python3-perf"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "4.18.0-553.159.1.el8_10"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux8/ALSA-2026:63014.json"
+        }
+      }
+    ],
+    "schema_version": "1.9.0",
+    "_metadata": {
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
+      "source_package": "AlmaLinux/kernel",
+      "distribution": "almalinux"
+    }
+  },
+  {
     "id": "ALSA-2026:59723",
     "summary": "Important: kernel security, bug fix, and enhancement update",
     "details": "The kernel packages contain the Linux kernel, the core of any Linux operating system.  \n\nSecurity Fix(es):  \n\n  * kernel: ksm: use range-walk function to jump over holes in scan_get_next_rmap_item (CVE-2025-68211)\n  * kernel: ip6_tunnel: use skb_vlan_inet_prepare() in __ip6_tnl_rcv() (CVE-2026-23003)\n  * kernel: netfilter: nft_set_pipapo_avx2: don't return non-matching entry on expiry (CVE-2026-43114)\n  * kernel: sctp: purge outqueue on stale COOKIE-ECHO handling (CVE-2026-52924)\n  * kernel: netfilter: xt_policy: fix strict mode inbound policy matching (CVE-2026-52920)\n  * kernel: zram: fix use-after-free in zram_bvec_write_partial() (CVE-2026-53185)\n  * kernel: netfilter: require Ethernet MAC header before using eth_hdr() (CVE-2026-53131)\n  * kernel: netfilter: conntrack_irc: fix possible out-of-bounds read (CVE-2026-53268)\n  * kernel: i2c: stub: Reject I2C block transfers with invalid length (CVE-2026-64191)\n  * kernel: netfilter: ipset: fix race between dump and ip_set_list resize (CVE-2026-64189)\n  * kernel: Input: synaptics-rmi4 - bound the F3A keymap to the GPIO count (CVE-2026-64277)\n  * kernel: Input: synaptics-rmi4 - bound the F30 keymap to the GPIO/LED count (CVE-2026-64276)\n  * kernel: net: ipv6: use-after-free in fib6_rule_suppress due to stale res->rt6 pointer (CVE-2026-74581)\n\n\nBug Fix(es) and Enhancement(s):  \n\n  * [AlmaLinux-9.8.z] Intel CWF: CPU is unable to obtain cstate1 on idle system (JIRA:AlmaLinux-166118)\n  * ss core dumped when there is an SCTP session [almalinux-9.8.z] (JIRA:AlmaLinux-212398)\n  * [IBM 9.9 FEAT] zcrypt driver overwrite function - kernel part [almalinux-9.8.z] (JIRA:AlmaLinux-245333)\n\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.\n",
@@ -1840,7 +2568,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -2514,7 +3242,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -2789,7 +3517,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/nginx",
       "distribution": "almalinux"
     }
@@ -3064,7 +3792,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/nginx",
       "distribution": "almalinux"
     }
@@ -3339,7 +4067,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/nginx",
       "distribution": "almalinux"
     }
@@ -3559,7 +4287,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/python3",
       "distribution": "almalinux"
     }
@@ -3811,7 +4539,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/nginx",
       "distribution": "almalinux"
     }
@@ -4086,7 +4814,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/nginx",
       "distribution": "almalinux"
     }
@@ -6054,7 +6782,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -8017,7 +8745,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -8700,7 +9428,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -8828,7 +9556,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/curl",
       "distribution": "almalinux"
     }
@@ -9520,7 +10248,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -9648,7 +10376,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/curl",
       "distribution": "almalinux"
     }
@@ -9826,7 +10554,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/curl",
       "distribution": "almalinux"
     }
@@ -10446,7 +11174,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -12235,7 +12963,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -13982,7 +14710,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -14202,7 +14930,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/python3",
       "distribution": "almalinux"
     }
@@ -15967,7 +16695,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -17782,7 +18510,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -18393,7 +19121,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -19004,7 +19732,7 @@
     ],
     "schema_version": "1.8.0",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -20751,7 +21479,7 @@
     ],
     "schema_version": "1.8.0",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -22512,7 +23240,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -23123,7 +23851,7 @@
     ],
     "schema_version": "1.8.0",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -24861,7 +25589,7 @@
     ],
     "schema_version": "1.8.0",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -26631,7 +27359,7 @@
     ],
     "schema_version": "1.8.0",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -28409,7 +29137,7 @@
     ],
     "schema_version": "1.8.0",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -30169,7 +30897,7 @@
     ],
     "schema_version": "1.8.0",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -30811,7 +31539,7 @@
     ],
     "schema_version": "1.7.5",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -31422,7 +32150,7 @@
     ],
     "schema_version": "1.7.5",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -33215,7 +33943,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -34989,7 +35717,7 @@
     ],
     "schema_version": "1.7.5",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -36799,7 +37527,7 @@
     ],
     "schema_version": "1.8.0",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -37432,7 +38160,7 @@
     ],
     "schema_version": "1.8.0",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -39210,7 +39938,7 @@
     ],
     "schema_version": "1.8.0",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -40971,7 +41699,7 @@
     ],
     "schema_version": "1.7.5",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -42750,7 +43478,7 @@
     ],
     "schema_version": "1.7.5",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -43370,7 +44098,7 @@
     ],
     "schema_version": "1.7.5",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -45221,7 +45949,7 @@
     ],
     "schema_version": "1.7.5",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -50358,7 +51086,7 @@
     ],
     "schema_version": "1.7.5",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/glibc",
       "distribution": "almalinux"
     }
@@ -55334,7 +56062,7 @@
     ],
     "schema_version": "1.7.5",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/glibc",
       "distribution": "almalinux"
     }
@@ -60333,7 +61061,7 @@
     ],
     "schema_version": "1.7.5",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/glibc",
       "distribution": "almalinux"
     }
@@ -60553,7 +61281,7 @@
     ],
     "schema_version": "1.7.5",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/python3",
       "distribution": "almalinux"
     }
@@ -62280,7 +63008,7 @@
     ],
     "schema_version": "1.7.5",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -62944,7 +63672,7 @@
     ],
     "schema_version": "1.7.5",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -63572,7 +64300,7 @@
     ],
     "schema_version": "1.8.0",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -65341,7 +66069,7 @@
     ],
     "schema_version": "1.8.0",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -65561,7 +66289,7 @@
     ],
     "schema_version": "1.7.5",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/python3",
       "distribution": "almalinux"
     }
@@ -67335,7 +68063,7 @@
     ],
     "schema_version": "1.7.5",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -69114,7 +69842,7 @@
     ],
     "schema_version": "1.7.5",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -69242,7 +69970,7 @@
     ],
     "schema_version": "1.7.5",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/openssl",
       "distribution": "almalinux"
     }
@@ -69485,7 +70213,7 @@
     ],
     "schema_version": "1.7.5",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/nginx",
       "distribution": "almalinux"
     }
@@ -71273,7 +72001,7 @@
     ],
     "schema_version": "1.7.5",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -73029,7 +73757,7 @@
     ],
     "schema_version": "1.7.5",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -74835,7 +75563,7 @@
     ],
     "schema_version": "1.7.5",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -76591,7 +77319,7 @@
     ],
     "schema_version": "1.7.5",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -76857,7 +77585,7 @@
     ],
     "schema_version": "1.7.5",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/nginx",
       "distribution": "almalinux"
     }
@@ -77123,7 +77851,7 @@
     ],
     "schema_version": "1.7.5",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/nginx",
       "distribution": "almalinux"
     }
@@ -77779,7 +78507,7 @@
     ],
     "schema_version": "1.7.5",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -78390,7 +79118,7 @@
     ],
     "schema_version": "1.7.5",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -78656,7 +79384,7 @@
     ],
     "schema_version": "1.7.5",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/nginx",
       "distribution": "almalinux"
     }
@@ -78922,7 +79650,7 @@
     ],
     "schema_version": "1.7.5",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/nginx",
       "distribution": "almalinux"
     }
@@ -80750,7 +81478,7 @@
     ],
     "schema_version": "1.7.5",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -82556,7 +83284,7 @@
     ],
     "schema_version": "1.7.5",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -84344,7 +85072,7 @@
     ],
     "schema_version": "1.7.5",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -84973,7 +85701,7 @@
     ],
     "schema_version": "1.7.5",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -86775,7 +87503,7 @@
     ],
     "schema_version": "1.7.5",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -88522,7 +89250,7 @@
     ],
     "schema_version": "1.7.5",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -93641,7 +94369,7 @@
     ],
     "schema_version": "1.7.5",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/glibc",
       "distribution": "almalinux"
     }
@@ -98599,7 +99327,7 @@
     ],
     "schema_version": "1.7.5",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/glibc",
       "distribution": "almalinux"
     }
@@ -103580,7 +104308,7 @@
     ],
     "schema_version": "1.7.5",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/glibc",
       "distribution": "almalinux"
     }
@@ -105406,7 +106134,7 @@
     ],
     "schema_version": "1.7.5",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -105672,7 +106400,7 @@
     ],
     "schema_version": "1.7.5",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/nginx",
       "distribution": "almalinux"
     }
@@ -105915,7 +106643,7 @@
     ],
     "schema_version": "1.7.5",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/nginx",
       "distribution": "almalinux"
     }
@@ -106181,7 +106909,7 @@
     ],
     "schema_version": "1.7.5",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/nginx",
       "distribution": "almalinux"
     }
@@ -106447,7 +107175,7 @@
     ],
     "schema_version": "1.7.5",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/nginx",
       "distribution": "almalinux"
     }
@@ -106713,7 +107441,7 @@
     ],
     "schema_version": "1.7.5",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/nginx",
       "distribution": "almalinux"
     }
@@ -108595,7 +109323,7 @@
     ],
     "schema_version": "1.7.5",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -109206,7 +109934,7 @@
     ],
     "schema_version": "1.7.5",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -111093,7 +111821,7 @@
     ],
     "schema_version": "1.7.5",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -111767,7 +112495,7 @@
     ],
     "schema_version": "1.7.5",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -112441,7 +113169,7 @@
     ],
     "schema_version": "1.7.5",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -112578,7 +113306,7 @@
     ],
     "schema_version": "1.7.5",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/openssl",
       "distribution": "almalinux"
     }
@@ -114393,7 +115121,7 @@
     ],
     "schema_version": "1.7.5",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -116221,7 +116949,7 @@
     ],
     "schema_version": "1.7.5",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -116475,7 +117203,7 @@
     ],
     "schema_version": "1.7.5",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/openssl",
       "distribution": "almalinux"
     }
@@ -116729,7 +117457,7 @@
     ],
     "schema_version": "1.7.5",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/openssl",
       "distribution": "almalinux"
     }
@@ -117448,7 +118176,7 @@
     ],
     "schema_version": "1.7.5",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -119204,7 +119932,7 @@
     ],
     "schema_version": "1.7.5",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -119815,7 +120543,7 @@
     ],
     "schema_version": "1.7.5",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -121630,7 +122358,7 @@
     ],
     "schema_version": "1.7.5",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -121758,7 +122486,7 @@
     ],
     "schema_version": "1.7.5",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/openssl",
       "distribution": "almalinux"
     }
@@ -121886,7 +122614,7 @@
     ],
     "schema_version": "1.7.5",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/openssl",
       "distribution": "almalinux"
     }
@@ -123786,7 +124514,7 @@
     ],
     "schema_version": "1.7.5",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -125700,7 +126428,7 @@
     ],
     "schema_version": "1.7.5",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -126464,7 +127192,7 @@
     ],
     "schema_version": "1.7.5",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -131422,5126 +132150,7 @@
     ],
     "schema_version": "1.7.5",
     "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
-      "source_package": "AlmaLinux/glibc",
-      "distribution": "almalinux"
-    }
-  },
-  {
-    "id": "ALSA-2026:20594",
-    "summary": "Moderate: glibc security update",
-    "details": "The glibc packages provide the standard C libraries (libc), POSIX thread libraries (libpthread), standard math libraries (libm), and the name service cache daemon (nscd) used by multiple programs on the system. Without these libraries, the Linux system cannot function correctly.  \n\nSecurity Fix(es):  \n\n  * glibc: glibc: Denial of Service via iconv() function with specific character sets (CVE-2026-4046)\n\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.\n",
-    "modified": "2026-05-27T15:00:04.496501358Z",
-    "published": "2026-05-26T00:00:00Z",
-    "related": [
-      "CVE-2026-4046"
-    ],
-    "references": [
-      {
-        "type": "ADVISORY",
-        "url": "https://access.redhat.com/errata/RHSA-2026:20594"
-      },
-      {
-        "type": "REPORT",
-        "url": "https://access.redhat.com/security/cve/CVE-2026-4046"
-      },
-      {
-        "type": "REPORT",
-        "url": "https://bugzilla.redhat.com/2453117"
-      },
-      {
-        "type": "ADVISORY",
-        "url": "https://errata.almalinux.org/10/ALSA-2026-20594.html"
-      }
-    ],
-    "affected": [
-      {
-        "package": {
-          "name": "glibc",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-all-langpacks",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-all-langpacks"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-benchtests",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-benchtests"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-common",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-common"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-devel",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-devel"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-doc",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-doc"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-gconv-extra",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-gconv-extra"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-aa",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-aa"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-af",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-af"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-agr",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-agr"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-ak",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-ak"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-am",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-am"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-an",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-an"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-anp",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-anp"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-ar",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-ar"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-as",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-as"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-ast",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-ast"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-ayc",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-ayc"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-az",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-az"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-be",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-be"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-bem",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-bem"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-ber",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-ber"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-bg",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-bg"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-bhb",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-bhb"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-bho",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-bho"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-bi",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-bi"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-bn",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-bn"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-bo",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-bo"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-br",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-br"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-brx",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-brx"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-bs",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-bs"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-byn",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-byn"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-ca",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-ca"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-ce",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-ce"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-chr",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-chr"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-ckb",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-ckb"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-cmn",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-cmn"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-crh",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-crh"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-cs",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-cs"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-csb",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-csb"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-cv",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-cv"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-cy",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-cy"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-da",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-da"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-de",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-de"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-doi",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-doi"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-dsb",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-dsb"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-dv",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-dv"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-dz",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-dz"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-el",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-el"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-en",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-en"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-eo",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-eo"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-es",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-es"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-et",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-et"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-eu",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-eu"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-fa",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-fa"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-ff",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-ff"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-fi",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-fi"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-fil",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-fil"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-fo",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-fo"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-fr",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-fr"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-fur",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-fur"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-fy",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-fy"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-ga",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-ga"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-gbm",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-gbm"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-gd",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-gd"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-gez",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-gez"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-gl",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-gl"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-gu",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-gu"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-gv",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-gv"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-ha",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-ha"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-hak",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-hak"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-he",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-he"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-hi",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-hi"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-hif",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-hif"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-hne",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-hne"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-hr",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-hr"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-hsb",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-hsb"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-ht",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-ht"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-hu",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-hu"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-hy",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-hy"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-ia",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-ia"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-id",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-id"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-ig",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-ig"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-ik",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-ik"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-is",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-is"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-it",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-it"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-iu",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-iu"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-ja",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-ja"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-ka",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-ka"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-kab",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-kab"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-kk",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-kk"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-kl",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-kl"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-km",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-km"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-kn",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-kn"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-ko",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-ko"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-kok",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-kok"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-ks",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-ks"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-ku",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-ku"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-kv",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-kv"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-kw",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-kw"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-ky",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-ky"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-lb",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-lb"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-lg",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-lg"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-li",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-li"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-lij",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-lij"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-ln",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-ln"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-lo",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-lo"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-lt",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-lt"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-lv",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-lv"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-lzh",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-lzh"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-mag",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-mag"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-mai",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-mai"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-mfe",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-mfe"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-mg",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-mg"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-mhr",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-mhr"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-mi",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-mi"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-miq",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-miq"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-mjw",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-mjw"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-mk",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-mk"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-ml",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-ml"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-mn",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-mn"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-mni",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-mni"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-mnw",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-mnw"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-mr",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-mr"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-ms",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-ms"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-mt",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-mt"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-my",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-my"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-nan",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-nan"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-nb",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-nb"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-nds",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-nds"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-ne",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-ne"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-nhn",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-nhn"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-niu",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-niu"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-nl",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-nl"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-nn",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-nn"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-nr",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-nr"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-nso",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-nso"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-oc",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-oc"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-om",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-om"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-or",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-or"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-os",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-os"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-pa",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-pa"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-pap",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-pap"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-pl",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-pl"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-ps",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-ps"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-pt",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-pt"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-quz",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-quz"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-raj",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-raj"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-rif",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-rif"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-ro",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-ro"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-ru",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-ru"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-rw",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-rw"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-sa",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-sa"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-sah",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-sah"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-sat",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-sat"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-sc",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-sc"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-sd",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-sd"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-se",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-se"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-sgs",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-sgs"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-shn",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-shn"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-shs",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-shs"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-si",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-si"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-sid",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-sid"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-sk",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-sk"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-sl",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-sl"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-sm",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-sm"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-so",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-so"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-sq",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-sq"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-sr",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-sr"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-ss",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-ss"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-ssy",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-ssy"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-st",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-st"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-su",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-su"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-sv",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-sv"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-sw",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-sw"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-syr",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-syr"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-szl",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-szl"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-ta",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-ta"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-tcy",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-tcy"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-te",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-te"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-tg",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-tg"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-th",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-th"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-the",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-the"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-ti",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-ti"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-tig",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-tig"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-tk",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-tk"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-tl",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-tl"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-tn",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-tn"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-to",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-to"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-tok",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-tok"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-tpi",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-tpi"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-tr",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-tr"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-ts",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-ts"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-tt",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-tt"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-ug",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-ug"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-uk",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-uk"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-unm",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-unm"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-ur",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-ur"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-uz",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-uz"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-ve",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-ve"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-vi",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-vi"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-wa",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-wa"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-wae",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-wae"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-wal",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-wal"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-wo",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-wo"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-xh",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-xh"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-yi",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-yi"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-yo",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-yo"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-yue",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-yue"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-yuw",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-yuw"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-zgh",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-zgh"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-zh",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-zh"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-langpack-zu",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-langpack-zu"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-locale-source",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-locale-source"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-minimal-langpack",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-minimal-langpack"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-nss-devel",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-nss-devel"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-static",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-static"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "glibc-utils",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/glibc-utils"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "libnsl",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/libnsl"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "nss_db",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/nss_db"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      },
-      {
-        "package": {
-          "name": "nss_hesiod",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/nss_hesiod"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "2.39-124.el10_2.alma.1"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:20594.json"
-        }
-      }
-    ],
-    "schema_version": "1.7.5",
-    "_metadata": {
-      "fetched_at": "2026-09-03T08:31:18.998225+00:00",
+      "fetched_at": "2026-09-04T08:26:50.541858+00:00",
       "source_package": "AlmaLinux/glibc",
       "distribution": "almalinux"
     }
