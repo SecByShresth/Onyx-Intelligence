@@ -2,7 +2,7 @@
   {
     "id": "DEBIAN-CVE-2026-82209",
     "details": "When libpsl support is enabled, libcurl fails to enforce the Public Suffix List boundary check when processing a `Set-Cookie` header where the `Domain` attribute explicitly matches an origin host that is itself a public suffix (e.g., `Domain=co.uk` set by `co.uk`).  Instead of coercing it into a strict host-only cookie, libcurl saves the cookie with wildcard domain scope (`.co.uk`). Consequently, the cookie is inappropriately included in subsequent outbound requests or HTTP redirects to arbitrary sibling subdomains under the same public suffix (e.g., `attacker.co.uk`).",
-    "modified": "2026-09-09T09:00:30.627939339Z",
+    "modified": "2026-09-12T09:00:29.313464059Z",
     "published": "2026-09-06T18:17:22.847Z",
     "upstream": [
       "CVE-2026-82209"
@@ -163,6 +163,7 @@
           "8.21.0~rc3-1",
           "8.21.0~rc3-1+exp1",
           "8.22.0-1",
+          "8.22.0-1+exp1",
           "8.22.0~rc2-1",
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
@@ -310,6 +311,7 @@
           "8.21.0~rc3-1",
           "8.21.0~rc3-1+exp1",
           "8.22.0-1",
+          "8.22.0-1+exp1",
           "8.22.0~rc2-1",
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
@@ -408,6 +410,7 @@
           "8.21.0~rc3-1",
           "8.21.0~rc3-1+exp1",
           "8.22.0-1",
+          "8.22.0-1+exp1",
           "8.22.0~rc2-1",
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
@@ -429,7 +432,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -437,7 +440,7 @@
   {
     "id": "DEBIAN-CVE-2026-82208",
     "details": "With the wolfSSL backend, when CA caching is enabled and an `CURLOPT_SSL_CTX_FUNCTION` callback replaces the trust store, libcurl can silently reinstall the cached store after the callback returns. A certificate trusted by the cached store but rejected by the callback-selected store is then incorrectly accepted.",
-    "modified": "2026-09-09T09:00:37.515128289Z",
+    "modified": "2026-09-12T09:00:36.385903992Z",
     "published": "2026-09-06T18:17:22.733Z",
     "upstream": [
       "CVE-2026-82208"
@@ -541,6 +544,7 @@
           "8.21.0~rc3-1",
           "8.21.0~rc3-1+exp1",
           "8.22.0-1",
+          "8.22.0-1+exp1",
           "8.22.0~rc2-1",
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
@@ -639,6 +643,7 @@
           "8.21.0~rc3-1",
           "8.21.0~rc3-1+exp1",
           "8.22.0-1",
+          "8.22.0-1+exp1",
           "8.22.0~rc2-1",
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
@@ -660,7 +665,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -668,7 +673,7 @@
   {
     "id": "DEBIAN-CVE-2026-80255",
     "details": "A `Set-Cookie:` header using tab (horizontal tab, ASCII code 9) instead of space (ascii code 32) immediately before the `Secure` attribute causes curl to store the cookie without its Secure flag. The cookie might then wrongfully be sent over plaintext HTTP on subsequent requests to the same host.",
-    "modified": "2026-09-09T09:00:29.148145597Z",
+    "modified": "2026-09-12T09:00:21.617528045Z",
     "published": "2026-09-06T18:17:22.623Z",
     "upstream": [
       "CVE-2026-80255"
@@ -772,6 +777,7 @@
           "8.21.0~rc3-1",
           "8.21.0~rc3-1+exp1",
           "8.22.0-1",
+          "8.22.0-1+exp1",
           "8.22.0~rc2-1",
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
@@ -870,6 +876,7 @@
           "8.21.0~rc3-1",
           "8.21.0~rc3-1+exp1",
           "8.22.0-1",
+          "8.22.0-1+exp1",
           "8.22.0~rc2-1",
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
@@ -891,7 +898,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -899,7 +906,7 @@
   {
     "id": "DEBIAN-CVE-2026-80230",
     "details": "When `CURLOPT_PINNEDPUBLICKEY` is configured alongside options that disable standard peer verification (`CURLOPT_SSL_VERIFYPEER = 0` and `CURLOPT_SSL_VERIFYHOST = 0`), libcurl fails to enforce public key pinning on connections established without a presented server certificate. Bypassing the pinning check under these disabled-verification conditions allows unauthenticated connections to succeed when they should be rejected.",
-    "modified": "2026-09-09T09:00:28.851880497Z",
+    "modified": "2026-09-12T09:00:22.855886898Z",
     "published": "2026-09-06T18:17:22.327Z",
     "upstream": [
       "CVE-2026-80230"
@@ -1060,6 +1067,7 @@
           "8.21.0~rc3-1",
           "8.21.0~rc3-1+exp1",
           "8.22.0-1",
+          "8.22.0-1+exp1",
           "8.22.0~rc2-1",
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
@@ -1207,6 +1215,7 @@
           "8.21.0~rc3-1",
           "8.21.0~rc3-1+exp1",
           "8.22.0-1",
+          "8.22.0-1+exp1",
           "8.22.0~rc2-1",
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
@@ -1305,6 +1314,7 @@
           "8.21.0~rc3-1",
           "8.21.0~rc3-1+exp1",
           "8.22.0-1",
+          "8.22.0-1+exp1",
           "8.22.0~rc2-1",
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
@@ -1326,7 +1336,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -1334,7 +1344,7 @@
   {
     "id": "DEBIAN-CVE-2026-80229",
     "details": "When performing transfers via libcurl’s multi interface, pooled TLS connections can outlive their originating easy handles. In OpenSSL 3 provider configurations, libcurl attaches an allocated library context to the easy handle's state and passes it to OpenSSL without acquiring an ownership reference; destroying the easy handle prematurely frees this context while the active connection retains a dangling pointer, leading to a heap-use-after-free upon subsequent I/O or post-handshake operations.",
-    "modified": "2026-09-09T09:00:29.200030931Z",
+    "modified": "2026-09-12T09:00:18.831213008Z",
     "published": "2026-09-06T18:17:22.217Z",
     "upstream": [
       "CVE-2026-80229"
@@ -1438,6 +1448,7 @@
           "8.21.0~rc3-1",
           "8.21.0~rc3-1+exp1",
           "8.22.0-1",
+          "8.22.0-1+exp1",
           "8.22.0~rc2-1",
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
@@ -1536,6 +1547,7 @@
           "8.21.0~rc3-1",
           "8.21.0~rc3-1+exp1",
           "8.22.0-1",
+          "8.22.0-1+exp1",
           "8.22.0~rc2-1",
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
@@ -1557,7 +1569,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -1565,7 +1577,7 @@
   {
     "id": "DEBIAN-CVE-2026-19931",
     "details": "A flaw in libcurl makes it wrongly reuse an HTTP connection setup for a given hostname using Negotiate authentication, when the initial request is done using empty credentials. This can make user B's request get sent over user A's previously authenticated connection.",
-    "modified": "2026-09-09T09:00:09.568157664Z",
+    "modified": "2026-09-12T09:00:14.499523780Z",
     "published": "2026-09-06T18:17:20.733Z",
     "upstream": [
       "CVE-2026-19931"
@@ -1726,6 +1738,7 @@
           "8.21.0~rc3-1",
           "8.21.0~rc3-1+exp1",
           "8.22.0-1",
+          "8.22.0-1+exp1",
           "8.22.0~rc2-1",
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
@@ -1873,6 +1886,7 @@
           "8.21.0~rc3-1",
           "8.21.0~rc3-1+exp1",
           "8.22.0-1",
+          "8.22.0-1+exp1",
           "8.22.0~rc2-1",
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
@@ -1971,6 +1985,7 @@
           "8.21.0~rc3-1",
           "8.21.0~rc3-1+exp1",
           "8.22.0-1",
+          "8.22.0-1+exp1",
           "8.22.0~rc2-1",
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
@@ -1992,7 +2007,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -2000,7 +2015,7 @@
   {
     "id": "DEBIAN-CVE-2026-18924",
     "details": "A flaw in libcurl's handling of HTTP/2 Server Push streams, when the parent handle is set to share connections with other handles, can lead to use-after-free in the cleanup process.",
-    "modified": "2026-09-09T09:00:08.403885240Z",
+    "modified": "2026-09-12T09:00:14.535546406Z",
     "published": "2026-09-06T18:17:20.553Z",
     "upstream": [
       "CVE-2026-18924"
@@ -2161,6 +2176,7 @@
           "8.21.0~rc3-1",
           "8.21.0~rc3-1+exp1",
           "8.22.0-1",
+          "8.22.0-1+exp1",
           "8.22.0~rc2-1",
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
@@ -2308,6 +2324,7 @@
           "8.21.0~rc3-1",
           "8.21.0~rc3-1+exp1",
           "8.22.0-1",
+          "8.22.0-1+exp1",
           "8.22.0~rc2-1",
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
@@ -2406,6 +2423,7 @@
           "8.21.0~rc3-1",
           "8.21.0~rc3-1+exp1",
           "8.22.0-1",
+          "8.22.0-1+exp1",
           "8.22.0~rc2-1",
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
@@ -2427,7 +2445,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -2435,7 +2453,7 @@
   {
     "id": "DEBIAN-CVE-2026-13608",
     "details": "A flaw in the libcurl SASL negotiation for LDAP authentication allows an incomplete handshake sequence to be misinterpreted as a successful cryptographic verification. An attacker executing a Man-in-the-Middle (MITM) attack can inject a premature or shortcut response that bypasses complete peer validation.",
-    "modified": "2026-09-09T09:00:13.323798637Z",
+    "modified": "2026-09-12T09:00:15.676475846Z",
     "published": "2026-09-06T18:17:19.810Z",
     "upstream": [
       "CVE-2026-13608"
@@ -2596,6 +2614,7 @@
           "8.21.0~rc3-1",
           "8.21.0~rc3-1+exp1",
           "8.22.0-1",
+          "8.22.0-1+exp1",
           "8.22.0~rc2-1",
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
@@ -2743,6 +2762,7 @@
           "8.21.0~rc3-1",
           "8.21.0~rc3-1+exp1",
           "8.22.0-1",
+          "8.22.0-1+exp1",
           "8.22.0~rc2-1",
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
@@ -2841,6 +2861,7 @@
           "8.21.0~rc3-1",
           "8.21.0~rc3-1+exp1",
           "8.22.0-1",
+          "8.22.0-1+exp1",
           "8.22.0~rc2-1",
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
@@ -2862,7 +2883,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -2870,7 +2891,7 @@
   {
     "id": "DEBIAN-CVE-2026-75803",
     "details": "Issue summary: ChaCha20-Poly1305 and AES-OCB decryption with an empty ciphertext can report success without verifying the supplied authentication tag when the operation is finalized by calling the EVP_Cipher() function.  Impact summary: Applications calling EVP_Cipher() on an empty ciphertext and expecting the call to check the AEAD tag may accept forged messages.  CWE: CWE-354 (Improper Validation of Integrity Check Value)  Description: The EVP_Cipher() API call for AEAD ciphers behaves like a one shot encryption and decryption call. It also verifies the AEAD tag after the decryption operation. However for AES-OCB and ChaCha20-Poly1305 ciphers it skipped the AEAD tag verification when an empty ciphertext was passed to the function. The callers of this function might believe that a successful return indicates a valid AEAD tag for these ciphers, even when that has not truly been validated in this case.  FIPS impact: no The FIPS modules in 4.0, 3.6, 3.5, 3.4, and 3.0 are not affected by this CVE as the affected algorithms are not FIPS approved and thus not implemented in the FIPS module.",
-    "modified": "2026-09-02T09:00:47.237409327Z",
+    "modified": "2026-09-12T08:47:24.670100742Z",
     "published": "2026-08-25T13:19:29.570Z",
     "upstream": [
       "CVE-2026-75803"
@@ -3096,7 +3117,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -3104,7 +3125,7 @@
   {
     "id": "DEBIAN-CVE-2026-63076",
     "details": "Issue summary: OpenSSL CMP password based protection verification only checks whether the protectionAlg parameter was not NULL and not its ASN.1 type, before treating it as a PBMParameter. A crafted message can contain a parameter of a different type, which is then dereferenced as an invalid pointer.  Impact summary: A remote, unauthenticated attacker can crash an application acting as a CMP server that accepts PBM-protected messages, or a CMP client talking to a malicious or intercepted CMP server, resulting in a Denial of Service.  CWE: CWE-476: NULL Pointer Dereference  Description: When verifying the password-based MAC protection of a CMP message, OpenSSL library reads the protectionAlg algorithm parameter with X509_ALGOR_get0(), which returns both the parameter type and its value pointer. The value is then cast to an ASN1_STRING and treated as the expected PBMParameter after only checking that pointer is not NULL. The parameter type returned by X509_ALGOR_get0() was never consulted.  This happens during protection verification, before any MAC is computed, so no knowledge of the PBM shared secret is required; the only precondition is that PBM verification is reachable. On the server side this is reached from OSSL_CMP_SRV_process_request() for any application that stands up a CMP server accepting PBM-protected messages, and on the client side from CMP response validation against a malicious or on-path (MITM) server. The reliable consequence is a denial of service; there is no memory disclosure, no controlled memory write, and no path to code execution. CMP is a specialized feature that an application must explicitly enable.  FIPS impact: no As the CMP code lives outside the FIPS module boundary, no FIPS modules are affected by this CVE.",
-    "modified": "2026-09-01T20:06:33.337825661Z",
+    "modified": "2026-09-12T08:47:22.425245125Z",
     "published": "2026-08-25T13:19:26.543Z",
     "upstream": [
       "CVE-2026-63076"
@@ -3330,7 +3351,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -3338,7 +3359,7 @@
   {
     "id": "DEBIAN-CVE-2026-63075",
     "details": "Issue summary: When OpenSSL processes QUIC traffic from a peer that repeatedly sends ack-eliciting packets while not acknowledging ACK-only responses, the QUIC stack can retain ACK-only packet metadata for the lifetime of the connection.  Impact summary: A remote peer that can complete a QUIC handshake can cause connection-scoped memory growth which may lead to Denial of Service through memory exhaustion, especially with sustained traffic or many concurrent QUIC connections.  CWE: CWE-770: Allocation of Resources Without Limits or Throttling  Description: When the OpenSSL QUIC stack sends an ACK-only packet, there is no requirement by the QUIC protocol that the peer will acknowledge that ACK-only packet (i.e. it is itself not ack-eliciting). However, the OpenSSL implementation stores the metadata about the ACK frames regardless. In and of itself that's ok, but if a malicious peer establishes a connection, and then drives the connection such that ACK-only packets are forced from the  OpenSSL implementation peer (i.e., by sending numerous PING frames), and then withholding any subsequent acks for ack-eliciting data, like legitimate data, said malicious peer can force inappropriate memory growth on the OpenSSL peer, potentially leading to a Denial of Service.  The fix is to ensure that we account for the transmission of the ACK-only packet in the packet histories high and low watermark without actually storing the ACK-only packet metadata itself.  FIPS impact: no The OpenSSL FIPS module is not affected as the QUIC code is outside the FIPS module boundary.",
-    "modified": "2026-09-01T20:06:33.291121919Z",
+    "modified": "2026-09-12T08:47:26.028967148Z",
     "published": "2026-08-25T13:19:26.413Z",
     "upstream": [
       "CVE-2026-63075"
@@ -3453,7 +3474,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -3461,7 +3482,7 @@
   {
     "id": "DEBIAN-CVE-2026-63074",
     "details": "Issue summary: The OpenSSL Certificate Management Protocol (CMP) caches additional certificates (extraCerts) sent in a CMP message, but never expunges them (for instance if they are invalid).  If a server reuses an OSSL_CMP_CTX frequently, this cache of extraCerts may grow unboundedly, and a malicious client may flood a CMP server with requests driving this growth.  Impact summary: Users utilizing a CMP server that reuses a single OSSL_CMP_CTX for the lifetime of a server process may observe unbounded memory growth in the event a malicious client repeatedly sends requests containing unique extra certificates, which may lead to OOM conditions.  CWE: CWE-770: Allocation of Resources Without Limits or Throttling  Description: If a remote user sends CMP messages to a server with a list of extraCerts and the message is rejected, the extraCerts from the message remains in the server contexts untrusted certificate stack.  This exposes servers with long lived ctx objects to Denial of Service attacks in which an attacker sends messages intending to be rejected with a large list of additional certificates repeatedly, forcing the server to store them indefinitely.     The issue was fixed by removing the added extra certs if the message is rejected, using the same method as when the context is configured to not do caching at all.  FIPS impact: no As the CMP code lives outside the FIPS module boundary, no FIPS modules are affected by this CVE.",
-    "modified": "2026-09-01T20:06:33.343850624Z",
+    "modified": "2026-09-12T08:47:27.989381825Z",
     "published": "2026-08-25T13:19:26.283Z",
     "upstream": [
       "CVE-2026-63074"
@@ -3687,7 +3708,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -3695,7 +3716,7 @@
   {
     "id": "DEBIAN-CVE-2026-63073",
     "details": "Issue summary: OpenSSL CMP response validation passed an unexpected response sender distinguished name directly as the format string to `ERR_raise_data()`.  Impact summary: A malicious or intercepted CMP endpoint can crash a CMP client that enforces an expected sender or uses a pinned server certificate whose subject becomes the default expected sender.  CWE: CWE-134 (Use of Externally-Controlled Format String)  Description: When validating a received CMP message, ossl_cmp_msg_check_update() converts the peer-supplied sender distinguished name with X509_NAME_oneline() and passes it directly as the format argument to ERR_raise_data(). Percent characters survive the conversion, so a sender DN such as \"CN=%s%n\" reaches BIO_vsnprintf() as an attacker-controlled format string with no matching variadic arguments. This path is only reached when the caller configures an expected sender or pins a server certificate, which is the normal configuration for a CMP client validating server responses.  Since the attacker controls the format string but none of the variadic arguments, such specifiers as %s and %n dereference or write through unrelated stack contents and crash the client. The reliable consequence is a denial of service, when the response comes from a malicious or intercepted CMP endpoint. There is no controlled memory write, arbitrary-address read, or reliable path to remote code execution.  FIPS impact: no  No FIPS modules are affected by this issue, as the CMP protocol implementation is outside the OpenSSL FIPS module boundary.",
-    "modified": "2026-09-01T20:06:33.282627562Z",
+    "modified": "2026-09-12T08:47:17.440198041Z",
     "published": "2026-08-25T13:19:26.147Z",
     "upstream": [
       "CVE-2026-63073"
@@ -3810,7 +3831,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -3818,7 +3839,7 @@
   {
     "id": "DEBIAN-CVE-2026-63072",
     "details": "Issue summary: OpenSSL CMS decryption sizes the key-unwrap output buffer based on querying the unwrapped key size, but the AES-WRAP-PAD unwrap primitive can write and cleanse more bytes than that query reports, causing an 8-byte out-of-bounds heap write.  Impact summary: An attacker who supplies a crafted CMS message can trigger a deterministic 8-byte out-of-bounds heap write when the victim decrypts it with CMS_decrypt(), corrupting the heap and typically resulting in a Denial of Service.  CWE: CWE-787: Out-of-bounds Write  Description: The key-wrap OID is potentially attacker-controlled on the wire. CMS unwrapping allows both id-aesNNN-wrap-pad and id-aesNNN-wrap ciphers. An attacker can take a legitimate message and change a single OID byte to select the padded variant while leaving the message otherwise valid. Since the unwrap key is derived from the recipient's private operation (ECDH key agreement or ML-KEM decapsulation), the RFC 5649 integrity check cannot pass, and the decryption fails with integrity failure.  The write is a fixed-size (8-byte), fixed-value (zero) heap overflow immediately past the allocation, requires no special configuration, and is reachable from the public CMS_decrypt() function. The consequence is a heap corruption leading to a Denial of Service. The fix in the CMS code sizes the unwrap output buffer for the worst case so a failed unwrap cannot write past the allocation.  FIPS impact: no  As the CMS code lives outside the FIPS module boundary, no FIPS modules are affected by this CVE.",
-    "modified": "2026-09-01T20:06:33.296389753Z",
+    "modified": "2026-09-12T08:47:26.962394095Z",
     "published": "2026-08-25T13:19:26.010Z",
     "upstream": [
       "CVE-2026-63072"
@@ -4044,7 +4065,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -4052,7 +4073,7 @@
   {
     "id": "DEBIAN-CVE-2026-54874",
     "details": "Issue summary: Receiving a DTLS record for a future epoch while a handshake is in progress causes OpenSSL to buffer far more memory than the record itself requires.  Impact summary: A peer can use a small amount of network traffic to make an OpenSSL DTLS endpoint retain a disproportionately large amount of memory, which may lead to a Denial of Service.  CWE: CWE-405: Asymmetric Resource Consumption (Amplification)  Description: While a DTLS handshake is in progress, a peer may legitimately have already moved on to the next epoch (for example, having sent its ChangeCipherSpec and Finished messages) before the local endpoint has processed the same transition, typically because of reordering on the underlying UDP transport. OpenSSL buffers such early records so that they can be processed once the local endpoint catches up.  Buffering a record currently retains the entire read buffer it arrived in, which is sized to hold the largest possible DTLS record (around 16 kilobytes), rather than just the bytes that make up the record itself. Up to 100 such records may be buffered per connection. As a result, a peer that sends a stream of small forged records claiming to belong to the next epoch can cause an OpenSSL DTLS endpoint to retain around 1.7 megabytes of memory, despite sending only a small fraction of that amount of data over the network.  An attacker therefore gains a memory amplification factor of around 1200, and can multiply the effect across as many associations as it is able to open, making this a remote memory exhaustion Denial of Service risk for DTLS servers. Since the memory retained per connection remains bounded, and any limit an application already places on the number of concurrent associations also bounds the total exposure, this issue has been assessed as Low severity.  FIPS impact: no  No FIPS modules are affected by this issue as the affected code is outside the OpenSSL FIPS module boundary.  OpenSSL 4.0, 3.6, 3.5, 3.4, 3.0, 1.1.1 and 1.0.2 are vulnerable to this issue.  OpenSSL 4.0 users should upgrade to OpenSSL 4.0.2. OpenSSL 3.6 users should upgrade to OpenSSL 3.6.4. OpenSSL 3.5 users should upgrade to OpenSSL 3.5.8. OpenSSL 3.4 users should upgrade to OpenSSL 3.4.7. OpenSSL 3.0 users should upgrade to OpenSSL 3.0.22.  Premium support customers only: OpenSSL 1.1.1 users should upgrade to OpenSSL 1.1.1zi OpenSSL 1.0.2 users should upgrade to OpenSSL 1.0.2zr  This issue was reported on 18 May 2026 by Amazon Web Services. The fix has been developed by Matt Caswell.  -- cut (non-publishing metadata for internal use) -- Reported by: Amazon Web Services Fixed by: Matt Caswell",
-    "modified": "2026-09-01T20:04:53.264622039Z",
+    "modified": "2026-09-12T08:47:28.416734963Z",
     "published": "2026-08-25T13:19:24.033Z",
     "upstream": [
       "CVE-2026-54874"
@@ -4278,7 +4299,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -4401,7 +4422,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -4409,7 +4430,7 @@
   {
     "id": "DEBIAN-CVE-2026-14457",
     "details": "Issue summary: In a server or client configuration with RFC7250 Raw Public Keys (RPKs) enabled, and only the private key (with no associated certificate) configured locally, a NULL pointer dereference may occur when the remote peer solicits raw public keys and also sends the typically omitted \"signature_algorithms_cert\" TLS extension.  Impact summary: The impact is limited to a possible Denial of Service as a result of an application abort, no data disclosure or remote command execution are possible.  CWE: CWE-476: NULL Pointer Dereference  Description: While a passing comment in sample code in the documentation suggests that key-only RPK configurations are supported, the best-practice RPK configuration is to always configure a corresponding certificate (possibly self-signed or signed by any convenient CA).  When the private key is configured along with a matching certificate, the \"signature_algorithms_cert\" extension is handled reliably even without the fix, and peer clients or servers that don't support raw public keys may be able to complete a TLS connection by pinning or verifying the corresponding certificate or its public key.  Deployments that prefer to configure just a private key with no certificate need to upgrade to an updated release as noted below.  FIPS impact: no  No FIPS modules are affected by this issue, as the SSL protocol implementation is outside the OpenSSL FIPS module boundary.",
-    "modified": "2026-09-01T20:06:05.234454494Z",
+    "modified": "2026-09-12T08:47:17.665688573Z",
     "published": "2026-08-25T13:17:49.533Z",
     "upstream": [
       "CVE-2026-14457"
@@ -4524,7 +4545,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -4647,7 +4668,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -5010,7 +5031,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/systemd",
       "distribution": "debian"
     }
@@ -5101,7 +5122,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/systemd",
       "distribution": "debian"
     }
@@ -5457,7 +5478,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/systemd",
       "distribution": "debian"
     }
@@ -5539,7 +5560,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -5547,7 +5568,7 @@
   {
     "id": "DEBIAN-CVE-2026-60005",
     "details": "NGINX Plus and NGINX Open Source have a vulnerability in the ngx_http_slice_module module. When the slice directive and unnamed regex captures are configured or when a background cache update happens, unauthenticated attackers can send requests that may cause uninitialized memory access in the NGINX worker process, leading to limited disclosure of memory or a restart.  Impact: This vulnerability may allow remote, unauthenticated attackers to have limited control to disclose memory contents or restart the NGINX worker process. There is no control plane exposure; this is a data plane issue only. Note: The ngx_http_slice_module module is not enabled by default; it's enabled with the --with-http_slice_module configuration parameter.  Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
-    "modified": "2026-09-01T20:06:32.743882839Z",
+    "modified": "2026-09-12T13:00:07.382669482Z",
     "published": "2026-07-15T16:16:49.820Z",
     "upstream": [
       "CVE-2026-60005"
@@ -5648,6 +5669,9 @@
             "events": [
               {
                 "introduced": "0"
+              },
+              {
+                "fixed": "1.26.3-3+deb13u8"
               }
             ]
           }
@@ -5660,38 +5684,7 @@
           "1.26.3-3+deb13u4",
           "1.26.3-3+deb13u5",
           "1.26.3-3+deb13u6",
-          "1.26.3-3+deb13u7",
-          "1.28.0-1",
-          "1.28.0-2",
-          "1.28.0-3",
-          "1.28.0-4",
-          "1.28.0-5",
-          "1.28.0-6",
-          "1.28.1-1",
-          "1.28.1-2",
-          "1.28.1-3",
-          "1.28.2-1",
-          "1.28.2-2",
-          "1.28.2-3",
-          "1.28.2-4",
-          "1.28.3-1",
-          "1.28.3-2",
-          "1.30.0-1",
-          "1.30.0-2",
-          "1.30.0-3",
-          "1.30.0-4",
-          "1.30.1-1",
-          "1.30.1-2",
-          "1.30.1-3",
-          "1.30.1-4",
-          "1.30.1-5",
-          "1.30.1-6",
-          "1.30.1-7",
-          "1.30.4-1",
-          "1.30.4-2",
-          "1.30.4-3",
-          "1.30.4-4",
-          "1.30.4-5"
+          "1.26.3-3+deb13u7"
         ],
         "ecosystem_specific": {
           "urgency": "not yet assigned"
@@ -5763,7 +5756,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -5771,7 +5764,7 @@
   {
     "id": "DEBIAN-CVE-2026-56434",
     "details": "NGINX Plus and NGINX Open Source have a vulnerability in the ngx_http_ssi_module module. This vulnerability may exist when the Server-Side Includes (SSI), proxy_pass, and proxy_buffering off directives are configured. With this configuration, an unauthenticated attacker with man-in-the-middle (MITM) ability to control responses from an upstream server may be able to cause a use-after-free in the NGINX worker process. This issue may lead to limited modification of memory or a restart of the NGINX worker process.  Impact: This vulnerability may allow remote attackers to have limited control to modify memory contents or restart the NGINX worker process. There is no control plane exposure; this is a data plane issue only.  Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
-    "modified": "2026-09-01T20:06:31.079732251Z",
+    "modified": "2026-09-12T13:00:07.380786943Z",
     "published": "2026-07-15T15:16:45.700Z",
     "upstream": [
       "CVE-2026-56434"
@@ -5872,6 +5865,9 @@
             "events": [
               {
                 "introduced": "0"
+              },
+              {
+                "fixed": "1.26.3-3+deb13u8"
               }
             ]
           }
@@ -5884,38 +5880,7 @@
           "1.26.3-3+deb13u4",
           "1.26.3-3+deb13u5",
           "1.26.3-3+deb13u6",
-          "1.26.3-3+deb13u7",
-          "1.28.0-1",
-          "1.28.0-2",
-          "1.28.0-3",
-          "1.28.0-4",
-          "1.28.0-5",
-          "1.28.0-6",
-          "1.28.1-1",
-          "1.28.1-2",
-          "1.28.1-3",
-          "1.28.2-1",
-          "1.28.2-2",
-          "1.28.2-3",
-          "1.28.2-4",
-          "1.28.3-1",
-          "1.28.3-2",
-          "1.30.0-1",
-          "1.30.0-2",
-          "1.30.0-3",
-          "1.30.0-4",
-          "1.30.1-1",
-          "1.30.1-2",
-          "1.30.1-3",
-          "1.30.1-4",
-          "1.30.1-5",
-          "1.30.1-6",
-          "1.30.1-7",
-          "1.30.4-1",
-          "1.30.4-2",
-          "1.30.4-3",
-          "1.30.4-4",
-          "1.30.4-5"
+          "1.26.3-3+deb13u7"
         ],
         "ecosystem_specific": {
           "urgency": "not yet assigned"
@@ -5987,7 +5952,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -5995,7 +5960,7 @@
   {
     "id": "DEBIAN-CVE-2026-42533",
     "details": "A vulnerability exists in NGINX Plus and NGINX Open Source when a map directive uses regex matching and a string expression references the map's regex capture variables before referencing the map output variable. Alternatively, the same result could be achieved by using a non-cacheable variable in a string expression under certain conditions. An unauthenticated attacker along with conditions beyond their control can exploit this vulnerability by sending crafted HTTP requests. This may cause a heap buffer overflow in the NGINX worker process leading to a restart. Additionally, attackers can execute code on systems with Address Space Layout Randomization (ASLR) disabled or when the attacker can bypass ASLR.  Impact: This vulnerability may allow remote attackers to cause a denial-of-service (DoS) on the NGINX system or to possibly trigger a code execution. There is no control plane exposure; this is a data plane issue only.      Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
-    "modified": "2026-09-01T20:06:19.417406998Z",
+    "modified": "2026-09-12T13:00:07.380597412Z",
     "published": "2026-07-15T15:16:33.480Z",
     "upstream": [
       "CVE-2026-42533"
@@ -6096,6 +6061,9 @@
             "events": [
               {
                 "introduced": "0"
+              },
+              {
+                "fixed": "1.26.3-3+deb13u8"
               }
             ]
           }
@@ -6108,38 +6076,7 @@
           "1.26.3-3+deb13u4",
           "1.26.3-3+deb13u5",
           "1.26.3-3+deb13u6",
-          "1.26.3-3+deb13u7",
-          "1.28.0-1",
-          "1.28.0-2",
-          "1.28.0-3",
-          "1.28.0-4",
-          "1.28.0-5",
-          "1.28.0-6",
-          "1.28.1-1",
-          "1.28.1-2",
-          "1.28.1-3",
-          "1.28.2-1",
-          "1.28.2-2",
-          "1.28.2-3",
-          "1.28.2-4",
-          "1.28.3-1",
-          "1.28.3-2",
-          "1.30.0-1",
-          "1.30.0-2",
-          "1.30.0-3",
-          "1.30.0-4",
-          "1.30.1-1",
-          "1.30.1-2",
-          "1.30.1-3",
-          "1.30.1-4",
-          "1.30.1-5",
-          "1.30.1-6",
-          "1.30.1-7",
-          "1.30.4-1",
-          "1.30.4-2",
-          "1.30.4-3",
-          "1.30.4-4",
-          "1.30.4-5"
+          "1.26.3-3+deb13u7"
         ],
         "ecosystem_specific": {
           "urgency": "not yet assigned"
@@ -6214,7 +6151,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -6636,7 +6573,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -6752,7 +6689,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -6971,7 +6908,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -7190,7 +7127,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -7409,7 +7346,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -7831,7 +7768,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -8253,7 +8190,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -8472,7 +8409,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -8588,7 +8525,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -9010,7 +8947,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -9432,7 +9369,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -9854,7 +9791,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -10278,7 +10215,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -10702,7 +10639,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -10820,7 +10757,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -10936,7 +10873,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -11052,7 +10989,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -11474,7 +11411,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -11627,7 +11564,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -11780,7 +11717,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -11956,7 +11893,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/docker.io",
       "distribution": "debian"
     }
@@ -12132,7 +12069,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/docker.io",
       "distribution": "debian"
     }
@@ -12299,7 +12236,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -12466,7 +12403,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -12474,7 +12411,7 @@
   {
     "id": "DEBIAN-CVE-2026-45447",
     "details": "Issue summary: A specially crafted PKCS#7 or S/MIME signed message could trigger a use-after-free during PKCS#7 signature verification.  Impact summary: A use-after-free may result in process crashes, heap corruption, or potentially remote code execution.  When processing a PKCS#7 or S/MIME signed message, if the SignedData digestAlgorithms field is present as an empty ASN.1 SET, OpenSSL may incorrectly free a caller-owned BIO during PKCS7_verify(). A subsequent use of the BIO by the calling application results in a use-after-free condition.  In the common case this occurs when the application later calls BIO_free() on the BIO originally passed to PKCS7_verify(). Depending on allocator behavior and application-specific BIO usage patterns, this may result in a crash or other memory corruption. In some application contexts this may potentially be exploitable for remote code execution.  Applications that process PKCS#7 or S/MIME signed messages using OpenSSL PKCS#7 APIs may be affected. Applications using the CMS APIs for this processing are not affected.  The FIPS modules in 4.0, 3.6, 3.5, 3.4, and 3.0 are not affected by this issue, as the affected code is outside the OpenSSL FIPS module boundary.",
-    "modified": "2026-09-08T08:47:34.366389559Z",
+    "modified": "2026-09-12T08:47:30.962375357Z",
     "published": "2026-06-09T17:17:19.277Z",
     "upstream": [
       "CVE-2026-45447"
@@ -12633,7 +12570,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -12800,7 +12737,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -12967,7 +12904,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -13134,7 +13071,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -13251,7 +13188,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -13368,7 +13305,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -13596,7 +13533,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -13763,7 +13700,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -13841,7 +13778,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -13958,7 +13895,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -14075,7 +14012,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -14153,7 +14090,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -14320,7 +14257,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -14437,7 +14374,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -14604,7 +14541,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -14780,7 +14717,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/docker.io",
       "distribution": "debian"
     }
@@ -14929,7 +14866,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -15075,7 +15012,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -15218,7 +15155,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -15362,7 +15299,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -15438,7 +15375,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -15582,7 +15519,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -15691,7 +15628,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -15876,7 +15813,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -16216,7 +16153,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -16556,7 +16493,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -16896,7 +16833,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -17077,7 +17014,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -17415,7 +17352,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -17753,7 +17690,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -18110,7 +18047,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/systemd",
       "distribution": "debian"
     }
@@ -18191,7 +18128,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/systemd",
       "distribution": "debian"
     }
@@ -18360,7 +18297,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/systemd",
       "distribution": "debian"
     }
@@ -18530,7 +18467,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/systemd",
       "distribution": "debian"
     }
@@ -18607,7 +18544,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/systemd",
       "distribution": "debian"
     }
@@ -18682,7 +18619,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/systemd",
       "distribution": "debian"
     }
@@ -18843,7 +18780,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -19004,7 +18941,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -19165,7 +19102,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -19326,7 +19263,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -19487,7 +19424,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -19648,7 +19585,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -19725,7 +19662,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -19900,7 +19837,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/docker.io",
       "distribution": "debian"
     }
@@ -20075,7 +20012,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/docker.io",
       "distribution": "debian"
     }
@@ -20251,7 +20188,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/docker.io",
       "distribution": "debian"
     }
@@ -20427,7 +20364,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/docker.io",
       "distribution": "debian"
     }
@@ -20562,7 +20499,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -20634,7 +20571,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -20769,7 +20706,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -20904,7 +20841,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-12T08:20:23.669382+00:00",
+      "fetched_at": "2026-09-13T08:50:03.924190+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
