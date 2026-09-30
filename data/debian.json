@@ -1,5 +1,2322 @@
 [
   {
+    "id": "DEBIAN-CVE-2026-84784",
+    "details": "Issue summary: A malicious remote peer may flood the local QUIC stack with NEW_CONNECTION_ID frames by avoiding a limit check on how many connection IDs the remote QUIC stack can use.  Impact summary: The local QUIC stack sends a RETIRE_CONN_ID frame for every NEW_CONNECTION_ID frame it receives. The RETIRE_CONN_ID frame is dispatched via the Control Frame Queue (CFQ). If the remote peer also withholds ACKs, then it can force the local stack to allocate ~400MB (depending on ACK delay).  CWE: CWE-770: Allocation of Resources Without Limits or Throttling  Description: RFC 9000 sections 5.1.1 and 5.1.2 [1] describe the mechanism by which a remote peer can notify the local QUIC stack to change the destination connection ID (a.k.a. CID) the local stack uses to identify the connection at the remote peer. Each CID is associated with a sequence number. The sequence number is transmitted in NEW_CONNECTION_ID and RETIRE_CONNECTION_ID frames to identify the CID which is being either associated with a connection or retired.  The remote peer sends a NEW_CONNECTION_ID frame to let the local stack know a new CID is being associated with an existing connection. The NEW_CONNECTION_ID frame carries the new CID, its sequence number, and the retire-prior-to number. The retire-prior-to identifies existing CIDs that are to be retired. The local QUIC stack must send a RETIRE_CONNECTION_ID for every destination CID whose sequence number is less than retire-prior-to. The CID becomes retired after the local stack receives an ACK for its RETIRE_CONNECTION_ID frame.  Although the OpenSSL QUIC stack supports at most one destination CID for every connection, it can be tricked into processing more than one RETIRE_CONNECTION_ID frame per connection. The OpenSSL QUIC stack currently retires the destination CID as soon as it receives the NEW_CONNECTION_ID, while in fact the destination CID must be retired after an ACK for the RETIRE_CONNECTION_ID frame is received. Correcting the flawed logic also fixes the backlog growth.  [1] https://datatracker.ietf.org/doc/html/rfc9000#name-issuing-connection-ids  FIPS impact: no The FIPS module is not affected as the QUIC implementation is outside of the OpenSSL FIPS module boundary.",
+    "modified": "2026-09-30T08:00:09.675419002Z",
+    "published": "2026-09-29T16:17:12.810Z",
+    "upstream": [
+      "CVE-2026-84784"
+    ],
+    "references": [
+      {
+        "type": "ADVISORY",
+        "url": "https://security-tracker.debian.org/tracker/CVE-2026-84784"
+      }
+    ],
+    "affected": [
+      {
+        "package": {
+          "name": "openssl",
+          "ecosystem": "Debian:13",
+          "purl": "pkg:deb/debian/openssl?arch=source&distro=trixie"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "3.5.7-1~deb13u3"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "3.5.1-1",
+          "3.5.1-1+deb13u1",
+          "3.5.2-1",
+          "3.5.3-1",
+          "3.5.4-1",
+          "3.5.4-1~deb13u1",
+          "3.5.4-1~deb13u2",
+          "3.5.5-1",
+          "3.5.5-1~deb13u1",
+          "3.5.5-1~deb13u2",
+          "3.5.6-1~deb13u1",
+          "3.5.6-1~deb13u2",
+          "3.5.7-1~deb13u1",
+          "3.5.7-1~deb13u2"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-84784.json"
+        }
+      },
+      {
+        "package": {
+          "name": "openssl",
+          "ecosystem": "Debian:14",
+          "purl": "pkg:deb/debian/openssl?arch=source&distro=forky"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "3.5.1-1",
+          "3.5.2-1",
+          "3.5.3-1",
+          "3.5.4-1",
+          "3.5.4-1~deb13u1",
+          "3.5.4-1~deb13u2",
+          "3.5.5-1",
+          "3.5.5-1~deb13u1",
+          "3.5.5-1~deb13u2",
+          "3.5.6-1~deb13u1",
+          "3.5.6-1~deb13u2",
+          "3.5.7-1~deb13u1",
+          "3.5.7-1~deb13u2",
+          "3.5.7-1~deb13u3",
+          "3.6.0-1",
+          "3.6.0-2",
+          "3.6.0~~alpha1-1",
+          "3.6.0~~beta1-1",
+          "3.6.1-1",
+          "3.6.1-2",
+          "3.6.1-3",
+          "3.6.2-1",
+          "3.6.3-1",
+          "3.6.4-1",
+          "3.6.5-1",
+          "4.0.0-1",
+          "4.0.0~alpha1-1",
+          "4.0.0~beta1-1",
+          "4.0.1-1",
+          "4.0.2-1",
+          "4.0.3-1"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-84784.json"
+        }
+      }
+    ],
+    "schema_version": "1.9.0",
+    "severity": [
+      {
+        "type": "CVSS_V3",
+        "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "_metadata": {
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "source_package": "Debian/openssl",
+      "distribution": "debian"
+    }
+  },
+  {
+    "id": "DEBIAN-CVE-2026-84782",
+    "details": "Issue summary: The DTLS retransmission logic does not correctly handle a handshake message write that is suspended part-way through. The retransmitted message can be read past the message buffer and the retransmission overwrites the internal state the suspended write needs to resume correctly.  Impact summary: The retransmitted message can disclose a heap memory to the peer as plaintext handshake data or cause a crash and a Denial of Service when the read reaches an unmapped memory region.  CWE: CWE-125: Out-of-bounds Read  Description: DTLS handshake messages can be written out in multiple fragments, and a write can suspend mid-message (returning WANT_WRITE) if the underlying transport temporarily cannot accept more data. While such a write is suspended, the DTLS retransmission timer may independently fire and ask the retransmission logic to resend an earlier, already-acknowledged-as-sent message from its retransmit queue.  The retransmission logic reused the same internal buffer and position tracking as the message that was still being written, without resetting the position back to the start of the message being retransmitted. As a result the retransmission was read starting from wherever the suspended write had left off, producing a mislabelled message whose body was leftover bytes from the other, larger message still in flight - content that was never meant to be sent at that point, and which could run past the end of the allocated buffer.  Separately, even when the retransmission is positioned correctly, allowing it to run to completion while another write is suspended overwrites the same shared bookkeeping that the suspended write depends on to resume. When the application later resumes the suspended write (via a subsequent SSL_read(), SSL_write(), SSL_accept(), or SSL_connect() call), it finds that bookkeeping in a state inconsistent with the message and aborts the process in a debugging build.  The fix resets the retransmission's read position to the start of the message before resending, and skips retransmission entirely whenever a handshake write is still suspended, deferring to the next call that resumes it instead.  FIPS impact: no The affected code is outside the FIPS module boundary.",
+    "modified": "2026-09-30T08:00:09.791397143Z",
+    "published": "2026-09-29T16:17:12.500Z",
+    "upstream": [
+      "CVE-2026-84782"
+    ],
+    "references": [
+      {
+        "type": "ADVISORY",
+        "url": "https://security-tracker.debian.org/tracker/CVE-2026-84782"
+      }
+    ],
+    "affected": [
+      {
+        "package": {
+          "name": "openssl",
+          "ecosystem": "Debian:12",
+          "purl": "pkg:deb/debian/openssl?arch=source&distro=bookworm"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "3.0.10-1",
+          "3.0.10-1~deb12u1",
+          "3.0.11-1",
+          "3.0.11-1~deb12u1",
+          "3.0.11-1~deb12u2",
+          "3.0.12-1",
+          "3.0.12-2",
+          "3.0.13-1~deb12u1",
+          "3.0.13-1~deb12u2",
+          "3.0.14-1~deb12u1",
+          "3.0.14-1~deb12u2",
+          "3.0.15-1~deb12u1",
+          "3.0.16-1~deb12u1",
+          "3.0.17-1~deb12u1",
+          "3.0.17-1~deb12u2",
+          "3.0.17-1~deb12u3",
+          "3.0.18-1~deb12u1",
+          "3.0.18-1~deb12u2",
+          "3.0.19-1~deb12u1",
+          "3.0.19-1~deb12u2",
+          "3.0.20-1~deb12u1",
+          "3.0.20-1~deb12u2",
+          "3.0.22-1~deb12u1",
+          "3.0.9-1",
+          "3.1.0-1",
+          "3.1.1-1",
+          "3.1.2-1",
+          "3.1.3-1",
+          "3.1.4-1",
+          "3.1.4-2",
+          "3.1.5-1",
+          "3.1.5-1.1",
+          "3.1.5-1.1+hurd.1",
+          "3.2.0-1",
+          "3.2.0-2",
+          "3.2.1-1",
+          "3.2.1-1.1~exp1",
+          "3.2.1-2",
+          "3.2.1-3",
+          "3.2.2-1",
+          "3.3.0-1",
+          "3.3.0~beta1-1",
+          "3.3.1-1",
+          "3.3.1-2",
+          "3.3.1-5",
+          "3.3.1-6",
+          "3.3.1-7",
+          "3.3.2-1",
+          "3.3.2-2",
+          "3.4.0-1",
+          "3.4.0-2",
+          "3.4.0~~beta1-1",
+          "3.4.0~~beta1-2",
+          "3.4.1-1",
+          "3.5.0-1",
+          "3.5.0-2",
+          "3.5.0-3",
+          "3.5.0~~alpha1-1",
+          "3.5.0~~beta1-1",
+          "3.5.1-1",
+          "3.5.2-1",
+          "3.5.3-1",
+          "3.5.4-1",
+          "3.5.4-1~deb13u1",
+          "3.5.4-1~deb13u2",
+          "3.5.5-1",
+          "3.5.5-1~deb13u1",
+          "3.5.5-1~deb13u2",
+          "3.5.6-1~deb13u1",
+          "3.5.6-1~deb13u2",
+          "3.5.7-1~deb13u1",
+          "3.5.7-1~deb13u2",
+          "3.5.7-1~deb13u3",
+          "3.6.0-1",
+          "3.6.0-2",
+          "3.6.0~~alpha1-1",
+          "3.6.0~~beta1-1",
+          "3.6.1-1",
+          "3.6.1-2",
+          "3.6.1-3",
+          "3.6.2-1",
+          "3.6.3-1",
+          "3.6.4-1",
+          "3.6.5-1",
+          "4.0.0-1",
+          "4.0.0~alpha1-1",
+          "4.0.0~beta1-1",
+          "4.0.1-1",
+          "4.0.2-1",
+          "4.0.3-1"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-84782.json"
+        }
+      },
+      {
+        "package": {
+          "name": "openssl",
+          "ecosystem": "Debian:13",
+          "purl": "pkg:deb/debian/openssl?arch=source&distro=trixie"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "3.5.7-1~deb13u3"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "3.5.1-1",
+          "3.5.1-1+deb13u1",
+          "3.5.2-1",
+          "3.5.3-1",
+          "3.5.4-1",
+          "3.5.4-1~deb13u1",
+          "3.5.4-1~deb13u2",
+          "3.5.5-1",
+          "3.5.5-1~deb13u1",
+          "3.5.5-1~deb13u2",
+          "3.5.6-1~deb13u1",
+          "3.5.6-1~deb13u2",
+          "3.5.7-1~deb13u1",
+          "3.5.7-1~deb13u2"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-84782.json"
+        }
+      },
+      {
+        "package": {
+          "name": "openssl",
+          "ecosystem": "Debian:14",
+          "purl": "pkg:deb/debian/openssl?arch=source&distro=forky"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "3.5.1-1",
+          "3.5.2-1",
+          "3.5.3-1",
+          "3.5.4-1",
+          "3.5.4-1~deb13u1",
+          "3.5.4-1~deb13u2",
+          "3.5.5-1",
+          "3.5.5-1~deb13u1",
+          "3.5.5-1~deb13u2",
+          "3.5.6-1~deb13u1",
+          "3.5.6-1~deb13u2",
+          "3.5.7-1~deb13u1",
+          "3.5.7-1~deb13u2",
+          "3.5.7-1~deb13u3",
+          "3.6.0-1",
+          "3.6.0-2",
+          "3.6.0~~alpha1-1",
+          "3.6.0~~beta1-1",
+          "3.6.1-1",
+          "3.6.1-2",
+          "3.6.1-3",
+          "3.6.2-1",
+          "3.6.3-1",
+          "3.6.4-1",
+          "3.6.5-1",
+          "4.0.0-1",
+          "4.0.0~alpha1-1",
+          "4.0.0~beta1-1",
+          "4.0.1-1",
+          "4.0.2-1",
+          "4.0.3-1"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-84782.json"
+        }
+      }
+    ],
+    "schema_version": "1.9.0",
+    "severity": [
+      {
+        "type": "CVSS_V3",
+        "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:H"
+      }
+    ],
+    "_metadata": {
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "source_package": "Debian/openssl",
+      "distribution": "debian"
+    }
+  },
+  {
+    "id": "DEBIAN-CVE-2026-77696",
+    "details": "Issue summary: SM2 signature generation uses non-constant-time arithmetic on secret values, forming a timing side-channel.  Impact summary: An attacker able to measure SM2 signing times may learn information about the per-signature secret nonce, which over many signatures can, via a lattice / Hidden Number Problem attack, lead to recovery of the private key.  CWE: CWE-208: Observable Timing Discrepancy  Description: SM2 signature generation computes the signature value using variable-time BIGNUM operations on the secret nonce and the private key, so the time taken to produce an SM2 signature depends on these secret values, forming a timing side-channel.  Applications performing SM2 signature generation are affected on all platforms.  FIPS Impact: no SM2 is not a FIPS algorithm.",
+    "modified": "2026-09-30T08:00:09.788109632Z",
+    "published": "2026-09-29T16:17:11.493Z",
+    "upstream": [
+      "CVE-2026-77696"
+    ],
+    "references": [
+      {
+        "type": "ADVISORY",
+        "url": "https://security-tracker.debian.org/tracker/CVE-2026-77696"
+      }
+    ],
+    "affected": [
+      {
+        "package": {
+          "name": "openssl",
+          "ecosystem": "Debian:12",
+          "purl": "pkg:deb/debian/openssl?arch=source&distro=bookworm"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "3.0.10-1",
+          "3.0.10-1~deb12u1",
+          "3.0.11-1",
+          "3.0.11-1~deb12u1",
+          "3.0.11-1~deb12u2",
+          "3.0.12-1",
+          "3.0.12-2",
+          "3.0.13-1~deb12u1",
+          "3.0.13-1~deb12u2",
+          "3.0.14-1~deb12u1",
+          "3.0.14-1~deb12u2",
+          "3.0.15-1~deb12u1",
+          "3.0.16-1~deb12u1",
+          "3.0.17-1~deb12u1",
+          "3.0.17-1~deb12u2",
+          "3.0.17-1~deb12u3",
+          "3.0.18-1~deb12u1",
+          "3.0.18-1~deb12u2",
+          "3.0.19-1~deb12u1",
+          "3.0.19-1~deb12u2",
+          "3.0.20-1~deb12u1",
+          "3.0.20-1~deb12u2",
+          "3.0.22-1~deb12u1",
+          "3.0.9-1",
+          "3.1.0-1",
+          "3.1.1-1",
+          "3.1.2-1",
+          "3.1.3-1",
+          "3.1.4-1",
+          "3.1.4-2",
+          "3.1.5-1",
+          "3.1.5-1.1",
+          "3.1.5-1.1+hurd.1",
+          "3.2.0-1",
+          "3.2.0-2",
+          "3.2.1-1",
+          "3.2.1-1.1~exp1",
+          "3.2.1-2",
+          "3.2.1-3",
+          "3.2.2-1",
+          "3.3.0-1",
+          "3.3.0~beta1-1",
+          "3.3.1-1",
+          "3.3.1-2",
+          "3.3.1-5",
+          "3.3.1-6",
+          "3.3.1-7",
+          "3.3.2-1",
+          "3.3.2-2",
+          "3.4.0-1",
+          "3.4.0-2",
+          "3.4.0~~beta1-1",
+          "3.4.0~~beta1-2",
+          "3.4.1-1",
+          "3.5.0-1",
+          "3.5.0-2",
+          "3.5.0-3",
+          "3.5.0~~alpha1-1",
+          "3.5.0~~beta1-1",
+          "3.5.1-1",
+          "3.5.2-1",
+          "3.5.3-1",
+          "3.5.4-1",
+          "3.5.4-1~deb13u1",
+          "3.5.4-1~deb13u2",
+          "3.5.5-1",
+          "3.5.5-1~deb13u1",
+          "3.5.5-1~deb13u2",
+          "3.5.6-1~deb13u1",
+          "3.5.6-1~deb13u2",
+          "3.5.7-1~deb13u1",
+          "3.5.7-1~deb13u2",
+          "3.5.7-1~deb13u3",
+          "3.6.0-1",
+          "3.6.0-2",
+          "3.6.0~~alpha1-1",
+          "3.6.0~~beta1-1",
+          "3.6.1-1",
+          "3.6.1-2",
+          "3.6.1-3",
+          "3.6.2-1",
+          "3.6.3-1",
+          "3.6.4-1",
+          "3.6.5-1",
+          "4.0.0-1",
+          "4.0.0~alpha1-1",
+          "4.0.0~beta1-1",
+          "4.0.1-1",
+          "4.0.2-1",
+          "4.0.3-1"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-77696.json"
+        }
+      },
+      {
+        "package": {
+          "name": "openssl",
+          "ecosystem": "Debian:13",
+          "purl": "pkg:deb/debian/openssl?arch=source&distro=trixie"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "3.5.7-1~deb13u3"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "3.5.1-1",
+          "3.5.1-1+deb13u1",
+          "3.5.2-1",
+          "3.5.3-1",
+          "3.5.4-1",
+          "3.5.4-1~deb13u1",
+          "3.5.4-1~deb13u2",
+          "3.5.5-1",
+          "3.5.5-1~deb13u1",
+          "3.5.5-1~deb13u2",
+          "3.5.6-1~deb13u1",
+          "3.5.6-1~deb13u2",
+          "3.5.7-1~deb13u1",
+          "3.5.7-1~deb13u2"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-77696.json"
+        }
+      },
+      {
+        "package": {
+          "name": "openssl",
+          "ecosystem": "Debian:14",
+          "purl": "pkg:deb/debian/openssl?arch=source&distro=forky"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "3.5.1-1",
+          "3.5.2-1",
+          "3.5.3-1",
+          "3.5.4-1",
+          "3.5.4-1~deb13u1",
+          "3.5.4-1~deb13u2",
+          "3.5.5-1",
+          "3.5.5-1~deb13u1",
+          "3.5.5-1~deb13u2",
+          "3.5.6-1~deb13u1",
+          "3.5.6-1~deb13u2",
+          "3.5.7-1~deb13u1",
+          "3.5.7-1~deb13u2",
+          "3.5.7-1~deb13u3",
+          "3.6.0-1",
+          "3.6.0-2",
+          "3.6.0~~alpha1-1",
+          "3.6.0~~beta1-1",
+          "3.6.1-1",
+          "3.6.1-2",
+          "3.6.1-3",
+          "3.6.2-1",
+          "3.6.3-1",
+          "3.6.4-1",
+          "3.6.5-1",
+          "4.0.0-1",
+          "4.0.0~alpha1-1",
+          "4.0.0~beta1-1",
+          "4.0.1-1",
+          "4.0.2-1",
+          "4.0.3-1"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-77696.json"
+        }
+      }
+    ],
+    "schema_version": "1.9.0",
+    "severity": [
+      {
+        "type": "CVSS_V3",
+        "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N"
+      }
+    ],
+    "_metadata": {
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "source_package": "Debian/openssl",
+      "distribution": "debian"
+    }
+  },
+  {
+    "id": "DEBIAN-CVE-2026-75806",
+    "details": "Issue summary: An established DTLS 1.2 association using an AEAD cipher suite can be terminated by a single unauthenticated datagram whose encrypted fragment is shorter than the mandatory explicit IV and authentication tag overhead.  Impact summary: An attacker who can send a datagram that is routed to an existing DTLS 1.2 association can tear that association down without knowing any key material. This is a Denial of Service limited to the targeted association. There is no memory safety or confidentiality impact.  CWE: CWE-1284: Improper Validation of Specified Quantity in Input  Description: In TLS 1.2 and DTLS 1.2 every record protected by an AEAD cipher suite carries an explicit IV followed by the ciphertext and an authentication tag. When decrypting such a record the record layer passed the record length to the cipher implementation before checking that the record was long enough to contain the explicit IV and the tag. For a record shorter than that overhead the cipher implementation rejected the impossible length, and the record layer treated this as an internal failure and raised a fatal internal_error alert instead of treating the record as one that failed authentication.  In TLS 1.2 the same record causes a fatal internal_error alert instead of the expected bad_record_mac alert. Since any undecryptable record already terminates a TLS connection, this is a protocol conformance issue rather than a security issue in TLS.  The fix validates the record length against the explicit IV and tag length before any AEAD processing, so that TLS reports bad_record_mac and DTLS silently discards the record.  FIPS impact: no The affected code is outside the FIPS module boundary.",
+    "modified": "2026-09-30T08:00:10.685863768Z",
+    "published": "2026-09-29T16:17:11.217Z",
+    "upstream": [
+      "CVE-2026-75806"
+    ],
+    "references": [
+      {
+        "type": "ADVISORY",
+        "url": "https://security-tracker.debian.org/tracker/CVE-2026-75806"
+      }
+    ],
+    "affected": [
+      {
+        "package": {
+          "name": "openssl",
+          "ecosystem": "Debian:12",
+          "purl": "pkg:deb/debian/openssl?arch=source&distro=bookworm"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "3.0.10-1",
+          "3.0.10-1~deb12u1",
+          "3.0.11-1",
+          "3.0.11-1~deb12u1",
+          "3.0.11-1~deb12u2",
+          "3.0.12-1",
+          "3.0.12-2",
+          "3.0.13-1~deb12u1",
+          "3.0.13-1~deb12u2",
+          "3.0.14-1~deb12u1",
+          "3.0.14-1~deb12u2",
+          "3.0.15-1~deb12u1",
+          "3.0.16-1~deb12u1",
+          "3.0.17-1~deb12u1",
+          "3.0.17-1~deb12u2",
+          "3.0.17-1~deb12u3",
+          "3.0.18-1~deb12u1",
+          "3.0.18-1~deb12u2",
+          "3.0.19-1~deb12u1",
+          "3.0.19-1~deb12u2",
+          "3.0.20-1~deb12u1",
+          "3.0.20-1~deb12u2",
+          "3.0.22-1~deb12u1",
+          "3.0.9-1",
+          "3.1.0-1",
+          "3.1.1-1",
+          "3.1.2-1",
+          "3.1.3-1",
+          "3.1.4-1",
+          "3.1.4-2",
+          "3.1.5-1",
+          "3.1.5-1.1",
+          "3.1.5-1.1+hurd.1",
+          "3.2.0-1",
+          "3.2.0-2",
+          "3.2.1-1",
+          "3.2.1-1.1~exp1",
+          "3.2.1-2",
+          "3.2.1-3",
+          "3.2.2-1",
+          "3.3.0-1",
+          "3.3.0~beta1-1",
+          "3.3.1-1",
+          "3.3.1-2",
+          "3.3.1-5",
+          "3.3.1-6",
+          "3.3.1-7",
+          "3.3.2-1",
+          "3.3.2-2",
+          "3.4.0-1",
+          "3.4.0-2",
+          "3.4.0~~beta1-1",
+          "3.4.0~~beta1-2",
+          "3.4.1-1",
+          "3.5.0-1",
+          "3.5.0-2",
+          "3.5.0-3",
+          "3.5.0~~alpha1-1",
+          "3.5.0~~beta1-1",
+          "3.5.1-1",
+          "3.5.2-1",
+          "3.5.3-1",
+          "3.5.4-1",
+          "3.5.4-1~deb13u1",
+          "3.5.4-1~deb13u2",
+          "3.5.5-1",
+          "3.5.5-1~deb13u1",
+          "3.5.5-1~deb13u2",
+          "3.5.6-1~deb13u1",
+          "3.5.6-1~deb13u2",
+          "3.5.7-1~deb13u1",
+          "3.5.7-1~deb13u2",
+          "3.5.7-1~deb13u3",
+          "3.6.0-1",
+          "3.6.0-2",
+          "3.6.0~~alpha1-1",
+          "3.6.0~~beta1-1",
+          "3.6.1-1",
+          "3.6.1-2",
+          "3.6.1-3",
+          "3.6.2-1",
+          "3.6.3-1",
+          "3.6.4-1",
+          "3.6.5-1",
+          "4.0.0-1",
+          "4.0.0~alpha1-1",
+          "4.0.0~beta1-1",
+          "4.0.1-1",
+          "4.0.2-1",
+          "4.0.3-1"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-75806.json"
+        }
+      },
+      {
+        "package": {
+          "name": "openssl",
+          "ecosystem": "Debian:13",
+          "purl": "pkg:deb/debian/openssl?arch=source&distro=trixie"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "3.5.7-1~deb13u3"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "3.5.1-1",
+          "3.5.1-1+deb13u1",
+          "3.5.2-1",
+          "3.5.3-1",
+          "3.5.4-1",
+          "3.5.4-1~deb13u1",
+          "3.5.4-1~deb13u2",
+          "3.5.5-1",
+          "3.5.5-1~deb13u1",
+          "3.5.5-1~deb13u2",
+          "3.5.6-1~deb13u1",
+          "3.5.6-1~deb13u2",
+          "3.5.7-1~deb13u1",
+          "3.5.7-1~deb13u2"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-75806.json"
+        }
+      },
+      {
+        "package": {
+          "name": "openssl",
+          "ecosystem": "Debian:14",
+          "purl": "pkg:deb/debian/openssl?arch=source&distro=forky"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "3.5.1-1",
+          "3.5.2-1",
+          "3.5.3-1",
+          "3.5.4-1",
+          "3.5.4-1~deb13u1",
+          "3.5.4-1~deb13u2",
+          "3.5.5-1",
+          "3.5.5-1~deb13u1",
+          "3.5.5-1~deb13u2",
+          "3.5.6-1~deb13u1",
+          "3.5.6-1~deb13u2",
+          "3.5.7-1~deb13u1",
+          "3.5.7-1~deb13u2",
+          "3.5.7-1~deb13u3",
+          "3.6.0-1",
+          "3.6.0-2",
+          "3.6.0~~alpha1-1",
+          "3.6.0~~beta1-1",
+          "3.6.1-1",
+          "3.6.1-2",
+          "3.6.1-3",
+          "3.6.2-1",
+          "3.6.3-1",
+          "3.6.4-1",
+          "3.6.5-1",
+          "4.0.0-1",
+          "4.0.0~alpha1-1",
+          "4.0.0~beta1-1",
+          "4.0.1-1",
+          "4.0.2-1",
+          "4.0.3-1"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-75806.json"
+        }
+      }
+    ],
+    "schema_version": "1.9.0",
+    "severity": [
+      {
+        "type": "CVSS_V3",
+        "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+      }
+    ],
+    "_metadata": {
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "source_package": "Debian/openssl",
+      "distribution": "debian"
+    }
+  },
+  {
+    "id": "DEBIAN-CVE-2026-75805",
+    "details": "Issue summary: A CMP client that requests certificate revocation on the basis of a PKCS#10 CSR may dereference a NULL pointer and terminate abnormally when processing a crafted revocation response.   Impact summary: The NULL pointer dereference happens on a read which  leads to a crash and a Denial of Service for the affected client application.  CWE: CWE-476: NULL-pointer dereference  Description: A CMP client revoking a certificate has to tell the server which certificate to revoke, and may do so by supplying a PKCS#10 CSR instead of the certificate itself or its issuer name and serial number. This is 'openssl cmp -cmd rr -csr <file>' on the command line, or OSSL_CMP_exec_RR_ses() with the certificate supplied via OSSL_CMP_CTX_set1_p10CSR() through the API.  A CSR does not contain the issuer name and serial number of the certificate, so the client does not send them. A server may optionally name the certificate it revoked in its response, and the client then compares that name against what it sent. Having sent neither an issuer name nor a serial number, it has nothing to compare against, and a server returning a specially crafted name causes the client to read from a NULL pointer and crash.  The revocation response is checked for valid message protection before the affected code is reached, so an attacker must be a malicious or compromised CMP server, or a man-in-the-middle in possession of the secret used for message protection. Clients that identify the certificate to be revoked by a certificate or by issuer and serial number rather than by a PKCS#10 CSR are not affected.  FIPS impact: no No FIPS modules are affected by this issue, as the CMP protocol implementation is outside the OpenSSL FIPS module boundary.",
+    "modified": "2026-09-30T08:00:10.746950423Z",
+    "published": "2026-09-29T16:17:11.063Z",
+    "upstream": [
+      "CVE-2026-75805"
+    ],
+    "references": [
+      {
+        "type": "ADVISORY",
+        "url": "https://security-tracker.debian.org/tracker/CVE-2026-75805"
+      }
+    ],
+    "affected": [
+      {
+        "package": {
+          "name": "openssl",
+          "ecosystem": "Debian:12",
+          "purl": "pkg:deb/debian/openssl?arch=source&distro=bookworm"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "3.0.10-1",
+          "3.0.10-1~deb12u1",
+          "3.0.11-1",
+          "3.0.11-1~deb12u1",
+          "3.0.11-1~deb12u2",
+          "3.0.12-1",
+          "3.0.12-2",
+          "3.0.13-1~deb12u1",
+          "3.0.13-1~deb12u2",
+          "3.0.14-1~deb12u1",
+          "3.0.14-1~deb12u2",
+          "3.0.15-1~deb12u1",
+          "3.0.16-1~deb12u1",
+          "3.0.17-1~deb12u1",
+          "3.0.17-1~deb12u2",
+          "3.0.17-1~deb12u3",
+          "3.0.18-1~deb12u1",
+          "3.0.18-1~deb12u2",
+          "3.0.19-1~deb12u1",
+          "3.0.19-1~deb12u2",
+          "3.0.20-1~deb12u1",
+          "3.0.20-1~deb12u2",
+          "3.0.22-1~deb12u1",
+          "3.0.9-1",
+          "3.1.0-1",
+          "3.1.1-1",
+          "3.1.2-1",
+          "3.1.3-1",
+          "3.1.4-1",
+          "3.1.4-2",
+          "3.1.5-1",
+          "3.1.5-1.1",
+          "3.1.5-1.1+hurd.1",
+          "3.2.0-1",
+          "3.2.0-2",
+          "3.2.1-1",
+          "3.2.1-1.1~exp1",
+          "3.2.1-2",
+          "3.2.1-3",
+          "3.2.2-1",
+          "3.3.0-1",
+          "3.3.0~beta1-1",
+          "3.3.1-1",
+          "3.3.1-2",
+          "3.3.1-5",
+          "3.3.1-6",
+          "3.3.1-7",
+          "3.3.2-1",
+          "3.3.2-2",
+          "3.4.0-1",
+          "3.4.0-2",
+          "3.4.0~~beta1-1",
+          "3.4.0~~beta1-2",
+          "3.4.1-1",
+          "3.5.0-1",
+          "3.5.0-2",
+          "3.5.0-3",
+          "3.5.0~~alpha1-1",
+          "3.5.0~~beta1-1",
+          "3.5.1-1",
+          "3.5.2-1",
+          "3.5.3-1",
+          "3.5.4-1",
+          "3.5.4-1~deb13u1",
+          "3.5.4-1~deb13u2",
+          "3.5.5-1",
+          "3.5.5-1~deb13u1",
+          "3.5.5-1~deb13u2",
+          "3.5.6-1~deb13u1",
+          "3.5.6-1~deb13u2",
+          "3.5.7-1~deb13u1",
+          "3.5.7-1~deb13u2",
+          "3.5.7-1~deb13u3",
+          "3.6.0-1",
+          "3.6.0-2",
+          "3.6.0~~alpha1-1",
+          "3.6.0~~beta1-1",
+          "3.6.1-1",
+          "3.6.1-2",
+          "3.6.1-3",
+          "3.6.2-1",
+          "3.6.3-1",
+          "3.6.4-1",
+          "3.6.5-1",
+          "4.0.0-1",
+          "4.0.0~alpha1-1",
+          "4.0.0~beta1-1",
+          "4.0.1-1",
+          "4.0.2-1",
+          "4.0.3-1"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-75805.json"
+        }
+      },
+      {
+        "package": {
+          "name": "openssl",
+          "ecosystem": "Debian:13",
+          "purl": "pkg:deb/debian/openssl?arch=source&distro=trixie"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "3.5.7-1~deb13u3"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "3.5.1-1",
+          "3.5.1-1+deb13u1",
+          "3.5.2-1",
+          "3.5.3-1",
+          "3.5.4-1",
+          "3.5.4-1~deb13u1",
+          "3.5.4-1~deb13u2",
+          "3.5.5-1",
+          "3.5.5-1~deb13u1",
+          "3.5.5-1~deb13u2",
+          "3.5.6-1~deb13u1",
+          "3.5.6-1~deb13u2",
+          "3.5.7-1~deb13u1",
+          "3.5.7-1~deb13u2"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-75805.json"
+        }
+      },
+      {
+        "package": {
+          "name": "openssl",
+          "ecosystem": "Debian:14",
+          "purl": "pkg:deb/debian/openssl?arch=source&distro=forky"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "3.5.1-1",
+          "3.5.2-1",
+          "3.5.3-1",
+          "3.5.4-1",
+          "3.5.4-1~deb13u1",
+          "3.5.4-1~deb13u2",
+          "3.5.5-1",
+          "3.5.5-1~deb13u1",
+          "3.5.5-1~deb13u2",
+          "3.5.6-1~deb13u1",
+          "3.5.6-1~deb13u2",
+          "3.5.7-1~deb13u1",
+          "3.5.7-1~deb13u2",
+          "3.5.7-1~deb13u3",
+          "3.6.0-1",
+          "3.6.0-2",
+          "3.6.0~~alpha1-1",
+          "3.6.0~~beta1-1",
+          "3.6.1-1",
+          "3.6.1-2",
+          "3.6.1-3",
+          "3.6.2-1",
+          "3.6.3-1",
+          "3.6.4-1",
+          "3.6.5-1",
+          "4.0.0-1",
+          "4.0.0~alpha1-1",
+          "4.0.0~beta1-1",
+          "4.0.1-1",
+          "4.0.2-1",
+          "4.0.3-1"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-75805.json"
+        }
+      }
+    ],
+    "schema_version": "1.9.0",
+    "severity": [
+      {
+        "type": "CVSS_V3",
+        "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+      }
+    ],
+    "_metadata": {
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "source_package": "Debian/openssl",
+      "distribution": "debian"
+    }
+  },
+  {
+    "id": "DEBIAN-CVE-2026-75804",
+    "details": "Issue summary: OpenSSL QUIC stack does not enforce connection level flow control for streams. Remote peers may send more bytes as long as they fit within the stream flow control limits.  Impact summary: A malicious remote peer may exploit the lack of connection flow control for streams to make the QUIC stack receive ~100MB of memory instead of 768 KiB (default flow control window size).  CWE: CWE-770: Allocation of Resources Without Limits or Throttling  Description: The local QUIC stack advertises two flow control limits to its remote peer: stream flow control limit and connection flow control limit. The remote peer must follow both limits when transmitting stream data.  Whenever the local QUIC stack receives a stream frame, it validates that the size of the received stream frame stays within flow control limits. If either limit is exceeded (stream level or connection level), then the QUIC stack must close the connection with a flow control error.  The vulnerable OpenSSL QUIC stack enforces the stream-level but not the connection-level limit. To exploit the issue, three conditions must be met:   - the remote peer opens several streams   - each stream must stay within the stream-level flow control limit   - there must be no zero-offset byte sent on any of the streams     (to prevent the vulnerable QUIC stack from consuming data). By meeting the conditions above, the remote peer may make the local stack allocate 2 x MAX_STREAMS x (stream flow control limit) bytes of memory. MAX_STREAMS defaults to 100, and the limit applies to both bidirectional and unidirectional streams, making it 200 in total. The default flow control window for a stream is 512kB. The remote peer may force the vulnerable QUIC stack to allocate 100MB of heap per connection.  FIPS impact: no The FIPS module is not affected as the QUIC implementation is outside of the OpenSSL FIPS module boundary.",
+    "modified": "2026-09-30T08:00:10.224933542Z",
+    "published": "2026-09-29T16:17:10.887Z",
+    "upstream": [
+      "CVE-2026-75804"
+    ],
+    "references": [
+      {
+        "type": "ADVISORY",
+        "url": "https://security-tracker.debian.org/tracker/CVE-2026-75804"
+      }
+    ],
+    "affected": [
+      {
+        "package": {
+          "name": "openssl",
+          "ecosystem": "Debian:13",
+          "purl": "pkg:deb/debian/openssl?arch=source&distro=trixie"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "3.5.7-1~deb13u3"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "3.5.1-1",
+          "3.5.1-1+deb13u1",
+          "3.5.2-1",
+          "3.5.3-1",
+          "3.5.4-1",
+          "3.5.4-1~deb13u1",
+          "3.5.4-1~deb13u2",
+          "3.5.5-1",
+          "3.5.5-1~deb13u1",
+          "3.5.5-1~deb13u2",
+          "3.5.6-1~deb13u1",
+          "3.5.6-1~deb13u2",
+          "3.5.7-1~deb13u1",
+          "3.5.7-1~deb13u2"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-75804.json"
+        }
+      },
+      {
+        "package": {
+          "name": "openssl",
+          "ecosystem": "Debian:14",
+          "purl": "pkg:deb/debian/openssl?arch=source&distro=forky"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "3.5.1-1",
+          "3.5.2-1",
+          "3.5.3-1",
+          "3.5.4-1",
+          "3.5.4-1~deb13u1",
+          "3.5.4-1~deb13u2",
+          "3.5.5-1",
+          "3.5.5-1~deb13u1",
+          "3.5.5-1~deb13u2",
+          "3.5.6-1~deb13u1",
+          "3.5.6-1~deb13u2",
+          "3.5.7-1~deb13u1",
+          "3.5.7-1~deb13u2",
+          "3.5.7-1~deb13u3",
+          "3.6.0-1",
+          "3.6.0-2",
+          "3.6.0~~alpha1-1",
+          "3.6.0~~beta1-1",
+          "3.6.1-1",
+          "3.6.1-2",
+          "3.6.1-3",
+          "3.6.2-1",
+          "3.6.3-1",
+          "3.6.4-1",
+          "3.6.5-1",
+          "4.0.0-1",
+          "4.0.0~alpha1-1",
+          "4.0.0~beta1-1",
+          "4.0.1-1",
+          "4.0.2-1",
+          "4.0.3-1"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-75804.json"
+        }
+      }
+    ],
+    "schema_version": "1.9.0",
+    "severity": [
+      {
+        "type": "CVSS_V3",
+        "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+      }
+    ],
+    "_metadata": {
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "source_package": "Debian/openssl",
+      "distribution": "debian"
+    }
+  },
+  {
+    "id": "DEBIAN-CVE-2026-72897",
+    "details": "Issue summary: A TLS server that calls SSL_set_SSL_CTX() to switch a connection to a different SSL_CTX part way through a handshake may access memory beyond the end of an internal array if the replacement context knows about more provider signature algorithms than the context the connection was created from. Applications which never call SSL_set_SSL_CTX() are not affected.  Impact summary: A remote peer may be able to cause a small out-of-bounds read, and in some circumstances a fixed-value out-of-bounds write, on the server heap. This may lead to a Denial of Service.  CWE: CWE-787: Out-of-bounds Write  Description: A TLS connection records how many certificate slots it has when it is created, taken from the SSL_CTX that created it: the built-in certificate types plus one slot for each provider TLS-SIGALG entry that context was aware of. That count sizes an internal array of per-slot certificate validity flags.  An application may replace a connection's SSL_CTX part way through the handshake by calling SSL_set_SSL_CTX(), most commonly from a servername callback in order to serve a different virtual host. Doing so did not refresh the recorded count. A provider signature algorithm's slot index is its position in the list of whichever context resolves it, so if the replacement context is aware of more of them than the original, an algorithm offered by the peer can resolve to an index beyond the end of the array. Processing the peer's signature algorithms then reads one four byte word past the end for each such algorithm and, where the word read is zero, writes a fixed value over it. A peer offering many of them can corrupt heap metadata and abort the process.  Only provider signature algorithms which occupy one of the excess slots, and which the server also has configured, have this effect. Codepoints the replacement context does not recognise are discarded without being resolved to a slot, and provider signature algorithms are usable only from TLS 1.3.  The two contexts must therefore be aware of different numbers of provider signature algorithms, which requires separate library contexts, a provider loaded between the two being created, or providers which differ in what they advertise - in 4.0, for example, the default provider advertises SM2 where the FIPS provider does not. A deployment meeting the condition is also unable to negotiate the affected algorithms with legitimate clients, since the same stale count hides the corresponding certificates, so the misconfiguration is likely to be noticed. For that reason, and because the configuration is not the default, this issue has been assessed as Low severity.  FIPS impact: no No FIPS modules are affected by this issue as the affected code is outside the OpenSSL FIPS module boundary.",
+    "modified": "2026-09-30T08:00:09.545185584Z",
+    "published": "2026-09-29T16:17:09.903Z",
+    "upstream": [
+      "CVE-2026-72897"
+    ],
+    "references": [
+      {
+        "type": "ADVISORY",
+        "url": "https://security-tracker.debian.org/tracker/CVE-2026-72897"
+      }
+    ],
+    "affected": [
+      {
+        "package": {
+          "name": "openssl",
+          "ecosystem": "Debian:13",
+          "purl": "pkg:deb/debian/openssl?arch=source&distro=trixie"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "3.5.7-1~deb13u3"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "3.5.1-1",
+          "3.5.1-1+deb13u1",
+          "3.5.2-1",
+          "3.5.3-1",
+          "3.5.4-1",
+          "3.5.4-1~deb13u1",
+          "3.5.4-1~deb13u2",
+          "3.5.5-1",
+          "3.5.5-1~deb13u1",
+          "3.5.5-1~deb13u2",
+          "3.5.6-1~deb13u1",
+          "3.5.6-1~deb13u2",
+          "3.5.7-1~deb13u1",
+          "3.5.7-1~deb13u2"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-72897.json"
+        }
+      },
+      {
+        "package": {
+          "name": "openssl",
+          "ecosystem": "Debian:14",
+          "purl": "pkg:deb/debian/openssl?arch=source&distro=forky"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "3.5.1-1",
+          "3.5.2-1",
+          "3.5.3-1",
+          "3.5.4-1",
+          "3.5.4-1~deb13u1",
+          "3.5.4-1~deb13u2",
+          "3.5.5-1",
+          "3.5.5-1~deb13u1",
+          "3.5.5-1~deb13u2",
+          "3.5.6-1~deb13u1",
+          "3.5.6-1~deb13u2",
+          "3.5.7-1~deb13u1",
+          "3.5.7-1~deb13u2",
+          "3.5.7-1~deb13u3",
+          "3.6.0-1",
+          "3.6.0-2",
+          "3.6.0~~alpha1-1",
+          "3.6.0~~beta1-1",
+          "3.6.1-1",
+          "3.6.1-2",
+          "3.6.1-3",
+          "3.6.2-1",
+          "3.6.3-1",
+          "3.6.4-1",
+          "3.6.5-1",
+          "4.0.0-1",
+          "4.0.0~alpha1-1",
+          "4.0.0~beta1-1",
+          "4.0.1-1",
+          "4.0.2-1",
+          "4.0.3-1"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-72897.json"
+        }
+      }
+    ],
+    "schema_version": "1.9.0",
+    "severity": [
+      {
+        "type": "CVSS_V3",
+        "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+      }
+    ],
+    "_metadata": {
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "source_package": "Debian/openssl",
+      "distribution": "debian"
+    }
+  },
+  {
+    "id": "DEBIAN-CVE-2026-54875",
+    "details": "Issue summary: A non-constant-time optimized implementation of scalar point multiplication is used for SM2 private key operations on ARM64 and RISC-V platforms.  Impact summary: An attacker able to measure the time taken by, or to observe the cache-line access pattern of SM2 signing or decryption on an affected platform can learn information about the secret scalar.  CWE: CWE-208: Observable Timing Discrepancy  Description: On ARM64 and RISC-V processors, the SM2 curve uses an optimized scalar multiplication implementation whose conditional branches and table look ups are chosen according to the bits of the secret scalar. The execution time and the cache-access pattern therefore depend on the long-term private key (during SM2 decryption) or the per-signature nonce (during SM2 signature generation), forming a timing and cache side-channel.  FIPS Impact: no SM2 is not a FIPS algorithm and the optimized SM2 implementation is not part of the FIPS module.  OpenSSL 4.0, 3.6, 3.5 and 3.4 are vulnerable to this issue on AArch64 and RISC-V.  OpenSSL 3.0, 1.1.1 and 1.0.2 are not affected by this issue.  OpenSSL 4.0 users should upgrade to OpenSSL 4.0.3. OpenSSL 3.6 users should upgrade to OpenSSL 3.6.5. OpenSSL 3.5 users should upgrade to OpenSSL 3.5.9. OpenSSL 3.4 users should upgrade to OpenSSL 3.4.8.  This issue was reported on 2 May 2026 by Abhinav Agarwal. It was independently reported on 6 June 2026 by Feng Xue. The fix was developed by Igor Ustinov.  -- cut (non-publishing metadata for internal use) -- Reported by: Abhinav Agarwal, Feng Xue Fixed by: Igor Ustinov",
+    "modified": "2026-09-30T08:00:09.544736731Z",
+    "published": "2026-09-29T16:17:08.920Z",
+    "upstream": [
+      "CVE-2026-54875"
+    ],
+    "references": [
+      {
+        "type": "ADVISORY",
+        "url": "https://security-tracker.debian.org/tracker/CVE-2026-54875"
+      }
+    ],
+    "affected": [
+      {
+        "package": {
+          "name": "openssl",
+          "ecosystem": "Debian:13",
+          "purl": "pkg:deb/debian/openssl?arch=source&distro=trixie"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "3.5.7-1~deb13u3"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "3.5.1-1",
+          "3.5.1-1+deb13u1",
+          "3.5.2-1",
+          "3.5.3-1",
+          "3.5.4-1",
+          "3.5.4-1~deb13u1",
+          "3.5.4-1~deb13u2",
+          "3.5.5-1",
+          "3.5.5-1~deb13u1",
+          "3.5.5-1~deb13u2",
+          "3.5.6-1~deb13u1",
+          "3.5.6-1~deb13u2",
+          "3.5.7-1~deb13u1",
+          "3.5.7-1~deb13u2"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-54875.json"
+        }
+      },
+      {
+        "package": {
+          "name": "openssl",
+          "ecosystem": "Debian:14",
+          "purl": "pkg:deb/debian/openssl?arch=source&distro=forky"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "3.5.1-1",
+          "3.5.2-1",
+          "3.5.3-1",
+          "3.5.4-1",
+          "3.5.4-1~deb13u1",
+          "3.5.4-1~deb13u2",
+          "3.5.5-1",
+          "3.5.5-1~deb13u1",
+          "3.5.5-1~deb13u2",
+          "3.5.6-1~deb13u1",
+          "3.5.6-1~deb13u2",
+          "3.5.7-1~deb13u1",
+          "3.5.7-1~deb13u2",
+          "3.5.7-1~deb13u3",
+          "3.6.0-1",
+          "3.6.0-2",
+          "3.6.0~~alpha1-1",
+          "3.6.0~~beta1-1",
+          "3.6.1-1",
+          "3.6.1-2",
+          "3.6.1-3",
+          "3.6.2-1",
+          "3.6.3-1",
+          "3.6.4-1",
+          "3.6.5-1",
+          "4.0.0-1",
+          "4.0.0~alpha1-1",
+          "4.0.0~beta1-1",
+          "4.0.1-1",
+          "4.0.2-1",
+          "4.0.3-1"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-54875.json"
+        }
+      }
+    ],
+    "schema_version": "1.9.0",
+    "severity": [
+      {
+        "type": "CVSS_V3",
+        "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N"
+      }
+    ],
+    "_metadata": {
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "source_package": "Debian/openssl",
+      "distribution": "debian"
+    }
+  },
+  {
+    "id": "DEBIAN-CVE-2026-54873",
+    "details": "Issue summary: QUIC process may keep memory for QUIC packet buffer for much longer period than necessary.  Impact summary: Remote peer can exploit this vulnerability by sending maliciously crafted packets, making the local QUIC stack to keep the memory for packet buffers allocated. The time for which the memory remains allocated is entirely under the control of the potentially malicious remote peer.  CWE: CWE-770: Allocation of Resources Without Limits or Throttling  Description: To save copy operation from the packet buffer to the stream reassemble buffer the QUIC stack leaves the stream data on the packet buffer waiting to be copied to a buffer provided by the local receiving application. The QUIC stack releases a reference to the packet buffer only after the data are copied to the application buffer. This design is more efficient for legitimate data transfers but enables an attacker to allocate a lot more memory than actually required by the data kept in the receiving stream buffer.  To mitigate the vulnerability, the QUIC stack now calculates and monitors memory overhead for every stream. The memory overhead for a single stream frame is calculated as a difference between the size of the whole packet that carries the stream frame and the size of the stream frame itself. The memory overhead for a single stream frame is added to the total (cumulative) memory overhead QUIC stack keeps for each stream. Once the cumulative memory overhead exceeds 64kB, the QUIC stack moves the stream frame data from the packet buffer to the stream buffer, starting with the next packet received.  FIPS impact: no The FIPS module is not affected as the QUIC implementation is outside of the OpenSSL FIPS module boundary.",
+    "modified": "2026-09-30T08:00:09.548790503Z",
+    "published": "2026-09-29T16:17:08.763Z",
+    "upstream": [
+      "CVE-2026-54873"
+    ],
+    "references": [
+      {
+        "type": "ADVISORY",
+        "url": "https://security-tracker.debian.org/tracker/CVE-2026-54873"
+      }
+    ],
+    "affected": [
+      {
+        "package": {
+          "name": "openssl",
+          "ecosystem": "Debian:13",
+          "purl": "pkg:deb/debian/openssl?arch=source&distro=trixie"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "3.5.7-1~deb13u3"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "3.5.1-1",
+          "3.5.1-1+deb13u1",
+          "3.5.2-1",
+          "3.5.3-1",
+          "3.5.4-1",
+          "3.5.4-1~deb13u1",
+          "3.5.4-1~deb13u2",
+          "3.5.5-1",
+          "3.5.5-1~deb13u1",
+          "3.5.5-1~deb13u2",
+          "3.5.6-1~deb13u1",
+          "3.5.6-1~deb13u2",
+          "3.5.7-1~deb13u1",
+          "3.5.7-1~deb13u2"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-54873.json"
+        }
+      },
+      {
+        "package": {
+          "name": "openssl",
+          "ecosystem": "Debian:14",
+          "purl": "pkg:deb/debian/openssl?arch=source&distro=forky"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "3.5.1-1",
+          "3.5.2-1",
+          "3.5.3-1",
+          "3.5.4-1",
+          "3.5.4-1~deb13u1",
+          "3.5.4-1~deb13u2",
+          "3.5.5-1",
+          "3.5.5-1~deb13u1",
+          "3.5.5-1~deb13u2",
+          "3.5.6-1~deb13u1",
+          "3.5.6-1~deb13u2",
+          "3.5.7-1~deb13u1",
+          "3.5.7-1~deb13u2",
+          "3.5.7-1~deb13u3",
+          "3.6.0-1",
+          "3.6.0-2",
+          "3.6.0~~alpha1-1",
+          "3.6.0~~beta1-1",
+          "3.6.1-1",
+          "3.6.1-2",
+          "3.6.1-3",
+          "3.6.2-1",
+          "3.6.3-1",
+          "3.6.4-1",
+          "3.6.5-1",
+          "4.0.0-1",
+          "4.0.0~alpha1-1",
+          "4.0.0~beta1-1",
+          "4.0.1-1",
+          "4.0.2-1",
+          "4.0.3-1"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-54873.json"
+        }
+      }
+    ],
+    "schema_version": "1.9.0",
+    "_metadata": {
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "source_package": "Debian/openssl",
+      "distribution": "debian"
+    }
+  },
+  {
+    "id": "DEBIAN-CVE-2026-54872",
+    "details": "Issue summary: The generic elliptic-curve scalar multiplication used for ECDSA and SM2 signature operations with curves that do not have a dedicated implementation leaks information about the secret nonce through timing.  Impact summary: An attacker able to measure signing times may learn information about the per-signature secret nonce, which over many signatures can, via a lattice / Hidden Number Problem attack, lead to recovery of the private key.  CWE: CWE-208: Observable Timing Discrepancy  Description: The generic elliptic-curve scalar multiplication used for curves that do not have a dedicated constant-time implementation pads the secret scalar with non-constant-time BIGNUM operations, so the time taken depends on the value of the secret scalar derived from the ECDSA and SM2 nonce.  The leak is very small; observing it requires a large number of measurements. The effect is largest for curves whose group order lies on a machine-word boundary, such as brainpoolP384r1.  Applications using ECDSA signing over the Brainpool and other generic prime curves, and SM2 signing on platforms that use the generic implementation, are vulnerable to this issue.  The NIST curves P-256, P-384 and P-521 use dedicated constant-time implementations and are not affected.  FIPS Impact: no The FIPS modules are not affected: the approved NIST curves used in the FIPS provider have dedicated constant-time implementations and do not use the affected code path.",
+    "modified": "2026-09-30T08:00:09.602829561Z",
+    "published": "2026-09-29T16:17:08.623Z",
+    "upstream": [
+      "CVE-2026-54872"
+    ],
+    "references": [
+      {
+        "type": "ADVISORY",
+        "url": "https://security-tracker.debian.org/tracker/CVE-2026-54872"
+      }
+    ],
+    "affected": [
+      {
+        "package": {
+          "name": "openssl",
+          "ecosystem": "Debian:12",
+          "purl": "pkg:deb/debian/openssl?arch=source&distro=bookworm"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "3.0.10-1",
+          "3.0.10-1~deb12u1",
+          "3.0.11-1",
+          "3.0.11-1~deb12u1",
+          "3.0.11-1~deb12u2",
+          "3.0.12-1",
+          "3.0.12-2",
+          "3.0.13-1~deb12u1",
+          "3.0.13-1~deb12u2",
+          "3.0.14-1~deb12u1",
+          "3.0.14-1~deb12u2",
+          "3.0.15-1~deb12u1",
+          "3.0.16-1~deb12u1",
+          "3.0.17-1~deb12u1",
+          "3.0.17-1~deb12u2",
+          "3.0.17-1~deb12u3",
+          "3.0.18-1~deb12u1",
+          "3.0.18-1~deb12u2",
+          "3.0.19-1~deb12u1",
+          "3.0.19-1~deb12u2",
+          "3.0.20-1~deb12u1",
+          "3.0.20-1~deb12u2",
+          "3.0.22-1~deb12u1",
+          "3.0.9-1",
+          "3.1.0-1",
+          "3.1.1-1",
+          "3.1.2-1",
+          "3.1.3-1",
+          "3.1.4-1",
+          "3.1.4-2",
+          "3.1.5-1",
+          "3.1.5-1.1",
+          "3.1.5-1.1+hurd.1",
+          "3.2.0-1",
+          "3.2.0-2",
+          "3.2.1-1",
+          "3.2.1-1.1~exp1",
+          "3.2.1-2",
+          "3.2.1-3",
+          "3.2.2-1",
+          "3.3.0-1",
+          "3.3.0~beta1-1",
+          "3.3.1-1",
+          "3.3.1-2",
+          "3.3.1-5",
+          "3.3.1-6",
+          "3.3.1-7",
+          "3.3.2-1",
+          "3.3.2-2",
+          "3.4.0-1",
+          "3.4.0-2",
+          "3.4.0~~beta1-1",
+          "3.4.0~~beta1-2",
+          "3.4.1-1",
+          "3.5.0-1",
+          "3.5.0-2",
+          "3.5.0-3",
+          "3.5.0~~alpha1-1",
+          "3.5.0~~beta1-1",
+          "3.5.1-1",
+          "3.5.2-1",
+          "3.5.3-1",
+          "3.5.4-1",
+          "3.5.4-1~deb13u1",
+          "3.5.4-1~deb13u2",
+          "3.5.5-1",
+          "3.5.5-1~deb13u1",
+          "3.5.5-1~deb13u2",
+          "3.5.6-1~deb13u1",
+          "3.5.6-1~deb13u2",
+          "3.5.7-1~deb13u1",
+          "3.5.7-1~deb13u2",
+          "3.5.7-1~deb13u3",
+          "3.6.0-1",
+          "3.6.0-2",
+          "3.6.0~~alpha1-1",
+          "3.6.0~~beta1-1",
+          "3.6.1-1",
+          "3.6.1-2",
+          "3.6.1-3",
+          "3.6.2-1",
+          "3.6.3-1",
+          "3.6.4-1",
+          "3.6.5-1",
+          "4.0.0-1",
+          "4.0.0~alpha1-1",
+          "4.0.0~beta1-1",
+          "4.0.1-1",
+          "4.0.2-1",
+          "4.0.3-1"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-54872.json"
+        }
+      },
+      {
+        "package": {
+          "name": "openssl",
+          "ecosystem": "Debian:13",
+          "purl": "pkg:deb/debian/openssl?arch=source&distro=trixie"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "3.5.7-1~deb13u3"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "3.5.1-1",
+          "3.5.1-1+deb13u1",
+          "3.5.2-1",
+          "3.5.3-1",
+          "3.5.4-1",
+          "3.5.4-1~deb13u1",
+          "3.5.4-1~deb13u2",
+          "3.5.5-1",
+          "3.5.5-1~deb13u1",
+          "3.5.5-1~deb13u2",
+          "3.5.6-1~deb13u1",
+          "3.5.6-1~deb13u2",
+          "3.5.7-1~deb13u1",
+          "3.5.7-1~deb13u2"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-54872.json"
+        }
+      },
+      {
+        "package": {
+          "name": "openssl",
+          "ecosystem": "Debian:14",
+          "purl": "pkg:deb/debian/openssl?arch=source&distro=forky"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "3.5.1-1",
+          "3.5.2-1",
+          "3.5.3-1",
+          "3.5.4-1",
+          "3.5.4-1~deb13u1",
+          "3.5.4-1~deb13u2",
+          "3.5.5-1",
+          "3.5.5-1~deb13u1",
+          "3.5.5-1~deb13u2",
+          "3.5.6-1~deb13u1",
+          "3.5.6-1~deb13u2",
+          "3.5.7-1~deb13u1",
+          "3.5.7-1~deb13u2",
+          "3.5.7-1~deb13u3",
+          "3.6.0-1",
+          "3.6.0-2",
+          "3.6.0~~alpha1-1",
+          "3.6.0~~beta1-1",
+          "3.6.1-1",
+          "3.6.1-2",
+          "3.6.1-3",
+          "3.6.2-1",
+          "3.6.3-1",
+          "3.6.4-1",
+          "3.6.5-1",
+          "4.0.0-1",
+          "4.0.0~alpha1-1",
+          "4.0.0~beta1-1",
+          "4.0.1-1",
+          "4.0.2-1",
+          "4.0.3-1"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-54872.json"
+        }
+      }
+    ],
+    "schema_version": "1.9.0",
+    "severity": [
+      {
+        "type": "CVSS_V3",
+        "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N"
+      }
+    ],
+    "_metadata": {
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "source_package": "Debian/openssl",
+      "distribution": "debian"
+    }
+  },
+  {
+    "id": "DEBIAN-CVE-2026-42772",
+    "details": "Issue summary: The QUIC stream reassembly algorithm performance deteriorates progressively as packets are arriving out of order. The worst case has a quadratic complexity proportional to the number of stream frames kept in the buffer for the received stream data.  Impact summary: A remote QUIC peer that completes the handshake can create a connection-scoped CPU pressure and potentially a Denial of Service using compliant STREAM frames inside the advertised receive window, with low attacker bandwidth.  CWE: CWE-407: Inefficient Algorithmic Complexity  Description: OpenSSL manages received QUIC stream fragments using a doubly-linked list. While it optimizes for append operations (at the end of the list), it falls back to a head-to-tail linear search for any fragment that does not immediately follow the current `tail`.  By manipulating the sequence of offsets, an attacker can force the server to perform O(n^2) operations, consuming excessive CPU time for the QUIC process.  FIPS impact: no The FIPS module is not affected as the QUIC implementation is outside of the OpenSSL FIPS module boundary.",
+    "modified": "2026-09-30T08:00:09.662664518Z",
+    "published": "2026-09-29T16:17:07.640Z",
+    "upstream": [
+      "CVE-2026-42772"
+    ],
+    "references": [
+      {
+        "type": "ADVISORY",
+        "url": "https://security-tracker.debian.org/tracker/CVE-2026-42772"
+      }
+    ],
+    "affected": [
+      {
+        "package": {
+          "name": "openssl",
+          "ecosystem": "Debian:13",
+          "purl": "pkg:deb/debian/openssl?arch=source&distro=trixie"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "3.5.7-1~deb13u3"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "3.5.1-1",
+          "3.5.1-1+deb13u1",
+          "3.5.2-1",
+          "3.5.3-1",
+          "3.5.4-1",
+          "3.5.4-1~deb13u1",
+          "3.5.4-1~deb13u2",
+          "3.5.5-1",
+          "3.5.5-1~deb13u1",
+          "3.5.5-1~deb13u2",
+          "3.5.6-1~deb13u1",
+          "3.5.6-1~deb13u2",
+          "3.5.7-1~deb13u1",
+          "3.5.7-1~deb13u2"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-42772.json"
+        }
+      },
+      {
+        "package": {
+          "name": "openssl",
+          "ecosystem": "Debian:14",
+          "purl": "pkg:deb/debian/openssl?arch=source&distro=forky"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "3.5.1-1",
+          "3.5.2-1",
+          "3.5.3-1",
+          "3.5.4-1",
+          "3.5.4-1~deb13u1",
+          "3.5.4-1~deb13u2",
+          "3.5.5-1",
+          "3.5.5-1~deb13u1",
+          "3.5.5-1~deb13u2",
+          "3.5.6-1~deb13u1",
+          "3.5.6-1~deb13u2",
+          "3.5.7-1~deb13u1",
+          "3.5.7-1~deb13u2",
+          "3.5.7-1~deb13u3",
+          "3.6.0-1",
+          "3.6.0-2",
+          "3.6.0~~alpha1-1",
+          "3.6.0~~beta1-1",
+          "3.6.1-1",
+          "3.6.1-2",
+          "3.6.1-3",
+          "3.6.2-1",
+          "3.6.3-1",
+          "3.6.4-1",
+          "3.6.5-1",
+          "4.0.0-1",
+          "4.0.0~alpha1-1",
+          "4.0.0~beta1-1",
+          "4.0.1-1",
+          "4.0.2-1",
+          "4.0.3-1"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-42772.json"
+        }
+      }
+    ],
+    "schema_version": "1.9.0",
+    "_metadata": {
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "source_package": "Debian/openssl",
+      "distribution": "debian"
+    }
+  },
+  {
+    "id": "DEBIAN-CVE-2026-35191",
+    "details": "Issue summary: The OpenSSL QUIC server, when configured to not preform address validation, can be forced to count incoming packets multiple times in its unvalidated credit computation, leading to a violation of the RFC 9000 unvalidated connection amplification limit of 3 times the amount of data received.  Impact summary: A remote attacker able to spoof packets to a server using the OpenSSL QUIC implementation might use the server for an amplification of a DDoS attack.  CWE: CWE-440: Expected Behavior Violation   Description: OpenSSL's QUIC stack, when operating as a server, enforces client address validation (RFC 9000, Section 8), to confirm the peer address is not used for a traffic amplification attack.  If this feature is disabled on the server, the QUIC stack limits the amount of server data that can be sent to 3 times the amount of data received from the peer address, until such time as the TLS handshake is completed.  The OpenSSL QUIC server, when operating in non-validation mode, adds the length of the whole datagram received to the unvalidated credit limit when processing each QUIC packet in the datagram. A remote peer may, after establishing a connection with an initial client hello frame, send a subsequent datagram containing multiple QUIC packets, leading the server to account the entire datagram length for each packet in the datagram, resulting in the server believing that the peer has sent more data than it actually has, thereby violating the 3x amplification limit mandated by the RFC.  FIPS impact: no As the QUIC stack lives outside the FIPS module boundary, no FIPS modules are affected by this CVE.",
+    "modified": "2026-09-30T08:00:09.533626476Z",
+    "published": "2026-09-29T16:17:07.490Z",
+    "upstream": [
+      "CVE-2026-35191"
+    ],
+    "references": [
+      {
+        "type": "ADVISORY",
+        "url": "https://security-tracker.debian.org/tracker/CVE-2026-35191"
+      }
+    ],
+    "affected": [
+      {
+        "package": {
+          "name": "openssl",
+          "ecosystem": "Debian:13",
+          "purl": "pkg:deb/debian/openssl?arch=source&distro=trixie"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "3.5.7-1~deb13u3"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "3.5.1-1",
+          "3.5.1-1+deb13u1",
+          "3.5.2-1",
+          "3.5.3-1",
+          "3.5.4-1",
+          "3.5.4-1~deb13u1",
+          "3.5.4-1~deb13u2",
+          "3.5.5-1",
+          "3.5.5-1~deb13u1",
+          "3.5.5-1~deb13u2",
+          "3.5.6-1~deb13u1",
+          "3.5.6-1~deb13u2",
+          "3.5.7-1~deb13u1",
+          "3.5.7-1~deb13u2"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-35191.json"
+        }
+      },
+      {
+        "package": {
+          "name": "openssl",
+          "ecosystem": "Debian:14",
+          "purl": "pkg:deb/debian/openssl?arch=source&distro=forky"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "3.5.1-1",
+          "3.5.2-1",
+          "3.5.3-1",
+          "3.5.4-1",
+          "3.5.4-1~deb13u1",
+          "3.5.4-1~deb13u2",
+          "3.5.5-1",
+          "3.5.5-1~deb13u1",
+          "3.5.5-1~deb13u2",
+          "3.5.6-1~deb13u1",
+          "3.5.6-1~deb13u2",
+          "3.5.7-1~deb13u1",
+          "3.5.7-1~deb13u2",
+          "3.5.7-1~deb13u3",
+          "3.6.0-1",
+          "3.6.0-2",
+          "3.6.0~~alpha1-1",
+          "3.6.0~~beta1-1",
+          "3.6.1-1",
+          "3.6.1-2",
+          "3.6.1-3",
+          "3.6.2-1",
+          "3.6.3-1",
+          "3.6.4-1",
+          "3.6.5-1",
+          "4.0.0-1",
+          "4.0.0~alpha1-1",
+          "4.0.0~beta1-1",
+          "4.0.1-1",
+          "4.0.2-1",
+          "4.0.3-1"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-35191.json"
+        }
+      }
+    ],
+    "schema_version": "1.9.0",
+    "_metadata": {
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "source_package": "Debian/openssl",
+      "distribution": "debian"
+    }
+  },
+  {
+    "id": "DEBIAN-CVE-2026-35189",
+    "details": "Issue summary: A certificate with many nameRelativeToCRLIssuer CRL distribution points causes disproportionate heap growth when OpenSSL caches X.509 extensions.  Impact summary: Receiving a crafted certificate from a malicious peer can lead to significant memory pressure and possible Denial of Service in clients or in servers that solicit client certificates.  CWE: CWE-770: Allocation of Resources Without Limits or Throttling  Description: A certificate or a set of certificates that fits under the limit for size of certificates accepted from the peer (~100 KiB) can result in allocation of several hundred MiB of resident memory on the receiving side during a normal TLS handshake.  This may be enough to crash the client or server, if multiple concurrent connections lead to similarly large memory allocations.  The fix postpones processing of the CRL distribution points extensions in certificates to the time when the processed value is required for CRL processing. This avoids keeping large memory allocations for a long time when such certificates are received.  FIPS impact: no The affected code is outside the FIPS module boundary.",
+    "modified": "2026-09-30T08:00:09.184929012Z",
+    "published": "2026-09-29T16:17:07.330Z",
+    "upstream": [
+      "CVE-2026-35189"
+    ],
+    "references": [
+      {
+        "type": "ADVISORY",
+        "url": "https://security-tracker.debian.org/tracker/CVE-2026-35189"
+      }
+    ],
+    "affected": [
+      {
+        "package": {
+          "name": "openssl",
+          "ecosystem": "Debian:12",
+          "purl": "pkg:deb/debian/openssl?arch=source&distro=bookworm"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "3.0.10-1",
+          "3.0.10-1~deb12u1",
+          "3.0.11-1",
+          "3.0.11-1~deb12u1",
+          "3.0.11-1~deb12u2",
+          "3.0.12-1",
+          "3.0.12-2",
+          "3.0.13-1~deb12u1",
+          "3.0.13-1~deb12u2",
+          "3.0.14-1~deb12u1",
+          "3.0.14-1~deb12u2",
+          "3.0.15-1~deb12u1",
+          "3.0.16-1~deb12u1",
+          "3.0.17-1~deb12u1",
+          "3.0.17-1~deb12u2",
+          "3.0.17-1~deb12u3",
+          "3.0.18-1~deb12u1",
+          "3.0.18-1~deb12u2",
+          "3.0.19-1~deb12u1",
+          "3.0.19-1~deb12u2",
+          "3.0.20-1~deb12u1",
+          "3.0.20-1~deb12u2",
+          "3.0.22-1~deb12u1",
+          "3.0.9-1",
+          "3.1.0-1",
+          "3.1.1-1",
+          "3.1.2-1",
+          "3.1.3-1",
+          "3.1.4-1",
+          "3.1.4-2",
+          "3.1.5-1",
+          "3.1.5-1.1",
+          "3.1.5-1.1+hurd.1",
+          "3.2.0-1",
+          "3.2.0-2",
+          "3.2.1-1",
+          "3.2.1-1.1~exp1",
+          "3.2.1-2",
+          "3.2.1-3",
+          "3.2.2-1",
+          "3.3.0-1",
+          "3.3.0~beta1-1",
+          "3.3.1-1",
+          "3.3.1-2",
+          "3.3.1-5",
+          "3.3.1-6",
+          "3.3.1-7",
+          "3.3.2-1",
+          "3.3.2-2",
+          "3.4.0-1",
+          "3.4.0-2",
+          "3.4.0~~beta1-1",
+          "3.4.0~~beta1-2",
+          "3.4.1-1",
+          "3.5.0-1",
+          "3.5.0-2",
+          "3.5.0-3",
+          "3.5.0~~alpha1-1",
+          "3.5.0~~beta1-1",
+          "3.5.1-1",
+          "3.5.2-1",
+          "3.5.3-1",
+          "3.5.4-1",
+          "3.5.4-1~deb13u1",
+          "3.5.4-1~deb13u2",
+          "3.5.5-1",
+          "3.5.5-1~deb13u1",
+          "3.5.5-1~deb13u2",
+          "3.5.6-1~deb13u1",
+          "3.5.6-1~deb13u2",
+          "3.5.7-1~deb13u1",
+          "3.5.7-1~deb13u2",
+          "3.5.7-1~deb13u3",
+          "3.6.0-1",
+          "3.6.0-2",
+          "3.6.0~~alpha1-1",
+          "3.6.0~~beta1-1",
+          "3.6.1-1",
+          "3.6.1-2",
+          "3.6.1-3",
+          "3.6.2-1",
+          "3.6.3-1",
+          "3.6.4-1",
+          "3.6.5-1",
+          "4.0.0-1",
+          "4.0.0~alpha1-1",
+          "4.0.0~beta1-1",
+          "4.0.1-1",
+          "4.0.2-1",
+          "4.0.3-1"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-35189.json"
+        }
+      },
+      {
+        "package": {
+          "name": "openssl",
+          "ecosystem": "Debian:13",
+          "purl": "pkg:deb/debian/openssl?arch=source&distro=trixie"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "3.5.7-1~deb13u3"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "3.5.1-1",
+          "3.5.1-1+deb13u1",
+          "3.5.2-1",
+          "3.5.3-1",
+          "3.5.4-1",
+          "3.5.4-1~deb13u1",
+          "3.5.4-1~deb13u2",
+          "3.5.5-1",
+          "3.5.5-1~deb13u1",
+          "3.5.5-1~deb13u2",
+          "3.5.6-1~deb13u1",
+          "3.5.6-1~deb13u2",
+          "3.5.7-1~deb13u1",
+          "3.5.7-1~deb13u2"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-35189.json"
+        }
+      },
+      {
+        "package": {
+          "name": "openssl",
+          "ecosystem": "Debian:14",
+          "purl": "pkg:deb/debian/openssl?arch=source&distro=forky"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "3.5.1-1",
+          "3.5.2-1",
+          "3.5.3-1",
+          "3.5.4-1",
+          "3.5.4-1~deb13u1",
+          "3.5.4-1~deb13u2",
+          "3.5.5-1",
+          "3.5.5-1~deb13u1",
+          "3.5.5-1~deb13u2",
+          "3.5.6-1~deb13u1",
+          "3.5.6-1~deb13u2",
+          "3.5.7-1~deb13u1",
+          "3.5.7-1~deb13u2",
+          "3.5.7-1~deb13u3",
+          "3.6.0-1",
+          "3.6.0-2",
+          "3.6.0~~alpha1-1",
+          "3.6.0~~beta1-1",
+          "3.6.1-1",
+          "3.6.1-2",
+          "3.6.1-3",
+          "3.6.2-1",
+          "3.6.3-1",
+          "3.6.4-1",
+          "3.6.5-1",
+          "4.0.0-1",
+          "4.0.0~alpha1-1",
+          "4.0.0~beta1-1",
+          "4.0.1-1",
+          "4.0.2-1",
+          "4.0.3-1"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-35189.json"
+        }
+      }
+    ],
+    "schema_version": "1.9.0",
+    "_metadata": {
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "source_package": "Debian/openssl",
+      "distribution": "debian"
+    }
+  },
+  {
     "id": "DEBIAN-CVE-2026-90439",
     "details": "NGINX Plus and NGINX Open Source have a vulnerability in the ngx_http_v3_module module. When using HTTP/3 with OpenSSL versions <= OpenSSL 3.5.0 under certain configurations, a limited heap buffer overflow could happen while processing a TLS handshake. This can happen in a non-deterministic manner that is beyond the attacker's control. This may cause a heap buffer overflow in the NGINX worker process leading to a restart and/or limited data corruption.  Impact: This vulnerability may allow remote attackers to cause a denial-of-service (DoS) on the NGINX system or limited data corruption. There is no control plane exposure; this is a data plane issue only.     Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
     "modified": "2026-09-19T23:00:42.507651233Z",
@@ -84,7 +2401,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -523,7 +2840,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -757,7 +3074,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -991,7 +3308,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -1428,7 +3745,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -1660,7 +3977,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -2095,7 +4412,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -2530,7 +4847,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -2965,7 +5282,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -3136,7 +5453,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -3307,7 +5624,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -3427,7 +5744,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -3598,7 +5915,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -3718,7 +6035,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -3889,7 +6206,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -4060,7 +6377,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -4180,7 +6497,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -4300,7 +6617,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -4420,7 +6737,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -4785,7 +7102,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/systemd",
       "distribution": "debian"
     }
@@ -4876,7 +7193,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/systemd",
       "distribution": "debian"
     }
@@ -5234,7 +7551,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/systemd",
       "distribution": "debian"
     }
@@ -5313,7 +7630,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -5470,7 +7787,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -5627,7 +7944,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -5787,7 +8104,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -6213,7 +8530,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -6329,7 +8646,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -6550,7 +8867,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -6771,7 +9088,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -6992,7 +9309,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -7418,7 +9735,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -7844,7 +10161,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -8065,7 +10382,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -8181,7 +10498,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -8607,7 +10924,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -9033,7 +11350,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -9459,7 +11776,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -9887,7 +12204,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -10315,7 +12632,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -10433,7 +12750,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -10549,7 +12866,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -10665,7 +12982,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -11091,7 +13408,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -11244,7 +13561,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -11397,7 +13714,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -11573,7 +13890,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/docker.io",
       "distribution": "debian"
     }
@@ -11749,7 +14066,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/docker.io",
       "distribution": "debian"
     }
@@ -11916,7 +14233,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -12083,7 +14400,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -12250,7 +14567,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -12417,7 +14734,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -12584,7 +14901,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -12751,7 +15068,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -12868,7 +15185,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -12985,7 +15302,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -13153,7 +15470,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -13320,7 +15637,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -13398,7 +15715,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -13515,7 +15832,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -13632,7 +15949,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -13710,7 +16027,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -13877,7 +16194,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -13994,7 +16311,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -14161,7 +16478,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -14337,7 +16654,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/docker.io",
       "distribution": "debian"
     }
@@ -14486,7 +16803,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -14632,7 +16949,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -14775,7 +17092,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -14919,7 +17236,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -14995,7 +17312,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -15139,7 +17456,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -15248,7 +17565,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -15433,7 +17750,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -15775,7 +18092,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -16117,7 +18434,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -16459,7 +18776,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -16640,7 +18957,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -16980,7 +19297,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -17320,7 +19637,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -17686,7 +20003,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/systemd",
       "distribution": "debian"
     }
@@ -17767,7 +20084,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/systemd",
       "distribution": "debian"
     }
@@ -17936,7 +20253,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/systemd",
       "distribution": "debian"
     }
@@ -18106,7 +20423,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/systemd",
       "distribution": "debian"
     }
@@ -18183,7 +20500,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/systemd",
       "distribution": "debian"
     }
@@ -18258,7 +20575,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/systemd",
       "distribution": "debian"
     }
@@ -18419,1934 +20736,8 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
+      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
       "source_package": "Debian/openssl",
-      "distribution": "debian"
-    }
-  },
-  {
-    "id": "DEBIAN-CVE-2026-31789",
-    "details": "Issue summary: Converting an excessively large OCTET STRING value to a hexadecimal string leads to a heap buffer overflow on 32 bit platforms.  Impact summary: A heap buffer overflow may lead to a crash or possibly an attacker controlled code execution or other undefined behavior.  If an attacker can supply a crafted X.509 certificate with an excessively large OCTET STRING value in extensions such as the Subject Key Identifier (SKID) or Authority Key Identifier (AKID) which are being converted to hex, the size of the buffer needed for the result is calculated as multiplication of the input length by 3. On 32 bit platforms, this multiplication may overflow resulting in the allocation of a smaller buffer and a heap buffer overflow.  Applications and services that print or log contents of untrusted X.509 certificates are vulnerable to this issue. As the certificates would have to have sizes of over 1 Gigabyte, printing or logging such certificates is a fairly unlikely operation and only 32 bit platforms are affected, this issue was assigned Low severity.  The FIPS modules in 3.6, 3.5, 3.4, 3.3 and 3.0 are not affected by this issue, as the affected code is outside the OpenSSL FIPS module boundary.",
-    "modified": "2026-09-14T17:03:06.837805030Z",
-    "published": "2026-04-07T22:16:21.617Z",
-    "upstream": [
-      "CVE-2026-31789"
-    ],
-    "references": [
-      {
-        "type": "ADVISORY",
-        "url": "https://security-tracker.debian.org/tracker/CVE-2026-31789"
-      }
-    ],
-    "affected": [
-      {
-        "package": {
-          "name": "openssl",
-          "ecosystem": "Debian:12",
-          "purl": "pkg:deb/debian/openssl?arch=source&distro=bookworm"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "3.0.19-1~deb12u2"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "3.0.10-1",
-          "3.0.10-1~deb12u1",
-          "3.0.11-1",
-          "3.0.11-1~deb12u1",
-          "3.0.11-1~deb12u2",
-          "3.0.12-1",
-          "3.0.12-2",
-          "3.0.13-1~deb12u1",
-          "3.0.13-1~deb12u2",
-          "3.0.14-1~deb12u1",
-          "3.0.14-1~deb12u2",
-          "3.0.15-1~deb12u1",
-          "3.0.16-1~deb12u1",
-          "3.0.17-1~deb12u1",
-          "3.0.17-1~deb12u2",
-          "3.0.17-1~deb12u3",
-          "3.0.18-1~deb12u1",
-          "3.0.18-1~deb12u2",
-          "3.0.19-1~deb12u1",
-          "3.0.9-1"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-31789.json"
-        }
-      },
-      {
-        "package": {
-          "name": "openssl",
-          "ecosystem": "Debian:13",
-          "purl": "pkg:deb/debian/openssl?arch=source&distro=trixie"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "3.5.5-1~deb13u2"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "3.5.1-1",
-          "3.5.1-1+deb13u1",
-          "3.5.2-1",
-          "3.5.3-1",
-          "3.5.4-1",
-          "3.5.4-1~deb13u1",
-          "3.5.4-1~deb13u2",
-          "3.5.5-1~deb13u1"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-31789.json"
-        }
-      },
-      {
-        "package": {
-          "name": "openssl",
-          "ecosystem": "Debian:14",
-          "purl": "pkg:deb/debian/openssl?arch=source&distro=forky"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "3.6.2-1"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "3.5.1-1",
-          "3.5.2-1",
-          "3.5.3-1",
-          "3.5.4-1",
-          "3.5.4-1~deb13u1",
-          "3.5.4-1~deb13u2",
-          "3.5.5-1",
-          "3.5.5-1~deb13u1",
-          "3.5.5-1~deb13u2",
-          "3.5.6-1~deb13u1",
-          "3.5.6-1~deb13u2",
-          "3.5.7-1~deb13u1",
-          "3.5.7-1~deb13u2",
-          "3.6.0-1",
-          "3.6.0-2",
-          "3.6.0~~alpha1-1",
-          "3.6.0~~beta1-1",
-          "3.6.1-1",
-          "3.6.1-2",
-          "3.6.1-3"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-31789.json"
-        }
-      }
-    ],
-    "schema_version": "1.9.0",
-    "severity": [
-      {
-        "type": "CVSS_V3",
-        "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
-      }
-    ],
-    "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
-      "source_package": "Debian/openssl",
-      "distribution": "debian"
-    }
-  },
-  {
-    "id": "DEBIAN-CVE-2026-28390",
-    "details": "Issue summary: During processing of a crafted CMS EnvelopedData message with KeyTransportRecipientInfo a NULL pointer dereference can happen.  Impact summary: Applications that process attacker-controlled CMS data may crash before authentication or cryptographic operations occur resulting in Denial of Service.  When a CMS EnvelopedData message that uses KeyTransportRecipientInfo with RSA-OAEP encryption is processed, the optional parameters field of RSA-OAEP SourceFunc algorithm identifier is examined without checking for its presence. This results in a NULL pointer dereference if the field is missing.  Applications and services that call CMS_decrypt() on untrusted input (e.g., S/MIME processing or CMS-based protocols) are vulnerable.  The FIPS modules in 3.6, 3.5, 3.4, 3.3 and 3.0 are not affected by this issue, as the affected code is outside the OpenSSL FIPS module boundary.",
-    "modified": "2026-09-14T17:03:02.070899147Z",
-    "published": "2026-04-07T22:16:21.190Z",
-    "upstream": [
-      "CVE-2026-28390"
-    ],
-    "references": [
-      {
-        "type": "ADVISORY",
-        "url": "https://security-tracker.debian.org/tracker/CVE-2026-28390"
-      }
-    ],
-    "affected": [
-      {
-        "package": {
-          "name": "openssl",
-          "ecosystem": "Debian:12",
-          "purl": "pkg:deb/debian/openssl?arch=source&distro=bookworm"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "3.0.19-1~deb12u2"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "3.0.10-1",
-          "3.0.10-1~deb12u1",
-          "3.0.11-1",
-          "3.0.11-1~deb12u1",
-          "3.0.11-1~deb12u2",
-          "3.0.12-1",
-          "3.0.12-2",
-          "3.0.13-1~deb12u1",
-          "3.0.13-1~deb12u2",
-          "3.0.14-1~deb12u1",
-          "3.0.14-1~deb12u2",
-          "3.0.15-1~deb12u1",
-          "3.0.16-1~deb12u1",
-          "3.0.17-1~deb12u1",
-          "3.0.17-1~deb12u2",
-          "3.0.17-1~deb12u3",
-          "3.0.18-1~deb12u1",
-          "3.0.18-1~deb12u2",
-          "3.0.19-1~deb12u1",
-          "3.0.9-1"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-28390.json"
-        }
-      },
-      {
-        "package": {
-          "name": "openssl",
-          "ecosystem": "Debian:13",
-          "purl": "pkg:deb/debian/openssl?arch=source&distro=trixie"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "3.5.5-1~deb13u2"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "3.5.1-1",
-          "3.5.1-1+deb13u1",
-          "3.5.2-1",
-          "3.5.3-1",
-          "3.5.4-1",
-          "3.5.4-1~deb13u1",
-          "3.5.4-1~deb13u2",
-          "3.5.5-1~deb13u1"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-28390.json"
-        }
-      },
-      {
-        "package": {
-          "name": "openssl",
-          "ecosystem": "Debian:14",
-          "purl": "pkg:deb/debian/openssl?arch=source&distro=forky"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "3.6.2-1"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "3.5.1-1",
-          "3.5.2-1",
-          "3.5.3-1",
-          "3.5.4-1",
-          "3.5.4-1~deb13u1",
-          "3.5.4-1~deb13u2",
-          "3.5.5-1",
-          "3.5.5-1~deb13u1",
-          "3.5.5-1~deb13u2",
-          "3.5.6-1~deb13u1",
-          "3.5.6-1~deb13u2",
-          "3.5.7-1~deb13u1",
-          "3.5.7-1~deb13u2",
-          "3.6.0-1",
-          "3.6.0-2",
-          "3.6.0~~alpha1-1",
-          "3.6.0~~beta1-1",
-          "3.6.1-1",
-          "3.6.1-2",
-          "3.6.1-3"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-28390.json"
-        }
-      }
-    ],
-    "schema_version": "1.9.0",
-    "severity": [
-      {
-        "type": "CVSS_V3",
-        "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
-      }
-    ],
-    "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
-      "source_package": "Debian/openssl",
-      "distribution": "debian"
-    }
-  },
-  {
-    "id": "DEBIAN-CVE-2026-28389",
-    "details": "Issue summary: During processing of a crafted CMS EnvelopedData message with KeyAgreeRecipientInfo a NULL pointer dereference can happen.  Impact summary: Applications that process attacker-controlled CMS data may crash before authentication or cryptographic operations occur resulting in Denial of Service.  When a CMS EnvelopedData message that uses KeyAgreeRecipientInfo is processed, the optional parameters field of KeyEncryptionAlgorithmIdentifier is examined without checking for its presence. This results in a NULL pointer dereference if the field is missing.  Applications and services that call CMS_decrypt() on untrusted input (e.g., S/MIME processing or CMS-based protocols) are vulnerable.  The FIPS modules in 3.6, 3.5, 3.4, 3.3 and 3.0 are not affected by this issue, as the affected code is outside the OpenSSL FIPS module boundary.",
-    "modified": "2026-09-14T17:03:02.123271704Z",
-    "published": "2026-04-07T22:16:21.030Z",
-    "upstream": [
-      "CVE-2026-28389"
-    ],
-    "references": [
-      {
-        "type": "ADVISORY",
-        "url": "https://security-tracker.debian.org/tracker/CVE-2026-28389"
-      }
-    ],
-    "affected": [
-      {
-        "package": {
-          "name": "openssl",
-          "ecosystem": "Debian:12",
-          "purl": "pkg:deb/debian/openssl?arch=source&distro=bookworm"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "3.0.19-1~deb12u2"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "3.0.10-1",
-          "3.0.10-1~deb12u1",
-          "3.0.11-1",
-          "3.0.11-1~deb12u1",
-          "3.0.11-1~deb12u2",
-          "3.0.12-1",
-          "3.0.12-2",
-          "3.0.13-1~deb12u1",
-          "3.0.13-1~deb12u2",
-          "3.0.14-1~deb12u1",
-          "3.0.14-1~deb12u2",
-          "3.0.15-1~deb12u1",
-          "3.0.16-1~deb12u1",
-          "3.0.17-1~deb12u1",
-          "3.0.17-1~deb12u2",
-          "3.0.17-1~deb12u3",
-          "3.0.18-1~deb12u1",
-          "3.0.18-1~deb12u2",
-          "3.0.19-1~deb12u1",
-          "3.0.9-1"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-28389.json"
-        }
-      },
-      {
-        "package": {
-          "name": "openssl",
-          "ecosystem": "Debian:13",
-          "purl": "pkg:deb/debian/openssl?arch=source&distro=trixie"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "3.5.5-1~deb13u2"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "3.5.1-1",
-          "3.5.1-1+deb13u1",
-          "3.5.2-1",
-          "3.5.3-1",
-          "3.5.4-1",
-          "3.5.4-1~deb13u1",
-          "3.5.4-1~deb13u2",
-          "3.5.5-1~deb13u1"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-28389.json"
-        }
-      },
-      {
-        "package": {
-          "name": "openssl",
-          "ecosystem": "Debian:14",
-          "purl": "pkg:deb/debian/openssl?arch=source&distro=forky"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "3.6.2-1"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "3.5.1-1",
-          "3.5.2-1",
-          "3.5.3-1",
-          "3.5.4-1",
-          "3.5.4-1~deb13u1",
-          "3.5.4-1~deb13u2",
-          "3.5.5-1",
-          "3.5.5-1~deb13u1",
-          "3.5.5-1~deb13u2",
-          "3.5.6-1~deb13u1",
-          "3.5.6-1~deb13u2",
-          "3.5.7-1~deb13u1",
-          "3.5.7-1~deb13u2",
-          "3.6.0-1",
-          "3.6.0-2",
-          "3.6.0~~alpha1-1",
-          "3.6.0~~beta1-1",
-          "3.6.1-1",
-          "3.6.1-2",
-          "3.6.1-3"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-28389.json"
-        }
-      }
-    ],
-    "schema_version": "1.9.0",
-    "severity": [
-      {
-        "type": "CVSS_V3",
-        "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
-      }
-    ],
-    "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
-      "source_package": "Debian/openssl",
-      "distribution": "debian"
-    }
-  },
-  {
-    "id": "DEBIAN-CVE-2026-28388",
-    "details": "Issue summary: When a delta CRL that contains a Delta CRL Indicator extension is processed a NULL pointer dereference might happen if the required CRL Number extension is missing.  Impact summary: A NULL pointer dereference can trigger a crash which leads to a Denial of Service for an application.  When CRL processing and delta CRL processing is enabled during X.509 certificate verification, the delta CRL processing does not check whether the CRL Number extension is NULL before dereferencing it. When a malformed delta CRL file is being processed, this parameter can be NULL, causing a NULL pointer dereference.  Exploiting this issue requires the X509_V_FLAG_USE_DELTAS flag to be enabled in the verification context, the certificate being verified to contain a freshestCRL extension or the base CRL to have the EXFLAG_FRESHEST flag set, and an attacker to provide a malformed CRL to an application that processes it.  The vulnerability is limited to Denial of Service and cannot be escalated to achieve code execution or memory disclosure. For that reason the issue was assessed as Low severity according to our Security Policy.  The FIPS modules in 3.6, 3.5, 3.4, 3.3 and 3.0 are not affected by this issue, as the affected code is outside the OpenSSL FIPS module boundary.",
-    "modified": "2026-09-14T17:03:02.261783499Z",
-    "published": "2026-04-07T22:16:20.863Z",
-    "upstream": [
-      "CVE-2026-28388"
-    ],
-    "references": [
-      {
-        "type": "ADVISORY",
-        "url": "https://security-tracker.debian.org/tracker/CVE-2026-28388"
-      }
-    ],
-    "affected": [
-      {
-        "package": {
-          "name": "openssl",
-          "ecosystem": "Debian:12",
-          "purl": "pkg:deb/debian/openssl?arch=source&distro=bookworm"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "3.0.19-1~deb12u2"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "3.0.10-1",
-          "3.0.10-1~deb12u1",
-          "3.0.11-1",
-          "3.0.11-1~deb12u1",
-          "3.0.11-1~deb12u2",
-          "3.0.12-1",
-          "3.0.12-2",
-          "3.0.13-1~deb12u1",
-          "3.0.13-1~deb12u2",
-          "3.0.14-1~deb12u1",
-          "3.0.14-1~deb12u2",
-          "3.0.15-1~deb12u1",
-          "3.0.16-1~deb12u1",
-          "3.0.17-1~deb12u1",
-          "3.0.17-1~deb12u2",
-          "3.0.17-1~deb12u3",
-          "3.0.18-1~deb12u1",
-          "3.0.18-1~deb12u2",
-          "3.0.19-1~deb12u1",
-          "3.0.9-1"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-28388.json"
-        }
-      },
-      {
-        "package": {
-          "name": "openssl",
-          "ecosystem": "Debian:13",
-          "purl": "pkg:deb/debian/openssl?arch=source&distro=trixie"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "3.5.5-1~deb13u2"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "3.5.1-1",
-          "3.5.1-1+deb13u1",
-          "3.5.2-1",
-          "3.5.3-1",
-          "3.5.4-1",
-          "3.5.4-1~deb13u1",
-          "3.5.4-1~deb13u2",
-          "3.5.5-1~deb13u1"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-28388.json"
-        }
-      },
-      {
-        "package": {
-          "name": "openssl",
-          "ecosystem": "Debian:14",
-          "purl": "pkg:deb/debian/openssl?arch=source&distro=forky"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "3.6.2-1"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "3.5.1-1",
-          "3.5.2-1",
-          "3.5.3-1",
-          "3.5.4-1",
-          "3.5.4-1~deb13u1",
-          "3.5.4-1~deb13u2",
-          "3.5.5-1",
-          "3.5.5-1~deb13u1",
-          "3.5.5-1~deb13u2",
-          "3.5.6-1~deb13u1",
-          "3.5.6-1~deb13u2",
-          "3.5.7-1~deb13u1",
-          "3.5.7-1~deb13u2",
-          "3.6.0-1",
-          "3.6.0-2",
-          "3.6.0~~alpha1-1",
-          "3.6.0~~beta1-1",
-          "3.6.1-1",
-          "3.6.1-2",
-          "3.6.1-3"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-28388.json"
-        }
-      }
-    ],
-    "schema_version": "1.9.0",
-    "severity": [
-      {
-        "type": "CVSS_V3",
-        "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
-      }
-    ],
-    "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
-      "source_package": "Debian/openssl",
-      "distribution": "debian"
-    }
-  },
-  {
-    "id": "DEBIAN-CVE-2026-28387",
-    "details": "Issue summary: An uncommon configuration of clients performing DANE TLSA-based server authentication, when paired with uncommon server DANE TLSA records, may result in a use-after-free and/or double-free on the client side.  Impact summary: A use after free can have a range of potential consequences such as the corruption of valid data, crashes or execution of arbitrary code.  However, the issue only affects clients that make use of TLSA records with both the PKIX-TA(0/PKIX-EE(1) certificate usages and the DANE-TA(2) certificate usage.  By far the most common deployment of DANE is in SMTP MTAs for which RFC7672 recommends that clients treat as 'unusable' any TLSA records that have the PKIX certificate usages.  These SMTP (or other similar) clients are not vulnerable to this issue.  Conversely, any clients that support only the PKIX usages, and ignore the DANE-TA(2) usage are also not vulnerable.  The client would also need to be communicating with a server that publishes a TLSA RRset with both types of TLSA records.  No FIPS modules are affected by this issue, the problem code is outside the FIPS module boundary.",
-    "modified": "2026-09-14T17:03:02.091864656Z",
-    "published": "2026-04-07T22:16:20.700Z",
-    "upstream": [
-      "CVE-2026-28387"
-    ],
-    "references": [
-      {
-        "type": "ADVISORY",
-        "url": "https://security-tracker.debian.org/tracker/CVE-2026-28387"
-      }
-    ],
-    "affected": [
-      {
-        "package": {
-          "name": "openssl",
-          "ecosystem": "Debian:12",
-          "purl": "pkg:deb/debian/openssl?arch=source&distro=bookworm"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "3.0.19-1~deb12u2"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "3.0.10-1",
-          "3.0.10-1~deb12u1",
-          "3.0.11-1",
-          "3.0.11-1~deb12u1",
-          "3.0.11-1~deb12u2",
-          "3.0.12-1",
-          "3.0.12-2",
-          "3.0.13-1~deb12u1",
-          "3.0.13-1~deb12u2",
-          "3.0.14-1~deb12u1",
-          "3.0.14-1~deb12u2",
-          "3.0.15-1~deb12u1",
-          "3.0.16-1~deb12u1",
-          "3.0.17-1~deb12u1",
-          "3.0.17-1~deb12u2",
-          "3.0.17-1~deb12u3",
-          "3.0.18-1~deb12u1",
-          "3.0.18-1~deb12u2",
-          "3.0.19-1~deb12u1",
-          "3.0.9-1"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-28387.json"
-        }
-      },
-      {
-        "package": {
-          "name": "openssl",
-          "ecosystem": "Debian:13",
-          "purl": "pkg:deb/debian/openssl?arch=source&distro=trixie"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "3.5.5-1~deb13u2"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "3.5.1-1",
-          "3.5.1-1+deb13u1",
-          "3.5.2-1",
-          "3.5.3-1",
-          "3.5.4-1",
-          "3.5.4-1~deb13u1",
-          "3.5.4-1~deb13u2",
-          "3.5.5-1~deb13u1"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-28387.json"
-        }
-      },
-      {
-        "package": {
-          "name": "openssl",
-          "ecosystem": "Debian:14",
-          "purl": "pkg:deb/debian/openssl?arch=source&distro=forky"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "3.6.2-1"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "3.5.1-1",
-          "3.5.2-1",
-          "3.5.3-1",
-          "3.5.4-1",
-          "3.5.4-1~deb13u1",
-          "3.5.4-1~deb13u2",
-          "3.5.5-1",
-          "3.5.5-1~deb13u1",
-          "3.5.5-1~deb13u2",
-          "3.5.6-1~deb13u1",
-          "3.5.6-1~deb13u2",
-          "3.5.7-1~deb13u1",
-          "3.5.7-1~deb13u2",
-          "3.6.0-1",
-          "3.6.0-2",
-          "3.6.0~~alpha1-1",
-          "3.6.0~~beta1-1",
-          "3.6.1-1",
-          "3.6.1-2",
-          "3.6.1-3"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-28387.json"
-        }
-      }
-    ],
-    "schema_version": "1.9.0",
-    "severity": [
-      {
-        "type": "CVSS_V3",
-        "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
-      }
-    ],
-    "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
-      "source_package": "Debian/openssl",
-      "distribution": "debian"
-    }
-  },
-  {
-    "id": "DEBIAN-CVE-2026-28386",
-    "details": "Issue summary: Applications using AES-CFB128 encryption or decryption on systems with AVX-512 and VAES support can trigger an out-of-bounds read of up to 15 bytes when processing partial cipher blocks.  Impact summary: This out-of-bounds read may trigger a crash which leads to Denial of Service for an application if the input buffer ends at a memory page boundary and the following page is unmapped. There is no information disclosure as the over-read bytes are not written to output.  The vulnerable code path is only reached when processing partial blocks (when a previous call left an incomplete block and the current call provides fewer bytes than needed to complete it). Additionally, the input buffer must be positioned at a page boundary with the following page unmapped. CFB mode is not used in TLS/DTLS protocols, which use CBC, GCM, CCM, or ChaCha20-Poly1305 instead. For these reasons the issue was assessed as Low severity according to our Security Policy.  Only x86-64 systems with AVX-512 and VAES instruction support are affected. Other architectures and systems without VAES support use different code paths that are not affected.  OpenSSL FIPS module in 3.6 version is affected by this issue.",
-    "modified": "2026-09-14T17:03:01.926005373Z",
-    "published": "2026-04-07T22:16:20.513Z",
-    "upstream": [
-      "CVE-2026-28386"
-    ],
-    "references": [
-      {
-        "type": "ADVISORY",
-        "url": "https://security-tracker.debian.org/tracker/CVE-2026-28386"
-      }
-    ],
-    "affected": [
-      {
-        "package": {
-          "name": "openssl",
-          "ecosystem": "Debian:14",
-          "purl": "pkg:deb/debian/openssl?arch=source&distro=forky"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "3.6.2-1"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "3.5.1-1",
-          "3.5.2-1",
-          "3.5.3-1",
-          "3.5.4-1",
-          "3.5.4-1~deb13u1",
-          "3.5.4-1~deb13u2",
-          "3.5.5-1",
-          "3.5.5-1~deb13u1",
-          "3.5.5-1~deb13u2",
-          "3.5.6-1~deb13u1",
-          "3.5.6-1~deb13u2",
-          "3.5.7-1~deb13u1",
-          "3.5.7-1~deb13u2",
-          "3.6.0-1",
-          "3.6.0-2",
-          "3.6.0~~alpha1-1",
-          "3.6.0~~beta1-1",
-          "3.6.1-1",
-          "3.6.1-2",
-          "3.6.1-3"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-28386.json"
-        }
-      }
-    ],
-    "schema_version": "1.9.0",
-    "severity": [
-      {
-        "type": "CVSS_V3",
-        "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
-      }
-    ],
-    "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
-      "source_package": "Debian/openssl",
-      "distribution": "debian"
-    }
-  },
-  {
-    "id": "DEBIAN-CVE-2026-34040",
-    "details": "Moby is an open source container framework. Prior to version 29.3.1, a security vulnerability has been detected that allows attackers to bypass authorization plugins (AuthZ). This issue has been patched in version 29.3.1.",
-    "modified": "2026-09-14T17:03:08.509667003Z",
-    "published": "2026-03-31T03:15:57.883Z",
-    "upstream": [
-      "CVE-2026-34040"
-    ],
-    "references": [
-      {
-        "type": "ADVISORY",
-        "url": "https://security-tracker.debian.org/tracker/CVE-2026-34040"
-      }
-    ],
-    "affected": [
-      {
-        "package": {
-          "name": "docker.io",
-          "ecosystem": "Debian:12",
-          "purl": "pkg:deb/debian/docker.io?arch=source&distro=bookworm"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "20.10.24+dfsg1-1",
-          "20.10.24+dfsg1-1+deb12u1",
-          "20.10.25+dfsg1-1",
-          "20.10.25+dfsg1-2",
-          "20.10.25+dfsg1-3",
-          "20.10.25+dfsg1-4",
-          "26.1.4+dfsg1-1",
-          "26.1.4+dfsg1-2",
-          "26.1.4+dfsg1-3",
-          "26.1.4+dfsg1-4",
-          "26.1.4+dfsg1-5",
-          "26.1.4+dfsg1-6",
-          "26.1.4+dfsg1-7",
-          "26.1.4+dfsg1-8",
-          "26.1.4+dfsg1-9",
-          "26.1.4+dfsg2-1",
-          "26.1.4+dfsg3-1",
-          "26.1.5+dfsg1-1",
-          "26.1.5+dfsg1-10",
-          "26.1.5+dfsg1-2",
-          "26.1.5+dfsg1-3",
-          "26.1.5+dfsg1-4",
-          "26.1.5+dfsg1-5",
-          "26.1.5+dfsg1-6",
-          "26.1.5+dfsg1-7",
-          "26.1.5+dfsg1-8",
-          "26.1.5+dfsg1-9",
-          "27.5.1+dfsg1-1",
-          "27.5.1+dfsg1-2",
-          "27.5.1+dfsg2-1",
-          "27.5.1+dfsg3-1",
-          "27.5.1+dfsg3-2",
-          "27.5.1+dfsg3-3",
-          "27.5.1+dfsg3-4",
-          "27.5.1+dfsg3-5",
-          "27.5.1+dfsg3-6",
-          "27.5.1+dfsg4-1",
-          "27.5.1+dfsg4-2",
-          "28.5.2+dfsg1-1",
-          "28.5.2+dfsg2-1",
-          "28.5.2+dfsg3-1",
-          "28.5.2+dfsg3-2",
-          "28.5.2+dfsg4-1",
-          "28.5.2+dfsg4-2",
-          "28.5.2+dfsg4-3",
-          "28.5.2+dfsg4-4"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-34040.json"
-        }
-      },
-      {
-        "package": {
-          "name": "docker.io",
-          "ecosystem": "Debian:13",
-          "purl": "pkg:deb/debian/docker.io?arch=source&distro=trixie"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "26.1.5+dfsg1-9+deb13u1"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "26.1.5+dfsg1-9"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-34040.json"
-        }
-      },
-      {
-        "package": {
-          "name": "docker.io",
-          "ecosystem": "Debian:14",
-          "purl": "pkg:deb/debian/docker.io?arch=source&distro=forky"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "28.5.2+dfsg4-2"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "26.1.5+dfsg1-10",
-          "26.1.5+dfsg1-9",
-          "27.5.1+dfsg1-1",
-          "27.5.1+dfsg1-2",
-          "27.5.1+dfsg2-1",
-          "27.5.1+dfsg3-1",
-          "27.5.1+dfsg3-2",
-          "27.5.1+dfsg3-3",
-          "27.5.1+dfsg3-4",
-          "27.5.1+dfsg3-5",
-          "27.5.1+dfsg3-6",
-          "27.5.1+dfsg4-1",
-          "27.5.1+dfsg4-2",
-          "28.5.2+dfsg1-1",
-          "28.5.2+dfsg2-1",
-          "28.5.2+dfsg3-1",
-          "28.5.2+dfsg3-2",
-          "28.5.2+dfsg4-1"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-34040.json"
-        }
-      }
-    ],
-    "schema_version": "1.9.0",
-    "severity": [
-      {
-        "type": "CVSS_V3",
-        "score": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
-      }
-    ],
-    "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
-      "source_package": "Debian/docker.io",
-      "distribution": "debian"
-    }
-  },
-  {
-    "id": "DEBIAN-CVE-2026-33997",
-    "details": "Moby is an open source container framework. Prior to version 29.3.1, a security vulnerability has been detected that allows plugins privilege validation to be bypassed during docker plugin install. Due to an error in the daemon's privilege comparison logic, the daemon may incorrectly accept a privilege set that differs from the one approved by the user. Plugins that request exactly one privilege are also affected, because no comparison is performed at all. This issue has been patched in version 29.3.1.",
-    "modified": "2026-09-10T08:47:24.384152113Z",
-    "published": "2026-03-31T03:15:57.523Z",
-    "upstream": [
-      "CVE-2026-33997"
-    ],
-    "references": [
-      {
-        "type": "ADVISORY",
-        "url": "https://security-tracker.debian.org/tracker/CVE-2026-33997"
-      }
-    ],
-    "affected": [
-      {
-        "package": {
-          "name": "docker.io",
-          "ecosystem": "Debian:12",
-          "purl": "pkg:deb/debian/docker.io?arch=source&distro=bookworm"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "20.10.24+dfsg1-1",
-          "20.10.24+dfsg1-1+deb12u1",
-          "20.10.25+dfsg1-1",
-          "20.10.25+dfsg1-2",
-          "20.10.25+dfsg1-3",
-          "20.10.25+dfsg1-4",
-          "26.1.4+dfsg1-1",
-          "26.1.4+dfsg1-2",
-          "26.1.4+dfsg1-3",
-          "26.1.4+dfsg1-4",
-          "26.1.4+dfsg1-5",
-          "26.1.4+dfsg1-6",
-          "26.1.4+dfsg1-7",
-          "26.1.4+dfsg1-8",
-          "26.1.4+dfsg1-9",
-          "26.1.4+dfsg2-1",
-          "26.1.4+dfsg3-1",
-          "26.1.5+dfsg1-1",
-          "26.1.5+dfsg1-10",
-          "26.1.5+dfsg1-2",
-          "26.1.5+dfsg1-3",
-          "26.1.5+dfsg1-4",
-          "26.1.5+dfsg1-5",
-          "26.1.5+dfsg1-6",
-          "26.1.5+dfsg1-7",
-          "26.1.5+dfsg1-8",
-          "26.1.5+dfsg1-9",
-          "27.5.1+dfsg1-1",
-          "27.5.1+dfsg1-2",
-          "27.5.1+dfsg2-1",
-          "27.5.1+dfsg3-1",
-          "27.5.1+dfsg3-2",
-          "27.5.1+dfsg3-3",
-          "27.5.1+dfsg3-4",
-          "27.5.1+dfsg3-5",
-          "27.5.1+dfsg3-6",
-          "27.5.1+dfsg4-1",
-          "27.5.1+dfsg4-2",
-          "28.5.2+dfsg1-1",
-          "28.5.2+dfsg2-1",
-          "28.5.2+dfsg3-1",
-          "28.5.2+dfsg3-2",
-          "28.5.2+dfsg4-1",
-          "28.5.2+dfsg4-2",
-          "28.5.2+dfsg4-3",
-          "28.5.2+dfsg4-4"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-33997.json"
-        }
-      },
-      {
-        "package": {
-          "name": "docker.io",
-          "ecosystem": "Debian:13",
-          "purl": "pkg:deb/debian/docker.io?arch=source&distro=trixie"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "26.1.5+dfsg1-9+deb13u1"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "26.1.5+dfsg1-9"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-33997.json"
-        }
-      },
-      {
-        "package": {
-          "name": "docker.io",
-          "ecosystem": "Debian:14",
-          "purl": "pkg:deb/debian/docker.io?arch=source&distro=forky"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "28.5.2+dfsg4-2"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "26.1.5+dfsg1-10",
-          "26.1.5+dfsg1-9",
-          "27.5.1+dfsg1-1",
-          "27.5.1+dfsg1-2",
-          "27.5.1+dfsg2-1",
-          "27.5.1+dfsg3-1",
-          "27.5.1+dfsg3-2",
-          "27.5.1+dfsg3-3",
-          "27.5.1+dfsg3-4",
-          "27.5.1+dfsg3-5",
-          "27.5.1+dfsg3-6",
-          "27.5.1+dfsg4-1",
-          "27.5.1+dfsg4-2",
-          "28.5.2+dfsg1-1",
-          "28.5.2+dfsg2-1",
-          "28.5.2+dfsg3-1",
-          "28.5.2+dfsg3-2",
-          "28.5.2+dfsg4-1"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-33997.json"
-        }
-      }
-    ],
-    "schema_version": "1.9.0",
-    "severity": [
-      {
-        "type": "CVSS_V3",
-        "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:N"
-      }
-    ],
-    "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
-      "source_package": "Debian/docker.io",
-      "distribution": "debian"
-    }
-  },
-  {
-    "id": "DEBIAN-CVE-2026-33748",
-    "details": "BuildKit is a toolkit for converting source code to build artifacts in an efficient, expressive and repeatable manner. Prior to version 0.28.1, insufficient validation of Git URL fragment subdir components may allow access to files outside the checked-out Git repository root. Possible access is limited to files on the same mounted filesystem. The issue has been fixed in version v0.28.1 The issue affects only builds that use Git URLs with a subpath component. As a workaround, avoid building Dockerfiles from untrusted sources or using the subdir component from an untrusted Git repository where the subdir component could point to a symlink.",
-    "modified": "2026-09-14T17:03:08.883344032Z",
-    "published": "2026-03-27T15:16:57.127Z",
-    "upstream": [
-      "CVE-2026-33748"
-    ],
-    "references": [
-      {
-        "type": "ADVISORY",
-        "url": "https://security-tracker.debian.org/tracker/CVE-2026-33748"
-      }
-    ],
-    "affected": [
-      {
-        "package": {
-          "name": "docker.io",
-          "ecosystem": "Debian:12",
-          "purl": "pkg:deb/debian/docker.io?arch=source&distro=bookworm"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "20.10.24+dfsg1-1",
-          "20.10.24+dfsg1-1+deb12u1",
-          "20.10.25+dfsg1-1",
-          "20.10.25+dfsg1-2",
-          "20.10.25+dfsg1-3",
-          "20.10.25+dfsg1-4",
-          "26.1.4+dfsg1-1",
-          "26.1.4+dfsg1-2",
-          "26.1.4+dfsg1-3",
-          "26.1.4+dfsg1-4",
-          "26.1.4+dfsg1-5",
-          "26.1.4+dfsg1-6",
-          "26.1.4+dfsg1-7",
-          "26.1.4+dfsg1-8",
-          "26.1.4+dfsg1-9",
-          "26.1.4+dfsg2-1",
-          "26.1.4+dfsg3-1",
-          "26.1.5+dfsg1-1",
-          "26.1.5+dfsg1-10",
-          "26.1.5+dfsg1-2",
-          "26.1.5+dfsg1-3",
-          "26.1.5+dfsg1-4",
-          "26.1.5+dfsg1-5",
-          "26.1.5+dfsg1-6",
-          "26.1.5+dfsg1-7",
-          "26.1.5+dfsg1-8",
-          "26.1.5+dfsg1-9",
-          "27.5.1+dfsg1-1",
-          "27.5.1+dfsg1-2",
-          "27.5.1+dfsg2-1",
-          "27.5.1+dfsg3-1",
-          "27.5.1+dfsg3-2",
-          "27.5.1+dfsg3-3",
-          "27.5.1+dfsg3-4",
-          "27.5.1+dfsg3-5",
-          "27.5.1+dfsg3-6",
-          "27.5.1+dfsg4-1",
-          "27.5.1+dfsg4-2",
-          "28.5.2+dfsg1-1",
-          "28.5.2+dfsg2-1",
-          "28.5.2+dfsg3-1",
-          "28.5.2+dfsg3-2",
-          "28.5.2+dfsg4-1",
-          "28.5.2+dfsg4-2",
-          "28.5.2+dfsg4-3",
-          "28.5.2+dfsg4-4"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-33748.json"
-        }
-      },
-      {
-        "package": {
-          "name": "docker.io",
-          "ecosystem": "Debian:13",
-          "purl": "pkg:deb/debian/docker.io?arch=source&distro=trixie"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "26.1.5+dfsg1-9+deb13u1"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "26.1.5+dfsg1-9"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-33748.json"
-        }
-      },
-      {
-        "package": {
-          "name": "docker.io",
-          "ecosystem": "Debian:14",
-          "purl": "pkg:deb/debian/docker.io?arch=source&distro=forky"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "28.5.2+dfsg4-3"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "26.1.5+dfsg1-10",
-          "26.1.5+dfsg1-9",
-          "27.5.1+dfsg1-1",
-          "27.5.1+dfsg1-2",
-          "27.5.1+dfsg2-1",
-          "27.5.1+dfsg3-1",
-          "27.5.1+dfsg3-2",
-          "27.5.1+dfsg3-3",
-          "27.5.1+dfsg3-4",
-          "27.5.1+dfsg3-5",
-          "27.5.1+dfsg3-6",
-          "27.5.1+dfsg4-1",
-          "27.5.1+dfsg4-2",
-          "28.5.2+dfsg1-1",
-          "28.5.2+dfsg2-1",
-          "28.5.2+dfsg3-1",
-          "28.5.2+dfsg3-2",
-          "28.5.2+dfsg4-1",
-          "28.5.2+dfsg4-2"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-33748.json"
-        }
-      }
-    ],
-    "schema_version": "1.9.0",
-    "severity": [
-      {
-        "type": "CVSS_V3",
-        "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
-      }
-    ],
-    "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
-      "source_package": "Debian/docker.io",
-      "distribution": "debian"
-    }
-  },
-  {
-    "id": "DEBIAN-CVE-2026-33747",
-    "details": "BuildKit is a toolkit for converting source code to build artifacts in an efficient, expressive and repeatable manner. Prior to version 0.28.1, when using a custom BuildKit frontend, the frontend can craft an API message that causes files to be written outside of the BuildKit state directory for the execution context. The issue has been fixed in v0.28.1. The vulnerability requires using an untrusted BuildKit frontend set with `#syntax` or `--build-arg BUILDKIT_SYNTAX`. Using these options with a well-known frontend image like `docker/dockerfile` is not affected.",
-    "modified": "2026-09-14T17:03:08.495774379Z",
-    "published": "2026-03-27T01:16:21.330Z",
-    "upstream": [
-      "CVE-2026-33747"
-    ],
-    "references": [
-      {
-        "type": "ADVISORY",
-        "url": "https://security-tracker.debian.org/tracker/CVE-2026-33747"
-      }
-    ],
-    "affected": [
-      {
-        "package": {
-          "name": "docker.io",
-          "ecosystem": "Debian:12",
-          "purl": "pkg:deb/debian/docker.io?arch=source&distro=bookworm"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "20.10.24+dfsg1-1",
-          "20.10.24+dfsg1-1+deb12u1",
-          "20.10.25+dfsg1-1",
-          "20.10.25+dfsg1-2",
-          "20.10.25+dfsg1-3",
-          "20.10.25+dfsg1-4",
-          "26.1.4+dfsg1-1",
-          "26.1.4+dfsg1-2",
-          "26.1.4+dfsg1-3",
-          "26.1.4+dfsg1-4",
-          "26.1.4+dfsg1-5",
-          "26.1.4+dfsg1-6",
-          "26.1.4+dfsg1-7",
-          "26.1.4+dfsg1-8",
-          "26.1.4+dfsg1-9",
-          "26.1.4+dfsg2-1",
-          "26.1.4+dfsg3-1",
-          "26.1.5+dfsg1-1",
-          "26.1.5+dfsg1-10",
-          "26.1.5+dfsg1-2",
-          "26.1.5+dfsg1-3",
-          "26.1.5+dfsg1-4",
-          "26.1.5+dfsg1-5",
-          "26.1.5+dfsg1-6",
-          "26.1.5+dfsg1-7",
-          "26.1.5+dfsg1-8",
-          "26.1.5+dfsg1-9",
-          "27.5.1+dfsg1-1",
-          "27.5.1+dfsg1-2",
-          "27.5.1+dfsg2-1",
-          "27.5.1+dfsg3-1",
-          "27.5.1+dfsg3-2",
-          "27.5.1+dfsg3-3",
-          "27.5.1+dfsg3-4",
-          "27.5.1+dfsg3-5",
-          "27.5.1+dfsg3-6",
-          "27.5.1+dfsg4-1",
-          "27.5.1+dfsg4-2",
-          "28.5.2+dfsg1-1",
-          "28.5.2+dfsg2-1",
-          "28.5.2+dfsg3-1",
-          "28.5.2+dfsg3-2",
-          "28.5.2+dfsg4-1",
-          "28.5.2+dfsg4-2",
-          "28.5.2+dfsg4-3",
-          "28.5.2+dfsg4-4"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-33747.json"
-        }
-      },
-      {
-        "package": {
-          "name": "docker.io",
-          "ecosystem": "Debian:13",
-          "purl": "pkg:deb/debian/docker.io?arch=source&distro=trixie"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "26.1.5+dfsg1-9+deb13u1"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "26.1.5+dfsg1-9"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-33747.json"
-        }
-      },
-      {
-        "package": {
-          "name": "docker.io",
-          "ecosystem": "Debian:14",
-          "purl": "pkg:deb/debian/docker.io?arch=source&distro=forky"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "28.5.2+dfsg4-3"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "26.1.5+dfsg1-10",
-          "26.1.5+dfsg1-9",
-          "27.5.1+dfsg1-1",
-          "27.5.1+dfsg1-2",
-          "27.5.1+dfsg2-1",
-          "27.5.1+dfsg3-1",
-          "27.5.1+dfsg3-2",
-          "27.5.1+dfsg3-3",
-          "27.5.1+dfsg3-4",
-          "27.5.1+dfsg3-5",
-          "27.5.1+dfsg3-6",
-          "27.5.1+dfsg4-1",
-          "27.5.1+dfsg4-2",
-          "28.5.2+dfsg1-1",
-          "28.5.2+dfsg2-1",
-          "28.5.2+dfsg3-1",
-          "28.5.2+dfsg3-2",
-          "28.5.2+dfsg4-1",
-          "28.5.2+dfsg4-2"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-33747.json"
-        }
-      }
-    ],
-    "schema_version": "1.9.0",
-    "severity": [
-      {
-        "type": "CVSS_V3",
-        "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
-      }
-    ],
-    "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
-      "source_package": "Debian/docker.io",
-      "distribution": "debian"
-    }
-  },
-  {
-    "id": "DEBIAN-CVE-2026-32647",
-    "details": "NGINX Open Source and NGINX Plus have a vulnerability in the ngx_http_mp4_module module, which might allow an attacker to trigger a buffer over-read or over-write to the NGINX worker memory resulting in its termination or possibly code execution, using a specially crafted MP4 file. This issue affects NGINX Open Source and NGINX Plus if it is built with the ngx_http_mp4_module module and the mp4 directive is used in the configuration file. Additionally, the attack is possible only if an attacker can trigger the processing of a specially crafted MP4 file with the ngx_http_mp4_module module.    Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
-    "modified": "2026-09-14T17:03:27.184172254Z",
-    "published": "2026-03-24T15:16:34.667Z",
-    "upstream": [
-      "CVE-2026-32647"
-    ],
-    "references": [
-      {
-        "type": "ADVISORY",
-        "url": "https://security-tracker.debian.org/tracker/CVE-2026-32647"
-      }
-    ],
-    "affected": [
-      {
-        "package": {
-          "name": "nginx",
-          "ecosystem": "Debian:12",
-          "purl": "pkg:deb/debian/nginx?arch=source&distro=bookworm"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "1.22.1-9+deb12u5"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "1.22.1-9",
-          "1.22.1-9+deb12u1",
-          "1.22.1-9+deb12u2",
-          "1.22.1-9+deb12u3",
-          "1.22.1-9+deb12u4"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-32647.json"
-        }
-      },
-      {
-        "package": {
-          "name": "nginx",
-          "ecosystem": "Debian:13",
-          "purl": "pkg:deb/debian/nginx?arch=source&distro=trixie"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "1.26.3-3+deb13u3"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "1.26.3-3",
-          "1.26.3-3+deb13u1",
-          "1.26.3-3+deb13u2"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-32647.json"
-        }
-      },
-      {
-        "package": {
-          "name": "nginx",
-          "ecosystem": "Debian:14",
-          "purl": "pkg:deb/debian/nginx?arch=source&distro=forky"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "1.28.3-1"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "1.26.3-3",
-          "1.28.0-1",
-          "1.28.0-2",
-          "1.28.0-3",
-          "1.28.0-4",
-          "1.28.0-5",
-          "1.28.0-6",
-          "1.28.1-1",
-          "1.28.1-2",
-          "1.28.1-3",
-          "1.28.2-1",
-          "1.28.2-2",
-          "1.28.2-3",
-          "1.28.2-4"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-32647.json"
-        }
-      }
-    ],
-    "schema_version": "1.9.0",
-    "severity": [
-      {
-        "type": "CVSS_V4",
-        "score": "CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
-      }
-    ],
-    "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
-      "source_package": "Debian/nginx",
-      "distribution": "debian"
-    }
-  },
-  {
-    "id": "DEBIAN-CVE-2026-28755",
-    "details": "NGINX Plus and NGINX Open Source have a vulnerability in the ngx_stream_ssl_module module due to the improper handling of revoked certificates when configured with the ssl_verify_client on and ssl_ocsp on directives, allowing the TLS handshake to succeed even after an OCSP check identifies the certificate as revoked.      Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
-    "modified": "2026-09-14T17:03:02.655063354Z",
-    "published": "2026-03-24T15:16:33.773Z",
-    "upstream": [
-      "CVE-2026-28755"
-    ],
-    "references": [
-      {
-        "type": "ADVISORY",
-        "url": "https://security-tracker.debian.org/tracker/CVE-2026-28755"
-      }
-    ],
-    "affected": [
-      {
-        "package": {
-          "name": "nginx",
-          "ecosystem": "Debian:14",
-          "purl": "pkg:deb/debian/nginx?arch=source&distro=forky"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "1.28.3-2"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "1.26.3-3",
-          "1.28.0-1",
-          "1.28.0-2",
-          "1.28.0-3",
-          "1.28.0-4",
-          "1.28.0-5",
-          "1.28.0-6",
-          "1.28.1-1",
-          "1.28.1-2",
-          "1.28.1-3",
-          "1.28.2-1",
-          "1.28.2-2",
-          "1.28.2-3",
-          "1.28.2-4",
-          "1.28.3-1"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-28755.json"
-        }
-      }
-    ],
-    "schema_version": "1.9.0",
-    "severity": [
-      {
-        "type": "CVSS_V3",
-        "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N"
-      }
-    ],
-    "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
-      "source_package": "Debian/nginx",
-      "distribution": "debian"
-    }
-  },
-  {
-    "id": "DEBIAN-CVE-2026-28753",
-    "details": "NGINX Plus and NGINX Open Source have a vulnerability in the ngx_mail_smtp_module module due to the improper handling of CRLF sequences in DNS responses. This allows an attacker-controlled DNS server to inject arbitrary headers into SMTP upstream requests, leading to potential request manipulation. Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
-    "modified": "2026-09-14T17:03:25.203885203Z",
-    "published": "2026-03-24T15:16:33.560Z",
-    "upstream": [
-      "CVE-2026-28753"
-    ],
-    "references": [
-      {
-        "type": "ADVISORY",
-        "url": "https://security-tracker.debian.org/tracker/CVE-2026-28753"
-      }
-    ],
-    "affected": [
-      {
-        "package": {
-          "name": "nginx",
-          "ecosystem": "Debian:12",
-          "purl": "pkg:deb/debian/nginx?arch=source&distro=bookworm"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "1.22.1-9+deb12u5"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "1.22.1-9",
-          "1.22.1-9+deb12u1",
-          "1.22.1-9+deb12u2",
-          "1.22.1-9+deb12u3",
-          "1.22.1-9+deb12u4"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-28753.json"
-        }
-      },
-      {
-        "package": {
-          "name": "nginx",
-          "ecosystem": "Debian:13",
-          "purl": "pkg:deb/debian/nginx?arch=source&distro=trixie"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "1.26.3-3+deb13u3"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "1.26.3-3",
-          "1.26.3-3+deb13u1",
-          "1.26.3-3+deb13u2"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-28753.json"
-        }
-      },
-      {
-        "package": {
-          "name": "nginx",
-          "ecosystem": "Debian:14",
-          "purl": "pkg:deb/debian/nginx?arch=source&distro=forky"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "1.28.3-1"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "1.26.3-3",
-          "1.28.0-1",
-          "1.28.0-2",
-          "1.28.0-3",
-          "1.28.0-4",
-          "1.28.0-5",
-          "1.28.0-6",
-          "1.28.1-1",
-          "1.28.1-2",
-          "1.28.1-3",
-          "1.28.2-1",
-          "1.28.2-2",
-          "1.28.2-3",
-          "1.28.2-4"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-28753.json"
-        }
-      }
-    ],
-    "schema_version": "1.9.0",
-    "severity": [
-      {
-        "type": "CVSS_V4",
-        "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
-      }
-    ],
-    "_metadata": {
-      "fetched_at": "2026-09-29T10:23:01.130820+00:00",
-      "source_package": "Debian/nginx",
       "distribution": "debian"
     }
   }
