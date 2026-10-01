@@ -121,7 +121,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -363,7 +363,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -605,7 +605,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -847,7 +847,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -1089,7 +1089,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -1216,7 +1216,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -1343,7 +1343,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -1470,7 +1470,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -1478,7 +1478,7 @@
   {
     "id": "DEBIAN-CVE-2026-54873",
     "details": "Issue summary: QUIC process may keep memory for QUIC packet buffer for much longer period than necessary.  Impact summary: Remote peer can exploit this vulnerability by sending maliciously crafted packets, making the local QUIC stack to keep the memory for packet buffers allocated. The time for which the memory remains allocated is entirely under the control of the potentially malicious remote peer.  CWE: CWE-770: Allocation of Resources Without Limits or Throttling  Description: To save copy operation from the packet buffer to the stream reassemble buffer the QUIC stack leaves the stream data on the packet buffer waiting to be copied to a buffer provided by the local receiving application. The QUIC stack releases a reference to the packet buffer only after the data are copied to the application buffer. This design is more efficient for legitimate data transfers but enables an attacker to allocate a lot more memory than actually required by the data kept in the receiving stream buffer.  To mitigate the vulnerability, the QUIC stack now calculates and monitors memory overhead for every stream. The memory overhead for a single stream frame is calculated as a difference between the size of the whole packet that carries the stream frame and the size of the stream frame itself. The memory overhead for a single stream frame is added to the total (cumulative) memory overhead QUIC stack keeps for each stream. Once the cumulative memory overhead exceeds 64kB, the QUIC stack moves the stream frame data from the packet buffer to the stream buffer, starting with the next packet received.  FIPS impact: no The FIPS module is not affected as the QUIC implementation is outside of the OpenSSL FIPS module boundary.",
-    "modified": "2026-09-30T08:00:09.548790503Z",
+    "modified": "2026-10-01T09:00:50.996896814Z",
     "published": "2026-09-29T16:17:08.763Z",
     "upstream": [
       "CVE-2026-54873"
@@ -1590,8 +1590,14 @@
       }
     ],
     "schema_version": "1.9.0",
+    "severity": [
+      {
+        "type": "CVSS_V3",
+        "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+      }
+    ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -1833,7 +1839,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -1841,7 +1847,7 @@
   {
     "id": "DEBIAN-CVE-2026-42772",
     "details": "Issue summary: The QUIC stream reassembly algorithm performance deteriorates progressively as packets are arriving out of order. The worst case has a quadratic complexity proportional to the number of stream frames kept in the buffer for the received stream data.  Impact summary: A remote QUIC peer that completes the handshake can create a connection-scoped CPU pressure and potentially a Denial of Service using compliant STREAM frames inside the advertised receive window, with low attacker bandwidth.  CWE: CWE-407: Inefficient Algorithmic Complexity  Description: OpenSSL manages received QUIC stream fragments using a doubly-linked list. While it optimizes for append operations (at the end of the list), it falls back to a head-to-tail linear search for any fragment that does not immediately follow the current `tail`.  By manipulating the sequence of offsets, an attacker can force the server to perform O(n^2) operations, consuming excessive CPU time for the QUIC process.  FIPS impact: no The FIPS module is not affected as the QUIC implementation is outside of the OpenSSL FIPS module boundary.",
-    "modified": "2026-09-30T08:00:09.662664518Z",
+    "modified": "2026-10-01T09:00:50.378805942Z",
     "published": "2026-09-29T16:17:07.640Z",
     "upstream": [
       "CVE-2026-42772"
@@ -1953,8 +1959,14 @@
       }
     ],
     "schema_version": "1.9.0",
+    "severity": [
+      {
+        "type": "CVSS_V3",
+        "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+      }
+    ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -1962,7 +1974,7 @@
   {
     "id": "DEBIAN-CVE-2026-35191",
     "details": "Issue summary: The OpenSSL QUIC server, when configured to not preform address validation, can be forced to count incoming packets multiple times in its unvalidated credit computation, leading to a violation of the RFC 9000 unvalidated connection amplification limit of 3 times the amount of data received.  Impact summary: A remote attacker able to spoof packets to a server using the OpenSSL QUIC implementation might use the server for an amplification of a DDoS attack.  CWE: CWE-440: Expected Behavior Violation   Description: OpenSSL's QUIC stack, when operating as a server, enforces client address validation (RFC 9000, Section 8), to confirm the peer address is not used for a traffic amplification attack.  If this feature is disabled on the server, the QUIC stack limits the amount of server data that can be sent to 3 times the amount of data received from the peer address, until such time as the TLS handshake is completed.  The OpenSSL QUIC server, when operating in non-validation mode, adds the length of the whole datagram received to the unvalidated credit limit when processing each QUIC packet in the datagram. A remote peer may, after establishing a connection with an initial client hello frame, send a subsequent datagram containing multiple QUIC packets, leading the server to account the entire datagram length for each packet in the datagram, resulting in the server believing that the peer has sent more data than it actually has, thereby violating the 3x amplification limit mandated by the RFC.  FIPS impact: no As the QUIC stack lives outside the FIPS module boundary, no FIPS modules are affected by this CVE.",
-    "modified": "2026-09-30T08:00:09.533626476Z",
+    "modified": "2026-10-01T09:00:11.913654833Z",
     "published": "2026-09-29T16:17:07.490Z",
     "upstream": [
       "CVE-2026-35191"
@@ -2074,8 +2086,14 @@
       }
     ],
     "schema_version": "1.9.0",
+    "severity": [
+      {
+        "type": "CVSS_V3",
+        "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:L"
+      }
+    ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -2083,7 +2101,7 @@
   {
     "id": "DEBIAN-CVE-2026-35189",
     "details": "Issue summary: A certificate with many nameRelativeToCRLIssuer CRL distribution points causes disproportionate heap growth when OpenSSL caches X.509 extensions.  Impact summary: Receiving a crafted certificate from a malicious peer can lead to significant memory pressure and possible Denial of Service in clients or in servers that solicit client certificates.  CWE: CWE-770: Allocation of Resources Without Limits or Throttling  Description: A certificate or a set of certificates that fits under the limit for size of certificates accepted from the peer (~100 KiB) can result in allocation of several hundred MiB of resident memory on the receiving side during a normal TLS handshake.  This may be enough to crash the client or server, if multiple concurrent connections lead to similarly large memory allocations.  The fix postpones processing of the CRL distribution points extensions in certificates to the time when the processed value is required for CRL processing. This avoids keeping large memory allocations for a long time when such certificates are received.  FIPS impact: no The affected code is outside the FIPS module boundary.",
-    "modified": "2026-09-30T08:00:09.184929012Z",
+    "modified": "2026-10-01T09:00:50.260811369Z",
     "published": "2026-09-29T16:17:07.330Z",
     "upstream": [
       "CVE-2026-35189"
@@ -2310,8 +2328,14 @@
       }
     ],
     "schema_version": "1.9.0",
+    "severity": [
+      {
+        "type": "CVSS_V3",
+        "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+      }
+    ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -2319,7 +2343,7 @@
   {
     "id": "DEBIAN-CVE-2026-90439",
     "details": "NGINX Plus and NGINX Open Source have a vulnerability in the ngx_http_v3_module module. When using HTTP/3 with OpenSSL versions <= OpenSSL 3.5.0 under certain configurations, a limited heap buffer overflow could happen while processing a TLS handshake. This can happen in a non-deterministic manner that is beyond the attacker's control. This may cause a heap buffer overflow in the NGINX worker process leading to a restart and/or limited data corruption.  Impact: This vulnerability may allow remote attackers to cause a denial-of-service (DoS) on the NGINX system or limited data corruption. There is no control plane exposure; this is a data plane issue only.     Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
-    "modified": "2026-09-19T23:00:42.507651233Z",
+    "modified": "2026-10-01T03:03:53.027734824Z",
     "published": "2026-09-15T15:17:27.023Z",
     "upstream": [
       "CVE-2026-90439"
@@ -2401,7 +2425,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -2409,7 +2433,7 @@
   {
     "id": "DEBIAN-CVE-2026-82209",
     "details": "When libpsl support is enabled, libcurl fails to enforce the Public Suffix List boundary check when processing a `Set-Cookie` header where the `Domain` attribute explicitly matches an origin host that is itself a public suffix (e.g., `Domain=co.uk` set by `co.uk`).  Instead of coercing it into a strict host-only cookie, libcurl saves the cookie with wildcard domain scope (`.co.uk`). Consequently, the cookie is inappropriately included in subsequent outbound requests or HTTP redirects to arbitrary sibling subdomains under the same public suffix (e.g., `attacker.co.uk`).",
-    "modified": "2026-09-19T05:00:31.462930496Z",
+    "modified": "2026-10-01T03:03:43.812257831Z",
     "published": "2026-09-06T18:17:22.847Z",
     "upstream": [
       "CVE-2026-82209"
@@ -2575,6 +2599,10 @@
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
           "8.22.0~rc3-1+exp1",
+          "8.23.0~rc1-1",
+          "8.23.0~rc1-2",
+          "8.23.0~rc2-1",
+          "8.23.0~rc2-1+exp1",
           "8.3.0-1",
           "8.3.0-2",
           "8.3.0-2~bpo12+1",
@@ -2722,7 +2750,11 @@
           "8.22.0~rc2-1",
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
-          "8.22.0~rc3-1+exp1"
+          "8.22.0~rc3-1+exp1",
+          "8.23.0~rc1-1",
+          "8.23.0~rc1-2",
+          "8.23.0~rc2-1",
+          "8.23.0~rc2-1+exp1"
         ],
         "ecosystem_specific": {
           "urgency": "not yet assigned"
@@ -2840,7 +2872,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -2848,7 +2880,7 @@
   {
     "id": "DEBIAN-CVE-2026-82208",
     "details": "With the wolfSSL backend, when CA caching is enabled and an `CURLOPT_SSL_CTX_FUNCTION` callback replaces the trust store, libcurl can silently reinstall the cached store after the callback returns. A certificate trusted by the cached store but rejected by the callback-selected store is then incorrectly accepted.",
-    "modified": "2026-09-19T05:00:31.327054200Z",
+    "modified": "2026-10-01T03:03:43.765957263Z",
     "published": "2026-09-06T18:17:22.733Z",
     "upstream": [
       "CVE-2026-82208"
@@ -2956,7 +2988,11 @@
           "8.22.0~rc2-1",
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
-          "8.22.0~rc3-1+exp1"
+          "8.22.0~rc3-1+exp1",
+          "8.23.0~rc1-1",
+          "8.23.0~rc1-2",
+          "8.23.0~rc2-1",
+          "8.23.0~rc2-1+exp1"
         ],
         "ecosystem_specific": {
           "urgency": "unimportant"
@@ -3074,7 +3110,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -3082,7 +3118,7 @@
   {
     "id": "DEBIAN-CVE-2026-80255",
     "details": "A `Set-Cookie:` header using tab (horizontal tab, ASCII code 9) instead of space (ascii code 32) immediately before the `Secure` attribute causes curl to store the cookie without its Secure flag. The cookie might then wrongfully be sent over plaintext HTTP on subsequent requests to the same host.",
-    "modified": "2026-09-19T05:00:11.595065567Z",
+    "modified": "2026-10-01T03:03:47.201580201Z",
     "published": "2026-09-06T18:17:22.623Z",
     "upstream": [
       "CVE-2026-80255"
@@ -3190,7 +3226,11 @@
           "8.22.0~rc2-1",
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
-          "8.22.0~rc3-1+exp1"
+          "8.22.0~rc3-1+exp1",
+          "8.23.0~rc1-1",
+          "8.23.0~rc1-2",
+          "8.23.0~rc2-1",
+          "8.23.0~rc2-1+exp1"
         ],
         "ecosystem_specific": {
           "urgency": "not yet assigned"
@@ -3308,7 +3348,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -3316,7 +3356,7 @@
   {
     "id": "DEBIAN-CVE-2026-80230",
     "details": "When `CURLOPT_PINNEDPUBLICKEY` is configured alongside options that disable standard peer verification (`CURLOPT_SSL_VERIFYPEER = 0` and `CURLOPT_SSL_VERIFYHOST = 0`), libcurl fails to enforce public key pinning on connections established without a presented server certificate. Bypassing the pinning check under these disabled-verification conditions allows unauthenticated connections to succeed when they should be rejected.",
-    "modified": "2026-09-19T05:00:12.632219789Z",
+    "modified": "2026-10-01T03:03:47.249356419Z",
     "published": "2026-09-06T18:17:22.327Z",
     "upstream": [
       "CVE-2026-80230"
@@ -3482,6 +3522,10 @@
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
           "8.22.0~rc3-1+exp1",
+          "8.23.0~rc1-1",
+          "8.23.0~rc1-2",
+          "8.23.0~rc2-1",
+          "8.23.0~rc2-1+exp1",
           "8.3.0-1",
           "8.3.0-2",
           "8.3.0-2~bpo12+1",
@@ -3629,7 +3673,11 @@
           "8.22.0~rc2-1",
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
-          "8.22.0~rc3-1+exp1"
+          "8.22.0~rc3-1+exp1",
+          "8.23.0~rc1-1",
+          "8.23.0~rc1-2",
+          "8.23.0~rc2-1",
+          "8.23.0~rc2-1+exp1"
         ],
         "ecosystem_specific": {
           "urgency": "not yet assigned"
@@ -3745,7 +3793,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -3753,7 +3801,7 @@
   {
     "id": "DEBIAN-CVE-2026-80229",
     "details": "When performing transfers via libcurl’s multi interface, pooled TLS connections can outlive their originating easy handles. In OpenSSL 3 provider configurations, libcurl attaches an allocated library context to the easy handle's state and passes it to OpenSSL without acquiring an ownership reference; destroying the easy handle prematurely frees this context while the active connection retains a dangling pointer, leading to a heap-use-after-free upon subsequent I/O or post-handshake operations.",
-    "modified": "2026-09-19T05:00:12.604085337Z",
+    "modified": "2026-10-01T03:03:42.502213646Z",
     "published": "2026-09-06T18:17:22.217Z",
     "upstream": [
       "CVE-2026-80229"
@@ -3861,7 +3909,11 @@
           "8.22.0~rc2-1",
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
-          "8.22.0~rc3-1+exp1"
+          "8.22.0~rc3-1+exp1",
+          "8.23.0~rc1-1",
+          "8.23.0~rc1-2",
+          "8.23.0~rc2-1",
+          "8.23.0~rc2-1+exp1"
         ],
         "ecosystem_specific": {
           "urgency": "not yet assigned"
@@ -3977,7 +4029,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -3985,7 +4037,7 @@
   {
     "id": "DEBIAN-CVE-2026-19931",
     "details": "A flaw in libcurl makes it wrongly reuse an HTTP connection setup for a given hostname using Negotiate authentication, when the initial request is done using empty credentials. This can make user B's request get sent over user A's previously authenticated connection.",
-    "modified": "2026-09-19T05:00:08.533671598Z",
+    "modified": "2026-10-01T03:03:19.732575577Z",
     "published": "2026-09-06T18:17:20.733Z",
     "upstream": [
       "CVE-2026-19931"
@@ -4151,6 +4203,10 @@
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
           "8.22.0~rc3-1+exp1",
+          "8.23.0~rc1-1",
+          "8.23.0~rc1-2",
+          "8.23.0~rc2-1",
+          "8.23.0~rc2-1+exp1",
           "8.3.0-1",
           "8.3.0-2",
           "8.3.0-2~bpo12+1",
@@ -4298,7 +4354,11 @@
           "8.22.0~rc2-1",
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
-          "8.22.0~rc3-1+exp1"
+          "8.22.0~rc3-1+exp1",
+          "8.23.0~rc1-1",
+          "8.23.0~rc1-2",
+          "8.23.0~rc2-1",
+          "8.23.0~rc2-1+exp1"
         ],
         "ecosystem_specific": {
           "urgency": "not yet assigned"
@@ -4412,7 +4472,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -4420,7 +4480,7 @@
   {
     "id": "DEBIAN-CVE-2026-18924",
     "details": "A flaw in libcurl's handling of HTTP/2 Server Push streams, when the parent handle is set to share connections with other handles, can lead to use-after-free in the cleanup process.",
-    "modified": "2026-09-19T05:00:07.997081648Z",
+    "modified": "2026-10-01T03:02:55.359149822Z",
     "published": "2026-09-06T18:17:20.553Z",
     "upstream": [
       "CVE-2026-18924"
@@ -4586,6 +4646,10 @@
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
           "8.22.0~rc3-1+exp1",
+          "8.23.0~rc1-1",
+          "8.23.0~rc1-2",
+          "8.23.0~rc2-1",
+          "8.23.0~rc2-1+exp1",
           "8.3.0-1",
           "8.3.0-2",
           "8.3.0-2~bpo12+1",
@@ -4733,7 +4797,11 @@
           "8.22.0~rc2-1",
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
-          "8.22.0~rc3-1+exp1"
+          "8.22.0~rc3-1+exp1",
+          "8.23.0~rc1-1",
+          "8.23.0~rc1-2",
+          "8.23.0~rc2-1",
+          "8.23.0~rc2-1+exp1"
         ],
         "ecosystem_specific": {
           "urgency": "not yet assigned"
@@ -4847,7 +4915,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -4855,7 +4923,7 @@
   {
     "id": "DEBIAN-CVE-2026-13608",
     "details": "A flaw in the libcurl SASL negotiation for LDAP authentication allows an incomplete handshake sequence to be misinterpreted as a successful cryptographic verification. An attacker executing a Man-in-the-Middle (MITM) attack can inject a premature or shortcut response that bypasses complete peer validation.",
-    "modified": "2026-09-19T05:00:08.007601882Z",
+    "modified": "2026-10-01T03:02:13.921762576Z",
     "published": "2026-09-06T18:17:19.810Z",
     "upstream": [
       "CVE-2026-13608"
@@ -5021,6 +5089,10 @@
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
           "8.22.0~rc3-1+exp1",
+          "8.23.0~rc1-1",
+          "8.23.0~rc1-2",
+          "8.23.0~rc2-1",
+          "8.23.0~rc2-1+exp1",
           "8.3.0-1",
           "8.3.0-2",
           "8.3.0-2~bpo12+1",
@@ -5168,7 +5240,11 @@
           "8.22.0~rc2-1",
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
-          "8.22.0~rc3-1+exp1"
+          "8.22.0~rc3-1+exp1",
+          "8.23.0~rc1-1",
+          "8.23.0~rc1-2",
+          "8.23.0~rc2-1",
+          "8.23.0~rc2-1+exp1"
         ],
         "ecosystem_specific": {
           "urgency": "not yet assigned"
@@ -5282,7 +5358,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -5290,7 +5366,7 @@
   {
     "id": "DEBIAN-CVE-2026-75803",
     "details": "Issue summary: ChaCha20-Poly1305 and AES-OCB decryption with an empty ciphertext can report success without verifying the supplied authentication tag when the operation is finalized by calling the EVP_Cipher() function.  Impact summary: Applications calling EVP_Cipher() on an empty ciphertext and expecting the call to check the AEAD tag may accept forged messages.  CWE: CWE-354 (Improper Validation of Integrity Check Value)  Description: The EVP_Cipher() API call for AEAD ciphers behaves like a one shot encryption and decryption call. It also verifies the AEAD tag after the decryption operation. However for AES-OCB and ChaCha20-Poly1305 ciphers it skipped the AEAD tag verification when an empty ciphertext was passed to the function. The callers of this function might believe that a successful return indicates a valid AEAD tag for these ciphers, even when that has not truly been validated in this case.  FIPS impact: no The FIPS modules in 4.0, 3.6, 3.5, 3.4, and 3.0 are not affected by this CVE as the affected algorithms are not FIPS approved and thus not implemented in the FIPS module.",
-    "modified": "2026-09-25T04:00:06.670676937Z",
+    "modified": "2026-10-01T03:03:34.474194253Z",
     "published": "2026-08-25T13:19:29.570Z",
     "upstream": [
       "CVE-2026-75803"
@@ -5427,6 +5503,7 @@
           "3.5.6-1~deb13u2",
           "3.5.7-1~deb13u1",
           "3.5.7-1~deb13u2",
+          "3.5.7-1~deb13u3",
           "3.6.0-1",
           "3.6.0-2",
           "3.6.0~~alpha1-1",
@@ -5453,7 +5530,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -5461,7 +5538,7 @@
   {
     "id": "DEBIAN-CVE-2026-63076",
     "details": "Issue summary: OpenSSL CMP password based protection verification only checks whether the protectionAlg parameter was not NULL and not its ASN.1 type, before treating it as a PBMParameter. A crafted message can contain a parameter of a different type, which is then dereferenced as an invalid pointer.  Impact summary: A remote, unauthenticated attacker can crash an application acting as a CMP server that accepts PBM-protected messages, or a CMP client talking to a malicious or intercepted CMP server, resulting in a Denial of Service.  CWE: CWE-476: NULL Pointer Dereference  Description: When verifying the password-based MAC protection of a CMP message, OpenSSL library reads the protectionAlg algorithm parameter with X509_ALGOR_get0(), which returns both the parameter type and its value pointer. The value is then cast to an ASN1_STRING and treated as the expected PBMParameter after only checking that pointer is not NULL. The parameter type returned by X509_ALGOR_get0() was never consulted.  This happens during protection verification, before any MAC is computed, so no knowledge of the PBM shared secret is required; the only precondition is that PBM verification is reachable. On the server side this is reached from OSSL_CMP_SRV_process_request() for any application that stands up a CMP server accepting PBM-protected messages, and on the client side from CMP response validation against a malicious or on-path (MITM) server. The reliable consequence is a denial of service; there is no memory disclosure, no controlled memory write, and no path to code execution. CMP is a specialized feature that an application must explicitly enable.  FIPS impact: no As the CMP code lives outside the FIPS module boundary, no FIPS modules are affected by this CVE.",
-    "modified": "2026-09-25T04:00:06.631276502Z",
+    "modified": "2026-10-01T03:03:29.171410777Z",
     "published": "2026-08-25T13:19:26.543Z",
     "upstream": [
       "CVE-2026-63076"
@@ -5598,6 +5675,7 @@
           "3.5.6-1~deb13u2",
           "3.5.7-1~deb13u1",
           "3.5.7-1~deb13u2",
+          "3.5.7-1~deb13u3",
           "3.6.0-1",
           "3.6.0-2",
           "3.6.0~~alpha1-1",
@@ -5624,7 +5702,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -5632,7 +5710,7 @@
   {
     "id": "DEBIAN-CVE-2026-63075",
     "details": "Issue summary: When OpenSSL processes QUIC traffic from a peer that repeatedly sends ack-eliciting packets while not acknowledging ACK-only responses, the QUIC stack can retain ACK-only packet metadata for the lifetime of the connection.  Impact summary: A remote peer that can complete a QUIC handshake can cause connection-scoped memory growth which may lead to Denial of Service through memory exhaustion, especially with sustained traffic or many concurrent QUIC connections.  CWE: CWE-770: Allocation of Resources Without Limits or Throttling  Description: When the OpenSSL QUIC stack sends an ACK-only packet, there is no requirement by the QUIC protocol that the peer will acknowledge that ACK-only packet (i.e. it is itself not ack-eliciting). However, the OpenSSL implementation stores the metadata about the ACK frames regardless. In and of itself that's ok, but if a malicious peer establishes a connection, and then drives the connection such that ACK-only packets are forced from the  OpenSSL implementation peer (i.e., by sending numerous PING frames), and then withholding any subsequent acks for ack-eliciting data, like legitimate data, said malicious peer can force inappropriate memory growth on the OpenSSL peer, potentially leading to a Denial of Service.  The fix is to ensure that we account for the transmission of the ACK-only packet in the packet histories high and low watermark without actually storing the ACK-only packet metadata itself.  FIPS impact: no The OpenSSL FIPS module is not affected as the QUIC code is outside the FIPS module boundary.",
-    "modified": "2026-09-13T16:00:07.276374603Z",
+    "modified": "2026-10-01T03:03:29.112289415Z",
     "published": "2026-08-25T13:19:26.413Z",
     "upstream": [
       "CVE-2026-63075"
@@ -5718,6 +5796,7 @@
           "3.5.6-1~deb13u2",
           "3.5.7-1~deb13u1",
           "3.5.7-1~deb13u2",
+          "3.5.7-1~deb13u3",
           "3.6.0-1",
           "3.6.0-2",
           "3.6.0~~alpha1-1",
@@ -5744,7 +5823,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -5752,7 +5831,7 @@
   {
     "id": "DEBIAN-CVE-2026-63074",
     "details": "Issue summary: The OpenSSL Certificate Management Protocol (CMP) caches additional certificates (extraCerts) sent in a CMP message, but never expunges them (for instance if they are invalid).  If a server reuses an OSSL_CMP_CTX frequently, this cache of extraCerts may grow unboundedly, and a malicious client may flood a CMP server with requests driving this growth.  Impact summary: Users utilizing a CMP server that reuses a single OSSL_CMP_CTX for the lifetime of a server process may observe unbounded memory growth in the event a malicious client repeatedly sends requests containing unique extra certificates, which may lead to OOM conditions.  CWE: CWE-770: Allocation of Resources Without Limits or Throttling  Description: If a remote user sends CMP messages to a server with a list of extraCerts and the message is rejected, the extraCerts from the message remains in the server contexts untrusted certificate stack.  This exposes servers with long lived ctx objects to Denial of Service attacks in which an attacker sends messages intending to be rejected with a large list of additional certificates repeatedly, forcing the server to store them indefinitely.     The issue was fixed by removing the added extra certs if the message is rejected, using the same method as when the context is configured to not do caching at all.  FIPS impact: no As the CMP code lives outside the FIPS module boundary, no FIPS modules are affected by this CVE.",
-    "modified": "2026-09-25T04:00:06.597109852Z",
+    "modified": "2026-10-01T03:03:29.158243451Z",
     "published": "2026-08-25T13:19:26.283Z",
     "upstream": [
       "CVE-2026-63074"
@@ -5889,6 +5968,7 @@
           "3.5.6-1~deb13u2",
           "3.5.7-1~deb13u1",
           "3.5.7-1~deb13u2",
+          "3.5.7-1~deb13u3",
           "3.6.0-1",
           "3.6.0-2",
           "3.6.0~~alpha1-1",
@@ -5915,7 +5995,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -5923,7 +6003,7 @@
   {
     "id": "DEBIAN-CVE-2026-63073",
     "details": "Issue summary: OpenSSL CMP response validation passed an unexpected response sender distinguished name directly as the format string to `ERR_raise_data()`.  Impact summary: A malicious or intercepted CMP endpoint can crash a CMP client that enforces an expected sender or uses a pinned server certificate whose subject becomes the default expected sender.  CWE: CWE-134 (Use of Externally-Controlled Format String)  Description: When validating a received CMP message, ossl_cmp_msg_check_update() converts the peer-supplied sender distinguished name with X509_NAME_oneline() and passes it directly as the format argument to ERR_raise_data(). Percent characters survive the conversion, so a sender DN such as \"CN=%s%n\" reaches BIO_vsnprintf() as an attacker-controlled format string with no matching variadic arguments. This path is only reached when the caller configures an expected sender or pins a server certificate, which is the normal configuration for a CMP client validating server responses.  Since the attacker controls the format string but none of the variadic arguments, such specifiers as %s and %n dereference or write through unrelated stack contents and crash the client. The reliable consequence is a denial of service, when the response comes from a malicious or intercepted CMP endpoint. There is no controlled memory write, arbitrary-address read, or reliable path to remote code execution.  FIPS impact: no  No FIPS modules are affected by this issue, as the CMP protocol implementation is outside the OpenSSL FIPS module boundary.",
-    "modified": "2026-09-13T16:00:06.002935918Z",
+    "modified": "2026-10-01T03:03:19.448812276Z",
     "published": "2026-08-25T13:19:26.147Z",
     "upstream": [
       "CVE-2026-63073"
@@ -6009,6 +6089,7 @@
           "3.5.6-1~deb13u2",
           "3.5.7-1~deb13u1",
           "3.5.7-1~deb13u2",
+          "3.5.7-1~deb13u3",
           "3.6.0-1",
           "3.6.0-2",
           "3.6.0~~alpha1-1",
@@ -6035,7 +6116,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -6043,7 +6124,7 @@
   {
     "id": "DEBIAN-CVE-2026-63072",
     "details": "Issue summary: OpenSSL CMS decryption sizes the key-unwrap output buffer based on querying the unwrapped key size, but the AES-WRAP-PAD unwrap primitive can write and cleanse more bytes than that query reports, causing an 8-byte out-of-bounds heap write.  Impact summary: An attacker who supplies a crafted CMS message can trigger a deterministic 8-byte out-of-bounds heap write when the victim decrypts it with CMS_decrypt(), corrupting the heap and typically resulting in a Denial of Service.  CWE: CWE-787: Out-of-bounds Write  Description: The key-wrap OID is potentially attacker-controlled on the wire. CMS unwrapping allows both id-aesNNN-wrap-pad and id-aesNNN-wrap ciphers. An attacker can take a legitimate message and change a single OID byte to select the padded variant while leaving the message otherwise valid. Since the unwrap key is derived from the recipient's private operation (ECDH key agreement or ML-KEM decapsulation), the RFC 5649 integrity check cannot pass, and the decryption fails with integrity failure.  The write is a fixed-size (8-byte), fixed-value (zero) heap overflow immediately past the allocation, requires no special configuration, and is reachable from the public CMS_decrypt() function. The consequence is a heap corruption leading to a Denial of Service. The fix in the CMS code sizes the unwrap output buffer for the worst case so a failed unwrap cannot write past the allocation.  FIPS impact: no  As the CMS code lives outside the FIPS module boundary, no FIPS modules are affected by this CVE.",
-    "modified": "2026-09-25T04:00:06.663493717Z",
+    "modified": "2026-10-01T03:03:29.150126549Z",
     "published": "2026-08-25T13:19:26.010Z",
     "upstream": [
       "CVE-2026-63072"
@@ -6180,6 +6261,7 @@
           "3.5.6-1~deb13u2",
           "3.5.7-1~deb13u1",
           "3.5.7-1~deb13u2",
+          "3.5.7-1~deb13u3",
           "3.6.0-1",
           "3.6.0-2",
           "3.6.0~~alpha1-1",
@@ -6206,7 +6288,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -6214,7 +6296,7 @@
   {
     "id": "DEBIAN-CVE-2026-54874",
     "details": "Issue summary: Receiving a DTLS record for a future epoch while a handshake is in progress causes OpenSSL to buffer far more memory than the record itself requires.  Impact summary: A peer can use a small amount of network traffic to make an OpenSSL DTLS endpoint retain a disproportionately large amount of memory, which may lead to a Denial of Service.  CWE: CWE-405: Asymmetric Resource Consumption (Amplification)  Description: While a DTLS handshake is in progress, a peer may legitimately have already moved on to the next epoch (for example, having sent its ChangeCipherSpec and Finished messages) before the local endpoint has processed the same transition, typically because of reordering on the underlying UDP transport. OpenSSL buffers such early records so that they can be processed once the local endpoint catches up.  Buffering a record currently retains the entire read buffer it arrived in, which is sized to hold the largest possible DTLS record (around 16 kilobytes), rather than just the bytes that make up the record itself. Up to 100 such records may be buffered per connection. As a result, a peer that sends a stream of small forged records claiming to belong to the next epoch can cause an OpenSSL DTLS endpoint to retain around 1.7 megabytes of memory, despite sending only a small fraction of that amount of data over the network.  An attacker therefore gains a memory amplification factor of around 1200, and can multiply the effect across as many associations as it is able to open, making this a remote memory exhaustion Denial of Service risk for DTLS servers. Since the memory retained per connection remains bounded, and any limit an application already places on the number of concurrent associations also bounds the total exposure, this issue has been assessed as Low severity.  FIPS impact: no  No FIPS modules are affected by this issue as the affected code is outside the OpenSSL FIPS module boundary.  OpenSSL 4.0, 3.6, 3.5, 3.4, 3.0, 1.1.1 and 1.0.2 are vulnerable to this issue.  OpenSSL 4.0 users should upgrade to OpenSSL 4.0.2. OpenSSL 3.6 users should upgrade to OpenSSL 3.6.4. OpenSSL 3.5 users should upgrade to OpenSSL 3.5.8. OpenSSL 3.4 users should upgrade to OpenSSL 3.4.7. OpenSSL 3.0 users should upgrade to OpenSSL 3.0.22.  Premium support customers only: OpenSSL 1.1.1 users should upgrade to OpenSSL 1.1.1zi OpenSSL 1.0.2 users should upgrade to OpenSSL 1.0.2zr  This issue was reported on 18 May 2026 by Amazon Web Services. The fix has been developed by Matt Caswell.  -- cut (non-publishing metadata for internal use) -- Reported by: Amazon Web Services Fixed by: Matt Caswell",
-    "modified": "2026-09-25T04:00:06.658098966Z",
+    "modified": "2026-10-01T03:03:18.777127652Z",
     "published": "2026-08-25T13:19:24.033Z",
     "upstream": [
       "CVE-2026-54874"
@@ -6351,6 +6433,7 @@
           "3.5.6-1~deb13u2",
           "3.5.7-1~deb13u1",
           "3.5.7-1~deb13u2",
+          "3.5.7-1~deb13u3",
           "3.6.0-1",
           "3.6.0-2",
           "3.6.0~~alpha1-1",
@@ -6377,7 +6460,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -6497,7 +6580,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -6505,7 +6588,7 @@
   {
     "id": "DEBIAN-CVE-2026-14457",
     "details": "Issue summary: In a server or client configuration with RFC7250 Raw Public Keys (RPKs) enabled, and only the private key (with no associated certificate) configured locally, a NULL pointer dereference may occur when the remote peer solicits raw public keys and also sends the typically omitted \"signature_algorithms_cert\" TLS extension.  Impact summary: The impact is limited to a possible Denial of Service as a result of an application abort, no data disclosure or remote command execution are possible.  CWE: CWE-476: NULL Pointer Dereference  Description: While a passing comment in sample code in the documentation suggests that key-only RPK configurations are supported, the best-practice RPK configuration is to always configure a corresponding certificate (possibly self-signed or signed by any convenient CA).  When the private key is configured along with a matching certificate, the \"signature_algorithms_cert\" extension is handled reliably even without the fix, and peer clients or servers that don't support raw public keys may be able to complete a TLS connection by pinning or verifying the corresponding certificate or its public key.  Deployments that prefer to configure just a private key with no certificate need to upgrade to an updated release as noted below.  FIPS impact: no  No FIPS modules are affected by this issue, as the SSL protocol implementation is outside the OpenSSL FIPS module boundary.",
-    "modified": "2026-09-13T16:00:06.012050607Z",
+    "modified": "2026-10-01T03:02:48.743016089Z",
     "published": "2026-08-25T13:17:49.533Z",
     "upstream": [
       "CVE-2026-14457"
@@ -6591,6 +6674,7 @@
           "3.5.6-1~deb13u2",
           "3.5.7-1~deb13u1",
           "3.5.7-1~deb13u2",
+          "3.5.7-1~deb13u3",
           "3.6.0-1",
           "3.6.0-2",
           "3.6.0~~alpha1-1",
@@ -6617,7 +6701,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -6625,7 +6709,7 @@
   {
     "id": "DEBIAN-CVE-2026-14456",
     "details": "Issue summary: When an OpenSSL QUIC server (Listener SSL object) processes valid QUIC Initial packets for unknown destination connection IDs, it can allocate and queue new incoming channels without enforcing any limit.  Impact summary: A remote peer that can make many Initial packets reach the server listener faster than the application accepts connections, can cause the memory allocated to store the per-channel state to grow without any limits, potentially making the QUIC listener unavailable and causing Denial of Service.  CWE: CWE-770: Allocation of Resources Without Limits or Throttling  Description: The function that handles inbound QUIC packets uses Connection-Id from the packet header to find an existing connection (QUIC channel). If no existing connection is found and the packet type is INITIAL, the function treats the packet as a new connection. It allocates a new channel object and inserts it into a queue where it waits to be accepted by the local application with SSL_accept(3ossl). The memory occupied by these initial channel objects may grow without bounds if the application is not able to call SSL_accept() frequently enough to serve these inbound connection requests.  The issue is present since OpenSSL 3.5 when the QUIC server implementation was added.  The fix introduces a limit for pending connections. The default limit is set to 256 pending connections (waiting to be accepted by the local application). Applications may change the default by calling SSL_set_value_uint(3ossl).  FIPS impact: no The FIPS module is not affected as the QUIC implementation is outside of the OpenSSL FIPS module boundary.",
-    "modified": "2026-09-14T17:02:29.637333633Z",
+    "modified": "2026-10-01T03:02:48.778226699Z",
     "published": "2026-08-13T15:19:31.820Z",
     "upstream": [
       "CVE-2026-14456"
@@ -6711,6 +6795,7 @@
           "3.5.6-1~deb13u2",
           "3.5.7-1~deb13u1",
           "3.5.7-1~deb13u2",
+          "3.5.7-1~deb13u3",
           "3.6.0-1",
           "3.6.0-2",
           "3.6.0~~alpha1-1",
@@ -6737,7 +6822,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -6745,7 +6830,7 @@
   {
     "id": "DEBIAN-CVE-2026-16742",
     "details": "systemd-homed contains a local privilege escalation bug via arbitrary system group addition to a local, logged in, homed-managed user",
-    "modified": "2026-09-14T17:02:33.514952546Z",
+    "modified": "2026-10-01T03:02:51.024747018Z",
     "published": "2026-08-10T14:17:21.277Z",
     "upstream": [
       "CVE-2026-16742"
@@ -6957,9 +7042,11 @@
           "261~rc2-1",
           "261~rc3-1",
           "261~rc4-1",
+          "262-1",
           "262~rc1-1",
           "262~rc1-2",
-          "262~rc2-1"
+          "262~rc2-1",
+          "262~rc3-1"
         ],
         "ecosystem_specific": {
           "urgency": "not yet assigned"
@@ -7020,9 +7107,11 @@
           "261~rc2-1",
           "261~rc3-1",
           "261~rc4-1",
+          "262-1",
           "262~rc1-1",
           "262~rc1-2",
-          "262~rc2-1"
+          "262~rc2-1",
+          "262~rc3-1"
         ],
         "ecosystem_specific": {
           "urgency": "not yet assigned"
@@ -7102,7 +7191,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/systemd",
       "distribution": "debian"
     }
@@ -7110,7 +7199,7 @@
   {
     "id": "DEBIAN-CVE-2026-15060",
     "details": "When systemd-machined >= v259 (or v258 with a custom `polkit` policy that allows `register-machine` access) is running on a desktop system, an unprivileged user logged in a desktop graphical session can kill arbitrary processes, even privileged ones.  - versions older than v259 are not affected, unless unprivileged access is granted for the `register-machine` polkit action via a local, custom policy config file - versions older than v258 are not affected - unrelated to the systemd service manager (pid 1 or user session managers) - systemd-machined is not typically installed by default, and is typically in an optional, separate package (e.g.: systemd-container) - terminal-only or remote sessions (e.g.: ssh) are not affected",
-    "modified": "2026-09-14T17:02:20.289581052Z",
+    "modified": "2026-10-01T03:02:26.033989278Z",
     "published": "2026-08-10T14:17:21.130Z",
     "upstream": [
       "CVE-2026-15060"
@@ -7193,7 +7282,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/systemd",
       "distribution": "debian"
     }
@@ -7201,7 +7290,7 @@
   {
     "id": "DEBIAN-CVE-2026-15059",
     "details": "Local unprivileged users can terminate arbitrary local processes via a systemd-oomd IPC API due to a missing path traversal validation.",
-    "modified": "2026-09-14T17:02:46.469658008Z",
+    "modified": "2026-10-01T03:02:49.613300677Z",
     "published": "2026-08-10T14:17:20.760Z",
     "upstream": [
       "CVE-2026-15059"
@@ -7413,9 +7502,11 @@
           "261~rc2-1",
           "261~rc3-1",
           "261~rc4-1",
+          "262-1",
           "262~rc1-1",
           "262~rc1-2",
-          "262~rc2-1"
+          "262~rc2-1",
+          "262~rc3-1"
         ],
         "ecosystem_specific": {
           "urgency": "not yet assigned"
@@ -7476,9 +7567,11 @@
           "261~rc2-1",
           "261~rc3-1",
           "261~rc4-1",
+          "262-1",
           "262~rc1-1",
           "262~rc1-2",
-          "262~rc2-1"
+          "262~rc2-1",
+          "262~rc3-1"
         ],
         "ecosystem_specific": {
           "urgency": "not yet assigned"
@@ -7551,7 +7644,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/systemd",
       "distribution": "debian"
     }
@@ -7559,7 +7652,7 @@
   {
     "id": "DEBIAN-CVE-2026-54876",
     "details": "Issue summary: A malicious TLS server can cause a memory leak in a TLS client that has enabled OCSP response checking by sending an OCSP response that contains no single response entries.  Impact summary: An attacker can leak an attacker-tunable amount of memory per TLS handshake in a victim client application. A long-running client that repeatedly connects to a malicious server can have its memory exhausted, resulting in a Denial of Service.  CWE: CWE-401: Missing Release of Memory after Effective Lifetime  Description: The affected function is called during X.509 certificate chain verification when OCSP response checking is enabled with the X509_V_FLAG_OCSP_RESP_CHECK or X509_V_FLAG_OCSP_RESP_CHECK_ALL verification flags, for example when a TLS client verifies an OCSP response stapled into the TLS handshake by the server.  When the received BasicOCSPResponse contains an empty SEQUENCE OF SingleResponse, which is permitted on the wire and accepted by the OpenSSL decoder, the OCSP_BASICRESP structure allocated by OCSP_response_get1_basic() was not freed because an early return bypassed the cleanup code at the end of the function.  The amount of memory leaked per handshake can be amplified by the attacker by padding the certs field of the BasicOCSPResponse with bogus certificates, which are parsed and stored in the leaked structure before the empty response check triggers the early return. A long-running TLS client that repeatedly connects to a malicious server can have its memory exhausted over time.  OCSP response checking is not enabled by default. Only client applications that explicitly enable the OCSP response check verification flags are affected.  FIPS impact: no  The FIPS modules in 4.0 and 3.6 are not affected by this issue as the affected code is outside the OpenSSL FIPS module boundary.",
-    "modified": "2026-09-14T17:03:19.591269711Z",
+    "modified": "2026-10-01T03:03:18.641846990Z",
     "published": "2026-08-05T15:16:53.487Z",
     "upstream": [
       "CVE-2026-54876"
@@ -7604,6 +7697,7 @@
           "3.5.6-1~deb13u2",
           "3.5.7-1~deb13u1",
           "3.5.7-1~deb13u2",
+          "3.5.7-1~deb13u3",
           "3.6.0-1",
           "3.6.0-2",
           "3.6.0~~alpha1-1",
@@ -7630,7 +7724,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -7638,7 +7732,7 @@
   {
     "id": "DEBIAN-CVE-2026-60005",
     "details": "NGINX Plus and NGINX Open Source have a vulnerability in the ngx_http_slice_module module. When the slice directive and unnamed regex captures are configured or when a background cache update happens, unauthenticated attackers can send requests that may cause uninitialized memory access in the NGINX worker process, leading to limited disclosure of memory or a restart.  Impact: This vulnerability may allow remote, unauthenticated attackers to have limited control to disclose memory contents or restart the NGINX worker process. There is no control plane exposure; this is a data plane issue only. Note: The ngx_http_slice_module module is not enabled by default; it's enabled with the --with-http_slice_module configuration parameter.  Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
-    "modified": "2026-09-18T04:00:07.089663393Z",
+    "modified": "2026-10-01T03:02:41.795800026Z",
     "published": "2026-07-15T16:16:49.820Z",
     "upstream": [
       "CVE-2026-60005"
@@ -7787,7 +7881,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -7795,7 +7889,7 @@
   {
     "id": "DEBIAN-CVE-2026-56434",
     "details": "NGINX Plus and NGINX Open Source have a vulnerability in the ngx_http_ssi_module module. This vulnerability may exist when the Server-Side Includes (SSI), proxy_pass, and proxy_buffering off directives are configured. With this configuration, an unauthenticated attacker with man-in-the-middle (MITM) ability to control responses from an upstream server may be able to cause a use-after-free in the NGINX worker process. This issue may lead to limited modification of memory or a restart of the NGINX worker process.  Impact: This vulnerability may allow remote attackers to have limited control to modify memory contents or restart the NGINX worker process. There is no control plane exposure; this is a data plane issue only.  Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
-    "modified": "2026-09-18T04:00:07.143086404Z",
+    "modified": "2026-10-01T03:03:19.522570496Z",
     "published": "2026-07-15T15:16:45.700Z",
     "upstream": [
       "CVE-2026-56434"
@@ -7944,7 +8038,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -7952,7 +8046,7 @@
   {
     "id": "DEBIAN-CVE-2026-42533",
     "details": "A vulnerability exists in NGINX Plus and NGINX Open Source when a map directive uses regex matching and a string expression references the map's regex capture variables before referencing the map output variable. Alternatively, the same result could be achieved by using a non-cacheable variable in a string expression under certain conditions. An unauthenticated attacker along with conditions beyond their control can exploit this vulnerability by sending crafted HTTP requests. This may cause a heap buffer overflow in the NGINX worker process leading to a restart. Additionally, attackers can execute code on systems with Address Space Layout Randomization (ASLR) disabled or when the attacker can bypass ASLR.  Impact: This vulnerability may allow remote attackers to cause a denial-of-service (DoS) on the NGINX system or to possibly trigger a code execution. There is no control plane exposure; this is a data plane issue only.      Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
-    "modified": "2026-09-18T04:00:07.095178006Z",
+    "modified": "2026-10-01T03:03:04.774550660Z",
     "published": "2026-07-15T15:16:33.480Z",
     "upstream": [
       "CVE-2026-42533"
@@ -8104,7 +8198,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -8112,7 +8206,7 @@
   {
     "id": "DEBIAN-CVE-2026-9547",
     "details": "When a libcurl-based application performs transfers via `SCP://` or `SFTP://` and utilizes the `CURLOPT_SSH_KEYFUNCTION` callback, it may silently accept an untrusted server. This vulnerability occurs when a server presents a host key type that does not match the specific key type already recorded for that host in the `known_hosts` file. Instead of rejecting the mismatch, the callback mechanism fails to properly enforce the restriction, allowing the connection to succeed without warning and risking a potential man-in-the-middle attack.",
-    "modified": "2026-09-16T08:47:29.038386684Z",
+    "modified": "2026-10-01T03:03:56.302991345Z",
     "published": "2026-07-03T07:16:25.990Z",
     "upstream": [
       "CVE-2026-9547"
@@ -8278,6 +8372,10 @@
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
           "8.22.0~rc3-1+exp1",
+          "8.23.0~rc1-1",
+          "8.23.0~rc1-2",
+          "8.23.0~rc2-1",
+          "8.23.0~rc2-1+exp1",
           "8.3.0-1",
           "8.3.0-2",
           "8.3.0-2~bpo12+1",
@@ -8425,7 +8523,11 @@
           "8.22.0~rc2-1",
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
-          "8.22.0~rc3-1+exp1"
+          "8.22.0~rc3-1+exp1",
+          "8.23.0~rc1-1",
+          "8.23.0~rc1-2",
+          "8.23.0~rc2-1",
+          "8.23.0~rc2-1+exp1"
         ],
         "ecosystem_specific": {
           "urgency": "unimportant"
@@ -8530,7 +8632,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -8538,7 +8640,7 @@
   {
     "id": "DEBIAN-CVE-2026-9546",
     "details": "A vulnerability in libcurl caused the HTTP `Referer:` header to persist even when explicitly cleared. While the documentation states that passing NULL to `CURLOPT_REFERER` suppresses the header, the option failed to clear the internal state. As a result, the previous referrer string was erroneously reused and sent in subsequent requests, potentially leaking sensitive information to unintended servers.",
-    "modified": "2026-09-16T08:47:35.155304717Z",
+    "modified": "2026-10-01T03:03:13.458547100Z",
     "published": "2026-07-03T07:16:25.893Z",
     "upstream": [
       "CVE-2026-9546"
@@ -8646,7 +8748,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -8654,7 +8756,7 @@
   {
     "id": "DEBIAN-CVE-2026-9545",
     "details": "In this scenario, libcurl first uses a proper HTTP/3 server for the initial transfers, and when it makes a second transfer to the same site it has been replaced by the attacker's impostor machine - without a valid certificate.  When libcurl returns to the hostname the second time with a cached SSL session (`CURLOPT_SSL_SESSIONID_CACHE` is not disabled) and early data enabled (the `CURLSSLOPT_EARLYDATA` bit is set in `CURLOPT_SSL_OPTIONS`), libcurl might send off the second request's bytes on that new connection *before* enforcing the certificate verification failure. Potentially leaking sensitive information.",
-    "modified": "2026-09-16T08:47:39.181909170Z",
+    "modified": "2026-10-01T03:03:56.254863748Z",
     "published": "2026-07-03T07:16:25.807Z",
     "upstream": [
       "CVE-2026-9545"
@@ -8762,7 +8864,11 @@
           "8.22.0~rc2-1",
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
-          "8.22.0~rc3-1+exp1"
+          "8.22.0~rc3-1+exp1",
+          "8.23.0~rc1-1",
+          "8.23.0~rc1-2",
+          "8.23.0~rc2-1",
+          "8.23.0~rc2-1+exp1"
         ],
         "ecosystem_specific": {
           "urgency": "not yet assigned"
@@ -8867,7 +8973,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -8875,7 +8981,7 @@
   {
     "id": "DEBIAN-CVE-2026-9080",
     "details": "Calling `curl_easy_pause()` within the event-based `CURLMOPT_SOCKETFUNCTION` callback triggers a use-after-free vulnerability, where libcurl attempts to store a flag using a dangling struct pointer immediately after that pointer's memory has been freed.",
-    "modified": "2026-09-16T08:47:29.312338419Z",
+    "modified": "2026-10-01T03:03:45.644707698Z",
     "published": "2026-07-03T07:16:25.713Z",
     "upstream": [
       "CVE-2026-9080"
@@ -8983,7 +9089,11 @@
           "8.22.0~rc2-1",
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
-          "8.22.0~rc3-1+exp1"
+          "8.22.0~rc3-1+exp1",
+          "8.23.0~rc1-1",
+          "8.23.0~rc1-2",
+          "8.23.0~rc2-1",
+          "8.23.0~rc2-1+exp1"
         ],
         "ecosystem_specific": {
           "urgency": "not yet assigned"
@@ -9088,7 +9198,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -9096,7 +9206,7 @@
   {
     "id": "DEBIAN-CVE-2026-9079",
     "details": "libcurl had a flaw that when instructed to clear proxy authentication credentials which made it not do so, leaving the old credentials around to get used for subsequent transfers that should not know nor use them.",
-    "modified": "2026-09-16T08:47:32.528794732Z",
+    "modified": "2026-10-01T03:03:13.532395184Z",
     "published": "2026-07-03T07:16:25.620Z",
     "upstream": [
       "CVE-2026-9079"
@@ -9204,7 +9314,11 @@
           "8.22.0~rc2-1",
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
-          "8.22.0~rc3-1+exp1"
+          "8.22.0~rc3-1+exp1",
+          "8.23.0~rc1-1",
+          "8.23.0~rc1-2",
+          "8.23.0~rc2-1",
+          "8.23.0~rc2-1+exp1"
         ],
         "ecosystem_specific": {
           "urgency": "not yet assigned"
@@ -9309,7 +9423,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -9317,7 +9431,7 @@
   {
     "id": "DEBIAN-CVE-2026-8932",
     "details": "libcurl would reuse a previously created connection even when some mTLS config related option had been changed that should have prohibited reuse.  libcurl keeps previously used connections in a connection pool for subsequent transfers to reuse if one of them matches the setup. However, some TLS settings related to client certificates were left out from the configuration match checks, making them match too easily. In particular options related to the private key.",
-    "modified": "2026-09-16T08:47:32.287643060Z",
+    "modified": "2026-10-01T03:03:52.343579617Z",
     "published": "2026-07-03T07:16:25.363Z",
     "upstream": [
       "CVE-2026-8932"
@@ -9483,6 +9597,10 @@
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
           "8.22.0~rc3-1+exp1",
+          "8.23.0~rc1-1",
+          "8.23.0~rc1-2",
+          "8.23.0~rc2-1",
+          "8.23.0~rc2-1+exp1",
           "8.3.0-1",
           "8.3.0-2",
           "8.3.0-2~bpo12+1",
@@ -9630,7 +9748,11 @@
           "8.22.0~rc2-1",
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
-          "8.22.0~rc3-1+exp1"
+          "8.22.0~rc3-1+exp1",
+          "8.23.0~rc1-1",
+          "8.23.0~rc1-2",
+          "8.23.0~rc2-1",
+          "8.23.0~rc2-1+exp1"
         ],
         "ecosystem_specific": {
           "urgency": "not yet assigned"
@@ -9735,7 +9857,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -9743,7 +9865,7 @@
   {
     "id": "DEBIAN-CVE-2026-8927",
     "details": "When reusing a libcurl handle for sequential transfers driven by environment-variable proxy configuration, libcurl fails to clear the proxy authentication state between requests. Specifically, if the initial transfer authenticates against `proxyA` using Digest auth, a subsequent transfer routed through `proxyB` erroneously leaks the `Proxy-Authorization:` header intended solely for `proxyA`.",
-    "modified": "2026-09-16T08:47:30.752114916Z",
+    "modified": "2026-10-01T03:03:52.271716473Z",
     "published": "2026-07-03T07:16:25.123Z",
     "upstream": [
       "CVE-2026-8927"
@@ -9909,6 +10031,10 @@
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
           "8.22.0~rc3-1+exp1",
+          "8.23.0~rc1-1",
+          "8.23.0~rc1-2",
+          "8.23.0~rc2-1",
+          "8.23.0~rc2-1+exp1",
           "8.3.0-1",
           "8.3.0-2",
           "8.3.0-2~bpo12+1",
@@ -10056,7 +10182,11 @@
           "8.22.0~rc2-1",
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
-          "8.22.0~rc3-1+exp1"
+          "8.22.0~rc3-1+exp1",
+          "8.23.0~rc1-1",
+          "8.23.0~rc1-2",
+          "8.23.0~rc2-1",
+          "8.23.0~rc2-1+exp1"
         ],
         "ecosystem_specific": {
           "urgency": "not yet assigned"
@@ -10161,7 +10291,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -10169,7 +10299,7 @@
   {
     "id": "DEBIAN-CVE-2026-8926",
     "details": "When asking curl to use a `.netrc` file to find credentials and at the same time specifying a URL with a username (without a password), like `https://user@example.com/`, curl could wrongly get and use the password for *another* user set in the `.netrc` file for that host if such a one exists and there is no match for the specified user.",
-    "modified": "2026-09-16T08:47:28.495896552Z",
+    "modified": "2026-10-01T03:03:52.213159329Z",
     "published": "2026-07-03T07:16:25.037Z",
     "upstream": [
       "CVE-2026-8926"
@@ -10277,7 +10407,11 @@
           "8.22.0~rc2-1",
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
-          "8.22.0~rc3-1+exp1"
+          "8.22.0~rc3-1+exp1",
+          "8.23.0~rc1-1",
+          "8.23.0~rc1-2",
+          "8.23.0~rc2-1",
+          "8.23.0~rc2-1+exp1"
         ],
         "ecosystem_specific": {
           "urgency": "not yet assigned"
@@ -10382,7 +10516,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -10390,7 +10524,7 @@
   {
     "id": "DEBIAN-CVE-2026-8925",
     "details": "The curl logic that works with SASL authentication could end up cleaning up the GSASL context *twice* without clearing the pointer in between, making it `free()` the same pointer twice.",
-    "modified": "2026-09-16T08:47:38.084368486Z",
+    "modified": "2026-10-01T03:03:43.022932493Z",
     "published": "2026-07-03T07:16:24.950Z",
     "upstream": [
       "CVE-2026-8925"
@@ -10498,7 +10632,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -10506,7 +10640,7 @@
   {
     "id": "DEBIAN-CVE-2026-8924",
     "details": "A flaw in curl’s cookie parsing logic allows a malicious HTTP server to set \"super cookies\" that bypass the Public Suffix List check. This enables an attacker-controlled origin to inject cookies that curl subsequently scopes and transmits to unrelated third-party domains.",
-    "modified": "2026-09-16T08:47:35.167619841Z",
+    "modified": "2026-10-01T03:03:52.316838990Z",
     "published": "2026-07-03T07:16:24.793Z",
     "upstream": [
       "CVE-2026-8924"
@@ -10672,6 +10806,10 @@
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
           "8.22.0~rc3-1+exp1",
+          "8.23.0~rc1-1",
+          "8.23.0~rc1-2",
+          "8.23.0~rc2-1",
+          "8.23.0~rc2-1+exp1",
           "8.3.0-1",
           "8.3.0-2",
           "8.3.0-2~bpo12+1",
@@ -10819,7 +10957,11 @@
           "8.22.0~rc2-1",
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
-          "8.22.0~rc3-1+exp1"
+          "8.22.0~rc3-1+exp1",
+          "8.23.0~rc1-1",
+          "8.23.0~rc1-2",
+          "8.23.0~rc2-1",
+          "8.23.0~rc2-1+exp1"
         ],
         "ecosystem_specific": {
           "urgency": "not yet assigned"
@@ -10924,7 +11066,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -10932,7 +11074,7 @@
   {
     "id": "DEBIAN-CVE-2026-8458",
     "details": "libcurl might in some circumstances reuse the wrong connection when asked to do Negotiate-authenticated ones, even when they are set to use different \"services\".  libcurl features a pool of recent connections so that subsequent requests can reuse an existing connection to avoid overhead.  When reusing a connection a range of criteria must be met. Due to a logical error in the code, a request that was issued by an application could wrongfully reuse an existing connection to the same server that was authenticated using different services.",
-    "modified": "2026-09-16T08:47:35.277055981Z",
+    "modified": "2026-10-01T03:03:51.257512063Z",
     "published": "2026-07-03T07:16:24.630Z",
     "upstream": [
       "CVE-2026-8458"
@@ -11098,6 +11240,10 @@
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
           "8.22.0~rc3-1+exp1",
+          "8.23.0~rc1-1",
+          "8.23.0~rc1-2",
+          "8.23.0~rc2-1",
+          "8.23.0~rc2-1+exp1",
           "8.3.0-1",
           "8.3.0-2",
           "8.3.0-2~bpo12+1",
@@ -11245,7 +11391,11 @@
           "8.22.0~rc2-1",
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
-          "8.22.0~rc3-1+exp1"
+          "8.22.0~rc3-1+exp1",
+          "8.23.0~rc1-1",
+          "8.23.0~rc1-2",
+          "8.23.0~rc2-1",
+          "8.23.0~rc2-1+exp1"
         ],
         "ecosystem_specific": {
           "urgency": "not yet assigned"
@@ -11350,7 +11500,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -11358,7 +11508,7 @@
   {
     "id": "DEBIAN-CVE-2026-8286",
     "details": "A vulnerability exists where a new transfer that uses STARTTLS to upgrade the connection might reuse an existing live connection even though the TLS configuration mismatches so it should not.",
-    "modified": "2026-09-16T08:47:39.581085106Z",
+    "modified": "2026-10-01T03:03:43.867822935Z",
     "published": "2026-07-03T07:16:24.453Z",
     "upstream": [
       "CVE-2026-8286"
@@ -11524,6 +11674,10 @@
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
           "8.22.0~rc3-1+exp1",
+          "8.23.0~rc1-1",
+          "8.23.0~rc1-2",
+          "8.23.0~rc2-1",
+          "8.23.0~rc2-1+exp1",
           "8.3.0-1",
           "8.3.0-2",
           "8.3.0-2~bpo12+1",
@@ -11671,7 +11825,11 @@
           "8.22.0~rc2-1",
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
-          "8.22.0~rc3-1+exp1"
+          "8.22.0~rc3-1+exp1",
+          "8.23.0~rc1-1",
+          "8.23.0~rc1-2",
+          "8.23.0~rc2-1",
+          "8.23.0~rc2-1+exp1"
         ],
         "ecosystem_specific": {
           "urgency": "not yet assigned"
@@ -11776,7 +11934,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -11784,7 +11942,7 @@
   {
     "id": "DEBIAN-CVE-2026-12064",
     "details": "When a user invokes curl using a schemeless URL combined with `--proto-default` sftp (or scp), a disconnect occurs between the tool layer and libcurl. The tool layer incorrectly infers the URL scheme, which erroneously bypasses the initialization of critical SSH security options like CURLOPT_SSH_HOST_PUBLIC_KEY_SHA256 and CURLOPT_SSH_KNOWNHOSTS. Conversely, the libcurl runtime successfully honors CURLOPT_DEFAULT_PROTOCOL and establishes the connection via SFTP/SCP as specified. Because the tool layer skipped the security configuration, these SSH host verification options are silently omitted, causing curl to connect to an unverified SSH remote host without throwing an error.",
-    "modified": "2026-09-16T08:47:38.396893226Z",
+    "modified": "2026-10-01T03:01:55.180427230Z",
     "published": "2026-07-03T07:16:24.217Z",
     "upstream": [
       "CVE-2026-12064"
@@ -11950,6 +12108,10 @@
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
           "8.22.0~rc3-1+exp1",
+          "8.23.0~rc1-1",
+          "8.23.0~rc1-2",
+          "8.23.0~rc2-1",
+          "8.23.0~rc2-1+exp1",
           "8.3.0-1",
           "8.3.0-2",
           "8.3.0-2~bpo12+1",
@@ -12097,7 +12259,11 @@
           "8.22.0~rc2-1",
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
-          "8.22.0~rc3-1+exp1"
+          "8.22.0~rc3-1+exp1",
+          "8.23.0~rc1-1",
+          "8.23.0~rc1-2",
+          "8.23.0~rc2-1",
+          "8.23.0~rc2-1+exp1"
         ],
         "ecosystem_specific": {
           "urgency": "not yet assigned"
@@ -12204,7 +12370,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -12212,7 +12378,7 @@
   {
     "id": "DEBIAN-CVE-2026-11856",
     "details": "Successfully using libcurl to do a transfer to a specific HTTP origin (`hostA`) with **Digest** authentication and then changing the origin to a different one (`hostB`) for a second transfer, reusing the same handle, makes libcurl wrongly pass on the `Authorization:` header field meant for `hostA`, to `hostB`.",
-    "modified": "2026-09-16T08:47:35.032759491Z",
+    "modified": "2026-10-01T03:02:23.397448314Z",
     "published": "2026-07-03T07:16:23.973Z",
     "upstream": [
       "CVE-2026-11856"
@@ -12378,6 +12544,10 @@
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
           "8.22.0~rc3-1+exp1",
+          "8.23.0~rc1-1",
+          "8.23.0~rc1-2",
+          "8.23.0~rc2-1",
+          "8.23.0~rc2-1+exp1",
           "8.3.0-1",
           "8.3.0-2",
           "8.3.0-2~bpo12+1",
@@ -12525,7 +12695,11 @@
           "8.22.0~rc2-1",
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
-          "8.22.0~rc3-1+exp1"
+          "8.22.0~rc3-1+exp1",
+          "8.23.0~rc1-1",
+          "8.23.0~rc1-2",
+          "8.23.0~rc2-1",
+          "8.23.0~rc2-1+exp1"
         ],
         "ecosystem_specific": {
           "urgency": "not yet assigned"
@@ -12632,7 +12806,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -12640,7 +12814,7 @@
   {
     "id": "DEBIAN-CVE-2026-11586",
     "details": "By default, curl automatically responds to WebSocket PING frames. Because curl lacks an upper bound on memory allocation for unacknowledged frames, a malicious server can exhaust all available memory by flooding curl with rapid, sequential PING messages.",
-    "modified": "2026-09-16T08:47:36.275053987Z",
+    "modified": "2026-10-01T03:01:43.220504493Z",
     "published": "2026-07-03T07:16:23.883Z",
     "upstream": [
       "CVE-2026-11586"
@@ -12750,7 +12924,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -12758,7 +12932,7 @@
   {
     "id": "DEBIAN-CVE-2026-11564",
     "details": "libcurl keeps previously used connections in a connection pool for subsequent transfers to reuse if one of them matches the setup.  An easy handle that first uses default native CA trust can continue trusting the native platform store after the application switches that same handle to custom CA material for a later transfer.",
-    "modified": "2026-09-16T08:47:34.865440750Z",
+    "modified": "2026-10-01T03:01:52.406719935Z",
     "published": "2026-07-03T07:16:23.790Z",
     "upstream": [
       "CVE-2026-11564"
@@ -12866,7 +13040,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -12874,7 +13048,7 @@
   {
     "id": "DEBIAN-CVE-2026-11352",
     "details": "An issue in curl’s QUIC UDP receive function allows a malicious HTTP/3 server to trigger a remote denial of service against a curl or libcurl client. Because the helper function discards zero-length UDP datagrams before counting them toward the per-call packet budget, a connected QUIC peer can continuously stream empty datagrams to indefinitely stall the client.",
-    "modified": "2026-09-16T08:47:31.708472201Z",
+    "modified": "2026-10-01T03:01:43.482050966Z",
     "published": "2026-07-03T07:16:23.693Z",
     "upstream": [
       "CVE-2026-11352"
@@ -12982,7 +13156,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -12990,7 +13164,7 @@
   {
     "id": "DEBIAN-CVE-2026-10536",
     "details": "A use-after-free vulnerability exists in libcurl when an application configures an HTTP/2 stream-dependency tree via `CURLOPT_STREAM_DEPENDS` or `CURLOPT_STREAM_DEPENDS_E`, subsequently invokes `curl_easy_reset()`, and finally terminates the handle with `curl_easy_cleanup()`. During this final cleanup phase, libcurl attempts to access and modify an internal structure that was already freed during the reset operation.",
-    "modified": "2026-09-16T08:47:33.602927497Z",
+    "modified": "2026-10-01T03:00:45.381921356Z",
     "published": "2026-07-03T07:16:23.563Z",
     "upstream": [
       "CVE-2026-10536"
@@ -13156,6 +13330,10 @@
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
           "8.22.0~rc3-1+exp1",
+          "8.23.0~rc1-1",
+          "8.23.0~rc1-2",
+          "8.23.0~rc2-1",
+          "8.23.0~rc2-1+exp1",
           "8.3.0-1",
           "8.3.0-2",
           "8.3.0-2~bpo12+1",
@@ -13303,7 +13481,11 @@
           "8.22.0~rc2-1",
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
-          "8.22.0~rc3-1+exp1"
+          "8.22.0~rc3-1+exp1",
+          "8.23.0~rc1-1",
+          "8.23.0~rc1-2",
+          "8.23.0~rc2-1",
+          "8.23.0~rc2-1+exp1"
         ],
         "ecosystem_specific": {
           "urgency": "not yet assigned"
@@ -13408,7 +13590,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -13416,7 +13598,7 @@
   {
     "id": "DEBIAN-CVE-2026-48142",
     "details": "NGINX Plus and NGINX Open Source have a vulnerability in the ngx_http_charset_module module. When content is served or proxied through a location block with both source_charset utf-8; and a charset directive (for example, charset koi8-r;) configured, remote, unauthenticated attackers can send requests (in conjunction with conditions beyond their control) to cause a heap buffer over-read in the NGINX worker process, leading to limited disclosure of memory or a restart.    Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
-    "modified": "2026-09-14T17:03:41.468372357Z",
+    "modified": "2026-10-01T03:03:15.865453794Z",
     "published": "2026-06-17T15:16:59.040Z",
     "upstream": [
       "CVE-2026-48142"
@@ -13561,7 +13743,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -13569,7 +13751,7 @@
   {
     "id": "DEBIAN-CVE-2026-42055",
     "details": "NGINX Plus and NGINX Open Source have a vulnerability in the ngx_http_proxy_v2_module and ngx_http_grpc_module modules. This vulnerability exists when the proxy_http_version to 2 or grpc_pass directives are used to proxy HTTP/2 traffic, the ignore_invalid_headers directive is set to off, and the large_client_header_buffers directive size is larger than 2 megabytes. A remote, unauthenticated attacker, along with conditions beyond their control, could send large headers while creating an upstream request. This may cause a heap-based buffer overflow in the NGINX worker process leading to a restart. Additionally, attackers can execute code on systems with Address Space Layout Randomization (ASLR) disabled or when the attacker can bypass ASLR.    Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
-    "modified": "2026-09-15T08:47:44.906489483Z",
+    "modified": "2026-10-01T03:03:11.763983317Z",
     "published": "2026-06-17T15:16:50.353Z",
     "upstream": [
       "CVE-2026-42055"
@@ -13714,7 +13896,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -13722,7 +13904,7 @@
   {
     "id": "DEBIAN-CVE-2026-42306",
     "details": "Moby is an open source container framework. In Docker Engine prior to version 29.5.1, Docker Daemon versions 28.5.2 and prior, and Moby Daemon prior to version 2.0.0-beta.14, a race condition during docker cp mount setup allows a malicious container to redirect a bind mount target to an arbitrary host path, potentially overwriting host files or causing denial of service. This issue has been patched in Docker Engine version 29.5.1 and Moby Daemon version 2.0.0-beta.14.",
-    "modified": "2026-09-14T17:03:36.429846166Z",
+    "modified": "2026-10-01T03:03:22.943313986Z",
     "published": "2026-06-12T19:16:27.490Z",
     "upstream": [
       "CVE-2026-42306"
@@ -13796,7 +13978,8 @@
           "28.5.2+dfsg4-1",
           "28.5.2+dfsg4-2",
           "28.5.2+dfsg4-3",
-          "28.5.2+dfsg4-4"
+          "28.5.2+dfsg4-4",
+          "28.5.2+dfsg4-5"
         ],
         "ecosystem_specific": {
           "urgency": "not yet assigned"
@@ -13890,7 +14073,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/docker.io",
       "distribution": "debian"
     }
@@ -13898,7 +14081,7 @@
   {
     "id": "DEBIAN-CVE-2026-41568",
     "details": "Moby is an open source container framework. In Docker Engine prior to version 29.5.1, Docker Daemon versions 28.5.2 and prior, and Moby Daemon prior to version 2.0.0-beta.14, a race condition during docker cp mount setup allows a malicious container to create empty files or directories at arbitrary absolute paths on the host filesystem. This issue has been patched in Docker Engine version 29.5.1 and Moby Daemon version 2.0.0-beta.14.",
-    "modified": "2026-09-14T17:03:11.289282952Z",
+    "modified": "2026-10-01T03:03:22.727036495Z",
     "published": "2026-06-12T19:16:26.907Z",
     "upstream": [
       "CVE-2026-41568"
@@ -13972,7 +14155,8 @@
           "28.5.2+dfsg4-1",
           "28.5.2+dfsg4-2",
           "28.5.2+dfsg4-3",
-          "28.5.2+dfsg4-4"
+          "28.5.2+dfsg4-4",
+          "28.5.2+dfsg4-5"
         ],
         "ecosystem_specific": {
           "urgency": "not yet assigned"
@@ -14066,7 +14250,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/docker.io",
       "distribution": "debian"
     }
@@ -14074,7 +14258,7 @@
   {
     "id": "DEBIAN-CVE-2026-9076",
     "details": "Issue summary: When CMS password-based decryption (RFC 3211 / PWRI key unwrap) processes attacker-supplied CMS data, an attacker-chosen stream-mode KEK cipher can trigger a heap out-of-bounds read in kek_unwrap_key().  Impact summary: A heap buffer over-read may trigger a crash which leads to Denial of Service for an application if the input buffer ends at a memory page boundary and the following page is unmapped. There is no information disclosure as the over-read bytes are not revealed to the attacker.  The key unwrapping function performs a check-byte test as specified in the RFC that reads 7 bytes from a heap allocation that is based on the wrapped key length from the message. There is a minimum length check based on the block length of the wrapping cipher. However the cipher is selected from an OID carried in the attacker's PWRI keyEncryptionAlgorithm with no requirement that the cipher be a block cipher. When an attacker selects a stream-mode cipher the guard will be ineffective and the allocated buffer containing the unwrapped key can be too small to fit the check-bytes specified in the RFC and a buffer over-read can happen.  Applications calling CMS_decrypt() or CMS_decrypt_set1_password() (equivalently openssl cms -decrypt -pwri_password ...) on untrusted CMS data are vulnerable to this issue. No password knowledge is required: the over-read happens during the unwrap attempt before any authentication succeeds.  The over-read is limited to a few bytes and is not written to output, so there is no information disclosure. Triggering a crash requires the allocation to border unmapped memory, which is unlikely with the normal allocator.  The FIPS modules are not affected by this issue.",
-    "modified": "2026-09-14T17:03:37.653377416Z",
+    "modified": "2026-10-01T03:03:53.162524604Z",
     "published": "2026-06-09T17:17:50.997Z",
     "upstream": [
       "CVE-2026-9076"
@@ -14208,6 +14392,7 @@
           "3.5.6-1~deb13u2",
           "3.5.7-1~deb13u1",
           "3.5.7-1~deb13u2",
+          "3.5.7-1~deb13u3",
           "3.6.0-1",
           "3.6.0-2",
           "3.6.0~~alpha1-1",
@@ -14233,7 +14418,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -14241,7 +14426,7 @@
   {
     "id": "DEBIAN-CVE-2026-7383",
     "details": "Issue summary: A signed integer overflow when sizing the destination buffer for Unicode output in ASN1_mbstring_ncopy() can lead to a heap buffer overflow.  Impact summary: A heap buffer overflow may lead to a crash or possibly attacker controlled code execution or other undefined behaviour.  In ASN1_mbstring_copy() and ASN1_mbstring_ncopy() the destination size for Unicode output is computed in a signed int: by left shift of the input character count for BMPSTRING (UTF-16) and UNIVERSALSTRING (UTF-32), and by summing per-character byte counts for UTF8STRING. The calculation overflows when the input reaches around 2^30 characters. In the worst case (UNIVERSALSTRING at 2^30 characters) the size wraps to zero, OPENSSL_malloc(1) is called, and the subsequent character copy writes several gigabytes past the one-byte allocation.  X.509 certificate processing routes through ASN1_STRING_set_by_NID(), whose DIRSTRING_TYPE mask excludes UNIVERSALSTRING and whose per-NID size limits cap the input length; no network protocol or certificate-handling path in OpenSSL exercises the overflow. Triggering the bug requires an application that calls ASN1_mbstring_copy() or ASN1_mbstring_ncopy() directly, or registers a custom string type via ASN1_STRING_TABLE_add(), with attacker-controlled input on the order of half a gigabyte or more. For these reasons this issue was assigned Low severity.  The FIPS modules in 4.0, 3.6, 3.5, 3.4 and 3.0 are not affected by this issue, as the affected code is outside the OpenSSL FIPS module boundary.",
-    "modified": "2026-09-14T17:03:32.060201754Z",
+    "modified": "2026-10-01T03:03:02.143827847Z",
     "published": "2026-06-09T17:17:50.337Z",
     "upstream": [
       "CVE-2026-7383"
@@ -14375,6 +14560,7 @@
           "3.5.6-1~deb13u2",
           "3.5.7-1~deb13u1",
           "3.5.7-1~deb13u2",
+          "3.5.7-1~deb13u3",
           "3.6.0-1",
           "3.6.0-2",
           "3.6.0~~alpha1-1",
@@ -14400,7 +14586,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -14408,7 +14594,7 @@
   {
     "id": "DEBIAN-CVE-2026-45447",
     "details": "Issue summary: A specially crafted PKCS#7 or S/MIME signed message could trigger a use-after-free during PKCS#7 signature verification.  Impact summary: A use-after-free may result in process crashes, heap corruption, or potentially remote code execution.  When processing a PKCS#7 or S/MIME signed message, if the SignedData digestAlgorithms field is present as an empty ASN.1 SET, OpenSSL may incorrectly free a caller-owned BIO during PKCS7_verify(). A subsequent use of the BIO by the calling application results in a use-after-free condition.  In the common case this occurs when the application later calls BIO_free() on the BIO originally passed to PKCS7_verify(). Depending on allocator behavior and application-specific BIO usage patterns, this may result in a crash or other memory corruption. In some application contexts this may potentially be exploitable for remote code execution.  Applications that process PKCS#7 or S/MIME signed messages using OpenSSL PKCS#7 APIs may be affected. Applications using the CMS APIs for this processing are not affected.  The FIPS modules in 4.0, 3.6, 3.5, 3.4, and 3.0 are not affected by this issue, as the affected code is outside the OpenSSL FIPS module boundary.",
-    "modified": "2026-09-19T22:47:46.736716272Z",
+    "modified": "2026-10-01T03:03:23.727025019Z",
     "published": "2026-06-09T17:17:19.277Z",
     "upstream": [
       "CVE-2026-45447"
@@ -14542,6 +14728,7 @@
           "3.5.6-1~deb13u2",
           "3.5.7-1~deb13u1",
           "3.5.7-1~deb13u2",
+          "3.5.7-1~deb13u3",
           "3.6.0-1",
           "3.6.0-2",
           "3.6.0~~alpha1-1",
@@ -14567,7 +14754,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -14575,7 +14762,7 @@
   {
     "id": "DEBIAN-CVE-2026-45446",
     "details": "Issue summary: The implementations of AES-SIV (RFC 5297) and AES-GCM-SIV (RFC 8452) mishandle the authentication of AAD (Additional Authenticated Data) with an empty ciphertext allowing a forgery of such messages.  Impact summary: An attacker can forge empty messages with arbitrary AAD to the victim's application using these ciphers.  AES-SIV (RFC 5297) and AES-GCM-SIV (RFC 8452) are nonce-misuse-resistant AEAD modes: they accept a key, nonce, optional AAD (bytes that are authenticated but not encrypted), and plaintext, and produces ciphertext plus a 16-byte tag. On decrypt, `EVP_DecryptFinal_ex()` is documented to return success only if the tag is verified succesfully.  In OpenSSL's provider implementation of these ciphers, the expected tag is computed only when decryption function is invoked with non-empty data. If the caller supplies AAD and then calls `EVP_DecryptFinal_ex()` without invocation of the ciphertext update, which can happen when the received ciphertext length is zero, the tag is never recalculated and still holds its all-zeros value.  When AES-GCM-SIV is used, an attacker who sends arbitrary AAD, empty ciphertext, and all-zeros tag passes authentication under any key they do not know, single-shot. When AES-SIV is used, for mounting the attack it's necessary for the application to reuse the decryption context without resetting the key.  AES-SIV is implemented since OpenSSL 3.0. AES-GCM-SIV is implemented since OpenSSL 3.2.  No protocols implemented in OpenSSL itself (TLS/CMS/PKCS7/HPKE/QUIC) support either AES-GCM-SIV or AES-SIV. To mount an attack, the applications must implement their own protocol and use the EVP interface. Also they must skip the ciphertext update when a message with an empty ciphertext arrives.  The FIPS modules in 4.0, 3.6, 3.5, 3.4, and 3.0 are not affected by this issue, as these algorithms are not FIPS approved and the affected code is outside the OpenSSL FIPS module boundary.",
-    "modified": "2026-09-14T17:03:13.541094345Z",
+    "modified": "2026-10-01T03:03:14.666575579Z",
     "published": "2026-06-09T17:17:19.137Z",
     "upstream": [
       "CVE-2026-45446"
@@ -14709,6 +14896,7 @@
           "3.5.6-1~deb13u2",
           "3.5.7-1~deb13u1",
           "3.5.7-1~deb13u2",
+          "3.5.7-1~deb13u3",
           "3.6.0-1",
           "3.6.0-2",
           "3.6.0~~alpha1-1",
@@ -14734,7 +14922,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -14742,7 +14930,7 @@
   {
     "id": "DEBIAN-CVE-2026-45445",
     "details": "Issue summary: When an application drives an AES-OCB context through the public EVP_Cipher() one-shot interface, the application-supplied initialisation vector (IV) is silently discarded.  Impact summary: Every message encrypted under the same key uses the same effective nonce regardless of the IV supplied by the caller, resulting in (key, nonce) reuse and loss of confidentiality.  If the same code path is used to compute the authentication tag, the tag depends only on the (key, IV) pair and not on the plaintext or ciphertext, allowing universal forgery of arbitrary ciphertext from a single captured message.  OpenSSL provides two ways to drive a cipher: the documented streaming interface (EVP_CipherUpdate / EVP_CipherFinal_ex) and a lower-level one-shot, EVP_Cipher(), whose documentation explicitly recommends against use by applications in favour of EVP_CipherUpdate() and EVP_CipherFinal_ex().  The OCB provider's streaming handler flushes the application-supplied IV into the OCB context before processing data; the one-shot handler did not.  Every call to EVP_Cipher() on an AES-OCB context therefore ran with the all-zero key-derived offset state left by cipher initialisation, regardless of the caller's IV.  If EVP_EncryptFinal_ex() is subsequently used to obtain the authentication tag, the deferred IV setup runs at that point and clears the running checksum that should have been accumulated over the plaintext.  The resulting tag is a function of (key, IV) only and verifies against any ciphertext produced under the same (key, IV) pair.  The OpenSSL SSL/TLS implementation is not affected: AES-OCB is not a TLS cipher suite, and libssl does not call EVP_Cipher() in any case. Applications that drive AES-OCB through the documented streaming AEAD API (EVP_CipherUpdate / EVP_CipherFinal_ex) are not affected.  Only applications that combine the AES-OCB cipher with the EVP_Cipher() one-shot API are vulnerable.  The FIPS modules in 4.0, 3.6, 3.5, 3.4 and 3.0 are not affected by this issue, as AES-OCB is outside the OpenSSL FIPS module boundary.",
-    "modified": "2026-09-14T17:03:13.617082824Z",
+    "modified": "2026-10-01T03:03:23.850565763Z",
     "published": "2026-06-09T17:17:18.993Z",
     "upstream": [
       "CVE-2026-45445"
@@ -14876,6 +15064,7 @@
           "3.5.6-1~deb13u2",
           "3.5.7-1~deb13u1",
           "3.5.7-1~deb13u2",
+          "3.5.7-1~deb13u3",
           "3.6.0-1",
           "3.6.0-2",
           "3.6.0~~alpha1-1",
@@ -14901,7 +15090,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -14909,7 +15098,7 @@
   {
     "id": "DEBIAN-CVE-2026-42770",
     "details": "Issue summary: When EVP_PKEY_derive_set_peer() is called with a DHX (X9.42) peer key, the peer key is not properly checked for the subgroup membership.  Impact summary: A malicious peer which presents an X9.42 key carrying the victim's p and g parameters, a forged q = r (a small prime factor of the cofactor (p−1)/q_local), and a public value Y of order r can recover the victim's private key after a small number of key exchange attempts.  When EVP_PKEY_derive_set_peer() is called with a DHX (X9.42) peer key, the subgroup membership check Y^q ≡ 1 (mod p) is performed using the peer's own q parameter, not the local key's q. The peer's domain parameters are then matched against the domain parameters of the private key, but the value of q is not compared.  A malicious peer who presents an X9.42 key carrying the victim's p, g, a forged q = r (a small prime factor of the cofactor), and a public value Y of order r passes all checks. The shared secret then takes only r distinct values, leaking priv mod r. Repeating for each small-prime factor of the cofactor and combining via CRT recovers the full private key (Lim–Lee / small-subgroup-confinement attack).  The realistic attack surface is narrow: principally CMP deployments with long-lived RA/CA DHX keys and bespoke enterprise or government applications using X9.42 DHX static keys with interactive protocols and therefore this issue was assigned Low severity.  The FIPS modules in 4.0, 3.6, 3.5, 3.4, 3.1.2 and 3.0 are affected by this issue.",
-    "modified": "2026-09-14T17:03:11.702635927Z",
+    "modified": "2026-10-01T03:03:12.075378042Z",
     "published": "2026-06-09T17:17:08.523Z",
     "upstream": [
       "CVE-2026-42770"
@@ -15043,6 +15232,7 @@
           "3.5.6-1~deb13u2",
           "3.5.7-1~deb13u1",
           "3.5.7-1~deb13u2",
+          "3.5.7-1~deb13u3",
           "3.6.0-1",
           "3.6.0-2",
           "3.6.0~~alpha1-1",
@@ -15068,7 +15258,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -15076,7 +15266,7 @@
   {
     "id": "DEBIAN-CVE-2026-42769",
     "details": "Issue Summary: An error in the callback used to verify the certificate provided in a Root CA key update Certificate Management Protocol (CMP) message response rendered the certificate validation ineffectual, which could lead to escalation of credentials from the Registration Authority (RA) level to the root Certification Authority (root CA) level.  Impact Summary: The Registration Autority could replace the root CA certificate for the CMP clients with an arbitrary root CA certificate.  One of the parts of the Certificate Management Protocol (CMP), specified in RFC 9810, is Root Certification Authority (root CA) key Rollover, which is sent by the server in a message with type 'id-it-rootCaKeyUpdate'. As part of these messages, 'newWithOld' certificate, the new root CA certificate signed with the old root CA key, is provided, and verifying its signature is crucial for transferring the trust from the old CA key to the new one.  The 'id-it-rootCaKeyUpdate' messages are expected to be processed with OSSL_CMP_get1_rootCaKeyUpdate(), that is expected to verify the 'newWithOld' certificate.  A typo in the certificate chain building code led to adding an incorrect certificate ('newWithOld' instead of 'oldRoot') to the certificate chain, rendering the certificate verification process ineffectual (only the issuer name and the algorithm OIDs were verified by other parts of the verification code).  An attacker who already has credentials that satisfy the CMP message protection checks can generate a new key pair and use a crafted self-signed certificate in its 'id-it-rootCaKeyUpdate' CMP messages which affected CMP clients would accept as a new trust anchor.  Significant preconditions for the attack (having valid RA-level credentials) are the reason the issue was assigned Low severity.  The FIPS modules are not affected by this issue, as the affected code is outside the OpenSSL FIPS module boundary.",
-    "modified": "2026-09-14T17:03:35.464748199Z",
+    "modified": "2026-10-01T03:03:22.988055920Z",
     "published": "2026-06-09T17:17:08.377Z",
     "upstream": [
       "CVE-2026-42769"
@@ -15160,6 +15350,7 @@
           "3.5.6-1~deb13u2",
           "3.5.7-1~deb13u1",
           "3.5.7-1~deb13u2",
+          "3.5.7-1~deb13u3",
           "3.6.0-1",
           "3.6.0-2",
           "3.6.0~~alpha1-1",
@@ -15185,7 +15376,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -15193,7 +15384,7 @@
   {
     "id": "DEBIAN-CVE-2026-42768",
     "details": "Issue summary: The CMS_decrypt and PKCS7_decrypt functions are vulnerable to Bleichenbacher-style attack when an attacker is able to provide the CMS or S/MIME messages and observe the error code and/or decryption output.  Impact summary: The Bleichenbacher-style attack allows an attacker to use the victim's vulnerable application as a way to decrypt or sign messages with the victim's private RSA key.  The attack is possible in 2 variants.  1. The decryption API (CMS_decrypt(), PKCS7_decrypt()) is used without providing the recipient certificate. In this case OpenSSL iterates over every KeyTransRecipientInfo (KTRI) without stopping at the first success.  An attacker who authors a message with two KTRI entries — the first one wrapping a real CEK under the victim's public key, the second with an arbitrary probe ciphertext — obtains opportunity to iterate the 2nd KTRI to get a valid PKCS#1 v1.5 padding if the error code of the application is available.  That is a Bleichenbacher oracle (Bleichenbacher, CRYPTO '98): an adaptive-chosen-ciphertext side channel from which the attacker decrypts any RSA ciphertext to the victim's key or forges any PKCS#1 v1.5 signature under it.  2. When the decryption API (CMS_decrypt(), PKCS7_decrypt()) is provided with the recipient certificate, and the recipient is not found, a random key is substituted.  An attacker who authors a message and is able to compare both error code and the result of the decryption, can mount a Bleichenbacher oracle.  We are not aware of any applications that provide a remote attacker an opportunity to mount an attack described in these scenarios. We consider the existence of such application very unlikely, and for this reason this CVE has been evaluated as Low severity.  To avoid these attacks, when RSA PKCS#1 v1.5 Key Transport is in use, the invoked EVP_PKEY_decrypt() will use the implicit rejection mechanism described in draft-irtf-cfrg-rsa-guidance. In previous OpenSSL releases the implicit rejection was explicitly disabled.  The implicit rejection mechanism always returns a plaintext value, the symmetric key. This result is deterministic for the ciphertext and the private key.  The length of the decryption result can happen to match the length of the key of the symmetric cipher that was used for the content encryption. When a certificate is not provided, the last RecipientInfo producing a key that looks valid will be used. It may cause getting garbage content on decryption. As a proper way to deal with this a recipient certificate has to be provided to identify the particular RecipientInfo for decryption.  The FIPS modules in 4.0, 3.6, 3.5, and 3.4 are not affected by this issue, as CMS and S/MIME processing happens outside the OpenSSL FIPS module boundary.",
-    "modified": "2026-09-14T17:03:36.960020209Z",
+    "modified": "2026-10-01T03:03:22.971707307Z",
     "published": "2026-06-09T17:17:08.223Z",
     "upstream": [
       "CVE-2026-42768"
@@ -15277,6 +15468,7 @@
           "3.5.6-1~deb13u2",
           "3.5.7-1~deb13u1",
           "3.5.7-1~deb13u2",
+          "3.5.7-1~deb13u3",
           "3.6.0-1",
           "3.6.0-2",
           "3.6.0~~alpha1-1",
@@ -15302,7 +15494,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -15310,7 +15502,7 @@
   {
     "id": "DEBIAN-CVE-2026-42767",
     "details": "Issue summary: An attacker-controlled CMP (Certificate Management Protocol) server could trigger a NULL pointer dereference in a CMP client application.  Impact summary: A NULL pointer dereference causes a crash of the application and a Denial of Service.  An attacker controlling a CMP server (or acting as a man-in-the-middle) could craft a CMP response containing a CRMF (Certificate Request Message Format) CertRepMessage with an EncryptedValue structure where the symmAlg field has an algorithm OID but no parameters field. When the OpenSSL CMP client processes this response, the NULL dereference occurs, causing a crash of the CMP client.  Applications that process untrusted CMP/CRMF messages may be affected.  The FIPS modules in 4.0, 3.6, 3.5, 3.4, and 3.0 are not affected by this issue, as the affected code is outside the OpenSSL FIPS module boundary.",
-    "modified": "2026-09-25T04:00:06.657448823Z",
+    "modified": "2026-10-01T03:03:12.072786882Z",
     "published": "2026-06-09T17:17:08.093Z",
     "upstream": [
       "CVE-2026-42767"
@@ -15445,6 +15637,7 @@
           "3.5.6-1~deb13u2",
           "3.5.7-1~deb13u1",
           "3.5.7-1~deb13u2",
+          "3.5.7-1~deb13u3",
           "3.6.0-1",
           "3.6.0-2",
           "3.6.0~~alpha1-1",
@@ -15470,7 +15663,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -15478,7 +15671,7 @@
   {
     "id": "DEBIAN-CVE-2026-42766",
     "details": "Issue summary: A specially crafted password-encrypted CMS message can trigger a NULL pointer dereference during CMS decryption.  Impact summary: This NULL pointer dereference leads to an application crash and a Denial of Service.  The CMS PasswordRecipientInfo.keyDerivationAlgorithm field is defined as OPTIONAL in the ASN.1 specification and may therefore be absent in specially crafted inputs. During the password-based CMS decryption the OpenSSL CMS implementation dereferences this field without first checking whether it was present.  An attacker who supplies such a CMS message to an application performing password-based CMS decryption can trigger an application crash, leading to a Denial of Service.  Applications that process password-encrypted CMS messages may be affected.  The FIPS modules in 4.0, 3.6, 3.5, 3.4, and 3.0 are not affected by this issue, as the affected code is outside the OpenSSL FIPS module boundary.",
-    "modified": "2026-09-14T17:03:37.105083996Z",
+    "modified": "2026-10-01T03:02:44.974205669Z",
     "published": "2026-06-09T17:17:07.970Z",
     "upstream": [
       "CVE-2026-42766"
@@ -15612,6 +15805,7 @@
           "3.5.6-1~deb13u2",
           "3.5.7-1~deb13u1",
           "3.5.7-1~deb13u2",
+          "3.5.7-1~deb13u3",
           "3.6.0-1",
           "3.6.0-2",
           "3.6.0~~alpha1-1",
@@ -15637,7 +15831,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -15645,7 +15839,7 @@
   {
     "id": "DEBIAN-CVE-2026-42765",
     "details": "Issue summary: When a partial-chain certificate verification is enabled together with OCSP response checking for the whole chain, a NULL dereference will happen if the verified chain does not have a self-signed trusted anchor, crashing the process.  Impact summary: A NULL pointer dereference can trigger a crash which leads to a Denial of Service for an application.  When performing OCSP response checking for certificates in the verification chain, the code always tries to access the next certificate as the issuer. There is a check for a self-signed certificate. However with the partial chain verification enabled when the chain does not have a self-signed trusted anchor, the issuer will be NULL for the last certificate in the chain. A NULL pointer dereference then happens.  This issue affects only applications which enable both OCSP verification of the certificate chain (X509_V_FLAG_OCSP_RESP_CHECK_ALL) and partial chain verification (X509_V_FLAG_PARTIAL_CHAIN) in the certificate verification. Both flags are disabled by default. For that reason, we have assigned Low severity to the issue.  No FIPS modules are affected by this issue as the affected code is outside the OpenSSL FIPS module boundary.",
-    "modified": "2026-09-14T17:03:35.401223803Z",
+    "modified": "2026-10-01T03:02:44.823002855Z",
     "published": "2026-06-09T17:17:07.843Z",
     "upstream": [
       "CVE-2026-42765"
@@ -15690,6 +15884,7 @@
           "3.5.6-1~deb13u2",
           "3.5.7-1~deb13u1",
           "3.5.7-1~deb13u2",
+          "3.5.7-1~deb13u3",
           "3.6.0-1",
           "3.6.0-2",
           "3.6.0~~alpha1-1",
@@ -15715,7 +15910,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -15723,7 +15918,7 @@
   {
     "id": "DEBIAN-CVE-2026-42764",
     "details": "Issue summary: Receiving a QUIC initial packet with an invalid token may trigger a NULL pointer dereference in the OpenSSL QUIC server with address validation disabled.  Impact summary: NULL pointer dereference typically causes abnormal termination of the affected QUIC server process and a Denial of Service.  If the address validation is disabled in the OpenSSL QUIC server implementation, an attacker can crash the server by sending an initial packet with an invalid or expired token.  By default, the client address validation is enabled in the OpenSSL QUIC server implementation, which makes the default configuration not vulnerable to this issue. However if the SSL_LISTENER_FLAG_NO_VALIDATE is used with the SSL_new_listener() call, the address validation is disabled making the vulnerable code reachable.  The FIPS modules in 4.0, 3.6, 3.5, 3.4, and 3.0 are not affected by this issue, as the affected code is outside the OpenSSL FIPS module boundary.",
-    "modified": "2026-09-14T17:03:36.933172200Z",
+    "modified": "2026-10-01T03:03:12.046150029Z",
     "published": "2026-06-09T17:17:07.693Z",
     "upstream": [
       "CVE-2026-42764"
@@ -15807,6 +16002,7 @@
           "3.5.6-1~deb13u2",
           "3.5.7-1~deb13u1",
           "3.5.7-1~deb13u2",
+          "3.5.7-1~deb13u3",
           "3.6.0-1",
           "3.6.0-2",
           "3.6.0~~alpha1-1",
@@ -15832,7 +16028,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -15840,7 +16036,7 @@
   {
     "id": "DEBIAN-CVE-2026-34183",
     "details": "Issue summary: Remote peer may exhaust heap memory of the QUIC server or client by flooding it with packets containing PATH_CHALLENGE frames.  Impact summary: A malicious remote peer can cause an unbounded memory allocation which can lead to an abnormal termination of the application acting as a QUIC client or server and a Denial of Service.  A remote peer may exhaust heap memory by flooding the local QUIC stack with PATH_CHALLENGE frames. The local QUIC stack allocates a PATH_RESPONSE frame for every PATH_CHALLENGE it receives. The allocated PATH_RESPONSE frame gets freed only when the remote peer acknowledges reception of the PATH_RESPONSE frame which will not be done by a malicious peer.  The FIPS modules in 4.0, 3.6, 3.5, 3.4, and 3.0 are not affected by this issue. The QUIC stack is outside of OpenSSL FIPS module boundary.",
-    "modified": "2026-09-14T17:03:08.659240147Z",
+    "modified": "2026-10-01T03:03:11.056752612Z",
     "published": "2026-06-09T17:17:05Z",
     "upstream": [
       "CVE-2026-34183"
@@ -15924,6 +16120,7 @@
           "3.5.6-1~deb13u2",
           "3.5.7-1~deb13u1",
           "3.5.7-1~deb13u2",
+          "3.5.7-1~deb13u3",
           "3.6.0-1",
           "3.6.0-2",
           "3.6.0~~alpha1-1",
@@ -15949,7 +16146,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -15957,7 +16154,7 @@
   {
     "id": "DEBIAN-CVE-2026-35188",
     "details": "Issue summary: A malicious server can exploit TLS OCSP stapling by delivering a crafted response through the status_request extension, triggering a double-free in the client's certificate verification path.  Impact summary: Successful exploitation allows an attacker to corrupt heap memory via a double-free, potentially leading to a Denial of Service or possibly an attacker controlled code execution or other undefined behavior.  If OCSP stapling is enabled and the TLS client connects to a malicious server, a crafted OCSP stapled response can trigger a double free in the TLS client when the stapled response is checked.  The OCSP stapling is not enabled by default. Reliable code execution through a double-free is technically complex and highly environment-dependent but the Denial of Service impact is straightforward to achieve, warranting Moderate severity.  No FIPS modules are affected by this issue as the affected code is outside the OpenSSL FIPS module boundary.",
-    "modified": "2026-09-14T17:03:08.906197904Z",
+    "modified": "2026-10-01T03:02:38.083948730Z",
     "published": "2026-06-09T17:17:05.437Z",
     "upstream": [
       "CVE-2026-35188"
@@ -16002,6 +16199,7 @@
           "3.5.6-1~deb13u2",
           "3.5.7-1~deb13u1",
           "3.5.7-1~deb13u2",
+          "3.5.7-1~deb13u3",
           "3.6.0-1",
           "3.6.0-2",
           "3.6.0~~alpha1-1",
@@ -16027,7 +16225,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -16035,7 +16233,7 @@
   {
     "id": "DEBIAN-CVE-2026-34182",
     "details": "Issue Summary: Cryptographic Message Services (CMS) processing fails to perform sufficient input validation on the cipher and tag length fields of AuthEnvelopedData containers, leading to various potential compromises.  Impact Summary: Attackers making use of these vulnerabilities may achieve key-equivalent functionality for a given CMS recipient and/or bypass integrity validation for a given message.  In one use case, an attacker may send a CMS message containing AuthEnvelopedData with the cipher specified as a non-AEAD cipher.  OpenSSL erroneously allows this selection, and attempts to decrypt and validate the message.  An on-path attacker who captures one legitimate AES-GCM AuthEnvelopedData addressed to the victim can re-emit it with the recipientInfos set left byte-for-byte intact, so the victim's private key still unwraps the genuine CEK (the content-encryption key), but with the inner OID rewritten to AES-256-OFB (Output Feedback Mode, an unauthenticated keystream mode) and with an attacker-chosen IV and ciphertext. The victim initializes AES-256-OFB under the real CEK, never consults the MAC field, and CMS_decrypt() returns success.  If the application under attack responds to the attacker with any indicator showing success or failure of the decryption effort, it is possible for the attacker to use this as an oracle to obtain key equivalent functionality for the CEK used for the chosen recipient of the message.  In another use case, an attacker can reduce the tag length of the chosen AEAD cipher for a given AuthEnvelopedData container to be a single byte long, allowing an attacker to brute force CMS decryption, producing an integrity bypass for applications that trust CMS_decrypt() to reject modified content.  The FIPS modules are not affected by this issue.",
-    "modified": "2026-09-14T17:03:28.869009326Z",
+    "modified": "2026-10-01T03:02:37.603099707Z",
     "published": "2026-06-09T17:17:04.857Z",
     "upstream": [
       "CVE-2026-34182"
@@ -16169,6 +16367,7 @@
           "3.5.6-1~deb13u2",
           "3.5.7-1~deb13u1",
           "3.5.7-1~deb13u2",
+          "3.5.7-1~deb13u3",
           "3.6.0-1",
           "3.6.0-2",
           "3.6.0~~alpha1-1",
@@ -16194,7 +16393,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -16202,7 +16401,7 @@
   {
     "id": "DEBIAN-CVE-2026-34181",
     "details": "Issue Summary: The PKCS#12 file processing fails to perform sufficient input validation for files that use Password-Based Message Authentication Code 1 (PBMAC1) integrity mechanism allowing a certificate and private key forgery.  Impact Summary: An attacker impersonating a user can cause a service reading PKCS#12 files to accept forged certificates and private keys with a 1 in 256 probability.  If a service accepting PKCS#12 files is using passwords for authenticating the received files, the attacker can create unencrypted PKCS#12 files that use PBMAC1 authentication that specifies an HMAC key of only one byte, allowing them to craft a file that will be accepted with a 1 in 256 probability. That would then cause the service to accept a certificate and private key controlled by the attacker.  The FIPS modules are not affected by this issue, as the affected code is outside the OpenSSL FIPS module boundary.",
-    "modified": "2026-09-14T17:03:28.866967600Z",
+    "modified": "2026-10-01T03:02:37.400150247Z",
     "published": "2026-06-09T17:17:04.740Z",
     "upstream": [
       "CVE-2026-34181"
@@ -16286,6 +16485,7 @@
           "3.5.6-1~deb13u2",
           "3.5.7-1~deb13u1",
           "3.5.7-1~deb13u2",
+          "3.5.7-1~deb13u3",
           "3.6.0-1",
           "3.6.0-2",
           "3.6.0~~alpha1-1",
@@ -16311,7 +16511,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -16319,7 +16519,7 @@
   {
     "id": "DEBIAN-CVE-2026-34180",
     "details": "Issue summary: Parsing a crafted DER-encoded ASN.1 structure with a primitive element whose content exceeds 2 gigabytes in length may cause a heap buffer over-read on 64-bit Unix and Unix-like platforms.  Impact summary: The heap buffer over-read may crash the application (Denial of Service) or to load into the decoded ASN.1 object contents of memory beyond the end of the input buffer.  More typically such ASN.1 elements would instead be truncated.  An integer truncation in OpenSSL's ASN.1 decoder causes the content length of an ASN.1 primitive element to be mishandled when it exceeds 2 gigabytes. In the worst case the truncated length is treated as a request to scan the binary content for a terminating zero byte, possibly causing OpenSSL to read either less than or beyond the end of the allocated buffer.  Applications that pass attacker-supplied data to d2i_X509(), d2i_PKCS7(), or any other d2i_* decoding function are affected. OpenSSL's own command-line tools are not vulnerable, as data read through the BIO layer is checked before it reaches the affected code. The issue only affects 64-bit Unix and Unix-like platforms; 32-bit platforms and 64-bit Windows are not affected.  The FIPS modules in 4.0, 3.6, 3.5, 3.4 and 3.0 are not affected by this issue, as the affected code is outside the OpenSSL FIPS module boundary.",
-    "modified": "2026-09-14T17:03:28.868742496Z",
+    "modified": "2026-10-01T03:02:37.549043242Z",
     "published": "2026-06-09T17:17:04.600Z",
     "upstream": [
       "CVE-2026-34180"
@@ -16453,6 +16653,7 @@
           "3.5.6-1~deb13u2",
           "3.5.7-1~deb13u1",
           "3.5.7-1~deb13u2",
+          "3.5.7-1~deb13u3",
           "3.6.0-1",
           "3.6.0-2",
           "3.6.0~~alpha1-1",
@@ -16478,7 +16679,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -16486,7 +16687,7 @@
   {
     "id": "DEBIAN-CVE-2026-41567",
     "details": "Moby is an open source container framework. In versions prior to 29.5.1 and in moby/moby v2 prior to v2.0.0-beta.14, when a compressed archive is uploaded to a container via `PUT /containers/{id}/archive` or piped through `docker cp -`, the daemon resolves decompression binaries (such as `xz` or `unpigz`) from the container's filesystem rather than the host's due to incorrect ordering of operations. A malicious container image containing a trojanized decompression binary can achieve arbitrary code execution with full daemon privileges, including host root UID and unrestricted capabilities, when a user uploads a compressed (xz or gzip) archive into that container. This issue is fixed in Docker Engine 29.5.1 and moby/moby v2.0.0-beta.14. Workarounds include only running containers from trusted images, using authorization plugins to restrict access to the `PUT /containers/{id}/archive` endpoint, and avoiding piping compressed archives into containers created from untrusted images",
-    "modified": "2026-09-10T08:47:29.222179003Z",
+    "modified": "2026-10-01T03:03:22.778411391Z",
     "published": "2026-06-05T02:17:13.817Z",
     "upstream": [
       "CVE-2026-41567"
@@ -16560,7 +16761,8 @@
           "28.5.2+dfsg4-1",
           "28.5.2+dfsg4-2",
           "28.5.2+dfsg4-3",
-          "28.5.2+dfsg4-4"
+          "28.5.2+dfsg4-4",
+          "28.5.2+dfsg4-5"
         ],
         "ecosystem_specific": {
           "urgency": "not yet assigned"
@@ -16654,7 +16856,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/docker.io",
       "distribution": "debian"
     }
@@ -16662,7 +16864,7 @@
   {
     "id": "DEBIAN-CVE-2026-9256",
     "details": "NGINX Plus and NGINX Open Source have a vulnerability in the ngx_http_rewrite_module module. This vulnerability exists when a rewrite directive uses a regex pattern with distinct, overlapping Perl-Compatible Regular Expression (PCRE) captures (for example, ^/((.*))$) and a replacement string that references multiple such captures (for example, $1$2) in a redirect or arguments context. An unauthenticated attacker along with conditions beyond their control can exploit this vulnerability by sending crafted HTTP requests. This may cause a heap buffer overflow in the NGINX worker process leading to a restart. Additionally, attackers can execute code on systems with Address Space Layout Randomization (ASLR) disabled or when the attacker can bypass ASLR.    Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
-    "modified": "2026-09-14T17:03:50.010361633Z",
+    "modified": "2026-10-01T03:03:55.743877565Z",
     "published": "2026-05-22T15:16:27.073Z",
     "upstream": [
       "CVE-2026-9256"
@@ -16803,7 +17005,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -16811,7 +17013,7 @@
   {
     "id": "DEBIAN-CVE-2026-42946",
     "details": "A vulnerability exists in the ngx_http_scgi_module and ngx_http_uwsgi_module modules that may result in excessive memory allocation or an over-read of data. When scgi_pass or uwsgi_pass is configured, an unauthenticated attacker with man-in-the-middle (MITM) ability to control responses from an upstream server may be able to read the memory of the NGINX worker process or restart it.  Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
-    "modified": "2026-09-14T17:03:11.714252766Z",
+    "modified": "2026-10-01T03:03:23.001620298Z",
     "published": "2026-05-13T16:16:50.340Z",
     "upstream": [
       "CVE-2026-42946"
@@ -16949,7 +17151,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -16957,7 +17159,7 @@
   {
     "id": "DEBIAN-CVE-2026-42945",
     "details": "NGINX Plus and NGINX Open Source have a vulnerability in the ngx_http_rewrite_module module. This vulnerability exists when the rewrite directive is followed by a rewrite, if, or set directive and an unnamed Perl-Compatible Regular Expression (PCRE) capture (for example, $1, $2) with a replacement string that includes a question mark (?). An unauthenticated attacker along with conditions beyond its control can exploit this vulnerability by sending crafted HTTP requests. This may cause a heap buffer overflow in the NGINX worker process leading to a restart. Additionally, attackers can execute code on systems with Address Space Layout Randomization (ASLR) disabled or when the attacker can bypass ASLR.  Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
-    "modified": "2026-09-11T08:47:27.572962823Z",
+    "modified": "2026-10-01T03:03:04.791676691Z",
     "published": "2026-05-13T16:16:50.190Z",
     "upstream": [
       "CVE-2026-42945"
@@ -17092,7 +17294,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -17100,7 +17302,7 @@
   {
     "id": "DEBIAN-CVE-2026-42934",
     "details": "NGINX Plus and NGINX Open Source have a vulnerability in the ngx_http_charset_module module. When charset, source_charset, and charset_map and proxy_pass with disabled buffering (\"off\") directives are configured, unauthenticated attackers can send requests that with conditions beyond the attackers' control to cause a heap buffer over-read in the NGINX worker process, leading to limited disclosure of memory or a restart.     Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
-    "modified": "2026-09-14T17:03:37.021395320Z",
+    "modified": "2026-10-01T03:03:12.119992989Z",
     "published": "2026-05-13T16:16:49.910Z",
     "upstream": [
       "CVE-2026-42934"
@@ -17236,7 +17438,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -17244,7 +17446,7 @@
   {
     "id": "DEBIAN-CVE-2026-42926",
     "details": "When NGINX Open Source is configured to proxy HTTP/2 traffic by setting proxy_http_version to 2, and also uses proxy_set_body, an attacker may be able to inject frame headers and payload bytes to the upstream peer.  Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
-    "modified": "2026-09-14T17:01:31.909416370Z",
+    "modified": "2026-10-01T03:03:04.679016256Z",
     "published": "2026-05-13T16:16:49.640Z",
     "upstream": [
       "CVE-2026-42926"
@@ -17312,7 +17514,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -17320,7 +17522,7 @@
   {
     "id": "DEBIAN-CVE-2026-40701",
     "details": "NGINX Plus and NGINX Open Source have a vulnerability in the ngx_http_ssl_module module when the ssl_verify_client directive is set to \"on\" or \"optional,\" and the ssl_ocsp directive is set to \"on\" or the leaf parameters are configured with a resolver. With this configuration, an unauthenticated attacker can send requests along with conditions beyond its control that may cause a heap-use-after-free error in the NGINX worker process. This vulnerability may result in limited modification of data or the NGINX worker process restarting.     Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
-    "modified": "2026-09-14T17:03:10.510982177Z",
+    "modified": "2026-10-01T03:03:11.615397867Z",
     "published": "2026-05-13T16:16:43.863Z",
     "upstream": [
       "CVE-2026-40701"
@@ -17456,7 +17658,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -17464,7 +17666,7 @@
   {
     "id": "DEBIAN-CVE-2026-40460",
     "details": "When NGINX Plus or NGINX Open Source are configured to use the HTTP/3 QUIC module, an attacker may be able to spoof their source IP address allowing for bypass of authorization or bypass of rate limiting.  Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
-    "modified": "2026-09-14T17:03:32.728146918Z",
+    "modified": "2026-10-01T03:03:22.555818225Z",
     "published": "2026-05-13T16:16:42.823Z",
     "upstream": [
       "CVE-2026-40460"
@@ -17565,7 +17767,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -17573,7 +17775,7 @@
   {
     "id": "DEBIAN-CVE-2026-7168",
     "details": "Successfully using libcurl to do a transfer over a specific HTTP proxy (`proxyA`) with **Digest** authentication and then changing the proxy host to a second one (`proxyB`) for a second transfer, reusing the same handle, makes libcurl wrongly pass on the `Proxy-Authorization:` header field meant for `proxyA`, to `proxyB`.",
-    "modified": "2026-09-16T08:47:33.220864114Z",
+    "modified": "2026-10-01T03:03:39.944628909Z",
     "published": "2026-05-13T13:01:57.200Z",
     "upstream": [
       "CVE-2026-7168"
@@ -17750,7 +17952,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -17758,7 +17960,7 @@
   {
     "id": "DEBIAN-CVE-2026-6429",
     "details": "When asked to both use a `.netrc` file for credentials and to follow HTTP redirects, libcurl could leak the password used for the first host to the followed-to host under certain circumstances.",
-    "modified": "2026-09-16T08:47:36.790237887Z",
+    "modified": "2026-10-01T03:02:42.937148813Z",
     "published": "2026-05-13T13:01:56.930Z",
     "upstream": [
       "CVE-2026-6429"
@@ -17924,6 +18126,10 @@
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
           "8.22.0~rc3-1+exp1",
+          "8.23.0~rc1-1",
+          "8.23.0~rc1-2",
+          "8.23.0~rc2-1",
+          "8.23.0~rc2-1+exp1",
           "8.3.0-1",
           "8.3.0-2",
           "8.3.0-2~bpo12+1",
@@ -18092,7 +18298,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -18100,7 +18306,7 @@
   {
     "id": "DEBIAN-CVE-2026-6276",
     "details": "Using libcurl, when a custom `Host:` header is first set for an HTTP request and a second request is subsequently done using the same *easy handle* but without the custom `Host:` header set, the second request would use stale information and pass on cookies meant for the first host in the second request. Leak them.",
-    "modified": "2026-09-16T08:47:28.813967262Z",
+    "modified": "2026-10-01T03:03:29.108334674Z",
     "published": "2026-05-13T13:01:56.800Z",
     "upstream": [
       "CVE-2026-6276"
@@ -18266,6 +18472,10 @@
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
           "8.22.0~rc3-1+exp1",
+          "8.23.0~rc1-1",
+          "8.23.0~rc1-2",
+          "8.23.0~rc2-1",
+          "8.23.0~rc2-1+exp1",
           "8.3.0-1",
           "8.3.0-2",
           "8.3.0-2~bpo12+1",
@@ -18434,7 +18644,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -18442,7 +18652,7 @@
   {
     "id": "DEBIAN-CVE-2026-6253",
     "details": "curl might erroneously pass on credentials for a first proxy to a second proxy.  This can happen when the following conditions are true:  1. curl is setup to use specific different proxies for different URL schemes 2. the first proxy needs credentials 3. the second proxy uses no credentials 4. while using the first proxy (using say `http://`), curl is asked to follow    a redirect to a URL using another scheme (say `https://`), accessed using a    second, different, proxy",
-    "modified": "2026-09-16T08:47:36.868257904Z",
+    "modified": "2026-10-01T03:03:29.113118656Z",
     "published": "2026-05-13T13:01:56.570Z",
     "upstream": [
       "CVE-2026-6253"
@@ -18608,6 +18818,10 @@
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
           "8.22.0~rc3-1+exp1",
+          "8.23.0~rc1-1",
+          "8.23.0~rc1-2",
+          "8.23.0~rc2-1",
+          "8.23.0~rc2-1+exp1",
           "8.3.0-1",
           "8.3.0-2",
           "8.3.0-2~bpo12+1",
@@ -18776,7 +18990,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -18784,7 +18998,7 @@
   {
     "id": "DEBIAN-CVE-2026-5773",
     "details": "libcurl might in some circumstances reuse the wrong connection for SMB(S) transfers.  libcurl features a pool of recent connections so that subsequent requests can reuse an existing connection to avoid overhead.  When reusing a connection a range of criteria must be met. Due to a logical error in the code, a network transfer operation that was requested by an application could wrongfully reuse an existing SMB connection to the same server that was using a different \"share\" than the new subsequent transfer should.  This could in unlucky situations lead to the download of the wrong file or the upload of a file to the wrong place. When this happens, the same credentials are used and the server name is the same.",
-    "modified": "2026-09-16T08:47:30.801345102Z",
+    "modified": "2026-10-01T03:03:27.616451299Z",
     "published": "2026-05-13T13:01:56.307Z",
     "upstream": [
       "CVE-2026-5773"
@@ -18957,7 +19171,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -18965,7 +19179,7 @@
   {
     "id": "DEBIAN-CVE-2026-5545",
     "details": "libcurl might in some circumstances reuse the wrong connection when asked to do an authenticated HTTP(S) request after a Negotiate-authenticated one, when both use the same host.  libcurl features a pool of recent connections so that subsequent requests can reuse an existing connection to avoid overhead.  When reusing a connection a range of criteria must be met. Due to a logical error in the code, a request that was issued by an application could wrongfully reuse an existing connection to the same server that was authenticated using different credentials.  An application that first uses Negotiate authentication to a server with `user1:password1` and then does another operation to the same server asking for any authentication method but for `user2:password2` (while the previous connection is still alive) - the second request gets confused and wrongly reuses the same connection and sends the new request over that connection thinking it uses a mix of user1's and user2's credentials when it is in fact still using the connection authenticated for user1...",
-    "modified": "2026-09-16T08:47:28.959851753Z",
+    "modified": "2026-10-01T03:03:18.893797440Z",
     "published": "2026-05-13T13:01:56.190Z",
     "upstream": [
       "CVE-2026-5545"
@@ -19131,6 +19345,10 @@
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
           "8.22.0~rc3-1+exp1",
+          "8.23.0~rc1-1",
+          "8.23.0~rc1-2",
+          "8.23.0~rc2-1",
+          "8.23.0~rc2-1+exp1",
           "8.3.0-1",
           "8.3.0-2",
           "8.3.0-2~bpo12+1",
@@ -19297,7 +19515,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -19305,7 +19523,7 @@
   {
     "id": "DEBIAN-CVE-2026-4873",
     "details": "A vulnerability exists where a connection requiring TLS incorrectly reuses an existing unencrypted connection from the same connection pool. If an initial transfer is made in clear-text (via IMAP, SMTP, or POP3), a subsequent request to that same host bypasses the TLS requirement and instead transmit data unencrypted.",
-    "modified": "2026-09-16T08:47:34.731593658Z",
+    "modified": "2026-10-01T03:03:07.078625824Z",
     "published": "2026-05-13T13:01:55.893Z",
     "upstream": [
       "CVE-2026-4873"
@@ -19471,6 +19689,10 @@
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
           "8.22.0~rc3-1+exp1",
+          "8.23.0~rc1-1",
+          "8.23.0~rc1-2",
+          "8.23.0~rc2-1",
+          "8.23.0~rc2-1+exp1",
           "8.3.0-1",
           "8.3.0-2",
           "8.3.0-2~bpo12+1",
@@ -19637,7 +19859,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -19645,7 +19867,7 @@
   {
     "id": "DEBIAN-CVE-2026-40228",
     "details": "In systemd 259, systemd-journald can send ANSI escape sequences to the terminals of arbitrary users when a \"logger -p emerg\" command is executed, if ForwardToWall=yes is set.",
-    "modified": "2026-09-14T17:03:10.327606387Z",
+    "modified": "2026-10-01T03:03:11.478613266Z",
     "published": "2026-04-10T16:16:33.753Z",
     "upstream": [
       "CVE-2026-40228"
@@ -19857,9 +20079,11 @@
           "261~rc2-1",
           "261~rc3-1",
           "261~rc4-1",
+          "262-1",
           "262~rc1-1",
           "262~rc1-2",
-          "262~rc2-1"
+          "262~rc2-1",
+          "262~rc3-1"
         ],
         "ecosystem_specific": {
           "urgency": "not yet assigned"
@@ -19920,9 +20144,11 @@
           "261~rc2-1",
           "261~rc3-1",
           "261~rc4-1",
+          "262-1",
           "262~rc1-1",
           "262~rc1-2",
-          "262~rc2-1"
+          "262~rc2-1",
+          "262~rc3-1"
         ],
         "ecosystem_specific": {
           "urgency": "not yet assigned"
@@ -19983,9 +20209,11 @@
           "261~rc2-1",
           "261~rc3-1",
           "261~rc4-1",
+          "262-1",
           "262~rc1-1",
           "262~rc1-2",
-          "262~rc2-1"
+          "262~rc2-1",
+          "262~rc3-1"
         ],
         "ecosystem_specific": {
           "urgency": "not yet assigned"
@@ -20003,7 +20231,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/systemd",
       "distribution": "debian"
     }
@@ -20011,7 +20239,7 @@
   {
     "id": "DEBIAN-CVE-2026-40227",
     "details": "In systemd 260 before 261, a local unprivileged user can trigger an assert via an IPC API call with an array or map that has a null element.",
-    "modified": "2026-09-14T17:03:10.210153845Z",
+    "modified": "2026-10-01T03:03:04.923613107Z",
     "published": "2026-04-10T16:16:33.607Z",
     "upstream": [
       "CVE-2026-40227"
@@ -20084,7 +20312,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/systemd",
       "distribution": "debian"
     }
@@ -20092,7 +20320,7 @@
   {
     "id": "DEBIAN-CVE-2026-40226",
     "details": "In nspawn in systemd 233 through 259 before 260, an escape-to-host action can occur via a crafted optional config file.",
-    "modified": "2026-09-14T17:03:10.244992869Z",
+    "modified": "2026-10-01T03:02:39.263823267Z",
     "published": "2026-04-10T16:16:33.447Z",
     "upstream": [
       "CVE-2026-40226"
@@ -20253,7 +20481,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/systemd",
       "distribution": "debian"
     }
@@ -20261,7 +20489,7 @@
   {
     "id": "DEBIAN-CVE-2026-40225",
     "details": "In udev in systemd before 260, local root execution can occur via malicious hardware devices and unsanitized kernel output.",
-    "modified": "2026-09-14T17:03:33.722131861Z",
+    "modified": "2026-10-01T03:03:11.448632619Z",
     "published": "2026-04-10T16:16:33.287Z",
     "upstream": [
       "CVE-2026-40225"
@@ -20423,7 +20651,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/systemd",
       "distribution": "debian"
     }
@@ -20431,7 +20659,7 @@
   {
     "id": "DEBIAN-CVE-2026-40224",
     "details": "In systemd 259 before 260, there is local privilege escalation in systemd-machined because varlink can be used to reach the root namespace.",
-    "modified": "2026-09-14T17:03:10.165948353Z",
+    "modified": "2026-10-01T03:02:39.224118432Z",
     "published": "2026-04-10T16:16:33.113Z",
     "upstream": [
       "CVE-2026-40224"
@@ -20500,7 +20728,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/systemd",
       "distribution": "debian"
     }
@@ -20508,7 +20736,7 @@
   {
     "id": "DEBIAN-CVE-2026-40223",
     "details": "In systemd 258 before 260, a local unprivileged user can trigger an assert when a Delegate=yes and User=<unset> unit exists and is running.",
-    "modified": "2026-09-14T17:03:28.671057557Z",
+    "modified": "2026-10-01T03:03:11.388501254Z",
     "published": "2026-04-10T16:16:32.930Z",
     "upstream": [
       "CVE-2026-40223"
@@ -20575,7 +20803,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/systemd",
       "distribution": "debian"
     }
@@ -20583,7 +20811,7 @@
   {
     "id": "DEBIAN-CVE-2026-31790",
     "details": "Issue summary: Applications using RSASVE key encapsulation to establish a secret encryption key can send contents of an uninitialized memory buffer to a malicious peer.  Impact summary: The uninitialized buffer might contain sensitive data from the previous execution of the application process which leads to sensitive data leakage to an attacker.  RSA_public_encrypt() returns the number of bytes written on success and -1 on error. The affected code tests only whether the return value is non-zero. As a result, if RSA encryption fails, encapsulation can still return success to the caller, set the output lengths, and leave the caller to use the contents of the ciphertext buffer as if a valid KEM ciphertext had been produced.  If applications use EVP_PKEY_encapsulate() with RSA/RSASVE on an attacker-supplied invalid RSA public key without first validating that key, then this may cause stale or uninitialized contents of the caller-provided ciphertext buffer to be disclosed to the attacker in place of the KEM ciphertext.  As a workaround calling EVP_PKEY_public_check() or EVP_PKEY_public_check_quick() before EVP_PKEY_encapsulate() will mitigate the issue.  The FIPS modules in 3.6, 3.5, 3.4, 3.3, 3.1 and 3.0 are affected by this issue.",
-    "modified": "2026-09-14T17:03:06.820830350Z",
+    "modified": "2026-10-01T03:03:10.109596007Z",
     "published": "2026-04-07T22:16:21.770Z",
     "upstream": [
       "CVE-2026-31790"
@@ -20712,6 +20940,7 @@
           "3.5.6-1~deb13u2",
           "3.5.7-1~deb13u1",
           "3.5.7-1~deb13u2",
+          "3.5.7-1~deb13u3",
           "3.6.0-1",
           "3.6.0-2",
           "3.6.0~~alpha1-1",
@@ -20736,7 +20965,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-09-30T10:15:57.433161+00:00",
+      "fetched_at": "2026-10-01T10:42:08.476230+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
