@@ -235,7 +235,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -476,7 +476,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -717,7 +717,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -958,7 +958,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -1199,14 +1199,15 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
   },
   {
     "id": "DEBIAN-CVE-2026-92386",
-    "modified": "2026-10-14T09:00:06.813420214Z",
+    "details": "When writing a long cookie name and value to a Netscape cookie jar, a remote HTTP server can make `curl` write a record that exceeds its line-length parsing limit. Consequently, any subsequent `curl` invocation reading from that same cookie jar using `--cookie` silently aborts parsing prematurely upon encountering the too long line, ignoring all subsequent valid cookies in the file.",
+    "modified": "2026-10-21T05:00:10.070353654Z",
     "published": "2026-10-14T08:47:48.208989477Z",
     "upstream": [
       "CVE-2026-92386"
@@ -1440,14 +1441,15 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
   },
   {
     "id": "DEBIAN-CVE-2026-87862",
-    "modified": "2026-10-14T09:00:07.373471963Z",
+    "details": "Importing a `includeSubDomains` parent HSTS entry before a longer-lived child entry, silently drops the child. Consequently, when the parent expires, the child's valid HSTS policy is lost, causing curl to issue unencrypted HTTP requests rather than upgrading to HTTPS.",
+    "modified": "2026-10-21T05:00:08.974053485Z",
     "published": "2026-10-14T08:47:47.787927876Z",
     "upstream": [
       "CVE-2026-87862"
@@ -1681,14 +1683,15 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
   },
   {
     "id": "DEBIAN-CVE-2026-107928",
-    "modified": "2026-10-14T09:00:06.651250838Z",
+    "details": "When curl is built with GnuTLS, a malicious WebSocket server can make curl send memory past its send buffer. This is due to an out of bounds read following when `gnutls_record_send()` returns a number of bytes sent **greater than the number of bytes it was given to send**. GnuTLS does that after a blocked send.",
+    "modified": "2026-10-21T05:00:06.429887906Z",
     "published": "2026-10-14T08:47:46.412557514Z",
     "upstream": [
       "CVE-2026-107928"
@@ -2134,14 +2137,15 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
   },
   {
     "id": "DEBIAN-CVE-2026-92391",
-    "modified": "2026-10-14T09:00:07.933007907Z",
+    "details": "A deeply nested multipart MIME structure constructed via the public API causes a stack overflow in libcurl during normal cleanup operations. An excessive recursion depth within `curl_mime_free` leads to unbounded stack frame allocation during structure traversal, ultimately crashing the host process.",
+    "modified": "2026-10-21T05:00:10.082902514Z",
     "published": "2026-10-14T08:47:44.368127146Z",
     "upstream": [
       "CVE-2026-92391"
@@ -2587,14 +2591,15 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
   },
   {
     "id": "DEBIAN-CVE-2026-107929",
-    "modified": "2026-10-14T09:00:06.633751074Z",
+    "details": "When `CURLOPT_INTERFACE` (or the command line tool's `--interface` option) is set with one of the documented prefixes (`if!`, `host!`, `ifhost!`), that binding is not part of the connection reuse key, so a later transfer asking for a different source can silently reuse an existing connection and go out from the earlier transfer's source address",
+    "modified": "2026-10-21T05:00:06.356343627Z",
     "published": "2026-10-14T08:47:42.853744722Z",
     "upstream": [
       "CVE-2026-107929"
@@ -2828,14 +2833,15 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
   },
   {
     "id": "DEBIAN-CVE-2026-92388",
-    "modified": "2026-10-14T09:00:07.929694555Z",
+    "details": "When an FTP wildcard `LIST` operation fails, libcurl omits the restoration path meant for successful listings, leaving the write callback set to the internal listing parser and the write callback data pointing directly to the easy handle. Subsequent reuse of this handle triggers an immediate crash, and cloning it via `curl_easy_duphandle()` copies this corrupted state into the duplicate. If the original handle is subsequently freed, executing a transfer on the cloned handle causes a heap use-after-free read against the dangling handle reference; alternatively, reusing the original or cloned handle while changing only  `CURLOPT_WRITEDATA` (and omitting `CURLOPT_WRITEFUNCTION`) results in type confusion, forcing the internal parser to interpret incoming server response bytes into memory at the application-supplied write data pointer.",
+    "modified": "2026-10-21T05:00:10.897757072Z",
     "published": "2026-10-14T08:47:41.874265735Z",
     "upstream": [
       "CVE-2026-92388"
@@ -3281,14 +3287,15 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
   },
   {
     "id": "DEBIAN-CVE-2026-86414",
-    "modified": "2026-10-14T09:00:07.813539788Z",
+    "details": "An HTTP proxy can trick libcurl into sending the origin's credentials (Basic password, or a Negotiate/Kerberos ticket) to the proxy itself, by answering the `CONNECT` tunnel request with 401 `WWW-Authenticate:` instead of the expected 407 `Proxy-Authenticate:`.",
+    "modified": "2026-10-21T05:00:09.780016826Z",
     "published": "2026-10-14T08:47:40.744692248Z",
     "upstream": [
       "CVE-2026-86414"
@@ -3734,14 +3741,15 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
   },
   {
     "id": "DEBIAN-CVE-2026-92387",
-    "modified": "2026-10-14T09:00:06.837662825Z",
+    "details": "By permanently omitting the final control-response line, a malicious FTP, IMAP, POP3, or SMTP server can exploit libcurl and completely bypass its configured transfer timeout mechanism, indefinitely blocking all concurrent transfers bound to the same multi-handle.",
+    "modified": "2026-10-21T05:00:10.541882466Z",
     "published": "2026-10-14T08:47:36.275483923Z",
     "upstream": [
       "CVE-2026-92387"
@@ -3975,14 +3983,15 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
   },
   {
     "id": "DEBIAN-CVE-2026-86413",
-    "modified": "2026-10-14T09:00:07.199582498Z",
+    "details": "When using an *ambient user* in a first transfer doing Negotiate authentication and asked to follow redirects, curl could pass on its credential details to an unrelated second origin when asked to redirect there.",
+    "modified": "2026-10-21T05:00:09.533389451Z",
     "published": "2026-10-14T08:47:36.174625213Z",
     "upstream": [
       "CVE-2026-86413"
@@ -4103,14 +4112,15 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
   },
   {
     "id": "DEBIAN-CVE-2026-92389",
-    "modified": "2026-10-14T09:00:07.920628637Z",
+    "details": "libcurl's TFTP state machine fails to validate state transitions against the requested transfer direction, accepting opening server responses for both reads and writes interchangeably. A malicious TFTP server can respond to a download request in a way that forces the client into transmit mode, prompting libcurl to consume and transmit data from the handle's persistent `CURLOPT_READDATA` pointer - including data remaining from unrelated prior operations, such as an HTTP POST request executed on a reused handle.",
+    "modified": "2026-10-21T05:00:10.599729685Z",
     "published": "2026-10-14T08:47:35.415976089Z",
     "upstream": [
       "CVE-2026-92389"
@@ -4556,14 +4566,15 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
   },
   {
     "id": "DEBIAN-CVE-2026-86412",
-    "modified": "2026-10-14T09:00:07.793394993Z",
+    "details": "A remote HTTP server can set a cookie that curl accepts and writes to a Netscape cookie jar but cannot reload. On the next invocation using the same path for `--cookie` and `--cookie-jar`, curl fails before connecting, then the cleanup procedure replaces the jar with an empty file, deleting cookies for unrelated domains.",
+    "modified": "2026-10-21T05:00:08.789834381Z",
     "published": "2026-10-14T08:47:35.402298782Z",
     "upstream": [
       "CVE-2026-86412"
@@ -4684,14 +4695,15 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
   },
   {
     "id": "DEBIAN-CVE-2026-86410",
-    "modified": "2026-10-14T09:00:07.842274840Z",
+    "details": "A flaw in the curl command line tool's logic makes it only set SSH host verification options when interacting directly using SFTP or SCP, and not as a result of following a redirect.",
+    "modified": "2026-10-21T05:00:09.040007402Z",
     "published": "2026-10-14T08:47:35.126526116Z",
     "upstream": [
       "CVE-2026-86410"
@@ -5137,14 +5149,15 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
   },
   {
     "id": "DEBIAN-CVE-2026-92390",
-    "modified": "2026-10-14T09:00:07.941349024Z",
+    "details": "When invoked with `--remote-header-name` (`-J`), curl fails to preserve its documented anti-clobbering protection if an intermediate 103 Early Hints response precedes the final HTTP response, or if an `ETag` header is processed before `Content-Disposition` under `--etag-save`. This flaw allows an HTTP(S) server to overwrite an existing local file specified in the `Content-Disposition` header despite the presence of the `-J` non-overwrite constraint.",
+    "modified": "2026-10-21T05:00:10.686616817Z",
     "published": "2026-10-14T08:47:34.988789165Z",
     "upstream": [
       "CVE-2026-92390"
@@ -5590,14 +5603,15 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
   },
   {
     "id": "DEBIAN-CVE-2026-86415",
-    "modified": "2026-10-14T09:00:07.201410593Z",
+    "details": "libcurl's connection cache match function never considers the automatic client certificate option, so a cached, already authenticated Schannel connection can be handed to a transfer that got redirected to a different origin, even though the code explicitly switched off the auto client cert option for that transfer to prevent exactly this.",
+    "modified": "2026-10-21T05:00:08.891113943Z",
     "published": "2026-10-14T08:47:31.167321340Z",
     "upstream": [
       "CVE-2026-86415"
@@ -5718,14 +5732,15 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
   },
   {
     "id": "DEBIAN-CVE-2026-87861",
-    "modified": "2026-10-14T09:00:07.207230539Z",
+    "details": "When using ambient user credentials, an HTTP request directed to one origin may be dispatched over a connection previously authenticated via Negotiate for a different origin, leaving the request's intended credentials unused.",
+    "modified": "2026-10-21T05:00:08.902455818Z",
     "published": "2026-10-14T08:47:30.638369776Z",
     "upstream": [
       "CVE-2026-87861"
@@ -5846,14 +5861,15 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
   },
   {
     "id": "DEBIAN-CVE-2026-94265",
-    "modified": "2026-10-14T09:00:07.210956366Z",
+    "details": "When processing an HTTP redirect to a URL containing userinfo (a `username:password` component), curl might erroneously retain and re-transmit the original host's HTTP Negotiate authentication state. Consequently, a malicious server can trigger a redirect containing arbitrary userinfo to force curl to send a freshly minted Kerberos ticket—generated using the ambient identity of the client process to an untrusted third-party host, effectively bypassing the domain-scoping restrictions normally enforced by the absence of `--location-trusted`.",
+    "modified": "2026-10-21T05:00:10.759598630Z",
     "published": "2026-10-14T08:47:30.372406830Z",
     "upstream": [
       "CVE-2026-94265"
@@ -5974,14 +5990,15 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
   },
   {
     "id": "DEBIAN-CVE-2026-94266",
-    "modified": "2026-10-14T09:00:06.930756820Z",
+    "details": "libcurl could accidentally return a URL for `curl_easy_getinfo()`'s `CURLINFO_EFFECTIVE_URL` option containing credentials, even though neither the URL provided to libcurl nor the redirected URL did.",
+    "modified": "2026-10-21T05:00:10.232814205Z",
     "published": "2026-10-14T08:47:27.867903460Z",
     "upstream": [
       "CVE-2026-94266"
@@ -6427,7 +6444,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -6597,14 +6614,15 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
   },
   {
     "id": "DEBIAN-CVE-2026-87866",
-    "modified": "2026-10-14T08:00:11.200097606Z",
+    "details": "When built with wolfSSL, curl can successfully validate a pinned public key hash against a key the TLS peer does not possess. During the TLS handshake, wolfSSL validates the connection, but curl's subsequent re-parsing of the same certificate - tricked by a manipulated validity length field - extracts and matches a different embedded key, incorrectly authorizing the pinned public key.",
+    "modified": "2026-10-21T05:00:09.826165722Z",
     "published": "2026-10-14T07:47:36.529178318Z",
     "upstream": [
       "CVE-2026-87866"
@@ -6770,6 +6788,7 @@
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
           "8.22.0~rc3-1+exp1",
+          "8.23.0-1",
           "8.23.0~rc1-1",
           "8.23.0~rc1-2",
           "8.23.0~rc2-1",
@@ -6925,6 +6944,7 @@
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
           "8.22.0~rc3-1+exp1",
+          "8.23.0-1",
           "8.23.0~rc1-1",
           "8.23.0~rc1-2",
           "8.23.0~rc2-1",
@@ -7030,6 +7050,7 @@
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
           "8.22.0~rc3-1+exp1",
+          "8.23.0-1",
           "8.23.0~rc1-1",
           "8.23.0~rc1-2",
           "8.23.0~rc2-1",
@@ -7047,14 +7068,15 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
   },
   {
     "id": "DEBIAN-CVE-2026-86411",
-    "modified": "2026-10-14T08:00:11.110647940Z",
+    "details": "An `ftp://` transfer configured with `CURLUSESSL_NONE` can reuse a pooled FTP control connection that a previous easy handle upgraded with `STARTTLS` and authenticated using a client certificate. The second handle performs neither a new TLS handshake nor a new FTP login, so the server continues to authorize it under the first handle's certificate identity.",
+    "modified": "2026-10-21T05:00:08.917830200Z",
     "published": "2026-10-14T07:47:33.062288551Z",
     "upstream": [
       "CVE-2026-86411"
@@ -7169,14 +7191,15 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
   },
   {
     "id": "DEBIAN-CVE-2026-87863",
-    "modified": "2026-10-14T08:00:11.153457955Z",
+    "details": "An authenticated HTTPS origin can supply an HSTS `max-age` value that the parser accepts, but time serialization later fails to process. On 64-bit systems, extreme max-age values compute an absolute expiry within standard time integer limits that exceeds calendar time structure bounds. During cache saves, the original HSTS file is truncated before writing a temporary replacement; when serialization fails, the temporary file is deleted, leaving an empty or partial cache. Because the save error is silently ignored during cleanup, curl exits successfully despite the data loss.",
+    "modified": "2026-10-21T05:00:09.714892510Z",
     "published": "2026-10-14T07:47:31.549316576Z",
     "upstream": [
       "CVE-2026-87863"
@@ -7286,6 +7309,7 @@
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
           "8.22.0~rc3-1+exp1",
+          "8.23.0-1",
           "8.23.0~rc1-1",
           "8.23.0~rc1-2",
           "8.23.0~rc2-1",
@@ -7391,6 +7415,7 @@
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
           "8.22.0~rc3-1+exp1",
+          "8.23.0-1",
           "8.23.0~rc1-1",
           "8.23.0~rc1-2",
           "8.23.0~rc2-1",
@@ -7408,14 +7433,15 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
   },
   {
     "id": "DEBIAN-CVE-2026-87864",
-    "modified": "2026-10-14T08:00:11.212231657Z",
+    "details": "Enabling `CURLOPT_CRLF` causes curl to advertise the raw input byte count in the `IMAP APPEND {N}` literal while transmitting line-ending expanded data. The server reads only $N$ bytes for the payload, causing the remaining overflow bytes to be interpreted and executed as pipelined IMAP commands within the authenticated session.",
+    "modified": "2026-10-21T05:00:09.175120634Z",
     "published": "2026-10-14T07:47:29.498682370Z",
     "upstream": [
       "CVE-2026-87864"
@@ -7581,6 +7607,7 @@
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
           "8.22.0~rc3-1+exp1",
+          "8.23.0-1",
           "8.23.0~rc1-1",
           "8.23.0~rc1-2",
           "8.23.0~rc2-1",
@@ -7736,6 +7763,7 @@
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
           "8.22.0~rc3-1+exp1",
+          "8.23.0-1",
           "8.23.0~rc1-1",
           "8.23.0~rc1-2",
           "8.23.0~rc2-1",
@@ -7853,14 +7881,15 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
   },
   {
     "id": "DEBIAN-CVE-2026-87865",
-    "modified": "2026-10-14T08:00:11.181010143Z",
+    "details": "When libcurl uses libssh2 with a hashed `known_hosts` file, an unrelated initial entry can cause host key validation to report a key *mismatch* as a *missing* key to the `CURLOPT_SSH_KEYFUNCTION` callback.",
+    "modified": "2026-10-21T05:00:09.789137514Z",
     "published": "2026-10-14T07:47:23.495771046Z",
     "upstream": [
       "CVE-2026-87865"
@@ -8026,6 +8055,7 @@
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
           "8.22.0~rc3-1+exp1",
+          "8.23.0-1",
           "8.23.0~rc1-1",
           "8.23.0~rc1-2",
           "8.23.0~rc2-1",
@@ -8181,6 +8211,7 @@
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
           "8.22.0~rc3-1+exp1",
+          "8.23.0-1",
           "8.23.0~rc1-1",
           "8.23.0~rc1-2",
           "8.23.0~rc2-1",
@@ -8286,6 +8317,7 @@
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
           "8.22.0~rc3-1+exp1",
+          "8.23.0-1",
           "8.23.0~rc1-1",
           "8.23.0~rc1-2",
           "8.23.0~rc2-1",
@@ -8303,14 +8335,15 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
   },
   {
     "id": "DEBIAN-CVE-2026-86409",
-    "modified": "2026-10-14T08:00:11.166846778Z",
+    "details": "Setting `CURLOPT_AWS_SIGV4` to NULL but does not disable SigV4 authentication, contrary to expectations and documentation. A subsequent transfer on the same handle still sends an `Authorization: AWS4-HMAC-SHA256` header to whatever URL isset next, leaking state information.",
+    "modified": "2026-10-21T05:00:09.773964514Z",
     "published": "2026-10-14T07:47:22.397121379Z",
     "upstream": [
       "CVE-2026-86409"
@@ -8476,6 +8509,7 @@
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
           "8.22.0~rc3-1+exp1",
+          "8.23.0-1",
           "8.23.0~rc1-1",
           "8.23.0~rc1-2",
           "8.23.0~rc2-1",
@@ -8631,6 +8665,7 @@
           "8.22.0~rc2-2",
           "8.22.0~rc3-1",
           "8.22.0~rc3-1+exp1",
+          "8.23.0-1",
           "8.23.0~rc1-1",
           "8.23.0~rc1-2",
           "8.23.0~rc2-1",
@@ -8748,7 +8783,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -8944,7 +8979,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/docker.io",
       "distribution": "debian"
     }
@@ -9140,7 +9175,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/docker.io",
       "distribution": "debian"
     }
@@ -9263,7 +9298,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -9501,7 +9536,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -9739,7 +9774,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -9977,7 +10012,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -10215,7 +10250,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -10338,7 +10373,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -10461,7 +10496,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -10584,7 +10619,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -10707,7 +10742,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -10945,7 +10980,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -11068,7 +11103,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -11191,7 +11226,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -11429,7 +11464,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -11519,7 +11554,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -11966,7 +12001,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -12204,7 +12239,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -12442,7 +12477,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -12887,7 +12922,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -13123,7 +13158,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -13566,7 +13601,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -14009,7 +14044,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -14452,7 +14487,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -14624,7 +14659,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -14796,7 +14831,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -14917,7 +14952,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -15089,7 +15124,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -15210,7 +15245,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -15382,7 +15417,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -15554,7 +15589,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -15674,7 +15709,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -15795,7 +15830,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -15916,7 +15951,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -16285,7 +16320,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/systemd",
       "distribution": "debian"
     }
@@ -16376,7 +16411,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/systemd",
       "distribution": "debian"
     }
@@ -16738,7 +16773,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/systemd",
       "distribution": "debian"
     }
@@ -16818,7 +16853,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -16975,7 +17010,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -17132,7 +17167,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -17292,7 +17327,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -17726,7 +17761,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -17842,7 +17877,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -18067,7 +18102,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -18292,7 +18327,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -18517,7 +18552,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -18951,7 +18986,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -19313,7 +19348,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -19538,7 +19573,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -19654,7 +19689,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -20016,7 +20051,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -20450,7 +20485,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -20812,7 +20847,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -21248,7 +21283,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -21684,7 +21719,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -21802,7 +21837,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -21918,7 +21953,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -22034,7 +22069,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -22468,7 +22503,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -22621,7 +22656,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -22774,7 +22809,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -22951,7 +22986,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/docker.io",
       "distribution": "debian"
     }
@@ -23128,7 +23163,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/docker.io",
       "distribution": "debian"
     }
@@ -23296,7 +23331,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -23464,7 +23499,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -23632,7 +23667,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -23800,7 +23835,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -23968,7 +24003,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -24136,7 +24171,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -24254,7 +24289,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -24372,7 +24407,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-10-20T09:05:39.659293+00:00",
+      "fetched_at": "2026-10-21T09:05:27.385666+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
