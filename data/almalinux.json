@@ -1,5 +1,1919 @@
 [
   {
+    "id": "ALSA-2026:88477",
+    "summary": "Important: kernel security, bug fix, and enhancement update",
+    "details": "The kernel packages contain the Linux kernel, the core of any Linux operating system.  \n\nSecurity Fix(es):  \n\n  * kernel: calipso: Don't call calipso functions for AF_INET sk. (CVE-2025-38147)\n  * kernel: ipv4: raw: reject IP_HDRINCL packets with ihl < 5 (CVE-2026-64114)\n  * kernel: net/smc: reject CHID-0 ACCEPT that matches an empty ism_dev slot (CVE-2026-64048)\n  * kernel: ALSA: hda/cs35l41: Fix firmware load work teardown (CVE-2026-64481)\n  * kernel: fuse: re-lock request before returning from fuse_ref_folio() (CVE-2026-64266)\n  * kernel: ipv4: fib: free fib_alias with kfree_rcu() on insert error path (CVE-2026-64572)\n  * kernel: drm/amd/display: set new_stream to NULL after release (CVE-2026-68236)\n  * kernel: ALSA: seq: close a re-opened queue timer in the destructor (CVE-2026-68202)\n  * kernel: drm/dp/mst: fix buffer overflows in sideband chunk accumulation (CVE-2026-68278)\n  * kernel: drm/amdgpu: fix lifetime issue of amdgpu_vm_get_task_info_pasid() (CVE-2026-68245)\n  * kernel: ovl: check access to copy_file_range source with src mounter creds (CVE-2026-68448)\n  * kernel: xfs: bounds-check buffer log item's dirty bitmap (CVE-2026-80536)\n  * kernel: inet: frags: strip GSO state from fragments before reassembly (CVE-2026-80590)\n  * kernel: drm/vmwgfx: use check_add_overflow for shader size+offset bound (CVE-2026-80887)\n  * kernel: perf: Fix use-after-free when perf mmap() revival races with the last munmap() (CVE-2026-89791)\n  * kernel: drm/amdkfd: Add TLB flush after MES queue eviction/suspension (CVE-2026-89811)\n  * kernel: perf: Fix addr_filter_ranges lifetime (CVE-2026-93817)\n  * kernel: drm/amdgpu: Bound GPIO I2C table entry count from VBIOS (CVE-2026-97493)\n\n\nBug Fix(es) and Enhancement(s):  \n\n  * Backport request: bonding: only set speed/duplex to unknown, if getting speed failed [almalinux-10.2.z] (JIRA:AlmaLinux-179066)\n  * RTLA segfaults on freed memory access on double SIGINT [almalinux-10.2.z] (JIRA:AlmaLinux-193031)\n\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.\n",
+    "modified": "2026-10-24T02:11:56.332353622Z",
+    "published": "2026-10-22T00:00:00Z",
+    "related": [
+      "CVE-2025-38147",
+      "CVE-2026-64048",
+      "CVE-2026-64114",
+      "CVE-2026-64266",
+      "CVE-2026-64481",
+      "CVE-2026-64572",
+      "CVE-2026-68202",
+      "CVE-2026-68236",
+      "CVE-2026-68245",
+      "CVE-2026-68278",
+      "CVE-2026-68448",
+      "CVE-2026-80536",
+      "CVE-2026-80590",
+      "CVE-2026-80887",
+      "CVE-2026-89791",
+      "CVE-2026-89811",
+      "CVE-2026-93817",
+      "CVE-2026-97493"
+    ],
+    "references": [
+      {
+        "type": "ADVISORY",
+        "url": "https://access.redhat.com/errata/RHSA-2026:88477"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://access.redhat.com/security/cve/CVE-2025-38147"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://access.redhat.com/security/cve/CVE-2026-64048"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://access.redhat.com/security/cve/CVE-2026-64114"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://access.redhat.com/security/cve/CVE-2026-64266"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://access.redhat.com/security/cve/CVE-2026-64481"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://access.redhat.com/security/cve/CVE-2026-64572"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://access.redhat.com/security/cve/CVE-2026-68202"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://access.redhat.com/security/cve/CVE-2026-68236"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://access.redhat.com/security/cve/CVE-2026-68245"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://access.redhat.com/security/cve/CVE-2026-68278"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://access.redhat.com/security/cve/CVE-2026-68448"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://access.redhat.com/security/cve/CVE-2026-80536"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://access.redhat.com/security/cve/CVE-2026-80590"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://access.redhat.com/security/cve/CVE-2026-80887"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://access.redhat.com/security/cve/CVE-2026-89791"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://access.redhat.com/security/cve/CVE-2026-89811"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://access.redhat.com/security/cve/CVE-2026-93817"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://access.redhat.com/security/cve/CVE-2026-97493"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://bugzilla.redhat.com/2376106"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://bugzilla.redhat.com/2502486"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://bugzilla.redhat.com/2502589"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://bugzilla.redhat.com/2507038"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://bugzilla.redhat.com/2507098"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://bugzilla.redhat.com/2511413"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://bugzilla.redhat.com/2513148"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://bugzilla.redhat.com/2513245"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://bugzilla.redhat.com/2513287"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://bugzilla.redhat.com/2513430"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://bugzilla.redhat.com/2514462"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://bugzilla.redhat.com/2524501"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://bugzilla.redhat.com/2525413"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://bugzilla.redhat.com/2528788"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://bugzilla.redhat.com/2535070"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://bugzilla.redhat.com/2535309"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://bugzilla.redhat.com/2540391"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://bugzilla.redhat.com/2540475"
+      },
+      {
+        "type": "ADVISORY",
+        "url": "https://errata.almalinux.org/10/ALSA-2026-88477.html"
+      }
+    ],
+    "affected": [
+      {
+        "package": {
+          "name": "kernel",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-64k",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-64k"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-64k-core",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-64k-core"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-64k-debug",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-64k-debug"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-64k-debug-core",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-64k-debug-core"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-64k-debug-devel",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-64k-debug-devel"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-64k-debug-devel-matched",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-64k-debug-devel-matched"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-64k-debug-modules",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-64k-debug-modules"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-64k-debug-modules-core",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-64k-debug-modules-core"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-64k-debug-modules-extra",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-64k-debug-modules-extra"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-64k-devel",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-64k-devel"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-64k-devel-matched",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-64k-devel-matched"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-64k-modules",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-64k-modules"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-64k-modules-core",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-64k-modules-core"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-64k-modules-extra",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-64k-modules-extra"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-abi-stablelists",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-abi-stablelists"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-core",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-core"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-cross-headers",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-cross-headers"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-debug",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-debug"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-debug-core",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-debug-core"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-debug-devel",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-debug-devel"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-debug-devel-matched",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-debug-devel-matched"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-debug-modules",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-debug-modules"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-debug-modules-core",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-debug-modules-core"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-debug-modules-extra",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-debug-modules-extra"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-debug-uki-virt",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-debug-uki-virt"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-devel",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-devel"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-devel-matched",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-devel-matched"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-doc",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-doc"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-headers",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-headers"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-modules",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-modules"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-modules-core",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-modules-core"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-modules-extra",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-modules-extra"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-modules-extra-matched",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-modules-extra-matched"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-rt",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-rt"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-rt-64k",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-rt-64k"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-rt-64k-core",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-rt-64k-core"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-rt-64k-debug",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-rt-64k-debug"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-rt-64k-debug-core",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-rt-64k-debug-core"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-rt-64k-debug-devel",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-rt-64k-debug-devel"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-rt-64k-debug-modules",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-rt-64k-debug-modules"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-rt-64k-debug-modules-core",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-rt-64k-debug-modules-core"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-rt-64k-debug-modules-extra",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-rt-64k-debug-modules-extra"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-rt-64k-devel",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-rt-64k-devel"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-rt-64k-modules",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-rt-64k-modules"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-rt-64k-modules-core",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-rt-64k-modules-core"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-rt-64k-modules-extra",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-rt-64k-modules-extra"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-rt-core",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-rt-core"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-rt-debug",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-rt-debug"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-rt-debug-core",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-rt-debug-core"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-rt-debug-devel",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-rt-debug-devel"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-rt-debug-modules",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-rt-debug-modules"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-rt-debug-modules-core",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-rt-debug-modules-core"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-rt-debug-modules-extra",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-rt-debug-modules-extra"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-rt-devel",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-rt-devel"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-rt-modules",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-rt-modules"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-rt-modules-core",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-rt-modules-core"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-rt-modules-extra",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-rt-modules-extra"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-tools",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-tools"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-tools-libs",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-tools-libs"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-tools-libs-devel",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-tools-libs-devel"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-uki-virt",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-uki-virt"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-uki-virt-addons",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-uki-virt-addons"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-zfcpdump",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-zfcpdump"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-zfcpdump-core",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-zfcpdump-core"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-zfcpdump-devel",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-zfcpdump-devel"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-zfcpdump-devel-matched",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-zfcpdump-devel-matched"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-zfcpdump-modules",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-zfcpdump-modules"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-zfcpdump-modules-core",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-zfcpdump-modules-core"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "kernel-zfcpdump-modules-extra",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/kernel-zfcpdump-modules-extra"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "libperf",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/libperf"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "perf",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/perf"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "python3-perf",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/python3-perf"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "rtla",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/rtla"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      },
+      {
+        "package": {
+          "name": "rv",
+          "ecosystem": "AlmaLinux:10",
+          "purl": "pkg:rpm/almalinux/rv"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              },
+              {
+                "fixed": "6.12.0-211.68.1.el10_2"
+              }
+            ]
+          }
+        ],
+        "database_specific": {
+          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:88477.json"
+        }
+      }
+    ],
+    "schema_version": "1.9.0",
+    "_metadata": {
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
+      "source_package": "AlmaLinux/kernel",
+      "distribution": "almalinux"
+    }
+  },
+  {
     "id": "ALSA-2026:87375",
     "summary": "Important: kernel security update",
     "details": "The kernel packages contain the Linux kernel, the core of any Linux operating system.  \n\nSecurity Fix(es):  \n\n  * kernel: ipv4: raw: reject IP_HDRINCL packets with ihl < 5 (CVE-2026-64114)\n  * kernel: fuse: re-lock request before returning from fuse_ref_folio() (CVE-2026-64266)\n  * kernel: ipv4: fib: free fib_alias with kfree_rcu() on insert error path (CVE-2026-64572)\n  * kernel: ALSA: seq: close a re-opened queue timer in the destructor (CVE-2026-68202)\n  * kernel: xfs: bounds-check buffer log item's dirty bitmap (CVE-2026-80536)\n  * kernel: inet: frags: strip GSO state from fragments before reassembly (CVE-2026-80590)\n  * kernel: vfio/pci: clear vdev->msi_perm after freeing it on init failure (CVE-2026-89777)\n\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.\n",
@@ -659,7 +2573,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -1346,7 +3260,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -3210,7 +5124,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -3347,7 +5261,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/openssl",
       "distribution": "almalinux"
     }
@@ -3356,7 +5270,7 @@
     "id": "ALSA-2026:85321",
     "summary": "Important: kernel security, bug fix, and enhancement update",
     "details": "The kernel packages contain the Linux kernel, the core of any Linux operating system.  \n\nSecurity Fix(es):  \n\n  * kernel: openvswitch: defer tunnel netdev_put to RCU release (CVE-2026-31678)\n  * kernel: xfrm: espintcp: do not reuse an in-progress partial send (CVE-2026-52935)\n  * kernel: sctp: diag: reject stale associations in dump_one path (CVE-2026-52917)\n  * kernel: tipc: fix slab-use-after-free Read in tipc_aead_decrypt_done (CVE-2026-63801)\n  * kernel: sctp: fix race between sctp_wait_for_connect and peeloff (CVE-2026-63971)\n  * kernel: usb: typec: tcpm: bound altmode_desc[] per iteration in svdm_consume_modes() (CVE-2026-63962)\n  * kernel: sctp: avoid auth_enable sysctl UAF during netns teardown (CVE-2026-68162)\n  * kernel: tipc: clear sock->sk on the failed-insert path in tipc_sk_create() (CVE-2026-68117)\n  * kernel: sctp: auth: verify auth requirement when auth_chunk is NULL (CVE-2026-68300)\n  * kernel: sctp: validate stream count in sctp_process_strreset_inreq() (CVE-2026-68315)\n  * kernel: Bluetooth: hci_sync: Fix advertising data UAFs (CVE-2026-74509)\n  * kernel: sctp: keep chunk->transport in step with the list it is queued on (CVE-2026-74588)\n  * kernel: sctp: validate cookie AUTH state before use (CVE-2026-74752)\n  * kernel: smb: client: reject a tree connect response whose byte count is too small (CVE-2026-89631)\n  * kernel: smb: client: fix OOB read/write from unvalidated DataOffset in coalesce_t2() (CVE-2026-89633)\n  * kernel: signal: Prevent exec() race (CVE-2026-98256)\n  * kernel: exec: Cleanup POSIX timers right after de_thread() (CVE-2026-98260)\n\n\nBug Fix(es) and Enhancement(s):  \n\n  * [10.2.z] kselftests: mm: hugepage-mremap: Bail out! mremap: Expected failure, but call succeeded (JIRA:AlmaLinux-181987)\n  * [IBM 10.3 FEAT] zcrypt driver overwrite function - kernel part [almalinux-10.2.z] (JIRA:AlmaLinux-245336)\n  * Batch: z-stream xfrm - rhel-10.2.z (NST-Core-26W38) (JIRA:AlmaLinux-256678)\n  * RHIVOS - [backport] S32G Driver Enablement - USB (JIRA:AlmaLinux-257228)\n  * Fix pending kernel issues for L1VH GA - Kernel (JIRA:AlmaLinux-267038)\n  * Backport 6785011f8b16 (\"ipv4: validate checksum_start before completing checksum\") [almalinux-10.2.z] (JIRA:AlmaLinux-280590)\n\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.\n",
-    "modified": "2026-10-21T10:27:01.978961540Z",
+    "modified": "2026-10-23T09:00:02.314683229Z",
     "published": "2026-10-19T00:00:00Z",
     "related": [
       "CVE-2026-31678",
@@ -3521,6 +5435,10 @@
       {
         "type": "ADVISORY",
         "url": "https://errata.almalinux.org/10/ALSA-2026-85321.html"
+      },
+      {
+        "type": "REPORT",
+        "url": "https://www.redhat.com/security/data/cve/CVE-2026-99999.html"
       }
     ],
     "affected": [
@@ -5252,7 +7170,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -10398,7 +12316,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/glibc",
       "distribution": "almalinux"
     }
@@ -11081,7 +12999,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -12968,7 +14886,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -13651,7 +15569,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -15583,7 +17501,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -17434,7 +19352,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -17992,7 +19910,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -22931,7 +24849,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/glibc",
       "distribution": "almalinux"
     }
@@ -23091,7 +25009,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/curl",
       "distribution": "almalinux"
     }
@@ -23255,7 +25173,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/curl",
       "distribution": "almalinux"
     }
@@ -28277,7 +30195,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/glibc",
       "distribution": "almalinux"
     }
@@ -28910,7 +30828,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -30766,7 +32684,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -32662,7 +34580,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -32790,7 +34708,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/openssl",
       "distribution": "almalinux"
     }
@@ -34853,7 +36771,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -39812,7 +41730,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/glibc",
       "distribution": "almalinux"
     }
@@ -44942,7 +46860,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/glibc",
       "distribution": "almalinux"
     }
@@ -45070,7 +46988,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/openssl",
       "distribution": "almalinux"
     }
@@ -45299,7 +47217,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/python3",
       "distribution": "almalinux"
     }
@@ -47069,7 +48987,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -47932,7 +49850,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -49688,7 +51606,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -50327,7 +52245,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -51046,7 +52964,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -52856,7 +54774,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -54698,7 +56616,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -56576,7 +58494,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -57115,7 +59033,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -57758,7 +59676,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -59704,7 +61622,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -60373,7 +62291,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -61155,7 +63073,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -63001,7 +64919,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -63174,7 +65092,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/curl",
       "distribution": "almalinux"
     }
@@ -63334,7 +65252,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/curl",
       "distribution": "almalinux"
     }
@@ -65257,7 +67175,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -66057,7 +67975,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -68065,7 +69983,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -68766,7 +70684,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -70558,7 +72476,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -72535,7 +74453,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -74642,7 +76560,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -74842,7 +76760,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/openssl",
       "distribution": "almalinux"
     }
@@ -75042,7 +76960,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/openssl",
       "distribution": "almalinux"
     }
@@ -75308,7 +77226,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/nginx",
       "distribution": "almalinux"
     }
@@ -75574,7 +77492,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/nginx",
       "distribution": "almalinux"
     }
@@ -75840,7 +77758,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/nginx",
       "distribution": "almalinux"
     }
@@ -76083,7 +78001,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/nginx",
       "distribution": "almalinux"
     }
@@ -76820,7 +78738,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -78581,7 +80499,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -78847,7 +80765,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/nginx",
       "distribution": "almalinux"
     }
@@ -79512,7 +81430,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -81394,7 +83312,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -83195,7 +85113,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -85208,7 +87126,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -85936,7 +87854,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -87742,7 +89660,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -89714,7 +91632,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -91775,7 +93693,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -93621,7 +95539,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -94295,7 +96213,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -94570,7 +96488,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/nginx",
       "distribution": "almalinux"
     }
@@ -94845,7 +96763,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/nginx",
       "distribution": "almalinux"
     }
@@ -95120,7 +97038,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/nginx",
       "distribution": "almalinux"
     }
@@ -95340,7 +97258,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/python3",
       "distribution": "almalinux"
     }
@@ -95592,7 +97510,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/nginx",
       "distribution": "almalinux"
     }
@@ -95867,7 +97785,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/nginx",
       "distribution": "almalinux"
     }
@@ -97835,7 +99753,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -99798,7 +101716,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -100481,7 +102399,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -100609,7 +102527,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/curl",
       "distribution": "almalinux"
     }
@@ -101301,7 +103219,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -101429,7 +103347,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/curl",
       "distribution": "almalinux"
     }
@@ -101607,7 +103525,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/curl",
       "distribution": "almalinux"
     }
@@ -102227,7 +104145,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -104016,7 +105934,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -105763,7 +107681,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -105983,7 +107901,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/python3",
       "distribution": "almalinux"
     }
@@ -107748,7 +109666,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -109563,7 +111481,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -110174,7 +112092,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -110785,7 +112703,7 @@
     ],
     "schema_version": "1.8.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -112532,7 +114450,7 @@
     ],
     "schema_version": "1.8.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -114293,7 +116211,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -114904,7 +116822,7 @@
     ],
     "schema_version": "1.8.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -116642,7 +118560,7 @@
     ],
     "schema_version": "1.8.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -118412,7 +120330,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -120190,7 +122108,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -121950,7 +123868,7 @@
     ],
     "schema_version": "1.8.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -122592,7 +124510,7 @@
     ],
     "schema_version": "1.7.5",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -123203,7 +125121,7 @@
     ],
     "schema_version": "1.7.5",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -124996,7 +126914,7 @@
     ],
     "schema_version": "1.9.0",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
@@ -126770,1817 +128688,7 @@
     ],
     "schema_version": "1.7.5",
     "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
-      "source_package": "AlmaLinux/kernel",
-      "distribution": "almalinux"
-    }
-  },
-  {
-    "id": "ALSA-2026:45114",
-    "summary": "Important: kernel security update",
-    "details": "The kernel packages contain the Linux kernel, the core of any Linux operating system.  \n\nSecurity Fix(es):  \n\n  * kernel: fs/notify: call exportfs_encode_fid with s_umount (CVE-2025-40237)\n  * kernel: scsi: core: Wake up the error handler when final completions race against each other (CVE-2026-23110)\n  * kernel: rtnetlink: add missing netlink_ns_capable() check for peer netns (CVE-2026-31692)\n  * kernel: net: ipv6: fix NOREF dst use in seg6 and rpl lwtunnels (CVE-2026-46099)\n  * kernel: futex: Drop CLONE_THREAD requirement for private default hash alloc (CVE-2026-52973)\n  * kernel: dm log: fix out-of-bounds write due to region_count overflow (CVE-2026-53059)\n\n\n",
-    "modified": "2026-09-21T23:15:06.900310871Z",
-    "published": "2026-07-24T00:00:00Z",
-    "related": [
-      "CVE-2025-40237",
-      "CVE-2026-23110",
-      "CVE-2026-31692",
-      "CVE-2026-46099",
-      "CVE-2026-52973",
-      "CVE-2026-53059"
-    ],
-    "references": [
-      {
-        "type": "ADVISORY",
-        "url": "https://access.redhat.com/errata/RHSA-2026:45114"
-      },
-      {
-        "type": "REPORT",
-        "url": "https://access.redhat.com/security/cve/CVE-2025-40237"
-      },
-      {
-        "type": "REPORT",
-        "url": "https://access.redhat.com/security/cve/CVE-2026-23110"
-      },
-      {
-        "type": "REPORT",
-        "url": "https://access.redhat.com/security/cve/CVE-2026-31692"
-      },
-      {
-        "type": "REPORT",
-        "url": "https://access.redhat.com/security/cve/CVE-2026-46099"
-      },
-      {
-        "type": "REPORT",
-        "url": "https://access.redhat.com/security/cve/CVE-2026-52973"
-      },
-      {
-        "type": "REPORT",
-        "url": "https://access.redhat.com/security/cve/CVE-2026-53059"
-      },
-      {
-        "type": "REPORT",
-        "url": "https://bugzilla.redhat.com/2418829"
-      },
-      {
-        "type": "REPORT",
-        "url": "https://bugzilla.redhat.com/2436755"
-      },
-      {
-        "type": "REPORT",
-        "url": "https://bugzilla.redhat.com/2464093"
-      },
-      {
-        "type": "REPORT",
-        "url": "https://bugzilla.redhat.com/2481972"
-      },
-      {
-        "type": "REPORT",
-        "url": "https://bugzilla.redhat.com/2492277"
-      },
-      {
-        "type": "REPORT",
-        "url": "https://bugzilla.redhat.com/2492413"
-      },
-      {
-        "type": "ADVISORY",
-        "url": "https://errata.almalinux.org/10/ALSA-2026-45114.html"
-      },
-      {
-        "type": "REPORT",
-        "url": "https://www.redhat.com/security/data/cve/CVE-2026-64561.html"
-      }
-    ],
-    "affected": [
-      {
-        "package": {
-          "name": "kernel",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-64k",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-64k"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-64k-core",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-64k-core"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-64k-debug",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-64k-debug"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-64k-debug-core",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-64k-debug-core"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-64k-debug-devel",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-64k-debug-devel"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-64k-debug-devel-matched",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-64k-debug-devel-matched"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-64k-debug-modules",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-64k-debug-modules"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-64k-debug-modules-core",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-64k-debug-modules-core"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-64k-debug-modules-extra",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-64k-debug-modules-extra"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-64k-devel",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-64k-devel"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-64k-devel-matched",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-64k-devel-matched"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-64k-modules",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-64k-modules"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-64k-modules-core",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-64k-modules-core"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-64k-modules-extra",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-64k-modules-extra"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-abi-stablelists",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-abi-stablelists"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-core",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-core"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-cross-headers",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-cross-headers"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-debug",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-debug"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-debug-core",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-debug-core"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-debug-devel",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-debug-devel"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-debug-devel-matched",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-debug-devel-matched"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-debug-modules",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-debug-modules"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-debug-modules-core",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-debug-modules-core"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-debug-modules-extra",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-debug-modules-extra"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-debug-uki-virt",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-debug-uki-virt"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-devel",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-devel"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-devel-matched",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-devel-matched"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-doc",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-doc"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-headers",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-headers"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-modules",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-modules"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-modules-core",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-modules-core"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-modules-extra",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-modules-extra"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-modules-extra-matched",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-modules-extra-matched"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-rt",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-rt"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-rt-64k",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-rt-64k"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-rt-64k-core",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-rt-64k-core"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-rt-64k-debug",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-rt-64k-debug"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-rt-64k-debug-core",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-rt-64k-debug-core"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-rt-64k-debug-devel",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-rt-64k-debug-devel"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-rt-64k-debug-modules",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-rt-64k-debug-modules"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-rt-64k-debug-modules-core",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-rt-64k-debug-modules-core"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-rt-64k-debug-modules-extra",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-rt-64k-debug-modules-extra"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-rt-64k-devel",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-rt-64k-devel"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-rt-64k-modules",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-rt-64k-modules"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-rt-64k-modules-core",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-rt-64k-modules-core"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-rt-64k-modules-extra",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-rt-64k-modules-extra"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-rt-core",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-rt-core"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-rt-debug",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-rt-debug"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-rt-debug-core",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-rt-debug-core"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-rt-debug-devel",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-rt-debug-devel"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-rt-debug-modules",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-rt-debug-modules"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-rt-debug-modules-core",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-rt-debug-modules-core"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-rt-debug-modules-extra",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-rt-debug-modules-extra"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-rt-devel",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-rt-devel"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-rt-modules",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-rt-modules"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-rt-modules-core",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-rt-modules-core"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-rt-modules-extra",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-rt-modules-extra"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-tools",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-tools"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-tools-libs",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-tools-libs"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-tools-libs-devel",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-tools-libs-devel"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-uki-virt",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-uki-virt"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-uki-virt-addons",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-uki-virt-addons"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-zfcpdump",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-zfcpdump"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-zfcpdump-core",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-zfcpdump-core"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-zfcpdump-devel",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-zfcpdump-devel"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-zfcpdump-devel-matched",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-zfcpdump-devel-matched"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-zfcpdump-modules",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-zfcpdump-modules"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-zfcpdump-modules-core",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-zfcpdump-modules-core"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "kernel-zfcpdump-modules-extra",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/kernel-zfcpdump-modules-extra"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "libperf",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/libperf"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "perf",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/perf"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "python3-perf",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/python3-perf"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "rtla",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/rtla"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      },
-      {
-        "package": {
-          "name": "rv",
-          "ecosystem": "AlmaLinux:10",
-          "purl": "pkg:rpm/almalinux/rv"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "6.12.0-211.39.1.el10_2"
-              }
-            ]
-          }
-        ],
-        "database_specific": {
-          "source": "https://github.com/AlmaLinux/osv-database/blob/master/advisories/almalinux10/ALSA-2026:45114.json"
-        }
-      }
-    ],
-    "schema_version": "1.9.0",
-    "_metadata": {
-      "fetched_at": "2026-10-23T09:04:19.259779+00:00",
+      "fetched_at": "2026-10-24T08:36:29.665108+00:00",
       "source_package": "AlmaLinux/kernel",
       "distribution": "almalinux"
     }
