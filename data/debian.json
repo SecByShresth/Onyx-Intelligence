@@ -1,5 +1,3047 @@
 [
   {
+    "id": "DEBIAN-CVE-2026-125283",
+    "details": "When NGINX Plus or NGINX Open Source is configured to use the try_files and alias directives with a map variable, certain combinations of regular expression captures in map and try_files can cause a segmentation fault in an NGINX worker process.  Impact: An attacker could leverage this vulnerability to cause an NGINX worker process to terminate unexpectedly. There is no control plane exposure; this is a data plane issue only.    Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
+    "modified": "2026-11-19T06:00:07.440997087Z",
+    "published": "2026-11-18T16:18:05.967Z",
+    "upstream": [
+      "CVE-2026-125283"
+    ],
+    "references": [
+      {
+        "type": "ADVISORY",
+        "url": "https://security-tracker.debian.org/tracker/CVE-2026-125283"
+      }
+    ],
+    "affected": [
+      {
+        "package": {
+          "name": "nginx",
+          "ecosystem": "Debian:12",
+          "purl": "pkg:deb/debian/nginx?arch=source&distro=bookworm"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "1.22.1-9",
+          "1.22.1-9+deb12u1",
+          "1.22.1-9+deb12u10",
+          "1.22.1-9+deb12u2",
+          "1.22.1-9+deb12u3",
+          "1.22.1-9+deb12u4",
+          "1.22.1-9+deb12u5",
+          "1.22.1-9+deb12u6",
+          "1.22.1-9+deb12u7",
+          "1.22.1-9+deb12u8",
+          "1.22.1-9+deb12u9",
+          "1.24.0-1",
+          "1.24.0-1~exp1",
+          "1.24.0-2",
+          "1.26.0-1",
+          "1.26.0-1~exp1",
+          "1.26.0-2",
+          "1.26.0-3",
+          "1.26.2-1",
+          "1.26.3-1",
+          "1.26.3-2",
+          "1.26.3-3",
+          "1.28.0-1",
+          "1.28.0-2",
+          "1.28.0-3",
+          "1.28.0-4",
+          "1.28.0-5",
+          "1.28.0-6",
+          "1.28.1-1",
+          "1.28.1-2",
+          "1.28.1-3",
+          "1.28.2-1",
+          "1.28.2-2",
+          "1.28.2-3",
+          "1.28.2-4",
+          "1.28.3-1",
+          "1.28.3-2",
+          "1.30.0-1",
+          "1.30.0-2",
+          "1.30.0-3",
+          "1.30.0-4",
+          "1.30.1-1",
+          "1.30.1-2",
+          "1.30.1-3",
+          "1.30.1-4",
+          "1.30.1-5",
+          "1.30.1-6",
+          "1.30.1-7",
+          "1.30.4-1",
+          "1.30.4-2",
+          "1.30.4-3",
+          "1.30.4-4",
+          "1.30.4-5",
+          "1.30.4-6",
+          "1.30.4-7",
+          "1.30.4-8",
+          "1.30.6-1",
+          "1.30.6-2",
+          "1.30.6-3",
+          "1.30.6-4"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-125283.json"
+        }
+      },
+      {
+        "package": {
+          "name": "nginx",
+          "ecosystem": "Debian:13",
+          "purl": "pkg:deb/debian/nginx?arch=source&distro=trixie"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "1.26.3-3",
+          "1.26.3-3+deb13u1",
+          "1.26.3-3+deb13u10",
+          "1.26.3-3+deb13u2",
+          "1.26.3-3+deb13u3",
+          "1.26.3-3+deb13u4",
+          "1.26.3-3+deb13u5",
+          "1.26.3-3+deb13u6",
+          "1.26.3-3+deb13u7",
+          "1.26.3-3+deb13u8",
+          "1.26.3-3+deb13u9",
+          "1.28.0-1",
+          "1.28.0-2",
+          "1.28.0-3",
+          "1.28.0-4",
+          "1.28.0-5",
+          "1.28.0-6",
+          "1.28.1-1",
+          "1.28.1-2",
+          "1.28.1-3",
+          "1.28.2-1",
+          "1.28.2-2",
+          "1.28.2-3",
+          "1.28.2-4",
+          "1.28.3-1",
+          "1.28.3-2",
+          "1.30.0-1",
+          "1.30.0-2",
+          "1.30.0-3",
+          "1.30.0-4",
+          "1.30.1-1",
+          "1.30.1-2",
+          "1.30.1-3",
+          "1.30.1-4",
+          "1.30.1-5",
+          "1.30.1-6",
+          "1.30.1-7",
+          "1.30.4-1",
+          "1.30.4-2",
+          "1.30.4-3",
+          "1.30.4-4",
+          "1.30.4-5",
+          "1.30.4-6",
+          "1.30.4-7",
+          "1.30.4-8",
+          "1.30.6-1",
+          "1.30.6-2",
+          "1.30.6-3",
+          "1.30.6-4"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-125283.json"
+        }
+      },
+      {
+        "package": {
+          "name": "nginx",
+          "ecosystem": "Debian:14",
+          "purl": "pkg:deb/debian/nginx?arch=source&distro=forky"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "1.26.3-3",
+          "1.28.0-1",
+          "1.28.0-2",
+          "1.28.0-3",
+          "1.28.0-4",
+          "1.28.0-5",
+          "1.28.0-6",
+          "1.28.1-1",
+          "1.28.1-2",
+          "1.28.1-3",
+          "1.28.2-1",
+          "1.28.2-2",
+          "1.28.2-3",
+          "1.28.2-4",
+          "1.28.3-1",
+          "1.28.3-2",
+          "1.30.0-1",
+          "1.30.0-2",
+          "1.30.0-3",
+          "1.30.0-4",
+          "1.30.1-1",
+          "1.30.1-2",
+          "1.30.1-3",
+          "1.30.1-4",
+          "1.30.1-5",
+          "1.30.1-6",
+          "1.30.1-7",
+          "1.30.4-1",
+          "1.30.4-2",
+          "1.30.4-3",
+          "1.30.4-4",
+          "1.30.4-5",
+          "1.30.4-6",
+          "1.30.4-7",
+          "1.30.4-8",
+          "1.30.6-1",
+          "1.30.6-2",
+          "1.30.6-3",
+          "1.30.6-4"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-125283.json"
+        }
+      }
+    ],
+    "schema_version": "1.9.2",
+    "severity": [
+      {
+        "type": "CVSS_V4",
+        "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+      }
+    ],
+    "_metadata": {
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
+      "source_package": "Debian/nginx",
+      "distribution": "debian"
+    }
+  },
+  {
+    "id": "DEBIAN-CVE-2026-123640",
+    "details": "Description When NGINX Plus or NGINX Open Source is configured with the ngx_stream_ssl_preread_module module, a specially crafted ClientHello message from an unauthenticated attacker causes forged values of the ngx_stream_ssl_preread_module variables, affecting virtual server selection. In addition, it may also cause a disagreement with a proxied server terminating the SSL/TLS connection without Transport Layer Security (TLS) 1.3 support.  Impact This vulnerability may allow an attacker to forge values of the ngx_stream_ssl_preread_module variables and bypass the NGINX systems stream routing segmentation. As a result, the attacker may be able to route the connection to a privileged or internal backend that should be unreachable and gain access to sensitive information. There is no control plane exposure; this is a data plane issue only.       Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
+    "modified": "2026-11-19T06:00:07.134649235Z",
+    "published": "2026-11-18T16:18:04.677Z",
+    "upstream": [
+      "CVE-2026-123640"
+    ],
+    "references": [
+      {
+        "type": "ADVISORY",
+        "url": "https://security-tracker.debian.org/tracker/CVE-2026-123640"
+      }
+    ],
+    "affected": [
+      {
+        "package": {
+          "name": "nginx",
+          "ecosystem": "Debian:12",
+          "purl": "pkg:deb/debian/nginx?arch=source&distro=bookworm"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "1.22.1-9",
+          "1.22.1-9+deb12u1",
+          "1.22.1-9+deb12u10",
+          "1.22.1-9+deb12u2",
+          "1.22.1-9+deb12u3",
+          "1.22.1-9+deb12u4",
+          "1.22.1-9+deb12u5",
+          "1.22.1-9+deb12u6",
+          "1.22.1-9+deb12u7",
+          "1.22.1-9+deb12u8",
+          "1.22.1-9+deb12u9",
+          "1.24.0-1",
+          "1.24.0-1~exp1",
+          "1.24.0-2",
+          "1.26.0-1",
+          "1.26.0-1~exp1",
+          "1.26.0-2",
+          "1.26.0-3",
+          "1.26.2-1",
+          "1.26.3-1",
+          "1.26.3-2",
+          "1.26.3-3",
+          "1.28.0-1",
+          "1.28.0-2",
+          "1.28.0-3",
+          "1.28.0-4",
+          "1.28.0-5",
+          "1.28.0-6",
+          "1.28.1-1",
+          "1.28.1-2",
+          "1.28.1-3",
+          "1.28.2-1",
+          "1.28.2-2",
+          "1.28.2-3",
+          "1.28.2-4",
+          "1.28.3-1",
+          "1.28.3-2",
+          "1.30.0-1",
+          "1.30.0-2",
+          "1.30.0-3",
+          "1.30.0-4",
+          "1.30.1-1",
+          "1.30.1-2",
+          "1.30.1-3",
+          "1.30.1-4",
+          "1.30.1-5",
+          "1.30.1-6",
+          "1.30.1-7",
+          "1.30.4-1",
+          "1.30.4-2",
+          "1.30.4-3",
+          "1.30.4-4",
+          "1.30.4-5",
+          "1.30.4-6",
+          "1.30.4-7",
+          "1.30.4-8",
+          "1.30.6-1",
+          "1.30.6-2",
+          "1.30.6-3",
+          "1.30.6-4"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-123640.json"
+        }
+      },
+      {
+        "package": {
+          "name": "nginx",
+          "ecosystem": "Debian:13",
+          "purl": "pkg:deb/debian/nginx?arch=source&distro=trixie"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "1.26.3-3",
+          "1.26.3-3+deb13u1",
+          "1.26.3-3+deb13u10",
+          "1.26.3-3+deb13u2",
+          "1.26.3-3+deb13u3",
+          "1.26.3-3+deb13u4",
+          "1.26.3-3+deb13u5",
+          "1.26.3-3+deb13u6",
+          "1.26.3-3+deb13u7",
+          "1.26.3-3+deb13u8",
+          "1.26.3-3+deb13u9",
+          "1.28.0-1",
+          "1.28.0-2",
+          "1.28.0-3",
+          "1.28.0-4",
+          "1.28.0-5",
+          "1.28.0-6",
+          "1.28.1-1",
+          "1.28.1-2",
+          "1.28.1-3",
+          "1.28.2-1",
+          "1.28.2-2",
+          "1.28.2-3",
+          "1.28.2-4",
+          "1.28.3-1",
+          "1.28.3-2",
+          "1.30.0-1",
+          "1.30.0-2",
+          "1.30.0-3",
+          "1.30.0-4",
+          "1.30.1-1",
+          "1.30.1-2",
+          "1.30.1-3",
+          "1.30.1-4",
+          "1.30.1-5",
+          "1.30.1-6",
+          "1.30.1-7",
+          "1.30.4-1",
+          "1.30.4-2",
+          "1.30.4-3",
+          "1.30.4-4",
+          "1.30.4-5",
+          "1.30.4-6",
+          "1.30.4-7",
+          "1.30.4-8",
+          "1.30.6-1",
+          "1.30.6-2",
+          "1.30.6-3",
+          "1.30.6-4"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-123640.json"
+        }
+      },
+      {
+        "package": {
+          "name": "nginx",
+          "ecosystem": "Debian:14",
+          "purl": "pkg:deb/debian/nginx?arch=source&distro=forky"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "1.26.3-3",
+          "1.28.0-1",
+          "1.28.0-2",
+          "1.28.0-3",
+          "1.28.0-4",
+          "1.28.0-5",
+          "1.28.0-6",
+          "1.28.1-1",
+          "1.28.1-2",
+          "1.28.1-3",
+          "1.28.2-1",
+          "1.28.2-2",
+          "1.28.2-3",
+          "1.28.2-4",
+          "1.28.3-1",
+          "1.28.3-2",
+          "1.30.0-1",
+          "1.30.0-2",
+          "1.30.0-3",
+          "1.30.0-4",
+          "1.30.1-1",
+          "1.30.1-2",
+          "1.30.1-3",
+          "1.30.1-4",
+          "1.30.1-5",
+          "1.30.1-6",
+          "1.30.1-7",
+          "1.30.4-1",
+          "1.30.4-2",
+          "1.30.4-3",
+          "1.30.4-4",
+          "1.30.4-5",
+          "1.30.4-6",
+          "1.30.4-7",
+          "1.30.4-8",
+          "1.30.6-1",
+          "1.30.6-2",
+          "1.30.6-3",
+          "1.30.6-4"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-123640.json"
+        }
+      }
+    ],
+    "schema_version": "1.9.2",
+    "severity": [
+      {
+        "type": "CVSS_V4",
+        "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+      }
+    ],
+    "_metadata": {
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
+      "source_package": "Debian/nginx",
+      "distribution": "debian"
+    }
+  },
+  {
+    "id": "DEBIAN-CVE-2026-123634",
+    "details": "This issue occurs when NGINX Plus or NGINX Open Source is configured as a proxy, the proxied server name includes variables, and a Server Side Includes (SSI) or mirror directive sends a subrequest to a location that resolves the same server name. Under these conditions, a specially crafted HTTP request may cause a use-after-free condition in a worker process. An attacker may also be able to execute code if Address Space Layout Randomization (ASLR) is disabled or the attacker can bypass ASLR.  Impact:  An attacker could leverage this vulnerability to crash the NGINX worker process, corrupt its memory, or perform remote code execution (RCE)    Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
+    "modified": "2026-11-19T07:47:34.282149696Z",
+    "published": "2026-11-18T16:18:04.353Z",
+    "upstream": [
+      "CVE-2026-123634"
+    ],
+    "references": [
+      {
+        "type": "ADVISORY",
+        "url": "https://security-tracker.debian.org/tracker/CVE-2026-123634"
+      }
+    ],
+    "affected": [
+      {
+        "package": {
+          "name": "nginx",
+          "ecosystem": "Debian:12",
+          "purl": "pkg:deb/debian/nginx?arch=source&distro=bookworm"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "1.22.1-9",
+          "1.22.1-9+deb12u1",
+          "1.22.1-9+deb12u10",
+          "1.22.1-9+deb12u2",
+          "1.22.1-9+deb12u3",
+          "1.22.1-9+deb12u4",
+          "1.22.1-9+deb12u5",
+          "1.22.1-9+deb12u6",
+          "1.22.1-9+deb12u7",
+          "1.22.1-9+deb12u8",
+          "1.22.1-9+deb12u9",
+          "1.24.0-1",
+          "1.24.0-1~exp1",
+          "1.24.0-2",
+          "1.26.0-1",
+          "1.26.0-1~exp1",
+          "1.26.0-2",
+          "1.26.0-3",
+          "1.26.2-1",
+          "1.26.3-1",
+          "1.26.3-2",
+          "1.26.3-3",
+          "1.28.0-1",
+          "1.28.0-2",
+          "1.28.0-3",
+          "1.28.0-4",
+          "1.28.0-5",
+          "1.28.0-6",
+          "1.28.1-1",
+          "1.28.1-2",
+          "1.28.1-3",
+          "1.28.2-1",
+          "1.28.2-2",
+          "1.28.2-3",
+          "1.28.2-4",
+          "1.28.3-1",
+          "1.28.3-2",
+          "1.30.0-1",
+          "1.30.0-2",
+          "1.30.0-3",
+          "1.30.0-4",
+          "1.30.1-1",
+          "1.30.1-2",
+          "1.30.1-3",
+          "1.30.1-4",
+          "1.30.1-5",
+          "1.30.1-6",
+          "1.30.1-7",
+          "1.30.4-1",
+          "1.30.4-2",
+          "1.30.4-3",
+          "1.30.4-4",
+          "1.30.4-5",
+          "1.30.4-6",
+          "1.30.4-7",
+          "1.30.4-8",
+          "1.30.6-1",
+          "1.30.6-2",
+          "1.30.6-3",
+          "1.30.6-4"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-123634.json"
+        }
+      },
+      {
+        "package": {
+          "name": "nginx",
+          "ecosystem": "Debian:13",
+          "purl": "pkg:deb/debian/nginx?arch=source&distro=trixie"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "1.26.3-3",
+          "1.26.3-3+deb13u1",
+          "1.26.3-3+deb13u10",
+          "1.26.3-3+deb13u2",
+          "1.26.3-3+deb13u3",
+          "1.26.3-3+deb13u4",
+          "1.26.3-3+deb13u5",
+          "1.26.3-3+deb13u6",
+          "1.26.3-3+deb13u7",
+          "1.26.3-3+deb13u8",
+          "1.26.3-3+deb13u9",
+          "1.28.0-1",
+          "1.28.0-2",
+          "1.28.0-3",
+          "1.28.0-4",
+          "1.28.0-5",
+          "1.28.0-6",
+          "1.28.1-1",
+          "1.28.1-2",
+          "1.28.1-3",
+          "1.28.2-1",
+          "1.28.2-2",
+          "1.28.2-3",
+          "1.28.2-4",
+          "1.28.3-1",
+          "1.28.3-2",
+          "1.30.0-1",
+          "1.30.0-2",
+          "1.30.0-3",
+          "1.30.0-4",
+          "1.30.1-1",
+          "1.30.1-2",
+          "1.30.1-3",
+          "1.30.1-4",
+          "1.30.1-5",
+          "1.30.1-6",
+          "1.30.1-7",
+          "1.30.4-1",
+          "1.30.4-2",
+          "1.30.4-3",
+          "1.30.4-4",
+          "1.30.4-5",
+          "1.30.4-6",
+          "1.30.4-7",
+          "1.30.4-8",
+          "1.30.6-1",
+          "1.30.6-2",
+          "1.30.6-3",
+          "1.30.6-4"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-123634.json"
+        }
+      },
+      {
+        "package": {
+          "name": "nginx",
+          "ecosystem": "Debian:14",
+          "purl": "pkg:deb/debian/nginx?arch=source&distro=forky"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "1.26.3-3",
+          "1.28.0-1",
+          "1.28.0-2",
+          "1.28.0-3",
+          "1.28.0-4",
+          "1.28.0-5",
+          "1.28.0-6",
+          "1.28.1-1",
+          "1.28.1-2",
+          "1.28.1-3",
+          "1.28.2-1",
+          "1.28.2-2",
+          "1.28.2-3",
+          "1.28.2-4",
+          "1.28.3-1",
+          "1.28.3-2",
+          "1.30.0-1",
+          "1.30.0-2",
+          "1.30.0-3",
+          "1.30.0-4",
+          "1.30.1-1",
+          "1.30.1-2",
+          "1.30.1-3",
+          "1.30.1-4",
+          "1.30.1-5",
+          "1.30.1-6",
+          "1.30.1-7",
+          "1.30.4-1",
+          "1.30.4-2",
+          "1.30.4-3",
+          "1.30.4-4",
+          "1.30.4-5",
+          "1.30.4-6",
+          "1.30.4-7",
+          "1.30.4-8",
+          "1.30.6-1",
+          "1.30.6-2",
+          "1.30.6-3",
+          "1.30.6-4"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-123634.json"
+        }
+      }
+    ],
+    "schema_version": "1.9.2",
+    "severity": [
+      {
+        "type": "CVSS_V4",
+        "score": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+      }
+    ],
+    "_metadata": {
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
+      "source_package": "Debian/nginx",
+      "distribution": "debian"
+    }
+  },
+  {
+    "id": "DEBIAN-CVE-2026-123633",
+    "details": "When NGINX Plus or NGINX Open Source is configured to use HTTP/2 for client connections and proxy client requests to a backend, a specially crafted request can result in use-after-free in the worker process, if this process is running low on worker_connections. Additionally, attackers can execute code on systems with Address Space Layout Randomization (ASLR) disabled or when the attacker can bypass ASLR.     Impact:    This vulnerability may allow remote attackers to cause a denial-of-service (DoS) on the NGINX system or may allow a code execution. There is no control plane exposure; this is a data plane issue only.    Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
+    "modified": "2026-11-19T09:47:38.306869514Z",
+    "published": "2026-11-18T16:18:04.207Z",
+    "upstream": [
+      "CVE-2026-123633"
+    ],
+    "references": [
+      {
+        "type": "ADVISORY",
+        "url": "https://security-tracker.debian.org/tracker/CVE-2026-123633"
+      }
+    ],
+    "affected": [
+      {
+        "package": {
+          "name": "nginx",
+          "ecosystem": "Debian:12",
+          "purl": "pkg:deb/debian/nginx?arch=source&distro=bookworm"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "1.22.1-9",
+          "1.22.1-9+deb12u1",
+          "1.22.1-9+deb12u10",
+          "1.22.1-9+deb12u2",
+          "1.22.1-9+deb12u3",
+          "1.22.1-9+deb12u4",
+          "1.22.1-9+deb12u5",
+          "1.22.1-9+deb12u6",
+          "1.22.1-9+deb12u7",
+          "1.22.1-9+deb12u8",
+          "1.22.1-9+deb12u9",
+          "1.24.0-1",
+          "1.24.0-1~exp1",
+          "1.24.0-2",
+          "1.26.0-1",
+          "1.26.0-1~exp1",
+          "1.26.0-2",
+          "1.26.0-3",
+          "1.26.2-1",
+          "1.26.3-1",
+          "1.26.3-2",
+          "1.26.3-3",
+          "1.28.0-1",
+          "1.28.0-2",
+          "1.28.0-3",
+          "1.28.0-4",
+          "1.28.0-5",
+          "1.28.0-6",
+          "1.28.1-1",
+          "1.28.1-2",
+          "1.28.1-3",
+          "1.28.2-1",
+          "1.28.2-2",
+          "1.28.2-3",
+          "1.28.2-4",
+          "1.28.3-1",
+          "1.28.3-2",
+          "1.30.0-1",
+          "1.30.0-2",
+          "1.30.0-3",
+          "1.30.0-4",
+          "1.30.1-1",
+          "1.30.1-2",
+          "1.30.1-3",
+          "1.30.1-4",
+          "1.30.1-5",
+          "1.30.1-6",
+          "1.30.1-7",
+          "1.30.4-1",
+          "1.30.4-2",
+          "1.30.4-3",
+          "1.30.4-4",
+          "1.30.4-5",
+          "1.30.4-6",
+          "1.30.4-7",
+          "1.30.4-8",
+          "1.30.6-1",
+          "1.30.6-2",
+          "1.30.6-3",
+          "1.30.6-4"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-123633.json"
+        }
+      },
+      {
+        "package": {
+          "name": "nginx",
+          "ecosystem": "Debian:13",
+          "purl": "pkg:deb/debian/nginx?arch=source&distro=trixie"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "1.26.3-3",
+          "1.26.3-3+deb13u1",
+          "1.26.3-3+deb13u10",
+          "1.26.3-3+deb13u2",
+          "1.26.3-3+deb13u3",
+          "1.26.3-3+deb13u4",
+          "1.26.3-3+deb13u5",
+          "1.26.3-3+deb13u6",
+          "1.26.3-3+deb13u7",
+          "1.26.3-3+deb13u8",
+          "1.26.3-3+deb13u9",
+          "1.28.0-1",
+          "1.28.0-2",
+          "1.28.0-3",
+          "1.28.0-4",
+          "1.28.0-5",
+          "1.28.0-6",
+          "1.28.1-1",
+          "1.28.1-2",
+          "1.28.1-3",
+          "1.28.2-1",
+          "1.28.2-2",
+          "1.28.2-3",
+          "1.28.2-4",
+          "1.28.3-1",
+          "1.28.3-2",
+          "1.30.0-1",
+          "1.30.0-2",
+          "1.30.0-3",
+          "1.30.0-4",
+          "1.30.1-1",
+          "1.30.1-2",
+          "1.30.1-3",
+          "1.30.1-4",
+          "1.30.1-5",
+          "1.30.1-6",
+          "1.30.1-7",
+          "1.30.4-1",
+          "1.30.4-2",
+          "1.30.4-3",
+          "1.30.4-4",
+          "1.30.4-5",
+          "1.30.4-6",
+          "1.30.4-7",
+          "1.30.4-8",
+          "1.30.6-1",
+          "1.30.6-2",
+          "1.30.6-3",
+          "1.30.6-4"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-123633.json"
+        }
+      },
+      {
+        "package": {
+          "name": "nginx",
+          "ecosystem": "Debian:14",
+          "purl": "pkg:deb/debian/nginx?arch=source&distro=forky"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "1.26.3-3",
+          "1.28.0-1",
+          "1.28.0-2",
+          "1.28.0-3",
+          "1.28.0-4",
+          "1.28.0-5",
+          "1.28.0-6",
+          "1.28.1-1",
+          "1.28.1-2",
+          "1.28.1-3",
+          "1.28.2-1",
+          "1.28.2-2",
+          "1.28.2-3",
+          "1.28.2-4",
+          "1.28.3-1",
+          "1.28.3-2",
+          "1.30.0-1",
+          "1.30.0-2",
+          "1.30.0-3",
+          "1.30.0-4",
+          "1.30.1-1",
+          "1.30.1-2",
+          "1.30.1-3",
+          "1.30.1-4",
+          "1.30.1-5",
+          "1.30.1-6",
+          "1.30.1-7",
+          "1.30.4-1",
+          "1.30.4-2",
+          "1.30.4-3",
+          "1.30.4-4",
+          "1.30.4-5",
+          "1.30.4-6",
+          "1.30.4-7",
+          "1.30.4-8",
+          "1.30.6-1",
+          "1.30.6-2",
+          "1.30.6-3",
+          "1.30.6-4"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-123633.json"
+        }
+      }
+    ],
+    "schema_version": "1.9.2",
+    "severity": [
+      {
+        "type": "CVSS_V4",
+        "score": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+      }
+    ],
+    "_metadata": {
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
+      "source_package": "Debian/nginx",
+      "distribution": "debian"
+    }
+  },
+  {
+    "id": "DEBIAN-CVE-2026-123007",
+    "details": "This issue affects NGINX Plus or NGINX Open Source configurations that use HTTP/2. When NGINX processes undisclosed traffic, the flow control window can exceed the allowed threshold, potentially resulting in a heap buffer overflow typically followed by an NGINX worker segmentation fault. Additionally, attackers can execute code on systems with Address Space Layout Randomization (ASLR) disabled or when the attacker can bypass ASLR.  Impact: An attacker could leverage this vulnerability to crash the NGINX worker process, corrupt its memory, or potentially execute code remotely. There is no control plane exposure; this is a data plane issue only.    Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
+    "modified": "2026-11-19T09:47:25.136493052Z",
+    "published": "2026-11-18T16:18:04.047Z",
+    "upstream": [
+      "CVE-2026-123007"
+    ],
+    "references": [
+      {
+        "type": "ADVISORY",
+        "url": "https://security-tracker.debian.org/tracker/CVE-2026-123007"
+      }
+    ],
+    "affected": [
+      {
+        "package": {
+          "name": "nginx",
+          "ecosystem": "Debian:12",
+          "purl": "pkg:deb/debian/nginx?arch=source&distro=bookworm"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "1.22.1-9",
+          "1.22.1-9+deb12u1",
+          "1.22.1-9+deb12u10",
+          "1.22.1-9+deb12u2",
+          "1.22.1-9+deb12u3",
+          "1.22.1-9+deb12u4",
+          "1.22.1-9+deb12u5",
+          "1.22.1-9+deb12u6",
+          "1.22.1-9+deb12u7",
+          "1.22.1-9+deb12u8",
+          "1.22.1-9+deb12u9",
+          "1.24.0-1",
+          "1.24.0-1~exp1",
+          "1.24.0-2",
+          "1.26.0-1",
+          "1.26.0-1~exp1",
+          "1.26.0-2",
+          "1.26.0-3",
+          "1.26.2-1",
+          "1.26.3-1",
+          "1.26.3-2",
+          "1.26.3-3",
+          "1.28.0-1",
+          "1.28.0-2",
+          "1.28.0-3",
+          "1.28.0-4",
+          "1.28.0-5",
+          "1.28.0-6",
+          "1.28.1-1",
+          "1.28.1-2",
+          "1.28.1-3",
+          "1.28.2-1",
+          "1.28.2-2",
+          "1.28.2-3",
+          "1.28.2-4",
+          "1.28.3-1",
+          "1.28.3-2",
+          "1.30.0-1",
+          "1.30.0-2",
+          "1.30.0-3",
+          "1.30.0-4",
+          "1.30.1-1",
+          "1.30.1-2",
+          "1.30.1-3",
+          "1.30.1-4",
+          "1.30.1-5",
+          "1.30.1-6",
+          "1.30.1-7",
+          "1.30.4-1",
+          "1.30.4-2",
+          "1.30.4-3",
+          "1.30.4-4",
+          "1.30.4-5",
+          "1.30.4-6",
+          "1.30.4-7",
+          "1.30.4-8",
+          "1.30.6-1",
+          "1.30.6-2",
+          "1.30.6-3",
+          "1.30.6-4"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-123007.json"
+        }
+      },
+      {
+        "package": {
+          "name": "nginx",
+          "ecosystem": "Debian:13",
+          "purl": "pkg:deb/debian/nginx?arch=source&distro=trixie"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "1.26.3-3",
+          "1.26.3-3+deb13u1",
+          "1.26.3-3+deb13u10",
+          "1.26.3-3+deb13u2",
+          "1.26.3-3+deb13u3",
+          "1.26.3-3+deb13u4",
+          "1.26.3-3+deb13u5",
+          "1.26.3-3+deb13u6",
+          "1.26.3-3+deb13u7",
+          "1.26.3-3+deb13u8",
+          "1.26.3-3+deb13u9",
+          "1.28.0-1",
+          "1.28.0-2",
+          "1.28.0-3",
+          "1.28.0-4",
+          "1.28.0-5",
+          "1.28.0-6",
+          "1.28.1-1",
+          "1.28.1-2",
+          "1.28.1-3",
+          "1.28.2-1",
+          "1.28.2-2",
+          "1.28.2-3",
+          "1.28.2-4",
+          "1.28.3-1",
+          "1.28.3-2",
+          "1.30.0-1",
+          "1.30.0-2",
+          "1.30.0-3",
+          "1.30.0-4",
+          "1.30.1-1",
+          "1.30.1-2",
+          "1.30.1-3",
+          "1.30.1-4",
+          "1.30.1-5",
+          "1.30.1-6",
+          "1.30.1-7",
+          "1.30.4-1",
+          "1.30.4-2",
+          "1.30.4-3",
+          "1.30.4-4",
+          "1.30.4-5",
+          "1.30.4-6",
+          "1.30.4-7",
+          "1.30.4-8",
+          "1.30.6-1",
+          "1.30.6-2",
+          "1.30.6-3",
+          "1.30.6-4"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-123007.json"
+        }
+      },
+      {
+        "package": {
+          "name": "nginx",
+          "ecosystem": "Debian:14",
+          "purl": "pkg:deb/debian/nginx?arch=source&distro=forky"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "1.26.3-3",
+          "1.28.0-1",
+          "1.28.0-2",
+          "1.28.0-3",
+          "1.28.0-4",
+          "1.28.0-5",
+          "1.28.0-6",
+          "1.28.1-1",
+          "1.28.1-2",
+          "1.28.1-3",
+          "1.28.2-1",
+          "1.28.2-2",
+          "1.28.2-3",
+          "1.28.2-4",
+          "1.28.3-1",
+          "1.28.3-2",
+          "1.30.0-1",
+          "1.30.0-2",
+          "1.30.0-3",
+          "1.30.0-4",
+          "1.30.1-1",
+          "1.30.1-2",
+          "1.30.1-3",
+          "1.30.1-4",
+          "1.30.1-5",
+          "1.30.1-6",
+          "1.30.1-7",
+          "1.30.4-1",
+          "1.30.4-2",
+          "1.30.4-3",
+          "1.30.4-4",
+          "1.30.4-5",
+          "1.30.4-6",
+          "1.30.4-7",
+          "1.30.4-8",
+          "1.30.6-1",
+          "1.30.6-2",
+          "1.30.6-3",
+          "1.30.6-4"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-123007.json"
+        }
+      }
+    ],
+    "schema_version": "1.9.2",
+    "severity": [
+      {
+        "type": "CVSS_V4",
+        "score": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+      }
+    ],
+    "_metadata": {
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
+      "source_package": "Debian/nginx",
+      "distribution": "debian"
+    }
+  },
+  {
+    "id": "DEBIAN-CVE-2026-121810",
+    "details": "Description: This issue affects NGINX Plus and NGINX Open Source configurations that use HTTP/3. A remote, unauthenticated attacker can cause a use-after-free condition in the NGINX worker process, leading to a restart. Exploitation also depends on conditions beyond the attacker’s control. Additionally, attackers can execute code on systems with Address Space Layout Randomization (ASLR) disabled or when the attacker can bypass ASLR.  Impact: This vulnerability may allow remote attackers to cause a denial-of-service (DoS) on the NGINX system or to possibly trigger a code execution. There is no control plane exposure; this is a data plane issue only.    Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
+    "modified": "2026-11-19T07:47:50.506705977Z",
+    "published": "2026-11-18T16:18:03.763Z",
+    "upstream": [
+      "CVE-2026-121810"
+    ],
+    "references": [
+      {
+        "type": "ADVISORY",
+        "url": "https://security-tracker.debian.org/tracker/CVE-2026-121810"
+      }
+    ],
+    "affected": [
+      {
+        "package": {
+          "name": "nginx",
+          "ecosystem": "Debian:12",
+          "purl": "pkg:deb/debian/nginx?arch=source&distro=bookworm"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "1.22.1-9",
+          "1.22.1-9+deb12u1",
+          "1.22.1-9+deb12u10",
+          "1.22.1-9+deb12u2",
+          "1.22.1-9+deb12u3",
+          "1.22.1-9+deb12u4",
+          "1.22.1-9+deb12u5",
+          "1.22.1-9+deb12u6",
+          "1.22.1-9+deb12u7",
+          "1.22.1-9+deb12u8",
+          "1.22.1-9+deb12u9",
+          "1.24.0-1",
+          "1.24.0-1~exp1",
+          "1.24.0-2",
+          "1.26.0-1",
+          "1.26.0-1~exp1",
+          "1.26.0-2",
+          "1.26.0-3",
+          "1.26.2-1",
+          "1.26.3-1",
+          "1.26.3-2",
+          "1.26.3-3",
+          "1.28.0-1",
+          "1.28.0-2",
+          "1.28.0-3",
+          "1.28.0-4",
+          "1.28.0-5",
+          "1.28.0-6",
+          "1.28.1-1",
+          "1.28.1-2",
+          "1.28.1-3",
+          "1.28.2-1",
+          "1.28.2-2",
+          "1.28.2-3",
+          "1.28.2-4",
+          "1.28.3-1",
+          "1.28.3-2",
+          "1.30.0-1",
+          "1.30.0-2",
+          "1.30.0-3",
+          "1.30.0-4",
+          "1.30.1-1",
+          "1.30.1-2",
+          "1.30.1-3",
+          "1.30.1-4",
+          "1.30.1-5",
+          "1.30.1-6",
+          "1.30.1-7",
+          "1.30.4-1",
+          "1.30.4-2",
+          "1.30.4-3",
+          "1.30.4-4",
+          "1.30.4-5",
+          "1.30.4-6",
+          "1.30.4-7",
+          "1.30.4-8",
+          "1.30.6-1",
+          "1.30.6-2",
+          "1.30.6-3",
+          "1.30.6-4"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-121810.json"
+        }
+      },
+      {
+        "package": {
+          "name": "nginx",
+          "ecosystem": "Debian:13",
+          "purl": "pkg:deb/debian/nginx?arch=source&distro=trixie"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "1.26.3-3",
+          "1.26.3-3+deb13u1",
+          "1.26.3-3+deb13u10",
+          "1.26.3-3+deb13u2",
+          "1.26.3-3+deb13u3",
+          "1.26.3-3+deb13u4",
+          "1.26.3-3+deb13u5",
+          "1.26.3-3+deb13u6",
+          "1.26.3-3+deb13u7",
+          "1.26.3-3+deb13u8",
+          "1.26.3-3+deb13u9",
+          "1.28.0-1",
+          "1.28.0-2",
+          "1.28.0-3",
+          "1.28.0-4",
+          "1.28.0-5",
+          "1.28.0-6",
+          "1.28.1-1",
+          "1.28.1-2",
+          "1.28.1-3",
+          "1.28.2-1",
+          "1.28.2-2",
+          "1.28.2-3",
+          "1.28.2-4",
+          "1.28.3-1",
+          "1.28.3-2",
+          "1.30.0-1",
+          "1.30.0-2",
+          "1.30.0-3",
+          "1.30.0-4",
+          "1.30.1-1",
+          "1.30.1-2",
+          "1.30.1-3",
+          "1.30.1-4",
+          "1.30.1-5",
+          "1.30.1-6",
+          "1.30.1-7",
+          "1.30.4-1",
+          "1.30.4-2",
+          "1.30.4-3",
+          "1.30.4-4",
+          "1.30.4-5",
+          "1.30.4-6",
+          "1.30.4-7",
+          "1.30.4-8",
+          "1.30.6-1",
+          "1.30.6-2",
+          "1.30.6-3",
+          "1.30.6-4"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-121810.json"
+        }
+      },
+      {
+        "package": {
+          "name": "nginx",
+          "ecosystem": "Debian:14",
+          "purl": "pkg:deb/debian/nginx?arch=source&distro=forky"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "1.26.3-3",
+          "1.28.0-1",
+          "1.28.0-2",
+          "1.28.0-3",
+          "1.28.0-4",
+          "1.28.0-5",
+          "1.28.0-6",
+          "1.28.1-1",
+          "1.28.1-2",
+          "1.28.1-3",
+          "1.28.2-1",
+          "1.28.2-2",
+          "1.28.2-3",
+          "1.28.2-4",
+          "1.28.3-1",
+          "1.28.3-2",
+          "1.30.0-1",
+          "1.30.0-2",
+          "1.30.0-3",
+          "1.30.0-4",
+          "1.30.1-1",
+          "1.30.1-2",
+          "1.30.1-3",
+          "1.30.1-4",
+          "1.30.1-5",
+          "1.30.1-6",
+          "1.30.1-7",
+          "1.30.4-1",
+          "1.30.4-2",
+          "1.30.4-3",
+          "1.30.4-4",
+          "1.30.4-5",
+          "1.30.4-6",
+          "1.30.4-7",
+          "1.30.4-8",
+          "1.30.6-1",
+          "1.30.6-2",
+          "1.30.6-3",
+          "1.30.6-4"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-121810.json"
+        }
+      }
+    ],
+    "schema_version": "1.9.2",
+    "severity": [
+      {
+        "type": "CVSS_V4",
+        "score": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+      }
+    ],
+    "_metadata": {
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
+      "source_package": "Debian/nginx",
+      "distribution": "debian"
+    }
+  },
+  {
+    "id": "DEBIAN-CVE-2026-120993",
+    "details": "When NGINX Plus or NGINX Open Source is configured to use the ngx_stream_ssl_module module with dynamic certificate loading and the ngx_stream_proxy_module module with the proxy_protocol v2 directive, an abbreviated SSL handshake can cause a worker process to terminate.  Impact: This vulnerability may allow remote attackers to cause a denial-of-service (DoS) on the NGINX system. This is a data plane vulnerability only; there is no control plane exposure.    Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
+    "modified": "2026-11-19T06:00:07.274706249Z",
+    "published": "2026-11-18T16:18:03.453Z",
+    "upstream": [
+      "CVE-2026-120993"
+    ],
+    "references": [
+      {
+        "type": "ADVISORY",
+        "url": "https://security-tracker.debian.org/tracker/CVE-2026-120993"
+      }
+    ],
+    "affected": [
+      {
+        "package": {
+          "name": "nginx",
+          "ecosystem": "Debian:12",
+          "purl": "pkg:deb/debian/nginx?arch=source&distro=bookworm"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "1.22.1-9",
+          "1.22.1-9+deb12u1",
+          "1.22.1-9+deb12u10",
+          "1.22.1-9+deb12u2",
+          "1.22.1-9+deb12u3",
+          "1.22.1-9+deb12u4",
+          "1.22.1-9+deb12u5",
+          "1.22.1-9+deb12u6",
+          "1.22.1-9+deb12u7",
+          "1.22.1-9+deb12u8",
+          "1.22.1-9+deb12u9",
+          "1.24.0-1",
+          "1.24.0-1~exp1",
+          "1.24.0-2",
+          "1.26.0-1",
+          "1.26.0-1~exp1",
+          "1.26.0-2",
+          "1.26.0-3",
+          "1.26.2-1",
+          "1.26.3-1",
+          "1.26.3-2",
+          "1.26.3-3",
+          "1.28.0-1",
+          "1.28.0-2",
+          "1.28.0-3",
+          "1.28.0-4",
+          "1.28.0-5",
+          "1.28.0-6",
+          "1.28.1-1",
+          "1.28.1-2",
+          "1.28.1-3",
+          "1.28.2-1",
+          "1.28.2-2",
+          "1.28.2-3",
+          "1.28.2-4",
+          "1.28.3-1",
+          "1.28.3-2",
+          "1.30.0-1",
+          "1.30.0-2",
+          "1.30.0-3",
+          "1.30.0-4",
+          "1.30.1-1",
+          "1.30.1-2",
+          "1.30.1-3",
+          "1.30.1-4",
+          "1.30.1-5",
+          "1.30.1-6",
+          "1.30.1-7",
+          "1.30.4-1",
+          "1.30.4-2",
+          "1.30.4-3",
+          "1.30.4-4",
+          "1.30.4-5",
+          "1.30.4-6",
+          "1.30.4-7",
+          "1.30.4-8",
+          "1.30.6-1",
+          "1.30.6-2",
+          "1.30.6-3",
+          "1.30.6-4"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-120993.json"
+        }
+      },
+      {
+        "package": {
+          "name": "nginx",
+          "ecosystem": "Debian:13",
+          "purl": "pkg:deb/debian/nginx?arch=source&distro=trixie"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "1.26.3-3",
+          "1.26.3-3+deb13u1",
+          "1.26.3-3+deb13u10",
+          "1.26.3-3+deb13u2",
+          "1.26.3-3+deb13u3",
+          "1.26.3-3+deb13u4",
+          "1.26.3-3+deb13u5",
+          "1.26.3-3+deb13u6",
+          "1.26.3-3+deb13u7",
+          "1.26.3-3+deb13u8",
+          "1.26.3-3+deb13u9",
+          "1.28.0-1",
+          "1.28.0-2",
+          "1.28.0-3",
+          "1.28.0-4",
+          "1.28.0-5",
+          "1.28.0-6",
+          "1.28.1-1",
+          "1.28.1-2",
+          "1.28.1-3",
+          "1.28.2-1",
+          "1.28.2-2",
+          "1.28.2-3",
+          "1.28.2-4",
+          "1.28.3-1",
+          "1.28.3-2",
+          "1.30.0-1",
+          "1.30.0-2",
+          "1.30.0-3",
+          "1.30.0-4",
+          "1.30.1-1",
+          "1.30.1-2",
+          "1.30.1-3",
+          "1.30.1-4",
+          "1.30.1-5",
+          "1.30.1-6",
+          "1.30.1-7",
+          "1.30.4-1",
+          "1.30.4-2",
+          "1.30.4-3",
+          "1.30.4-4",
+          "1.30.4-5",
+          "1.30.4-6",
+          "1.30.4-7",
+          "1.30.4-8",
+          "1.30.6-1",
+          "1.30.6-2",
+          "1.30.6-3",
+          "1.30.6-4"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-120993.json"
+        }
+      },
+      {
+        "package": {
+          "name": "nginx",
+          "ecosystem": "Debian:14",
+          "purl": "pkg:deb/debian/nginx?arch=source&distro=forky"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "1.26.3-3",
+          "1.28.0-1",
+          "1.28.0-2",
+          "1.28.0-3",
+          "1.28.0-4",
+          "1.28.0-5",
+          "1.28.0-6",
+          "1.28.1-1",
+          "1.28.1-2",
+          "1.28.1-3",
+          "1.28.2-1",
+          "1.28.2-2",
+          "1.28.2-3",
+          "1.28.2-4",
+          "1.28.3-1",
+          "1.28.3-2",
+          "1.30.0-1",
+          "1.30.0-2",
+          "1.30.0-3",
+          "1.30.0-4",
+          "1.30.1-1",
+          "1.30.1-2",
+          "1.30.1-3",
+          "1.30.1-4",
+          "1.30.1-5",
+          "1.30.1-6",
+          "1.30.1-7",
+          "1.30.4-1",
+          "1.30.4-2",
+          "1.30.4-3",
+          "1.30.4-4",
+          "1.30.4-5",
+          "1.30.4-6",
+          "1.30.4-7",
+          "1.30.4-8",
+          "1.30.6-1",
+          "1.30.6-2",
+          "1.30.6-3",
+          "1.30.6-4"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-120993.json"
+        }
+      }
+    ],
+    "schema_version": "1.9.2",
+    "severity": [
+      {
+        "type": "CVSS_V4",
+        "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+      }
+    ],
+    "_metadata": {
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
+      "source_package": "Debian/nginx",
+      "distribution": "debian"
+    }
+  },
+  {
+    "id": "DEBIAN-CVE-2026-120967",
+    "details": "When NGINX Plus or NGINX Open Source is configured to require client certificates (\"ssl_verify_client on\") in a non-default stream virtual server, a remote attacker could bypass verification of client certificates.  Impact: An attacker could leverage this vulnerability to bypass verification of client certificates. There is no control plane exposure; this is a data plane issue only.    Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
+    "modified": "2026-11-19T06:00:07.480029901Z",
+    "published": "2026-11-18T16:18:03.300Z",
+    "upstream": [
+      "CVE-2026-120967"
+    ],
+    "references": [
+      {
+        "type": "ADVISORY",
+        "url": "https://security-tracker.debian.org/tracker/CVE-2026-120967"
+      }
+    ],
+    "affected": [
+      {
+        "package": {
+          "name": "nginx",
+          "ecosystem": "Debian:12",
+          "purl": "pkg:deb/debian/nginx?arch=source&distro=bookworm"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "1.22.1-9",
+          "1.22.1-9+deb12u1",
+          "1.22.1-9+deb12u10",
+          "1.22.1-9+deb12u2",
+          "1.22.1-9+deb12u3",
+          "1.22.1-9+deb12u4",
+          "1.22.1-9+deb12u5",
+          "1.22.1-9+deb12u6",
+          "1.22.1-9+deb12u7",
+          "1.22.1-9+deb12u8",
+          "1.22.1-9+deb12u9",
+          "1.24.0-1",
+          "1.24.0-1~exp1",
+          "1.24.0-2",
+          "1.26.0-1",
+          "1.26.0-1~exp1",
+          "1.26.0-2",
+          "1.26.0-3",
+          "1.26.2-1",
+          "1.26.3-1",
+          "1.26.3-2",
+          "1.26.3-3",
+          "1.28.0-1",
+          "1.28.0-2",
+          "1.28.0-3",
+          "1.28.0-4",
+          "1.28.0-5",
+          "1.28.0-6",
+          "1.28.1-1",
+          "1.28.1-2",
+          "1.28.1-3",
+          "1.28.2-1",
+          "1.28.2-2",
+          "1.28.2-3",
+          "1.28.2-4",
+          "1.28.3-1",
+          "1.28.3-2",
+          "1.30.0-1",
+          "1.30.0-2",
+          "1.30.0-3",
+          "1.30.0-4",
+          "1.30.1-1",
+          "1.30.1-2",
+          "1.30.1-3",
+          "1.30.1-4",
+          "1.30.1-5",
+          "1.30.1-6",
+          "1.30.1-7",
+          "1.30.4-1",
+          "1.30.4-2",
+          "1.30.4-3",
+          "1.30.4-4",
+          "1.30.4-5",
+          "1.30.4-6",
+          "1.30.4-7",
+          "1.30.4-8",
+          "1.30.6-1",
+          "1.30.6-2",
+          "1.30.6-3",
+          "1.30.6-4"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-120967.json"
+        }
+      },
+      {
+        "package": {
+          "name": "nginx",
+          "ecosystem": "Debian:13",
+          "purl": "pkg:deb/debian/nginx?arch=source&distro=trixie"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "1.26.3-3",
+          "1.26.3-3+deb13u1",
+          "1.26.3-3+deb13u10",
+          "1.26.3-3+deb13u2",
+          "1.26.3-3+deb13u3",
+          "1.26.3-3+deb13u4",
+          "1.26.3-3+deb13u5",
+          "1.26.3-3+deb13u6",
+          "1.26.3-3+deb13u7",
+          "1.26.3-3+deb13u8",
+          "1.26.3-3+deb13u9",
+          "1.28.0-1",
+          "1.28.0-2",
+          "1.28.0-3",
+          "1.28.0-4",
+          "1.28.0-5",
+          "1.28.0-6",
+          "1.28.1-1",
+          "1.28.1-2",
+          "1.28.1-3",
+          "1.28.2-1",
+          "1.28.2-2",
+          "1.28.2-3",
+          "1.28.2-4",
+          "1.28.3-1",
+          "1.28.3-2",
+          "1.30.0-1",
+          "1.30.0-2",
+          "1.30.0-3",
+          "1.30.0-4",
+          "1.30.1-1",
+          "1.30.1-2",
+          "1.30.1-3",
+          "1.30.1-4",
+          "1.30.1-5",
+          "1.30.1-6",
+          "1.30.1-7",
+          "1.30.4-1",
+          "1.30.4-2",
+          "1.30.4-3",
+          "1.30.4-4",
+          "1.30.4-5",
+          "1.30.4-6",
+          "1.30.4-7",
+          "1.30.4-8",
+          "1.30.6-1",
+          "1.30.6-2",
+          "1.30.6-3",
+          "1.30.6-4"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-120967.json"
+        }
+      },
+      {
+        "package": {
+          "name": "nginx",
+          "ecosystem": "Debian:14",
+          "purl": "pkg:deb/debian/nginx?arch=source&distro=forky"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "1.26.3-3",
+          "1.28.0-1",
+          "1.28.0-2",
+          "1.28.0-3",
+          "1.28.0-4",
+          "1.28.0-5",
+          "1.28.0-6",
+          "1.28.1-1",
+          "1.28.1-2",
+          "1.28.1-3",
+          "1.28.2-1",
+          "1.28.2-2",
+          "1.28.2-3",
+          "1.28.2-4",
+          "1.28.3-1",
+          "1.28.3-2",
+          "1.30.0-1",
+          "1.30.0-2",
+          "1.30.0-3",
+          "1.30.0-4",
+          "1.30.1-1",
+          "1.30.1-2",
+          "1.30.1-3",
+          "1.30.1-4",
+          "1.30.1-5",
+          "1.30.1-6",
+          "1.30.1-7",
+          "1.30.4-1",
+          "1.30.4-2",
+          "1.30.4-3",
+          "1.30.4-4",
+          "1.30.4-5",
+          "1.30.4-6",
+          "1.30.4-7",
+          "1.30.4-8",
+          "1.30.6-1",
+          "1.30.6-2",
+          "1.30.6-3",
+          "1.30.6-4"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-120967.json"
+        }
+      }
+    ],
+    "schema_version": "1.9.2",
+    "severity": [
+      {
+        "type": "CVSS_V4",
+        "score": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+      }
+    ],
+    "_metadata": {
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
+      "source_package": "Debian/nginx",
+      "distribution": "debian"
+    }
+  },
+  {
+    "id": "DEBIAN-CVE-2026-118899",
+    "details": "When using the listen directive with the ssl parameter in the http block with TLSv1.3 enabled, an attacker can use a specially crafted TLS connection to cause an infinite loop in the NGINX worker process while reading the HTTP request body. As a result, the worker process stops accepting new connections and processing existing connections. Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.  Impact: This vulnerability allows a remote, unauthenticated attacker to cause a denial-of-service (DoS) of NGINX. There is no control plane exposure; this is a data plane issue only.    Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
+    "modified": "2026-11-19T09:00:06.935783183Z",
+    "published": "2026-11-18T16:18:00.357Z",
+    "upstream": [
+      "CVE-2026-118899"
+    ],
+    "references": [
+      {
+        "type": "ADVISORY",
+        "url": "https://security-tracker.debian.org/tracker/CVE-2026-118899"
+      }
+    ],
+    "affected": [
+      {
+        "package": {
+          "name": "nginx",
+          "ecosystem": "Debian:12",
+          "purl": "pkg:deb/debian/nginx?arch=source&distro=bookworm"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "1.22.1-9",
+          "1.22.1-9+deb12u1",
+          "1.22.1-9+deb12u10",
+          "1.22.1-9+deb12u2",
+          "1.22.1-9+deb12u3",
+          "1.22.1-9+deb12u4",
+          "1.22.1-9+deb12u5",
+          "1.22.1-9+deb12u6",
+          "1.22.1-9+deb12u7",
+          "1.22.1-9+deb12u8",
+          "1.22.1-9+deb12u9",
+          "1.24.0-1",
+          "1.24.0-1~exp1",
+          "1.24.0-2",
+          "1.26.0-1",
+          "1.26.0-1~exp1",
+          "1.26.0-2",
+          "1.26.0-3",
+          "1.26.2-1",
+          "1.26.3-1",
+          "1.26.3-2",
+          "1.26.3-3",
+          "1.28.0-1",
+          "1.28.0-2",
+          "1.28.0-3",
+          "1.28.0-4",
+          "1.28.0-5",
+          "1.28.0-6",
+          "1.28.1-1",
+          "1.28.1-2",
+          "1.28.1-3",
+          "1.28.2-1",
+          "1.28.2-2",
+          "1.28.2-3",
+          "1.28.2-4",
+          "1.28.3-1",
+          "1.28.3-2",
+          "1.30.0-1",
+          "1.30.0-2",
+          "1.30.0-3",
+          "1.30.0-4",
+          "1.30.1-1",
+          "1.30.1-2",
+          "1.30.1-3",
+          "1.30.1-4",
+          "1.30.1-5",
+          "1.30.1-6",
+          "1.30.1-7",
+          "1.30.4-1",
+          "1.30.4-2",
+          "1.30.4-3",
+          "1.30.4-4",
+          "1.30.4-5",
+          "1.30.4-6",
+          "1.30.4-7",
+          "1.30.4-8",
+          "1.30.6-1",
+          "1.30.6-2",
+          "1.30.6-3",
+          "1.30.6-4"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-118899.json"
+        }
+      },
+      {
+        "package": {
+          "name": "nginx",
+          "ecosystem": "Debian:13",
+          "purl": "pkg:deb/debian/nginx?arch=source&distro=trixie"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "1.26.3-3",
+          "1.26.3-3+deb13u1",
+          "1.26.3-3+deb13u10",
+          "1.26.3-3+deb13u2",
+          "1.26.3-3+deb13u3",
+          "1.26.3-3+deb13u4",
+          "1.26.3-3+deb13u5",
+          "1.26.3-3+deb13u6",
+          "1.26.3-3+deb13u7",
+          "1.26.3-3+deb13u8",
+          "1.26.3-3+deb13u9",
+          "1.28.0-1",
+          "1.28.0-2",
+          "1.28.0-3",
+          "1.28.0-4",
+          "1.28.0-5",
+          "1.28.0-6",
+          "1.28.1-1",
+          "1.28.1-2",
+          "1.28.1-3",
+          "1.28.2-1",
+          "1.28.2-2",
+          "1.28.2-3",
+          "1.28.2-4",
+          "1.28.3-1",
+          "1.28.3-2",
+          "1.30.0-1",
+          "1.30.0-2",
+          "1.30.0-3",
+          "1.30.0-4",
+          "1.30.1-1",
+          "1.30.1-2",
+          "1.30.1-3",
+          "1.30.1-4",
+          "1.30.1-5",
+          "1.30.1-6",
+          "1.30.1-7",
+          "1.30.4-1",
+          "1.30.4-2",
+          "1.30.4-3",
+          "1.30.4-4",
+          "1.30.4-5",
+          "1.30.4-6",
+          "1.30.4-7",
+          "1.30.4-8",
+          "1.30.6-1",
+          "1.30.6-2",
+          "1.30.6-3",
+          "1.30.6-4"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-118899.json"
+        }
+      },
+      {
+        "package": {
+          "name": "nginx",
+          "ecosystem": "Debian:14",
+          "purl": "pkg:deb/debian/nginx?arch=source&distro=forky"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "1.26.3-3",
+          "1.28.0-1",
+          "1.28.0-2",
+          "1.28.0-3",
+          "1.28.0-4",
+          "1.28.0-5",
+          "1.28.0-6",
+          "1.28.1-1",
+          "1.28.1-2",
+          "1.28.1-3",
+          "1.28.2-1",
+          "1.28.2-2",
+          "1.28.2-3",
+          "1.28.2-4",
+          "1.28.3-1",
+          "1.28.3-2",
+          "1.30.0-1",
+          "1.30.0-2",
+          "1.30.0-3",
+          "1.30.0-4",
+          "1.30.1-1",
+          "1.30.1-2",
+          "1.30.1-3",
+          "1.30.1-4",
+          "1.30.1-5",
+          "1.30.1-6",
+          "1.30.1-7",
+          "1.30.4-1",
+          "1.30.4-2",
+          "1.30.4-3",
+          "1.30.4-4",
+          "1.30.4-5",
+          "1.30.4-6",
+          "1.30.4-7",
+          "1.30.4-8",
+          "1.30.6-1",
+          "1.30.6-2",
+          "1.30.6-3",
+          "1.30.6-4"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-118899.json"
+        }
+      }
+    ],
+    "schema_version": "1.9.2",
+    "severity": [
+      {
+        "type": "CVSS_V4",
+        "score": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+      }
+    ],
+    "_metadata": {
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
+      "source_package": "Debian/nginx",
+      "distribution": "debian"
+    }
+  },
+  {
+    "id": "DEBIAN-CVE-2026-113425",
+    "details": "When NGINX Plus or NGINX Open Source is configured as a mail proxy, undisclosed traffic can cause a use-after-free in an nginx worker process. Additionally, attackers can execute code on systems with Address Space Layout Randomization (ASLR) disabled or when the attacker can bypass ASLR.  Impact: A remote unauthenticated attacker may crash an nginx worker process or corrupt its memory, disrupting service. Remote code execution is a potential impact. There is no control plane exposure; this is a data plane issue only.    Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
+    "modified": "2026-11-19T07:47:34.273332509Z",
+    "published": "2026-11-18T16:17:59.493Z",
+    "upstream": [
+      "CVE-2026-113425"
+    ],
+    "references": [
+      {
+        "type": "ADVISORY",
+        "url": "https://security-tracker.debian.org/tracker/CVE-2026-113425"
+      }
+    ],
+    "affected": [
+      {
+        "package": {
+          "name": "nginx",
+          "ecosystem": "Debian:12",
+          "purl": "pkg:deb/debian/nginx?arch=source&distro=bookworm"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "1.22.1-9",
+          "1.22.1-9+deb12u1",
+          "1.22.1-9+deb12u10",
+          "1.22.1-9+deb12u2",
+          "1.22.1-9+deb12u3",
+          "1.22.1-9+deb12u4",
+          "1.22.1-9+deb12u5",
+          "1.22.1-9+deb12u6",
+          "1.22.1-9+deb12u7",
+          "1.22.1-9+deb12u8",
+          "1.22.1-9+deb12u9",
+          "1.24.0-1",
+          "1.24.0-1~exp1",
+          "1.24.0-2",
+          "1.26.0-1",
+          "1.26.0-1~exp1",
+          "1.26.0-2",
+          "1.26.0-3",
+          "1.26.2-1",
+          "1.26.3-1",
+          "1.26.3-2",
+          "1.26.3-3",
+          "1.28.0-1",
+          "1.28.0-2",
+          "1.28.0-3",
+          "1.28.0-4",
+          "1.28.0-5",
+          "1.28.0-6",
+          "1.28.1-1",
+          "1.28.1-2",
+          "1.28.1-3",
+          "1.28.2-1",
+          "1.28.2-2",
+          "1.28.2-3",
+          "1.28.2-4",
+          "1.28.3-1",
+          "1.28.3-2",
+          "1.30.0-1",
+          "1.30.0-2",
+          "1.30.0-3",
+          "1.30.0-4",
+          "1.30.1-1",
+          "1.30.1-2",
+          "1.30.1-3",
+          "1.30.1-4",
+          "1.30.1-5",
+          "1.30.1-6",
+          "1.30.1-7",
+          "1.30.4-1",
+          "1.30.4-2",
+          "1.30.4-3",
+          "1.30.4-4",
+          "1.30.4-5",
+          "1.30.4-6",
+          "1.30.4-7",
+          "1.30.4-8",
+          "1.30.6-1",
+          "1.30.6-2",
+          "1.30.6-3",
+          "1.30.6-4"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-113425.json"
+        }
+      },
+      {
+        "package": {
+          "name": "nginx",
+          "ecosystem": "Debian:13",
+          "purl": "pkg:deb/debian/nginx?arch=source&distro=trixie"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "1.26.3-3",
+          "1.26.3-3+deb13u1",
+          "1.26.3-3+deb13u10",
+          "1.26.3-3+deb13u2",
+          "1.26.3-3+deb13u3",
+          "1.26.3-3+deb13u4",
+          "1.26.3-3+deb13u5",
+          "1.26.3-3+deb13u6",
+          "1.26.3-3+deb13u7",
+          "1.26.3-3+deb13u8",
+          "1.26.3-3+deb13u9",
+          "1.28.0-1",
+          "1.28.0-2",
+          "1.28.0-3",
+          "1.28.0-4",
+          "1.28.0-5",
+          "1.28.0-6",
+          "1.28.1-1",
+          "1.28.1-2",
+          "1.28.1-3",
+          "1.28.2-1",
+          "1.28.2-2",
+          "1.28.2-3",
+          "1.28.2-4",
+          "1.28.3-1",
+          "1.28.3-2",
+          "1.30.0-1",
+          "1.30.0-2",
+          "1.30.0-3",
+          "1.30.0-4",
+          "1.30.1-1",
+          "1.30.1-2",
+          "1.30.1-3",
+          "1.30.1-4",
+          "1.30.1-5",
+          "1.30.1-6",
+          "1.30.1-7",
+          "1.30.4-1",
+          "1.30.4-2",
+          "1.30.4-3",
+          "1.30.4-4",
+          "1.30.4-5",
+          "1.30.4-6",
+          "1.30.4-7",
+          "1.30.4-8",
+          "1.30.6-1",
+          "1.30.6-2",
+          "1.30.6-3",
+          "1.30.6-4"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-113425.json"
+        }
+      },
+      {
+        "package": {
+          "name": "nginx",
+          "ecosystem": "Debian:14",
+          "purl": "pkg:deb/debian/nginx?arch=source&distro=forky"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "1.26.3-3",
+          "1.28.0-1",
+          "1.28.0-2",
+          "1.28.0-3",
+          "1.28.0-4",
+          "1.28.0-5",
+          "1.28.0-6",
+          "1.28.1-1",
+          "1.28.1-2",
+          "1.28.1-3",
+          "1.28.2-1",
+          "1.28.2-2",
+          "1.28.2-3",
+          "1.28.2-4",
+          "1.28.3-1",
+          "1.28.3-2",
+          "1.30.0-1",
+          "1.30.0-2",
+          "1.30.0-3",
+          "1.30.0-4",
+          "1.30.1-1",
+          "1.30.1-2",
+          "1.30.1-3",
+          "1.30.1-4",
+          "1.30.1-5",
+          "1.30.1-6",
+          "1.30.1-7",
+          "1.30.4-1",
+          "1.30.4-2",
+          "1.30.4-3",
+          "1.30.4-4",
+          "1.30.4-5",
+          "1.30.4-6",
+          "1.30.4-7",
+          "1.30.4-8",
+          "1.30.6-1",
+          "1.30.6-2",
+          "1.30.6-3",
+          "1.30.6-4"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-113425.json"
+        }
+      }
+    ],
+    "schema_version": "1.9.2",
+    "severity": [
+      {
+        "type": "CVSS_V4",
+        "score": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
+      }
+    ],
+    "_metadata": {
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
+      "source_package": "Debian/nginx",
+      "distribution": "debian"
+    }
+  },
+  {
+    "id": "DEBIAN-CVE-2026-95690",
+    "details": "Receiving crafted out-of-sequence DTLS handshake fragments may cause OpenSSL to allocate a full message-length reassembly buffer for each buffered message, so a small amount of wire data consumes a large amount of memory.",
+    "modified": "2026-11-19T06:00:07.953848888Z",
+    "published": "2026-11-18T12:17:24.037Z",
+    "upstream": [
+      "CVE-2026-95690"
+    ],
+    "references": [
+      {
+        "type": "ADVISORY",
+        "url": "https://security-tracker.debian.org/tracker/CVE-2026-95690"
+      }
+    ],
+    "affected": [
+      {
+        "package": {
+          "name": "openssl",
+          "ecosystem": "Debian:12",
+          "purl": "pkg:deb/debian/openssl?arch=source&distro=bookworm"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "3.0.10-1",
+          "3.0.10-1~deb12u1",
+          "3.0.11-1",
+          "3.0.11-1~deb12u1",
+          "3.0.11-1~deb12u2",
+          "3.0.12-1",
+          "3.0.12-2",
+          "3.0.13-1~deb12u1",
+          "3.0.13-1~deb12u2",
+          "3.0.14-1~deb12u1",
+          "3.0.14-1~deb12u2",
+          "3.0.15-1~deb12u1",
+          "3.0.16-1~deb12u1",
+          "3.0.17-1~deb12u1",
+          "3.0.17-1~deb12u2",
+          "3.0.17-1~deb12u3",
+          "3.0.18-1~deb12u1",
+          "3.0.18-1~deb12u2",
+          "3.0.19-1~deb12u1",
+          "3.0.19-1~deb12u2",
+          "3.0.20-1~deb12u1",
+          "3.0.20-1~deb12u2",
+          "3.0.22-1~deb12u1",
+          "3.0.22-1~deb12u2",
+          "3.0.9-1",
+          "3.1.0-1",
+          "3.1.1-1",
+          "3.1.2-1",
+          "3.1.3-1",
+          "3.1.4-1",
+          "3.1.4-2",
+          "3.1.5-1",
+          "3.1.5-1.1",
+          "3.1.5-1.1+hurd.1",
+          "3.2.0-1",
+          "3.2.0-2",
+          "3.2.1-1",
+          "3.2.1-1.1~exp1",
+          "3.2.1-2",
+          "3.2.1-3",
+          "3.2.2-1",
+          "3.3.0-1",
+          "3.3.0~beta1-1",
+          "3.3.1-1",
+          "3.3.1-2",
+          "3.3.1-5",
+          "3.3.1-6",
+          "3.3.1-7",
+          "3.3.2-1",
+          "3.3.2-2",
+          "3.4.0-1",
+          "3.4.0-2",
+          "3.4.0~~beta1-1",
+          "3.4.0~~beta1-2",
+          "3.4.1-1",
+          "3.5.0-1",
+          "3.5.0-2",
+          "3.5.0-3",
+          "3.5.0~~alpha1-1",
+          "3.5.0~~beta1-1",
+          "3.5.1-1",
+          "3.5.2-1",
+          "3.5.3-1",
+          "3.5.4-1",
+          "3.5.4-1~deb13u1",
+          "3.5.4-1~deb13u2",
+          "3.5.5-1",
+          "3.5.5-1~deb13u1",
+          "3.5.5-1~deb13u2",
+          "3.5.6-1~deb13u1",
+          "3.5.6-1~deb13u2",
+          "3.5.7-1~deb13u1",
+          "3.5.7-1~deb13u2",
+          "3.5.7-1~deb13u3",
+          "3.5.9-1~deb13u1",
+          "3.6.0-1",
+          "3.6.0-2",
+          "3.6.0~~alpha1-1",
+          "3.6.0~~beta1-1",
+          "3.6.1-1",
+          "3.6.1-2",
+          "3.6.1-3",
+          "3.6.2-1",
+          "3.6.3-1",
+          "3.6.4-1",
+          "3.6.5-1",
+          "4.0.0-1",
+          "4.0.0~alpha1-1",
+          "4.0.0~beta1-1",
+          "4.0.1-1",
+          "4.0.2-1",
+          "4.0.3+really4.1.0-1",
+          "4.0.3-1"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-95690.json"
+        }
+      },
+      {
+        "package": {
+          "name": "openssl",
+          "ecosystem": "Debian:13",
+          "purl": "pkg:deb/debian/openssl?arch=source&distro=trixie"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "3.5.1-1",
+          "3.5.1-1+deb13u1",
+          "3.5.2-1",
+          "3.5.3-1",
+          "3.5.4-1",
+          "3.5.4-1~deb13u1",
+          "3.5.4-1~deb13u2",
+          "3.5.5-1",
+          "3.5.5-1~deb13u1",
+          "3.5.5-1~deb13u2",
+          "3.5.6-1~deb13u1",
+          "3.5.6-1~deb13u2",
+          "3.5.7-1~deb13u1",
+          "3.5.7-1~deb13u2",
+          "3.5.7-1~deb13u3",
+          "3.5.9-1~deb13u1",
+          "3.6.0-1",
+          "3.6.0-2",
+          "3.6.0~~alpha1-1",
+          "3.6.0~~beta1-1",
+          "3.6.1-1",
+          "3.6.1-2",
+          "3.6.1-3",
+          "3.6.2-1",
+          "3.6.3-1",
+          "3.6.4-1",
+          "3.6.5-1",
+          "4.0.0-1",
+          "4.0.0~alpha1-1",
+          "4.0.0~beta1-1",
+          "4.0.1-1",
+          "4.0.2-1",
+          "4.0.3+really4.1.0-1",
+          "4.0.3-1"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-95690.json"
+        }
+      },
+      {
+        "package": {
+          "name": "openssl",
+          "ecosystem": "Debian:14",
+          "purl": "pkg:deb/debian/openssl?arch=source&distro=forky"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "3.5.1-1",
+          "3.5.2-1",
+          "3.5.3-1",
+          "3.5.4-1",
+          "3.5.4-1~deb13u1",
+          "3.5.4-1~deb13u2",
+          "3.5.5-1",
+          "3.5.5-1~deb13u1",
+          "3.5.5-1~deb13u2",
+          "3.5.6-1~deb13u1",
+          "3.5.6-1~deb13u2",
+          "3.5.7-1~deb13u1",
+          "3.5.7-1~deb13u2",
+          "3.5.7-1~deb13u3",
+          "3.5.9-1~deb13u1",
+          "3.6.0-1",
+          "3.6.0-2",
+          "3.6.0~~alpha1-1",
+          "3.6.0~~beta1-1",
+          "3.6.1-1",
+          "3.6.1-2",
+          "3.6.1-3",
+          "3.6.2-1",
+          "3.6.3-1",
+          "3.6.4-1",
+          "3.6.5-1",
+          "4.0.0-1",
+          "4.0.0~alpha1-1",
+          "4.0.0~beta1-1",
+          "4.0.1-1",
+          "4.0.2-1",
+          "4.0.3+really4.1.0-1",
+          "4.0.3-1"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-95690.json"
+        }
+      }
+    ],
+    "schema_version": "1.9.2",
+    "severity": [
+      {
+        "type": "CVSS_V3",
+        "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+      }
+    ],
+    "_metadata": {
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
+      "source_package": "Debian/openssl",
+      "distribution": "debian"
+    }
+  },
+  {
+    "id": "DEBIAN-CVE-2026-84786",
+    "details": "A DANE-enabled TLS client may crash by dereferencing a NULL pointer when processing an unusual combination of certificate and TLSA records.",
+    "modified": "2026-11-19T09:00:06.853392134Z",
+    "published": "2026-11-18T12:17:23.473Z",
+    "upstream": [
+      "CVE-2026-84786"
+    ],
+    "references": [
+      {
+        "type": "ADVISORY",
+        "url": "https://security-tracker.debian.org/tracker/CVE-2026-84786"
+      }
+    ],
+    "affected": [
+      {
+        "package": {
+          "name": "openssl",
+          "ecosystem": "Debian:12",
+          "purl": "pkg:deb/debian/openssl?arch=source&distro=bookworm"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "3.0.10-1",
+          "3.0.10-1~deb12u1",
+          "3.0.11-1",
+          "3.0.11-1~deb12u1",
+          "3.0.11-1~deb12u2",
+          "3.0.12-1",
+          "3.0.12-2",
+          "3.0.13-1~deb12u1",
+          "3.0.13-1~deb12u2",
+          "3.0.14-1~deb12u1",
+          "3.0.14-1~deb12u2",
+          "3.0.15-1~deb12u1",
+          "3.0.16-1~deb12u1",
+          "3.0.17-1~deb12u1",
+          "3.0.17-1~deb12u2",
+          "3.0.17-1~deb12u3",
+          "3.0.18-1~deb12u1",
+          "3.0.18-1~deb12u2",
+          "3.0.19-1~deb12u1",
+          "3.0.19-1~deb12u2",
+          "3.0.20-1~deb12u1",
+          "3.0.20-1~deb12u2",
+          "3.0.22-1~deb12u1",
+          "3.0.22-1~deb12u2",
+          "3.0.9-1",
+          "3.1.0-1",
+          "3.1.1-1",
+          "3.1.2-1",
+          "3.1.3-1",
+          "3.1.4-1",
+          "3.1.4-2",
+          "3.1.5-1",
+          "3.1.5-1.1",
+          "3.1.5-1.1+hurd.1",
+          "3.2.0-1",
+          "3.2.0-2",
+          "3.2.1-1",
+          "3.2.1-1.1~exp1",
+          "3.2.1-2",
+          "3.2.1-3",
+          "3.2.2-1",
+          "3.3.0-1",
+          "3.3.0~beta1-1",
+          "3.3.1-1",
+          "3.3.1-2",
+          "3.3.1-5",
+          "3.3.1-6",
+          "3.3.1-7",
+          "3.3.2-1",
+          "3.3.2-2",
+          "3.4.0-1",
+          "3.4.0-2",
+          "3.4.0~~beta1-1",
+          "3.4.0~~beta1-2",
+          "3.4.1-1",
+          "3.5.0-1",
+          "3.5.0-2",
+          "3.5.0-3",
+          "3.5.0~~alpha1-1",
+          "3.5.0~~beta1-1",
+          "3.5.1-1",
+          "3.5.2-1",
+          "3.5.3-1",
+          "3.5.4-1",
+          "3.5.4-1~deb13u1",
+          "3.5.4-1~deb13u2",
+          "3.5.5-1",
+          "3.5.5-1~deb13u1",
+          "3.5.5-1~deb13u2",
+          "3.5.6-1~deb13u1",
+          "3.5.6-1~deb13u2",
+          "3.5.7-1~deb13u1",
+          "3.5.7-1~deb13u2",
+          "3.5.7-1~deb13u3",
+          "3.5.9-1~deb13u1",
+          "3.6.0-1",
+          "3.6.0-2",
+          "3.6.0~~alpha1-1",
+          "3.6.0~~beta1-1",
+          "3.6.1-1",
+          "3.6.1-2",
+          "3.6.1-3",
+          "3.6.2-1",
+          "3.6.3-1",
+          "3.6.4-1",
+          "3.6.5-1",
+          "4.0.0-1",
+          "4.0.0~alpha1-1",
+          "4.0.0~beta1-1",
+          "4.0.1-1",
+          "4.0.2-1",
+          "4.0.3+really4.1.0-1",
+          "4.0.3-1"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-84786.json"
+        }
+      },
+      {
+        "package": {
+          "name": "openssl",
+          "ecosystem": "Debian:13",
+          "purl": "pkg:deb/debian/openssl?arch=source&distro=trixie"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "3.5.1-1",
+          "3.5.1-1+deb13u1",
+          "3.5.2-1",
+          "3.5.3-1",
+          "3.5.4-1",
+          "3.5.4-1~deb13u1",
+          "3.5.4-1~deb13u2",
+          "3.5.5-1",
+          "3.5.5-1~deb13u1",
+          "3.5.5-1~deb13u2",
+          "3.5.6-1~deb13u1",
+          "3.5.6-1~deb13u2",
+          "3.5.7-1~deb13u1",
+          "3.5.7-1~deb13u2",
+          "3.5.7-1~deb13u3",
+          "3.5.9-1~deb13u1",
+          "3.6.0-1",
+          "3.6.0-2",
+          "3.6.0~~alpha1-1",
+          "3.6.0~~beta1-1",
+          "3.6.1-1",
+          "3.6.1-2",
+          "3.6.1-3",
+          "3.6.2-1",
+          "3.6.3-1",
+          "3.6.4-1",
+          "3.6.5-1",
+          "4.0.0-1",
+          "4.0.0~alpha1-1",
+          "4.0.0~beta1-1",
+          "4.0.1-1",
+          "4.0.2-1",
+          "4.0.3+really4.1.0-1",
+          "4.0.3-1"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-84786.json"
+        }
+      },
+      {
+        "package": {
+          "name": "openssl",
+          "ecosystem": "Debian:14",
+          "purl": "pkg:deb/debian/openssl?arch=source&distro=forky"
+        },
+        "ranges": [
+          {
+            "type": "ECOSYSTEM",
+            "events": [
+              {
+                "introduced": "0"
+              }
+            ]
+          }
+        ],
+        "versions": [
+          "3.5.1-1",
+          "3.5.2-1",
+          "3.5.3-1",
+          "3.5.4-1",
+          "3.5.4-1~deb13u1",
+          "3.5.4-1~deb13u2",
+          "3.5.5-1",
+          "3.5.5-1~deb13u1",
+          "3.5.5-1~deb13u2",
+          "3.5.6-1~deb13u1",
+          "3.5.6-1~deb13u2",
+          "3.5.7-1~deb13u1",
+          "3.5.7-1~deb13u2",
+          "3.5.7-1~deb13u3",
+          "3.5.9-1~deb13u1",
+          "3.6.0-1",
+          "3.6.0-2",
+          "3.6.0~~alpha1-1",
+          "3.6.0~~beta1-1",
+          "3.6.1-1",
+          "3.6.1-2",
+          "3.6.1-3",
+          "3.6.2-1",
+          "3.6.3-1",
+          "3.6.4-1",
+          "3.6.5-1",
+          "4.0.0-1",
+          "4.0.0~alpha1-1",
+          "4.0.0~beta1-1",
+          "4.0.1-1",
+          "4.0.2-1",
+          "4.0.3+really4.1.0-1",
+          "4.0.3-1"
+        ],
+        "ecosystem_specific": {
+          "urgency": "not yet assigned"
+        },
+        "database_specific": {
+          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-84786.json"
+        }
+      }
+    ],
+    "schema_version": "1.9.2",
+    "_metadata": {
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
+      "source_package": "Debian/openssl",
+      "distribution": "debian"
+    }
+  },
+  {
     "id": "DEBIAN-CVE-2026-35190",
     "details": "Issue summary: A server configured with the Suite B certificate flag through SSL_CTX_set_cert_flags() and with TLS 1.3 enabled may read past the end of a fixed group list when it processes a ClientHello whose supported_groups and key_share contain no Suite B group.  Impact summary: A remote client can send a ClientHello that makes the server read past the end of a static array. The values read are never returned to the client, so no memory is disclosed; on builds with sanitizers or hardened allocators the read may crash the process, causing Denial of Service.  CWE: CWE-125: Out-of-bounds Read  Description: When the Suite B certificate flag is set, OpenSSL restricts the accepted groups to P-256 and P-384 by substituting a fixed two-element list for the configured group list. The tuple machinery used for key-share selection was not updated for this substitution: tls1_get_group_tuples() still returns the configured tuples, which by default describe eight groups. The server-side walk in tls_parse_ctos_key_share() then advances through the two-element list using those tuple counts without checking the cumulative offset against the number of groups present.  Only applications that call SSL_CTX_set_cert_flags() with SSL_CERT_FLAG_SUITEB_128_LOS and leave TLS 1.3 enabled are affected. The openssl s_server -suiteB_128 option sets an X.509 verification parameter instead, so the stock command line server is not vulnerable. Default configurations do not reach this code.  A client that offers only groups outside the Suite B set, such as X25519, forces every tuple to be walked and the read to run past the array. The bytes read are compared against client group IDs and never sent back, so no memory is disclosed. On builds with address sanitizers or hardened allocators the read can abort the process; in ordinary release builds it reads a few bytes of adjacent constant data.  FIPS impact: no The affected code is outside the FIPS module boundary.",
     "modified": "2026-11-18T06:01:53.771918569Z",
@@ -258,7 +3300,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -522,7 +3564,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -786,7 +3828,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -1050,7 +4092,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -1314,7 +4356,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -1578,7 +4620,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -1842,7 +4884,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -2106,7 +5148,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -2568,7 +5610,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -2701,7 +5743,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -3161,7 +6203,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -3621,7 +6663,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -4081,7 +7123,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -4541,7 +7583,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -4787,7 +7829,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -5033,7 +8075,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -5493,7 +8535,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -5953,7 +8995,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -6407,7 +9449,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -6653,7 +9695,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -6899,7 +9941,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -7030,7 +10072,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -7161,7 +10203,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -7621,7 +10663,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -7873,7 +10915,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -8339,7 +11381,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -8470,7 +11512,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -8601,7 +11643,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -8730,7 +11772,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -9190,7 +12232,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -9644,7 +12686,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -9856,7 +12898,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -10068,7 +13110,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -10280,7 +13322,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -10492,7 +13534,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -10704,7 +13746,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -10876,7 +13918,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -11072,7 +14114,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/docker.io",
       "distribution": "debian"
     }
@@ -11268,7 +14310,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/docker.io",
       "distribution": "debian"
     }
@@ -11391,7 +14433,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -11567,7 +14609,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -11743,7 +14785,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -11919,7 +14961,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -12095,7 +15137,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -12218,7 +15260,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -12341,7 +15383,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -12464,7 +15506,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -12587,7 +15629,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -12763,7 +15805,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -12886,7 +15928,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -13009,7 +16051,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -13185,7 +16227,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -13275,7 +16317,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -13722,7 +16764,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -13960,7 +17002,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -14198,7 +17240,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -14643,7 +17685,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -14879,7 +17921,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -15322,7 +18364,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -15765,7 +18807,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -16208,7 +19250,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -16380,7 +19422,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -16552,7 +19594,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -16673,7 +19715,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -16845,7 +19887,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -16966,7 +20008,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -17138,7 +20180,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -17310,7 +20352,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -17430,7 +20472,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -17551,7 +20593,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -17673,7 +20715,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -18044,7 +21086,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/systemd",
       "distribution": "debian"
     }
@@ -18135,7 +21177,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/systemd",
       "distribution": "debian"
     }
@@ -18499,7 +21541,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/systemd",
       "distribution": "debian"
     }
@@ -18580,7 +21622,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/openssl",
       "distribution": "debian"
     }
@@ -18737,7 +21779,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -18894,7 +21936,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -19054,7 +22096,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/nginx",
       "distribution": "debian"
     }
@@ -19488,7 +22530,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -19604,7 +22646,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -19829,7 +22871,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -20054,7 +23096,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -20279,7 +23321,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -20713,7 +23755,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -21075,7 +24117,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -21300,7 +24342,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -21416,7 +24458,7 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/curl",
       "distribution": "debian"
     }
@@ -21778,3120 +24820,8 @@
       }
     ],
     "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
+      "fetched_at": "2026-11-19T12:27:50.224644+00:00",
       "source_package": "Debian/curl",
-      "distribution": "debian"
-    }
-  },
-  {
-    "id": "DEBIAN-CVE-2026-8458",
-    "details": "libcurl might in some circumstances reuse the wrong connection when asked to do Negotiate-authenticated ones, even when they are set to use different \"services\".  libcurl features a pool of recent connections so that subsequent requests can reuse an existing connection to avoid overhead.  When reusing a connection a range of criteria must be met. Due to a logical error in the code, a request that was issued by an application could wrongfully reuse an existing connection to the same server that was authenticated using different services.",
-    "modified": "2026-10-01T03:03:51.257512063Z",
-    "published": "2026-07-03T07:16:24.630Z",
-    "upstream": [
-      "CVE-2026-8458"
-    ],
-    "references": [
-      {
-        "type": "ADVISORY",
-        "url": "https://security-tracker.debian.org/tracker/CVE-2026-8458"
-      }
-    ],
-    "affected": [
-      {
-        "package": {
-          "name": "curl",
-          "ecosystem": "Debian:12",
-          "purl": "pkg:deb/debian/curl?arch=source&distro=bookworm"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "7.88.1-10",
-          "7.88.1-10+deb12u1",
-          "7.88.1-10+deb12u11",
-          "7.88.1-10+deb12u12",
-          "7.88.1-10+deb12u13",
-          "7.88.1-10+deb12u14",
-          "7.88.1-10+deb12u15",
-          "7.88.1-10+deb12u1~bpo11+1",
-          "7.88.1-10+deb12u2",
-          "7.88.1-10+deb12u3",
-          "7.88.1-10+deb12u3~bpo11+1",
-          "7.88.1-10+deb12u4",
-          "7.88.1-10+deb12u5",
-          "7.88.1-10+deb12u5~bpo11+1",
-          "7.88.1-10+deb12u6",
-          "7.88.1-10+deb12u6~bpo11+1",
-          "7.88.1-10+deb12u7",
-          "7.88.1-10+deb12u8",
-          "7.88.1-10+deb12u9",
-          "7.88.1-11",
-          "8.0.1-1~exp1",
-          "8.10.0-1",
-          "8.10.0-2",
-          "8.10.1-1",
-          "8.10.1-1~bpo12+1",
-          "8.10.1-2",
-          "8.11.0-1",
-          "8.11.1-1",
-          "8.11.1-1~bpo12+1",
-          "8.12.0+git20250209.89ed161+ds-1",
-          "8.12.0+git20250209.89ed161+ds-1~bpo12+1",
-          "8.12.1-1",
-          "8.12.1-2",
-          "8.12.1-2~bpo12+1",
-          "8.12.1-3",
-          "8.12.1-3~bpo12+1",
-          "8.13.0-1",
-          "8.13.0-1+exp1",
-          "8.13.0-2",
-          "8.13.0-2+exp1",
-          "8.13.0-3",
-          "8.13.0-4",
-          "8.13.0-4+exp1",
-          "8.13.0-5",
-          "8.13.0-5+exp1",
-          "8.13.0-5~bpo12+1",
-          "8.13.0~rc-1~exp1",
-          "8.13.0~rc-1~exp2",
-          "8.13.0~rc2-1",
-          "8.13.0~rc2-2",
-          "8.13.0~rc3-1",
-          "8.13.0~rc3-1+exp1",
-          "8.14.0-1",
-          "8.14.0-1+exp1",
-          "8.14.0~rc1-1+exp1",
-          "8.14.0~rc2-1+exp1",
-          "8.14.0~rc3-1+exp1",
-          "8.14.1-1",
-          "8.14.1-1~bpo12+1",
-          "8.14.1-2",
-          "8.14.1-2+exp1",
-          "8.14.1-2~bpo12+1",
-          "8.15.0-1",
-          "8.15.0-1~bpo13+1",
-          "8.15.0-1~exp1",
-          "8.15.0~rc1-1exp1",
-          "8.15.0~rc2-1~exp1",
-          "8.15.0~rc3-1~exp1",
-          "8.16.0-1",
-          "8.16.0-1+exp1",
-          "8.16.0-1~bpo13+1",
-          "8.16.0-2",
-          "8.16.0-3",
-          "8.16.0-4",
-          "8.16.0-4~bpo13+1",
-          "8.16.0~rc1-1~exp1",
-          "8.16.0~rc2-1",
-          "8.16.0~rc2-2",
-          "8.16.0~rc3-1",
-          "8.17.0-1",
-          "8.17.0-2",
-          "8.17.0-3",
-          "8.17.0~rc1-1~exp1",
-          "8.17.0~rc2-1",
-          "8.17.0~rc3-1",
-          "8.18.0-1",
-          "8.18.0-1~bpo13+1",
-          "8.18.0-2",
-          "8.18.0~rc1-1+exp1",
-          "8.18.0~rc2-1",
-          "8.18.0~rc3-1",
-          "8.19.0-1",
-          "8.19.0-1+exp1",
-          "8.19.0-1~bpo13+1",
-          "8.19.0-2",
-          "8.19.0-3",
-          "8.19.0-3+exp1",
-          "8.19.0-3+exp2",
-          "8.19.0~rc1-1~exp1",
-          "8.19.0~rc2-1",
-          "8.19.0~rc2-2",
-          "8.19.0~rc3-1",
-          "8.2.1-1",
-          "8.2.1-2",
-          "8.2.1-2~bpo12+1",
-          "8.20.0-1",
-          "8.20.0-1+exp",
-          "8.20.0-2",
-          "8.20.0-2+exp1",
-          "8.20.0-2~bpo13+1",
-          "8.20.0-3",
-          "8.20.0-4",
-          "8.20.0-5",
-          "8.20.0-5~bpo13+1",
-          "8.20.0~rc1-1+exp1",
-          "8.20.0~rc1-1+exp2",
-          "8.20.0~rc1-1+exp3",
-          "8.20.0~rc2-1",
-          "8.20.0~rc2-1+exp1",
-          "8.20.0~rc3-1",
-          "8.20.0~rc3-1+exp1",
-          "8.21.0-1",
-          "8.21.0-1+exp1",
-          "8.21.0-2",
-          "8.21.0-2+exp1",
-          "8.21.0-2~bpo13+1",
-          "8.21.0~rc1-1+exp1",
-          "8.21.0~rc2-1",
-          "8.21.0~rc2-1+exp1",
-          "8.21.0~rc3-1",
-          "8.21.0~rc3-1+exp1",
-          "8.22.0-1",
-          "8.22.0-1+exp1",
-          "8.22.0~rc2-1",
-          "8.22.0~rc2-2",
-          "8.22.0~rc3-1",
-          "8.22.0~rc3-1+exp1",
-          "8.23.0~rc1-1",
-          "8.23.0~rc1-2",
-          "8.23.0~rc2-1",
-          "8.23.0~rc2-1+exp1",
-          "8.3.0-1",
-          "8.3.0-2",
-          "8.3.0-2~bpo12+1",
-          "8.3.0-2~exp1",
-          "8.3.0-3",
-          "8.4.0-1",
-          "8.4.0-2",
-          "8.4.0-2~bpo12+1",
-          "8.5.0-1",
-          "8.5.0-1+exp1",
-          "8.5.0-2",
-          "8.5.0-2+exp1",
-          "8.5.0-2~bpo12+1",
-          "8.6.0-1",
-          "8.6.0-1.1",
-          "8.6.0-2",
-          "8.6.0-3",
-          "8.6.0-3.1",
-          "8.6.0-3.1~exp1",
-          "8.6.0-3.1~exp2",
-          "8.6.0-3.2",
-          "8.6.0-4",
-          "8.7.1-1",
-          "8.7.1-1+exp1",
-          "8.7.1-2",
-          "8.7.1-3",
-          "8.7.1-4",
-          "8.7.1-5",
-          "8.7.1-5+exp1",
-          "8.7.1-5~bpo12+1",
-          "8.8.0-1",
-          "8.8.0-1+exp1",
-          "8.8.0-1+exp2",
-          "8.8.0-1~bpo12+1",
-          "8.8.0-2",
-          "8.8.0-3",
-          "8.8.0-4",
-          "8.9.0-1",
-          "8.9.0-2",
-          "8.9.0-3",
-          "8.9.1-1",
-          "8.9.1-2",
-          "8.9.1-2~bpo12+1"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-8458.json"
-        }
-      },
-      {
-        "package": {
-          "name": "curl",
-          "ecosystem": "Debian:13",
-          "purl": "pkg:deb/debian/curl?arch=source&distro=trixie"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "8.14.1-2",
-          "8.14.1-2+deb13u1",
-          "8.14.1-2+deb13u2",
-          "8.14.1-2+deb13u2~bpo13+1",
-          "8.14.1-2+deb13u3",
-          "8.14.1-2+deb13u4",
-          "8.14.1-2+deb13u5",
-          "8.14.1-2+exp1",
-          "8.15.0-1",
-          "8.15.0-1~bpo13+1",
-          "8.15.0-1~exp1",
-          "8.15.0~rc1-1exp1",
-          "8.15.0~rc2-1~exp1",
-          "8.15.0~rc3-1~exp1",
-          "8.16.0-1",
-          "8.16.0-1+exp1",
-          "8.16.0-1~bpo13+1",
-          "8.16.0-2",
-          "8.16.0-3",
-          "8.16.0-4",
-          "8.16.0-4~bpo13+1",
-          "8.16.0~rc1-1~exp1",
-          "8.16.0~rc2-1",
-          "8.16.0~rc2-2",
-          "8.16.0~rc3-1",
-          "8.17.0-1",
-          "8.17.0-2",
-          "8.17.0-3",
-          "8.17.0~rc1-1~exp1",
-          "8.17.0~rc2-1",
-          "8.17.0~rc3-1",
-          "8.18.0-1",
-          "8.18.0-1~bpo13+1",
-          "8.18.0-2",
-          "8.18.0~rc1-1+exp1",
-          "8.18.0~rc2-1",
-          "8.18.0~rc3-1",
-          "8.19.0-1",
-          "8.19.0-1+exp1",
-          "8.19.0-1~bpo13+1",
-          "8.19.0-2",
-          "8.19.0-3",
-          "8.19.0-3+exp1",
-          "8.19.0-3+exp2",
-          "8.19.0~rc1-1~exp1",
-          "8.19.0~rc2-1",
-          "8.19.0~rc2-2",
-          "8.19.0~rc3-1",
-          "8.20.0-1",
-          "8.20.0-1+exp",
-          "8.20.0-2",
-          "8.20.0-2+exp1",
-          "8.20.0-2~bpo13+1",
-          "8.20.0-3",
-          "8.20.0-4",
-          "8.20.0-5",
-          "8.20.0-5~bpo13+1",
-          "8.20.0~rc1-1+exp1",
-          "8.20.0~rc1-1+exp2",
-          "8.20.0~rc1-1+exp3",
-          "8.20.0~rc2-1",
-          "8.20.0~rc2-1+exp1",
-          "8.20.0~rc3-1",
-          "8.20.0~rc3-1+exp1",
-          "8.21.0-1",
-          "8.21.0-1+exp1",
-          "8.21.0-2",
-          "8.21.0-2+exp1",
-          "8.21.0-2~bpo13+1",
-          "8.21.0~rc1-1+exp1",
-          "8.21.0~rc2-1",
-          "8.21.0~rc2-1+exp1",
-          "8.21.0~rc3-1",
-          "8.21.0~rc3-1+exp1",
-          "8.22.0-1",
-          "8.22.0-1+exp1",
-          "8.22.0~rc2-1",
-          "8.22.0~rc2-2",
-          "8.22.0~rc3-1",
-          "8.22.0~rc3-1+exp1",
-          "8.23.0~rc1-1",
-          "8.23.0~rc1-2",
-          "8.23.0~rc2-1",
-          "8.23.0~rc2-1+exp1"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-8458.json"
-        }
-      },
-      {
-        "package": {
-          "name": "curl",
-          "ecosystem": "Debian:14",
-          "purl": "pkg:deb/debian/curl?arch=source&distro=forky"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "8.21.0~rc2-1"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "8.14.1-2",
-          "8.14.1-2+exp1",
-          "8.15.0-1",
-          "8.15.0-1~bpo13+1",
-          "8.15.0-1~exp1",
-          "8.15.0~rc1-1exp1",
-          "8.15.0~rc2-1~exp1",
-          "8.15.0~rc3-1~exp1",
-          "8.16.0-1",
-          "8.16.0-1+exp1",
-          "8.16.0-1~bpo13+1",
-          "8.16.0-2",
-          "8.16.0-3",
-          "8.16.0-4",
-          "8.16.0-4~bpo13+1",
-          "8.16.0~rc1-1~exp1",
-          "8.16.0~rc2-1",
-          "8.16.0~rc2-2",
-          "8.16.0~rc3-1",
-          "8.17.0-1",
-          "8.17.0-2",
-          "8.17.0-3",
-          "8.17.0~rc1-1~exp1",
-          "8.17.0~rc2-1",
-          "8.17.0~rc3-1",
-          "8.18.0-1",
-          "8.18.0-1~bpo13+1",
-          "8.18.0-2",
-          "8.18.0~rc1-1+exp1",
-          "8.18.0~rc2-1",
-          "8.18.0~rc3-1",
-          "8.19.0-1",
-          "8.19.0-1+exp1",
-          "8.19.0-1~bpo13+1",
-          "8.19.0-2",
-          "8.19.0-3",
-          "8.19.0-3+exp1",
-          "8.19.0-3+exp2",
-          "8.19.0~rc1-1~exp1",
-          "8.19.0~rc2-1",
-          "8.19.0~rc2-2",
-          "8.19.0~rc3-1",
-          "8.20.0-1",
-          "8.20.0-1+exp",
-          "8.20.0-2",
-          "8.20.0-2+exp1",
-          "8.20.0-2~bpo13+1",
-          "8.20.0-3",
-          "8.20.0-4",
-          "8.20.0-5",
-          "8.20.0-5~bpo13+1",
-          "8.20.0~rc1-1+exp1",
-          "8.20.0~rc1-1+exp2",
-          "8.20.0~rc1-1+exp3",
-          "8.20.0~rc2-1",
-          "8.20.0~rc2-1+exp1",
-          "8.20.0~rc3-1",
-          "8.20.0~rc3-1+exp1",
-          "8.21.0~rc1-1+exp1"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-8458.json"
-        }
-      }
-    ],
-    "schema_version": "1.9.0",
-    "severity": [
-      {
-        "type": "CVSS_V3",
-        "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N"
-      }
-    ],
-    "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
-      "source_package": "Debian/curl",
-      "distribution": "debian"
-    }
-  },
-  {
-    "id": "DEBIAN-CVE-2026-8286",
-    "details": "A vulnerability exists where a new transfer that uses STARTTLS to upgrade the connection might reuse an existing live connection even though the TLS configuration mismatches so it should not.",
-    "modified": "2026-10-14T08:00:11.191271893Z",
-    "published": "2026-07-03T07:16:24.453Z",
-    "upstream": [
-      "CVE-2026-8286"
-    ],
-    "references": [
-      {
-        "type": "ADVISORY",
-        "url": "https://security-tracker.debian.org/tracker/CVE-2026-8286"
-      }
-    ],
-    "affected": [
-      {
-        "package": {
-          "name": "curl",
-          "ecosystem": "Debian:12",
-          "purl": "pkg:deb/debian/curl?arch=source&distro=bookworm"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "7.88.1-10",
-          "7.88.1-10+deb12u1",
-          "7.88.1-10+deb12u11",
-          "7.88.1-10+deb12u12",
-          "7.88.1-10+deb12u13",
-          "7.88.1-10+deb12u14",
-          "7.88.1-10+deb12u15",
-          "7.88.1-10+deb12u1~bpo11+1",
-          "7.88.1-10+deb12u2",
-          "7.88.1-10+deb12u3",
-          "7.88.1-10+deb12u3~bpo11+1",
-          "7.88.1-10+deb12u4",
-          "7.88.1-10+deb12u5",
-          "7.88.1-10+deb12u5~bpo11+1",
-          "7.88.1-10+deb12u6",
-          "7.88.1-10+deb12u6~bpo11+1",
-          "7.88.1-10+deb12u7",
-          "7.88.1-10+deb12u8",
-          "7.88.1-10+deb12u9",
-          "7.88.1-11",
-          "8.0.1-1~exp1",
-          "8.10.0-1",
-          "8.10.0-2",
-          "8.10.1-1",
-          "8.10.1-1~bpo12+1",
-          "8.10.1-2",
-          "8.11.0-1",
-          "8.11.1-1",
-          "8.11.1-1~bpo12+1",
-          "8.12.0+git20250209.89ed161+ds-1",
-          "8.12.0+git20250209.89ed161+ds-1~bpo12+1",
-          "8.12.1-1",
-          "8.12.1-2",
-          "8.12.1-2~bpo12+1",
-          "8.12.1-3",
-          "8.12.1-3~bpo12+1",
-          "8.13.0-1",
-          "8.13.0-1+exp1",
-          "8.13.0-2",
-          "8.13.0-2+exp1",
-          "8.13.0-3",
-          "8.13.0-4",
-          "8.13.0-4+exp1",
-          "8.13.0-5",
-          "8.13.0-5+exp1",
-          "8.13.0-5~bpo12+1",
-          "8.13.0~rc-1~exp1",
-          "8.13.0~rc-1~exp2",
-          "8.13.0~rc2-1",
-          "8.13.0~rc2-2",
-          "8.13.0~rc3-1",
-          "8.13.0~rc3-1+exp1",
-          "8.14.0-1",
-          "8.14.0-1+exp1",
-          "8.14.0~rc1-1+exp1",
-          "8.14.0~rc2-1+exp1",
-          "8.14.0~rc3-1+exp1",
-          "8.14.1-1",
-          "8.14.1-1~bpo12+1",
-          "8.14.1-2",
-          "8.14.1-2+exp1",
-          "8.14.1-2~bpo12+1",
-          "8.15.0-1",
-          "8.15.0-1~bpo13+1",
-          "8.15.0-1~exp1",
-          "8.15.0~rc1-1exp1",
-          "8.15.0~rc2-1~exp1",
-          "8.15.0~rc3-1~exp1",
-          "8.16.0-1",
-          "8.16.0-1+exp1",
-          "8.16.0-1~bpo13+1",
-          "8.16.0-2",
-          "8.16.0-3",
-          "8.16.0-4",
-          "8.16.0-4~bpo13+1",
-          "8.16.0~rc1-1~exp1",
-          "8.16.0~rc2-1",
-          "8.16.0~rc2-2",
-          "8.16.0~rc3-1",
-          "8.17.0-1",
-          "8.17.0-2",
-          "8.17.0-3",
-          "8.17.0~rc1-1~exp1",
-          "8.17.0~rc2-1",
-          "8.17.0~rc3-1",
-          "8.18.0-1",
-          "8.18.0-1~bpo13+1",
-          "8.18.0-2",
-          "8.18.0~rc1-1+exp1",
-          "8.18.0~rc2-1",
-          "8.18.0~rc3-1",
-          "8.19.0-1",
-          "8.19.0-1+exp1",
-          "8.19.0-1~bpo13+1",
-          "8.19.0-2",
-          "8.19.0-3",
-          "8.19.0-3+exp1",
-          "8.19.0-3+exp2",
-          "8.19.0~rc1-1~exp1",
-          "8.19.0~rc2-1",
-          "8.19.0~rc2-2",
-          "8.19.0~rc3-1",
-          "8.2.1-1",
-          "8.2.1-2",
-          "8.2.1-2~bpo12+1",
-          "8.20.0-1",
-          "8.20.0-1+exp",
-          "8.20.0-2",
-          "8.20.0-2+exp1",
-          "8.20.0-2~bpo13+1",
-          "8.20.0-3",
-          "8.20.0-4",
-          "8.20.0-5",
-          "8.20.0-5~bpo13+1",
-          "8.20.0~rc1-1+exp1",
-          "8.20.0~rc1-1+exp2",
-          "8.20.0~rc1-1+exp3",
-          "8.20.0~rc2-1",
-          "8.20.0~rc2-1+exp1",
-          "8.20.0~rc3-1",
-          "8.20.0~rc3-1+exp1",
-          "8.21.0-1",
-          "8.21.0-1+exp1",
-          "8.21.0-2",
-          "8.21.0-2+exp1",
-          "8.21.0-2~bpo13+1",
-          "8.21.0~rc1-1+exp1",
-          "8.21.0~rc2-1",
-          "8.21.0~rc2-1+exp1",
-          "8.21.0~rc3-1",
-          "8.21.0~rc3-1+exp1",
-          "8.22.0-1",
-          "8.22.0-1+exp1",
-          "8.22.0~rc2-1",
-          "8.22.0~rc2-2",
-          "8.22.0~rc3-1",
-          "8.22.0~rc3-1+exp1",
-          "8.23.0~rc1-1",
-          "8.23.0~rc1-2",
-          "8.23.0~rc2-1",
-          "8.23.0~rc2-1+exp1",
-          "8.23.0~rc3-1",
-          "8.23.0~rc3-1+exp1",
-          "8.3.0-1",
-          "8.3.0-2",
-          "8.3.0-2~bpo12+1",
-          "8.3.0-2~exp1",
-          "8.3.0-3",
-          "8.4.0-1",
-          "8.4.0-2",
-          "8.4.0-2~bpo12+1",
-          "8.5.0-1",
-          "8.5.0-1+exp1",
-          "8.5.0-2",
-          "8.5.0-2+exp1",
-          "8.5.0-2~bpo12+1",
-          "8.6.0-1",
-          "8.6.0-1.1",
-          "8.6.0-2",
-          "8.6.0-3",
-          "8.6.0-3.1",
-          "8.6.0-3.1~exp1",
-          "8.6.0-3.1~exp2",
-          "8.6.0-3.2",
-          "8.6.0-4",
-          "8.7.1-1",
-          "8.7.1-1+exp1",
-          "8.7.1-2",
-          "8.7.1-3",
-          "8.7.1-4",
-          "8.7.1-5",
-          "8.7.1-5+exp1",
-          "8.7.1-5~bpo12+1",
-          "8.8.0-1",
-          "8.8.0-1+exp1",
-          "8.8.0-1+exp2",
-          "8.8.0-1~bpo12+1",
-          "8.8.0-2",
-          "8.8.0-3",
-          "8.8.0-4",
-          "8.9.0-1",
-          "8.9.0-2",
-          "8.9.0-3",
-          "8.9.1-1",
-          "8.9.1-2",
-          "8.9.1-2~bpo12+1"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-8286.json"
-        }
-      },
-      {
-        "package": {
-          "name": "curl",
-          "ecosystem": "Debian:13",
-          "purl": "pkg:deb/debian/curl?arch=source&distro=trixie"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "8.14.1-2+deb13u7"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "8.14.1-2",
-          "8.14.1-2+deb13u1",
-          "8.14.1-2+deb13u2",
-          "8.14.1-2+deb13u2~bpo13+1",
-          "8.14.1-2+deb13u3",
-          "8.14.1-2+deb13u4",
-          "8.14.1-2+deb13u5"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-8286.json"
-        }
-      },
-      {
-        "package": {
-          "name": "curl",
-          "ecosystem": "Debian:14",
-          "purl": "pkg:deb/debian/curl?arch=source&distro=forky"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "8.21.0~rc2-1"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "8.14.1-2",
-          "8.14.1-2+exp1",
-          "8.15.0-1",
-          "8.15.0-1~bpo13+1",
-          "8.15.0-1~exp1",
-          "8.15.0~rc1-1exp1",
-          "8.15.0~rc2-1~exp1",
-          "8.15.0~rc3-1~exp1",
-          "8.16.0-1",
-          "8.16.0-1+exp1",
-          "8.16.0-1~bpo13+1",
-          "8.16.0-2",
-          "8.16.0-3",
-          "8.16.0-4",
-          "8.16.0-4~bpo13+1",
-          "8.16.0~rc1-1~exp1",
-          "8.16.0~rc2-1",
-          "8.16.0~rc2-2",
-          "8.16.0~rc3-1",
-          "8.17.0-1",
-          "8.17.0-2",
-          "8.17.0-3",
-          "8.17.0~rc1-1~exp1",
-          "8.17.0~rc2-1",
-          "8.17.0~rc3-1",
-          "8.18.0-1",
-          "8.18.0-1~bpo13+1",
-          "8.18.0-2",
-          "8.18.0~rc1-1+exp1",
-          "8.18.0~rc2-1",
-          "8.18.0~rc3-1",
-          "8.19.0-1",
-          "8.19.0-1+exp1",
-          "8.19.0-1~bpo13+1",
-          "8.19.0-2",
-          "8.19.0-3",
-          "8.19.0-3+exp1",
-          "8.19.0-3+exp2",
-          "8.19.0~rc1-1~exp1",
-          "8.19.0~rc2-1",
-          "8.19.0~rc2-2",
-          "8.19.0~rc3-1",
-          "8.20.0-1",
-          "8.20.0-1+exp",
-          "8.20.0-2",
-          "8.20.0-2+exp1",
-          "8.20.0-2~bpo13+1",
-          "8.20.0-3",
-          "8.20.0-4",
-          "8.20.0-5",
-          "8.20.0-5~bpo13+1",
-          "8.20.0~rc1-1+exp1",
-          "8.20.0~rc1-1+exp2",
-          "8.20.0~rc1-1+exp3",
-          "8.20.0~rc2-1",
-          "8.20.0~rc2-1+exp1",
-          "8.20.0~rc3-1",
-          "8.20.0~rc3-1+exp1",
-          "8.21.0~rc1-1+exp1"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-8286.json"
-        }
-      }
-    ],
-    "schema_version": "1.9.0",
-    "severity": [
-      {
-        "type": "CVSS_V3",
-        "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N"
-      }
-    ],
-    "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
-      "source_package": "Debian/curl",
-      "distribution": "debian"
-    }
-  },
-  {
-    "id": "DEBIAN-CVE-2026-12064",
-    "details": "When a user invokes curl using a schemeless URL combined with `--proto-default` sftp (or scp), a disconnect occurs between the tool layer and libcurl. The tool layer incorrectly infers the URL scheme, which erroneously bypasses the initialization of critical SSH security options like CURLOPT_SSH_HOST_PUBLIC_KEY_SHA256 and CURLOPT_SSH_KNOWNHOSTS. Conversely, the libcurl runtime successfully honors CURLOPT_DEFAULT_PROTOCOL and establishes the connection via SFTP/SCP as specified. Because the tool layer skipped the security configuration, these SSH host verification options are silently omitted, causing curl to connect to an unverified SSH remote host without throwing an error.",
-    "modified": "2026-10-01T03:01:55.180427230Z",
-    "published": "2026-07-03T07:16:24.217Z",
-    "upstream": [
-      "CVE-2026-12064"
-    ],
-    "references": [
-      {
-        "type": "ADVISORY",
-        "url": "https://security-tracker.debian.org/tracker/CVE-2026-12064"
-      }
-    ],
-    "affected": [
-      {
-        "package": {
-          "name": "curl",
-          "ecosystem": "Debian:12",
-          "purl": "pkg:deb/debian/curl?arch=source&distro=bookworm"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "7.88.1-10",
-          "7.88.1-10+deb12u1",
-          "7.88.1-10+deb12u11",
-          "7.88.1-10+deb12u12",
-          "7.88.1-10+deb12u13",
-          "7.88.1-10+deb12u14",
-          "7.88.1-10+deb12u15",
-          "7.88.1-10+deb12u1~bpo11+1",
-          "7.88.1-10+deb12u2",
-          "7.88.1-10+deb12u3",
-          "7.88.1-10+deb12u3~bpo11+1",
-          "7.88.1-10+deb12u4",
-          "7.88.1-10+deb12u5",
-          "7.88.1-10+deb12u5~bpo11+1",
-          "7.88.1-10+deb12u6",
-          "7.88.1-10+deb12u6~bpo11+1",
-          "7.88.1-10+deb12u7",
-          "7.88.1-10+deb12u8",
-          "7.88.1-10+deb12u9",
-          "7.88.1-11",
-          "8.0.1-1~exp1",
-          "8.10.0-1",
-          "8.10.0-2",
-          "8.10.1-1",
-          "8.10.1-1~bpo12+1",
-          "8.10.1-2",
-          "8.11.0-1",
-          "8.11.1-1",
-          "8.11.1-1~bpo12+1",
-          "8.12.0+git20250209.89ed161+ds-1",
-          "8.12.0+git20250209.89ed161+ds-1~bpo12+1",
-          "8.12.1-1",
-          "8.12.1-2",
-          "8.12.1-2~bpo12+1",
-          "8.12.1-3",
-          "8.12.1-3~bpo12+1",
-          "8.13.0-1",
-          "8.13.0-1+exp1",
-          "8.13.0-2",
-          "8.13.0-2+exp1",
-          "8.13.0-3",
-          "8.13.0-4",
-          "8.13.0-4+exp1",
-          "8.13.0-5",
-          "8.13.0-5+exp1",
-          "8.13.0-5~bpo12+1",
-          "8.13.0~rc-1~exp1",
-          "8.13.0~rc-1~exp2",
-          "8.13.0~rc2-1",
-          "8.13.0~rc2-2",
-          "8.13.0~rc3-1",
-          "8.13.0~rc3-1+exp1",
-          "8.14.0-1",
-          "8.14.0-1+exp1",
-          "8.14.0~rc1-1+exp1",
-          "8.14.0~rc2-1+exp1",
-          "8.14.0~rc3-1+exp1",
-          "8.14.1-1",
-          "8.14.1-1~bpo12+1",
-          "8.14.1-2",
-          "8.14.1-2+exp1",
-          "8.14.1-2~bpo12+1",
-          "8.15.0-1",
-          "8.15.0-1~bpo13+1",
-          "8.15.0-1~exp1",
-          "8.15.0~rc1-1exp1",
-          "8.15.0~rc2-1~exp1",
-          "8.15.0~rc3-1~exp1",
-          "8.16.0-1",
-          "8.16.0-1+exp1",
-          "8.16.0-1~bpo13+1",
-          "8.16.0-2",
-          "8.16.0-3",
-          "8.16.0-4",
-          "8.16.0-4~bpo13+1",
-          "8.16.0~rc1-1~exp1",
-          "8.16.0~rc2-1",
-          "8.16.0~rc2-2",
-          "8.16.0~rc3-1",
-          "8.17.0-1",
-          "8.17.0-2",
-          "8.17.0-3",
-          "8.17.0~rc1-1~exp1",
-          "8.17.0~rc2-1",
-          "8.17.0~rc3-1",
-          "8.18.0-1",
-          "8.18.0-1~bpo13+1",
-          "8.18.0-2",
-          "8.18.0~rc1-1+exp1",
-          "8.18.0~rc2-1",
-          "8.18.0~rc3-1",
-          "8.19.0-1",
-          "8.19.0-1+exp1",
-          "8.19.0-1~bpo13+1",
-          "8.19.0-2",
-          "8.19.0-3",
-          "8.19.0-3+exp1",
-          "8.19.0-3+exp2",
-          "8.19.0~rc1-1~exp1",
-          "8.19.0~rc2-1",
-          "8.19.0~rc2-2",
-          "8.19.0~rc3-1",
-          "8.2.1-1",
-          "8.2.1-2",
-          "8.2.1-2~bpo12+1",
-          "8.20.0-1",
-          "8.20.0-1+exp",
-          "8.20.0-2",
-          "8.20.0-2+exp1",
-          "8.20.0-2~bpo13+1",
-          "8.20.0-3",
-          "8.20.0-4",
-          "8.20.0-5",
-          "8.20.0-5~bpo13+1",
-          "8.20.0~rc1-1+exp1",
-          "8.20.0~rc1-1+exp2",
-          "8.20.0~rc1-1+exp3",
-          "8.20.0~rc2-1",
-          "8.20.0~rc2-1+exp1",
-          "8.20.0~rc3-1",
-          "8.20.0~rc3-1+exp1",
-          "8.21.0-1",
-          "8.21.0-1+exp1",
-          "8.21.0-2",
-          "8.21.0-2+exp1",
-          "8.21.0-2~bpo13+1",
-          "8.21.0~rc1-1+exp1",
-          "8.21.0~rc2-1",
-          "8.21.0~rc2-1+exp1",
-          "8.21.0~rc3-1",
-          "8.21.0~rc3-1+exp1",
-          "8.22.0-1",
-          "8.22.0-1+exp1",
-          "8.22.0~rc2-1",
-          "8.22.0~rc2-2",
-          "8.22.0~rc3-1",
-          "8.22.0~rc3-1+exp1",
-          "8.23.0~rc1-1",
-          "8.23.0~rc1-2",
-          "8.23.0~rc2-1",
-          "8.23.0~rc2-1+exp1",
-          "8.3.0-1",
-          "8.3.0-2",
-          "8.3.0-2~bpo12+1",
-          "8.3.0-2~exp1",
-          "8.3.0-3",
-          "8.4.0-1",
-          "8.4.0-2",
-          "8.4.0-2~bpo12+1",
-          "8.5.0-1",
-          "8.5.0-1+exp1",
-          "8.5.0-2",
-          "8.5.0-2+exp1",
-          "8.5.0-2~bpo12+1",
-          "8.6.0-1",
-          "8.6.0-1.1",
-          "8.6.0-2",
-          "8.6.0-3",
-          "8.6.0-3.1",
-          "8.6.0-3.1~exp1",
-          "8.6.0-3.1~exp2",
-          "8.6.0-3.2",
-          "8.6.0-4",
-          "8.7.1-1",
-          "8.7.1-1+exp1",
-          "8.7.1-2",
-          "8.7.1-3",
-          "8.7.1-4",
-          "8.7.1-5",
-          "8.7.1-5+exp1",
-          "8.7.1-5~bpo12+1",
-          "8.8.0-1",
-          "8.8.0-1+exp1",
-          "8.8.0-1+exp2",
-          "8.8.0-1~bpo12+1",
-          "8.8.0-2",
-          "8.8.0-3",
-          "8.8.0-4",
-          "8.9.0-1",
-          "8.9.0-2",
-          "8.9.0-3",
-          "8.9.1-1",
-          "8.9.1-2",
-          "8.9.1-2~bpo12+1"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-12064.json"
-        }
-      },
-      {
-        "package": {
-          "name": "curl",
-          "ecosystem": "Debian:13",
-          "purl": "pkg:deb/debian/curl?arch=source&distro=trixie"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "8.14.1-2",
-          "8.14.1-2+deb13u1",
-          "8.14.1-2+deb13u2",
-          "8.14.1-2+deb13u2~bpo13+1",
-          "8.14.1-2+deb13u3",
-          "8.14.1-2+deb13u4",
-          "8.14.1-2+deb13u5",
-          "8.14.1-2+exp1",
-          "8.15.0-1",
-          "8.15.0-1~bpo13+1",
-          "8.15.0-1~exp1",
-          "8.15.0~rc1-1exp1",
-          "8.15.0~rc2-1~exp1",
-          "8.15.0~rc3-1~exp1",
-          "8.16.0-1",
-          "8.16.0-1+exp1",
-          "8.16.0-1~bpo13+1",
-          "8.16.0-2",
-          "8.16.0-3",
-          "8.16.0-4",
-          "8.16.0-4~bpo13+1",
-          "8.16.0~rc1-1~exp1",
-          "8.16.0~rc2-1",
-          "8.16.0~rc2-2",
-          "8.16.0~rc3-1",
-          "8.17.0-1",
-          "8.17.0-2",
-          "8.17.0-3",
-          "8.17.0~rc1-1~exp1",
-          "8.17.0~rc2-1",
-          "8.17.0~rc3-1",
-          "8.18.0-1",
-          "8.18.0-1~bpo13+1",
-          "8.18.0-2",
-          "8.18.0~rc1-1+exp1",
-          "8.18.0~rc2-1",
-          "8.18.0~rc3-1",
-          "8.19.0-1",
-          "8.19.0-1+exp1",
-          "8.19.0-1~bpo13+1",
-          "8.19.0-2",
-          "8.19.0-3",
-          "8.19.0-3+exp1",
-          "8.19.0-3+exp2",
-          "8.19.0~rc1-1~exp1",
-          "8.19.0~rc2-1",
-          "8.19.0~rc2-2",
-          "8.19.0~rc3-1",
-          "8.20.0-1",
-          "8.20.0-1+exp",
-          "8.20.0-2",
-          "8.20.0-2+exp1",
-          "8.20.0-2~bpo13+1",
-          "8.20.0-3",
-          "8.20.0-4",
-          "8.20.0-5",
-          "8.20.0-5~bpo13+1",
-          "8.20.0~rc1-1+exp1",
-          "8.20.0~rc1-1+exp2",
-          "8.20.0~rc1-1+exp3",
-          "8.20.0~rc2-1",
-          "8.20.0~rc2-1+exp1",
-          "8.20.0~rc3-1",
-          "8.20.0~rc3-1+exp1",
-          "8.21.0-1",
-          "8.21.0-1+exp1",
-          "8.21.0-2",
-          "8.21.0-2+exp1",
-          "8.21.0-2~bpo13+1",
-          "8.21.0~rc1-1+exp1",
-          "8.21.0~rc2-1",
-          "8.21.0~rc2-1+exp1",
-          "8.21.0~rc3-1",
-          "8.21.0~rc3-1+exp1",
-          "8.22.0-1",
-          "8.22.0-1+exp1",
-          "8.22.0~rc2-1",
-          "8.22.0~rc2-2",
-          "8.22.0~rc3-1",
-          "8.22.0~rc3-1+exp1",
-          "8.23.0~rc1-1",
-          "8.23.0~rc1-2",
-          "8.23.0~rc2-1",
-          "8.23.0~rc2-1+exp1"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-12064.json"
-        }
-      },
-      {
-        "package": {
-          "name": "curl",
-          "ecosystem": "Debian:14",
-          "purl": "pkg:deb/debian/curl?arch=source&distro=forky"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "8.21.0~rc3-1"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "8.14.1-2",
-          "8.14.1-2+exp1",
-          "8.15.0-1",
-          "8.15.0-1~bpo13+1",
-          "8.15.0-1~exp1",
-          "8.15.0~rc1-1exp1",
-          "8.15.0~rc2-1~exp1",
-          "8.15.0~rc3-1~exp1",
-          "8.16.0-1",
-          "8.16.0-1+exp1",
-          "8.16.0-1~bpo13+1",
-          "8.16.0-2",
-          "8.16.0-3",
-          "8.16.0-4",
-          "8.16.0-4~bpo13+1",
-          "8.16.0~rc1-1~exp1",
-          "8.16.0~rc2-1",
-          "8.16.0~rc2-2",
-          "8.16.0~rc3-1",
-          "8.17.0-1",
-          "8.17.0-2",
-          "8.17.0-3",
-          "8.17.0~rc1-1~exp1",
-          "8.17.0~rc2-1",
-          "8.17.0~rc3-1",
-          "8.18.0-1",
-          "8.18.0-1~bpo13+1",
-          "8.18.0-2",
-          "8.18.0~rc1-1+exp1",
-          "8.18.0~rc2-1",
-          "8.18.0~rc3-1",
-          "8.19.0-1",
-          "8.19.0-1+exp1",
-          "8.19.0-1~bpo13+1",
-          "8.19.0-2",
-          "8.19.0-3",
-          "8.19.0-3+exp1",
-          "8.19.0-3+exp2",
-          "8.19.0~rc1-1~exp1",
-          "8.19.0~rc2-1",
-          "8.19.0~rc2-2",
-          "8.19.0~rc3-1",
-          "8.20.0-1",
-          "8.20.0-1+exp",
-          "8.20.0-2",
-          "8.20.0-2+exp1",
-          "8.20.0-2~bpo13+1",
-          "8.20.0-3",
-          "8.20.0-4",
-          "8.20.0-5",
-          "8.20.0-5~bpo13+1",
-          "8.20.0~rc1-1+exp1",
-          "8.20.0~rc1-1+exp2",
-          "8.20.0~rc1-1+exp3",
-          "8.20.0~rc2-1",
-          "8.20.0~rc2-1+exp1",
-          "8.20.0~rc3-1",
-          "8.20.0~rc3-1+exp1",
-          "8.21.0~rc1-1+exp1",
-          "8.21.0~rc2-1",
-          "8.21.0~rc2-1+exp1"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-12064.json"
-        }
-      }
-    ],
-    "schema_version": "1.9.0",
-    "severity": [
-      {
-        "type": "CVSS_V3",
-        "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N"
-      }
-    ],
-    "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
-      "source_package": "Debian/curl",
-      "distribution": "debian"
-    }
-  },
-  {
-    "id": "DEBIAN-CVE-2026-11856",
-    "details": "Successfully using libcurl to do a transfer to a specific HTTP origin (`hostA`) with **Digest** authentication and then changing the origin to a different one (`hostB`) for a second transfer, reusing the same handle, makes libcurl wrongly pass on the `Authorization:` header field meant for `hostA`, to `hostB`.",
-    "modified": "2026-10-01T03:02:23.397448314Z",
-    "published": "2026-07-03T07:16:23.973Z",
-    "upstream": [
-      "CVE-2026-11856"
-    ],
-    "references": [
-      {
-        "type": "ADVISORY",
-        "url": "https://security-tracker.debian.org/tracker/CVE-2026-11856"
-      }
-    ],
-    "affected": [
-      {
-        "package": {
-          "name": "curl",
-          "ecosystem": "Debian:12",
-          "purl": "pkg:deb/debian/curl?arch=source&distro=bookworm"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "7.88.1-10",
-          "7.88.1-10+deb12u1",
-          "7.88.1-10+deb12u11",
-          "7.88.1-10+deb12u12",
-          "7.88.1-10+deb12u13",
-          "7.88.1-10+deb12u14",
-          "7.88.1-10+deb12u15",
-          "7.88.1-10+deb12u1~bpo11+1",
-          "7.88.1-10+deb12u2",
-          "7.88.1-10+deb12u3",
-          "7.88.1-10+deb12u3~bpo11+1",
-          "7.88.1-10+deb12u4",
-          "7.88.1-10+deb12u5",
-          "7.88.1-10+deb12u5~bpo11+1",
-          "7.88.1-10+deb12u6",
-          "7.88.1-10+deb12u6~bpo11+1",
-          "7.88.1-10+deb12u7",
-          "7.88.1-10+deb12u8",
-          "7.88.1-10+deb12u9",
-          "7.88.1-11",
-          "8.0.1-1~exp1",
-          "8.10.0-1",
-          "8.10.0-2",
-          "8.10.1-1",
-          "8.10.1-1~bpo12+1",
-          "8.10.1-2",
-          "8.11.0-1",
-          "8.11.1-1",
-          "8.11.1-1~bpo12+1",
-          "8.12.0+git20250209.89ed161+ds-1",
-          "8.12.0+git20250209.89ed161+ds-1~bpo12+1",
-          "8.12.1-1",
-          "8.12.1-2",
-          "8.12.1-2~bpo12+1",
-          "8.12.1-3",
-          "8.12.1-3~bpo12+1",
-          "8.13.0-1",
-          "8.13.0-1+exp1",
-          "8.13.0-2",
-          "8.13.0-2+exp1",
-          "8.13.0-3",
-          "8.13.0-4",
-          "8.13.0-4+exp1",
-          "8.13.0-5",
-          "8.13.0-5+exp1",
-          "8.13.0-5~bpo12+1",
-          "8.13.0~rc-1~exp1",
-          "8.13.0~rc-1~exp2",
-          "8.13.0~rc2-1",
-          "8.13.0~rc2-2",
-          "8.13.0~rc3-1",
-          "8.13.0~rc3-1+exp1",
-          "8.14.0-1",
-          "8.14.0-1+exp1",
-          "8.14.0~rc1-1+exp1",
-          "8.14.0~rc2-1+exp1",
-          "8.14.0~rc3-1+exp1",
-          "8.14.1-1",
-          "8.14.1-1~bpo12+1",
-          "8.14.1-2",
-          "8.14.1-2+exp1",
-          "8.14.1-2~bpo12+1",
-          "8.15.0-1",
-          "8.15.0-1~bpo13+1",
-          "8.15.0-1~exp1",
-          "8.15.0~rc1-1exp1",
-          "8.15.0~rc2-1~exp1",
-          "8.15.0~rc3-1~exp1",
-          "8.16.0-1",
-          "8.16.0-1+exp1",
-          "8.16.0-1~bpo13+1",
-          "8.16.0-2",
-          "8.16.0-3",
-          "8.16.0-4",
-          "8.16.0-4~bpo13+1",
-          "8.16.0~rc1-1~exp1",
-          "8.16.0~rc2-1",
-          "8.16.0~rc2-2",
-          "8.16.0~rc3-1",
-          "8.17.0-1",
-          "8.17.0-2",
-          "8.17.0-3",
-          "8.17.0~rc1-1~exp1",
-          "8.17.0~rc2-1",
-          "8.17.0~rc3-1",
-          "8.18.0-1",
-          "8.18.0-1~bpo13+1",
-          "8.18.0-2",
-          "8.18.0~rc1-1+exp1",
-          "8.18.0~rc2-1",
-          "8.18.0~rc3-1",
-          "8.19.0-1",
-          "8.19.0-1+exp1",
-          "8.19.0-1~bpo13+1",
-          "8.19.0-2",
-          "8.19.0-3",
-          "8.19.0-3+exp1",
-          "8.19.0-3+exp2",
-          "8.19.0~rc1-1~exp1",
-          "8.19.0~rc2-1",
-          "8.19.0~rc2-2",
-          "8.19.0~rc3-1",
-          "8.2.1-1",
-          "8.2.1-2",
-          "8.2.1-2~bpo12+1",
-          "8.20.0-1",
-          "8.20.0-1+exp",
-          "8.20.0-2",
-          "8.20.0-2+exp1",
-          "8.20.0-2~bpo13+1",
-          "8.20.0-3",
-          "8.20.0-4",
-          "8.20.0-5",
-          "8.20.0-5~bpo13+1",
-          "8.20.0~rc1-1+exp1",
-          "8.20.0~rc1-1+exp2",
-          "8.20.0~rc1-1+exp3",
-          "8.20.0~rc2-1",
-          "8.20.0~rc2-1+exp1",
-          "8.20.0~rc3-1",
-          "8.20.0~rc3-1+exp1",
-          "8.21.0-1",
-          "8.21.0-1+exp1",
-          "8.21.0-2",
-          "8.21.0-2+exp1",
-          "8.21.0-2~bpo13+1",
-          "8.21.0~rc1-1+exp1",
-          "8.21.0~rc2-1",
-          "8.21.0~rc2-1+exp1",
-          "8.21.0~rc3-1",
-          "8.21.0~rc3-1+exp1",
-          "8.22.0-1",
-          "8.22.0-1+exp1",
-          "8.22.0~rc2-1",
-          "8.22.0~rc2-2",
-          "8.22.0~rc3-1",
-          "8.22.0~rc3-1+exp1",
-          "8.23.0~rc1-1",
-          "8.23.0~rc1-2",
-          "8.23.0~rc2-1",
-          "8.23.0~rc2-1+exp1",
-          "8.3.0-1",
-          "8.3.0-2",
-          "8.3.0-2~bpo12+1",
-          "8.3.0-2~exp1",
-          "8.3.0-3",
-          "8.4.0-1",
-          "8.4.0-2",
-          "8.4.0-2~bpo12+1",
-          "8.5.0-1",
-          "8.5.0-1+exp1",
-          "8.5.0-2",
-          "8.5.0-2+exp1",
-          "8.5.0-2~bpo12+1",
-          "8.6.0-1",
-          "8.6.0-1.1",
-          "8.6.0-2",
-          "8.6.0-3",
-          "8.6.0-3.1",
-          "8.6.0-3.1~exp1",
-          "8.6.0-3.1~exp2",
-          "8.6.0-3.2",
-          "8.6.0-4",
-          "8.7.1-1",
-          "8.7.1-1+exp1",
-          "8.7.1-2",
-          "8.7.1-3",
-          "8.7.1-4",
-          "8.7.1-5",
-          "8.7.1-5+exp1",
-          "8.7.1-5~bpo12+1",
-          "8.8.0-1",
-          "8.8.0-1+exp1",
-          "8.8.0-1+exp2",
-          "8.8.0-1~bpo12+1",
-          "8.8.0-2",
-          "8.8.0-3",
-          "8.8.0-4",
-          "8.9.0-1",
-          "8.9.0-2",
-          "8.9.0-3",
-          "8.9.1-1",
-          "8.9.1-2",
-          "8.9.1-2~bpo12+1"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-11856.json"
-        }
-      },
-      {
-        "package": {
-          "name": "curl",
-          "ecosystem": "Debian:13",
-          "purl": "pkg:deb/debian/curl?arch=source&distro=trixie"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "8.14.1-2",
-          "8.14.1-2+deb13u1",
-          "8.14.1-2+deb13u2",
-          "8.14.1-2+deb13u2~bpo13+1",
-          "8.14.1-2+deb13u3",
-          "8.14.1-2+deb13u4",
-          "8.14.1-2+deb13u5",
-          "8.14.1-2+exp1",
-          "8.15.0-1",
-          "8.15.0-1~bpo13+1",
-          "8.15.0-1~exp1",
-          "8.15.0~rc1-1exp1",
-          "8.15.0~rc2-1~exp1",
-          "8.15.0~rc3-1~exp1",
-          "8.16.0-1",
-          "8.16.0-1+exp1",
-          "8.16.0-1~bpo13+1",
-          "8.16.0-2",
-          "8.16.0-3",
-          "8.16.0-4",
-          "8.16.0-4~bpo13+1",
-          "8.16.0~rc1-1~exp1",
-          "8.16.0~rc2-1",
-          "8.16.0~rc2-2",
-          "8.16.0~rc3-1",
-          "8.17.0-1",
-          "8.17.0-2",
-          "8.17.0-3",
-          "8.17.0~rc1-1~exp1",
-          "8.17.0~rc2-1",
-          "8.17.0~rc3-1",
-          "8.18.0-1",
-          "8.18.0-1~bpo13+1",
-          "8.18.0-2",
-          "8.18.0~rc1-1+exp1",
-          "8.18.0~rc2-1",
-          "8.18.0~rc3-1",
-          "8.19.0-1",
-          "8.19.0-1+exp1",
-          "8.19.0-1~bpo13+1",
-          "8.19.0-2",
-          "8.19.0-3",
-          "8.19.0-3+exp1",
-          "8.19.0-3+exp2",
-          "8.19.0~rc1-1~exp1",
-          "8.19.0~rc2-1",
-          "8.19.0~rc2-2",
-          "8.19.0~rc3-1",
-          "8.20.0-1",
-          "8.20.0-1+exp",
-          "8.20.0-2",
-          "8.20.0-2+exp1",
-          "8.20.0-2~bpo13+1",
-          "8.20.0-3",
-          "8.20.0-4",
-          "8.20.0-5",
-          "8.20.0-5~bpo13+1",
-          "8.20.0~rc1-1+exp1",
-          "8.20.0~rc1-1+exp2",
-          "8.20.0~rc1-1+exp3",
-          "8.20.0~rc2-1",
-          "8.20.0~rc2-1+exp1",
-          "8.20.0~rc3-1",
-          "8.20.0~rc3-1+exp1",
-          "8.21.0-1",
-          "8.21.0-1+exp1",
-          "8.21.0-2",
-          "8.21.0-2+exp1",
-          "8.21.0-2~bpo13+1",
-          "8.21.0~rc1-1+exp1",
-          "8.21.0~rc2-1",
-          "8.21.0~rc2-1+exp1",
-          "8.21.0~rc3-1",
-          "8.21.0~rc3-1+exp1",
-          "8.22.0-1",
-          "8.22.0-1+exp1",
-          "8.22.0~rc2-1",
-          "8.22.0~rc2-2",
-          "8.22.0~rc3-1",
-          "8.22.0~rc3-1+exp1",
-          "8.23.0~rc1-1",
-          "8.23.0~rc1-2",
-          "8.23.0~rc2-1",
-          "8.23.0~rc2-1+exp1"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-11856.json"
-        }
-      },
-      {
-        "package": {
-          "name": "curl",
-          "ecosystem": "Debian:14",
-          "purl": "pkg:deb/debian/curl?arch=source&distro=forky"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "8.21.0~rc3-1"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "8.14.1-2",
-          "8.14.1-2+exp1",
-          "8.15.0-1",
-          "8.15.0-1~bpo13+1",
-          "8.15.0-1~exp1",
-          "8.15.0~rc1-1exp1",
-          "8.15.0~rc2-1~exp1",
-          "8.15.0~rc3-1~exp1",
-          "8.16.0-1",
-          "8.16.0-1+exp1",
-          "8.16.0-1~bpo13+1",
-          "8.16.0-2",
-          "8.16.0-3",
-          "8.16.0-4",
-          "8.16.0-4~bpo13+1",
-          "8.16.0~rc1-1~exp1",
-          "8.16.0~rc2-1",
-          "8.16.0~rc2-2",
-          "8.16.0~rc3-1",
-          "8.17.0-1",
-          "8.17.0-2",
-          "8.17.0-3",
-          "8.17.0~rc1-1~exp1",
-          "8.17.0~rc2-1",
-          "8.17.0~rc3-1",
-          "8.18.0-1",
-          "8.18.0-1~bpo13+1",
-          "8.18.0-2",
-          "8.18.0~rc1-1+exp1",
-          "8.18.0~rc2-1",
-          "8.18.0~rc3-1",
-          "8.19.0-1",
-          "8.19.0-1+exp1",
-          "8.19.0-1~bpo13+1",
-          "8.19.0-2",
-          "8.19.0-3",
-          "8.19.0-3+exp1",
-          "8.19.0-3+exp2",
-          "8.19.0~rc1-1~exp1",
-          "8.19.0~rc2-1",
-          "8.19.0~rc2-2",
-          "8.19.0~rc3-1",
-          "8.20.0-1",
-          "8.20.0-1+exp",
-          "8.20.0-2",
-          "8.20.0-2+exp1",
-          "8.20.0-2~bpo13+1",
-          "8.20.0-3",
-          "8.20.0-4",
-          "8.20.0-5",
-          "8.20.0-5~bpo13+1",
-          "8.20.0~rc1-1+exp1",
-          "8.20.0~rc1-1+exp2",
-          "8.20.0~rc1-1+exp3",
-          "8.20.0~rc2-1",
-          "8.20.0~rc2-1+exp1",
-          "8.20.0~rc3-1",
-          "8.20.0~rc3-1+exp1",
-          "8.21.0~rc1-1+exp1",
-          "8.21.0~rc2-1",
-          "8.21.0~rc2-1+exp1"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-11856.json"
-        }
-      }
-    ],
-    "schema_version": "1.9.0",
-    "severity": [
-      {
-        "type": "CVSS_V3",
-        "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
-      }
-    ],
-    "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
-      "source_package": "Debian/curl",
-      "distribution": "debian"
-    }
-  },
-  {
-    "id": "DEBIAN-CVE-2026-11586",
-    "details": "By default, curl automatically responds to WebSocket PING frames. Because curl lacks an upper bound on memory allocation for unacknowledged frames, a malicious server can exhaust all available memory by flooding curl with rapid, sequential PING messages.",
-    "modified": "2026-10-01T03:01:43.220504493Z",
-    "published": "2026-07-03T07:16:23.883Z",
-    "upstream": [
-      "CVE-2026-11586"
-    ],
-    "references": [
-      {
-        "type": "ADVISORY",
-        "url": "https://security-tracker.debian.org/tracker/CVE-2026-11586"
-      }
-    ],
-    "affected": [
-      {
-        "package": {
-          "name": "curl",
-          "ecosystem": "Debian:14",
-          "purl": "pkg:deb/debian/curl?arch=source&distro=forky"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "8.21.0~rc3-1"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "8.14.1-2",
-          "8.14.1-2+exp1",
-          "8.15.0-1",
-          "8.15.0-1~bpo13+1",
-          "8.15.0-1~exp1",
-          "8.15.0~rc1-1exp1",
-          "8.15.0~rc2-1~exp1",
-          "8.15.0~rc3-1~exp1",
-          "8.16.0-1",
-          "8.16.0-1+exp1",
-          "8.16.0-1~bpo13+1",
-          "8.16.0-2",
-          "8.16.0-3",
-          "8.16.0-4",
-          "8.16.0-4~bpo13+1",
-          "8.16.0~rc1-1~exp1",
-          "8.16.0~rc2-1",
-          "8.16.0~rc2-2",
-          "8.16.0~rc3-1",
-          "8.17.0-1",
-          "8.17.0-2",
-          "8.17.0-3",
-          "8.17.0~rc1-1~exp1",
-          "8.17.0~rc2-1",
-          "8.17.0~rc3-1",
-          "8.18.0-1",
-          "8.18.0-1~bpo13+1",
-          "8.18.0-2",
-          "8.18.0~rc1-1+exp1",
-          "8.18.0~rc2-1",
-          "8.18.0~rc3-1",
-          "8.19.0-1",
-          "8.19.0-1+exp1",
-          "8.19.0-1~bpo13+1",
-          "8.19.0-2",
-          "8.19.0-3",
-          "8.19.0-3+exp1",
-          "8.19.0-3+exp2",
-          "8.19.0~rc1-1~exp1",
-          "8.19.0~rc2-1",
-          "8.19.0~rc2-2",
-          "8.19.0~rc3-1",
-          "8.20.0-1",
-          "8.20.0-1+exp",
-          "8.20.0-2",
-          "8.20.0-2+exp1",
-          "8.20.0-2~bpo13+1",
-          "8.20.0-3",
-          "8.20.0-4",
-          "8.20.0-5",
-          "8.20.0-5~bpo13+1",
-          "8.20.0~rc1-1+exp1",
-          "8.20.0~rc1-1+exp2",
-          "8.20.0~rc1-1+exp3",
-          "8.20.0~rc2-1",
-          "8.20.0~rc2-1+exp1",
-          "8.20.0~rc3-1",
-          "8.20.0~rc3-1+exp1",
-          "8.21.0~rc1-1+exp1",
-          "8.21.0~rc2-1",
-          "8.21.0~rc2-1+exp1"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-11586.json"
-        }
-      }
-    ],
-    "schema_version": "1.9.0",
-    "severity": [
-      {
-        "type": "CVSS_V3",
-        "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
-      }
-    ],
-    "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
-      "source_package": "Debian/curl",
-      "distribution": "debian"
-    }
-  },
-  {
-    "id": "DEBIAN-CVE-2026-11564",
-    "details": "libcurl keeps previously used connections in a connection pool for subsequent transfers to reuse if one of them matches the setup.  An easy handle that first uses default native CA trust can continue trusting the native platform store after the application switches that same handle to custom CA material for a later transfer.",
-    "modified": "2026-10-01T03:01:52.406719935Z",
-    "published": "2026-07-03T07:16:23.790Z",
-    "upstream": [
-      "CVE-2026-11564"
-    ],
-    "references": [
-      {
-        "type": "ADVISORY",
-        "url": "https://security-tracker.debian.org/tracker/CVE-2026-11564"
-      }
-    ],
-    "affected": [
-      {
-        "package": {
-          "name": "curl",
-          "ecosystem": "Debian:14",
-          "purl": "pkg:deb/debian/curl?arch=source&distro=forky"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "8.21.0~rc2-1"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "8.14.1-2",
-          "8.14.1-2+exp1",
-          "8.15.0-1",
-          "8.15.0-1~bpo13+1",
-          "8.15.0-1~exp1",
-          "8.15.0~rc1-1exp1",
-          "8.15.0~rc2-1~exp1",
-          "8.15.0~rc3-1~exp1",
-          "8.16.0-1",
-          "8.16.0-1+exp1",
-          "8.16.0-1~bpo13+1",
-          "8.16.0-2",
-          "8.16.0-3",
-          "8.16.0-4",
-          "8.16.0-4~bpo13+1",
-          "8.16.0~rc1-1~exp1",
-          "8.16.0~rc2-1",
-          "8.16.0~rc2-2",
-          "8.16.0~rc3-1",
-          "8.17.0-1",
-          "8.17.0-2",
-          "8.17.0-3",
-          "8.17.0~rc1-1~exp1",
-          "8.17.0~rc2-1",
-          "8.17.0~rc3-1",
-          "8.18.0-1",
-          "8.18.0-1~bpo13+1",
-          "8.18.0-2",
-          "8.18.0~rc1-1+exp1",
-          "8.18.0~rc2-1",
-          "8.18.0~rc3-1",
-          "8.19.0-1",
-          "8.19.0-1+exp1",
-          "8.19.0-1~bpo13+1",
-          "8.19.0-2",
-          "8.19.0-3",
-          "8.19.0-3+exp1",
-          "8.19.0-3+exp2",
-          "8.19.0~rc1-1~exp1",
-          "8.19.0~rc2-1",
-          "8.19.0~rc2-2",
-          "8.19.0~rc3-1",
-          "8.20.0-1",
-          "8.20.0-1+exp",
-          "8.20.0-2",
-          "8.20.0-2+exp1",
-          "8.20.0-2~bpo13+1",
-          "8.20.0-3",
-          "8.20.0-4",
-          "8.20.0-5",
-          "8.20.0-5~bpo13+1",
-          "8.20.0~rc1-1+exp1",
-          "8.20.0~rc1-1+exp2",
-          "8.20.0~rc1-1+exp3",
-          "8.20.0~rc2-1",
-          "8.20.0~rc2-1+exp1",
-          "8.20.0~rc3-1",
-          "8.20.0~rc3-1+exp1",
-          "8.21.0~rc1-1+exp1"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-11564.json"
-        }
-      }
-    ],
-    "schema_version": "1.9.0",
-    "severity": [
-      {
-        "type": "CVSS_V3",
-        "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N"
-      }
-    ],
-    "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
-      "source_package": "Debian/curl",
-      "distribution": "debian"
-    }
-  },
-  {
-    "id": "DEBIAN-CVE-2026-11352",
-    "details": "An issue in curl’s QUIC UDP receive function allows a malicious HTTP/3 server to trigger a remote denial of service against a curl or libcurl client. Because the helper function discards zero-length UDP datagrams before counting them toward the per-call packet budget, a connected QUIC peer can continuously stream empty datagrams to indefinitely stall the client.",
-    "modified": "2026-10-01T03:01:43.482050966Z",
-    "published": "2026-07-03T07:16:23.693Z",
-    "upstream": [
-      "CVE-2026-11352"
-    ],
-    "references": [
-      {
-        "type": "ADVISORY",
-        "url": "https://security-tracker.debian.org/tracker/CVE-2026-11352"
-      }
-    ],
-    "affected": [
-      {
-        "package": {
-          "name": "curl",
-          "ecosystem": "Debian:14",
-          "purl": "pkg:deb/debian/curl?arch=source&distro=forky"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "8.21.0~rc2-1"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "8.14.1-2",
-          "8.14.1-2+exp1",
-          "8.15.0-1",
-          "8.15.0-1~bpo13+1",
-          "8.15.0-1~exp1",
-          "8.15.0~rc1-1exp1",
-          "8.15.0~rc2-1~exp1",
-          "8.15.0~rc3-1~exp1",
-          "8.16.0-1",
-          "8.16.0-1+exp1",
-          "8.16.0-1~bpo13+1",
-          "8.16.0-2",
-          "8.16.0-3",
-          "8.16.0-4",
-          "8.16.0-4~bpo13+1",
-          "8.16.0~rc1-1~exp1",
-          "8.16.0~rc2-1",
-          "8.16.0~rc2-2",
-          "8.16.0~rc3-1",
-          "8.17.0-1",
-          "8.17.0-2",
-          "8.17.0-3",
-          "8.17.0~rc1-1~exp1",
-          "8.17.0~rc2-1",
-          "8.17.0~rc3-1",
-          "8.18.0-1",
-          "8.18.0-1~bpo13+1",
-          "8.18.0-2",
-          "8.18.0~rc1-1+exp1",
-          "8.18.0~rc2-1",
-          "8.18.0~rc3-1",
-          "8.19.0-1",
-          "8.19.0-1+exp1",
-          "8.19.0-1~bpo13+1",
-          "8.19.0-2",
-          "8.19.0-3",
-          "8.19.0-3+exp1",
-          "8.19.0-3+exp2",
-          "8.19.0~rc1-1~exp1",
-          "8.19.0~rc2-1",
-          "8.19.0~rc2-2",
-          "8.19.0~rc3-1",
-          "8.20.0-1",
-          "8.20.0-1+exp",
-          "8.20.0-2",
-          "8.20.0-2+exp1",
-          "8.20.0-2~bpo13+1",
-          "8.20.0-3",
-          "8.20.0-4",
-          "8.20.0-5",
-          "8.20.0-5~bpo13+1",
-          "8.20.0~rc1-1+exp1",
-          "8.20.0~rc1-1+exp2",
-          "8.20.0~rc1-1+exp3",
-          "8.20.0~rc2-1",
-          "8.20.0~rc2-1+exp1",
-          "8.20.0~rc3-1",
-          "8.20.0~rc3-1+exp1",
-          "8.21.0~rc1-1+exp1"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-11352.json"
-        }
-      }
-    ],
-    "schema_version": "1.9.0",
-    "severity": [
-      {
-        "type": "CVSS_V3",
-        "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
-      }
-    ],
-    "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
-      "source_package": "Debian/curl",
-      "distribution": "debian"
-    }
-  },
-  {
-    "id": "DEBIAN-CVE-2026-10536",
-    "details": "A use-after-free vulnerability exists in libcurl when an application configures an HTTP/2 stream-dependency tree via `CURLOPT_STREAM_DEPENDS` or `CURLOPT_STREAM_DEPENDS_E`, subsequently invokes `curl_easy_reset()`, and finally terminates the handle with `curl_easy_cleanup()`. During this final cleanup phase, libcurl attempts to access and modify an internal structure that was already freed during the reset operation.",
-    "modified": "2026-10-01T03:00:45.381921356Z",
-    "published": "2026-07-03T07:16:23.563Z",
-    "upstream": [
-      "CVE-2026-10536"
-    ],
-    "references": [
-      {
-        "type": "ADVISORY",
-        "url": "https://security-tracker.debian.org/tracker/CVE-2026-10536"
-      }
-    ],
-    "affected": [
-      {
-        "package": {
-          "name": "curl",
-          "ecosystem": "Debian:12",
-          "purl": "pkg:deb/debian/curl?arch=source&distro=bookworm"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "7.88.1-10",
-          "7.88.1-10+deb12u1",
-          "7.88.1-10+deb12u11",
-          "7.88.1-10+deb12u12",
-          "7.88.1-10+deb12u13",
-          "7.88.1-10+deb12u14",
-          "7.88.1-10+deb12u15",
-          "7.88.1-10+deb12u1~bpo11+1",
-          "7.88.1-10+deb12u2",
-          "7.88.1-10+deb12u3",
-          "7.88.1-10+deb12u3~bpo11+1",
-          "7.88.1-10+deb12u4",
-          "7.88.1-10+deb12u5",
-          "7.88.1-10+deb12u5~bpo11+1",
-          "7.88.1-10+deb12u6",
-          "7.88.1-10+deb12u6~bpo11+1",
-          "7.88.1-10+deb12u7",
-          "7.88.1-10+deb12u8",
-          "7.88.1-10+deb12u9",
-          "7.88.1-11",
-          "8.0.1-1~exp1",
-          "8.10.0-1",
-          "8.10.0-2",
-          "8.10.1-1",
-          "8.10.1-1~bpo12+1",
-          "8.10.1-2",
-          "8.11.0-1",
-          "8.11.1-1",
-          "8.11.1-1~bpo12+1",
-          "8.12.0+git20250209.89ed161+ds-1",
-          "8.12.0+git20250209.89ed161+ds-1~bpo12+1",
-          "8.12.1-1",
-          "8.12.1-2",
-          "8.12.1-2~bpo12+1",
-          "8.12.1-3",
-          "8.12.1-3~bpo12+1",
-          "8.13.0-1",
-          "8.13.0-1+exp1",
-          "8.13.0-2",
-          "8.13.0-2+exp1",
-          "8.13.0-3",
-          "8.13.0-4",
-          "8.13.0-4+exp1",
-          "8.13.0-5",
-          "8.13.0-5+exp1",
-          "8.13.0-5~bpo12+1",
-          "8.13.0~rc-1~exp1",
-          "8.13.0~rc-1~exp2",
-          "8.13.0~rc2-1",
-          "8.13.0~rc2-2",
-          "8.13.0~rc3-1",
-          "8.13.0~rc3-1+exp1",
-          "8.14.0-1",
-          "8.14.0-1+exp1",
-          "8.14.0~rc1-1+exp1",
-          "8.14.0~rc2-1+exp1",
-          "8.14.0~rc3-1+exp1",
-          "8.14.1-1",
-          "8.14.1-1~bpo12+1",
-          "8.14.1-2",
-          "8.14.1-2+exp1",
-          "8.14.1-2~bpo12+1",
-          "8.15.0-1",
-          "8.15.0-1~bpo13+1",
-          "8.15.0-1~exp1",
-          "8.15.0~rc1-1exp1",
-          "8.15.0~rc2-1~exp1",
-          "8.15.0~rc3-1~exp1",
-          "8.16.0-1",
-          "8.16.0-1+exp1",
-          "8.16.0-1~bpo13+1",
-          "8.16.0-2",
-          "8.16.0-3",
-          "8.16.0-4",
-          "8.16.0-4~bpo13+1",
-          "8.16.0~rc1-1~exp1",
-          "8.16.0~rc2-1",
-          "8.16.0~rc2-2",
-          "8.16.0~rc3-1",
-          "8.17.0-1",
-          "8.17.0-2",
-          "8.17.0-3",
-          "8.17.0~rc1-1~exp1",
-          "8.17.0~rc2-1",
-          "8.17.0~rc3-1",
-          "8.18.0-1",
-          "8.18.0-1~bpo13+1",
-          "8.18.0-2",
-          "8.18.0~rc1-1+exp1",
-          "8.18.0~rc2-1",
-          "8.18.0~rc3-1",
-          "8.19.0-1",
-          "8.19.0-1+exp1",
-          "8.19.0-1~bpo13+1",
-          "8.19.0-2",
-          "8.19.0-3",
-          "8.19.0-3+exp1",
-          "8.19.0-3+exp2",
-          "8.19.0~rc1-1~exp1",
-          "8.19.0~rc2-1",
-          "8.19.0~rc2-2",
-          "8.19.0~rc3-1",
-          "8.2.1-1",
-          "8.2.1-2",
-          "8.2.1-2~bpo12+1",
-          "8.20.0-1",
-          "8.20.0-1+exp",
-          "8.20.0-2",
-          "8.20.0-2+exp1",
-          "8.20.0-2~bpo13+1",
-          "8.20.0-3",
-          "8.20.0-4",
-          "8.20.0-5",
-          "8.20.0-5~bpo13+1",
-          "8.20.0~rc1-1+exp1",
-          "8.20.0~rc1-1+exp2",
-          "8.20.0~rc1-1+exp3",
-          "8.20.0~rc2-1",
-          "8.20.0~rc2-1+exp1",
-          "8.20.0~rc3-1",
-          "8.20.0~rc3-1+exp1",
-          "8.21.0-1",
-          "8.21.0-1+exp1",
-          "8.21.0-2",
-          "8.21.0-2+exp1",
-          "8.21.0-2~bpo13+1",
-          "8.21.0~rc1-1+exp1",
-          "8.21.0~rc2-1",
-          "8.21.0~rc2-1+exp1",
-          "8.21.0~rc3-1",
-          "8.21.0~rc3-1+exp1",
-          "8.22.0-1",
-          "8.22.0-1+exp1",
-          "8.22.0~rc2-1",
-          "8.22.0~rc2-2",
-          "8.22.0~rc3-1",
-          "8.22.0~rc3-1+exp1",
-          "8.23.0~rc1-1",
-          "8.23.0~rc1-2",
-          "8.23.0~rc2-1",
-          "8.23.0~rc2-1+exp1",
-          "8.3.0-1",
-          "8.3.0-2",
-          "8.3.0-2~bpo12+1",
-          "8.3.0-2~exp1",
-          "8.3.0-3",
-          "8.4.0-1",
-          "8.4.0-2",
-          "8.4.0-2~bpo12+1",
-          "8.5.0-1",
-          "8.5.0-1+exp1",
-          "8.5.0-2",
-          "8.5.0-2+exp1",
-          "8.5.0-2~bpo12+1",
-          "8.6.0-1",
-          "8.6.0-1.1",
-          "8.6.0-2",
-          "8.6.0-3",
-          "8.6.0-3.1",
-          "8.6.0-3.1~exp1",
-          "8.6.0-3.1~exp2",
-          "8.6.0-3.2",
-          "8.6.0-4",
-          "8.7.1-1",
-          "8.7.1-1+exp1",
-          "8.7.1-2",
-          "8.7.1-3",
-          "8.7.1-4",
-          "8.7.1-5",
-          "8.7.1-5+exp1",
-          "8.7.1-5~bpo12+1",
-          "8.8.0-1",
-          "8.8.0-1+exp1",
-          "8.8.0-1+exp2",
-          "8.8.0-1~bpo12+1",
-          "8.8.0-2",
-          "8.8.0-3",
-          "8.8.0-4",
-          "8.9.0-1",
-          "8.9.0-2",
-          "8.9.0-3",
-          "8.9.1-1",
-          "8.9.1-2",
-          "8.9.1-2~bpo12+1"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-10536.json"
-        }
-      },
-      {
-        "package": {
-          "name": "curl",
-          "ecosystem": "Debian:13",
-          "purl": "pkg:deb/debian/curl?arch=source&distro=trixie"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "8.14.1-2",
-          "8.14.1-2+deb13u1",
-          "8.14.1-2+deb13u2",
-          "8.14.1-2+deb13u2~bpo13+1",
-          "8.14.1-2+deb13u3",
-          "8.14.1-2+deb13u4",
-          "8.14.1-2+deb13u5",
-          "8.14.1-2+exp1",
-          "8.15.0-1",
-          "8.15.0-1~bpo13+1",
-          "8.15.0-1~exp1",
-          "8.15.0~rc1-1exp1",
-          "8.15.0~rc2-1~exp1",
-          "8.15.0~rc3-1~exp1",
-          "8.16.0-1",
-          "8.16.0-1+exp1",
-          "8.16.0-1~bpo13+1",
-          "8.16.0-2",
-          "8.16.0-3",
-          "8.16.0-4",
-          "8.16.0-4~bpo13+1",
-          "8.16.0~rc1-1~exp1",
-          "8.16.0~rc2-1",
-          "8.16.0~rc2-2",
-          "8.16.0~rc3-1",
-          "8.17.0-1",
-          "8.17.0-2",
-          "8.17.0-3",
-          "8.17.0~rc1-1~exp1",
-          "8.17.0~rc2-1",
-          "8.17.0~rc3-1",
-          "8.18.0-1",
-          "8.18.0-1~bpo13+1",
-          "8.18.0-2",
-          "8.18.0~rc1-1+exp1",
-          "8.18.0~rc2-1",
-          "8.18.0~rc3-1",
-          "8.19.0-1",
-          "8.19.0-1+exp1",
-          "8.19.0-1~bpo13+1",
-          "8.19.0-2",
-          "8.19.0-3",
-          "8.19.0-3+exp1",
-          "8.19.0-3+exp2",
-          "8.19.0~rc1-1~exp1",
-          "8.19.0~rc2-1",
-          "8.19.0~rc2-2",
-          "8.19.0~rc3-1",
-          "8.20.0-1",
-          "8.20.0-1+exp",
-          "8.20.0-2",
-          "8.20.0-2+exp1",
-          "8.20.0-2~bpo13+1",
-          "8.20.0-3",
-          "8.20.0-4",
-          "8.20.0-5",
-          "8.20.0-5~bpo13+1",
-          "8.20.0~rc1-1+exp1",
-          "8.20.0~rc1-1+exp2",
-          "8.20.0~rc1-1+exp3",
-          "8.20.0~rc2-1",
-          "8.20.0~rc2-1+exp1",
-          "8.20.0~rc3-1",
-          "8.20.0~rc3-1+exp1",
-          "8.21.0-1",
-          "8.21.0-1+exp1",
-          "8.21.0-2",
-          "8.21.0-2+exp1",
-          "8.21.0-2~bpo13+1",
-          "8.21.0~rc1-1+exp1",
-          "8.21.0~rc2-1",
-          "8.21.0~rc2-1+exp1",
-          "8.21.0~rc3-1",
-          "8.21.0~rc3-1+exp1",
-          "8.22.0-1",
-          "8.22.0-1+exp1",
-          "8.22.0~rc2-1",
-          "8.22.0~rc2-2",
-          "8.22.0~rc3-1",
-          "8.22.0~rc3-1+exp1",
-          "8.23.0~rc1-1",
-          "8.23.0~rc1-2",
-          "8.23.0~rc2-1",
-          "8.23.0~rc2-1+exp1"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-10536.json"
-        }
-      },
-      {
-        "package": {
-          "name": "curl",
-          "ecosystem": "Debian:14",
-          "purl": "pkg:deb/debian/curl?arch=source&distro=forky"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "8.21.0~rc2-1"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "8.14.1-2",
-          "8.14.1-2+exp1",
-          "8.15.0-1",
-          "8.15.0-1~bpo13+1",
-          "8.15.0-1~exp1",
-          "8.15.0~rc1-1exp1",
-          "8.15.0~rc2-1~exp1",
-          "8.15.0~rc3-1~exp1",
-          "8.16.0-1",
-          "8.16.0-1+exp1",
-          "8.16.0-1~bpo13+1",
-          "8.16.0-2",
-          "8.16.0-3",
-          "8.16.0-4",
-          "8.16.0-4~bpo13+1",
-          "8.16.0~rc1-1~exp1",
-          "8.16.0~rc2-1",
-          "8.16.0~rc2-2",
-          "8.16.0~rc3-1",
-          "8.17.0-1",
-          "8.17.0-2",
-          "8.17.0-3",
-          "8.17.0~rc1-1~exp1",
-          "8.17.0~rc2-1",
-          "8.17.0~rc3-1",
-          "8.18.0-1",
-          "8.18.0-1~bpo13+1",
-          "8.18.0-2",
-          "8.18.0~rc1-1+exp1",
-          "8.18.0~rc2-1",
-          "8.18.0~rc3-1",
-          "8.19.0-1",
-          "8.19.0-1+exp1",
-          "8.19.0-1~bpo13+1",
-          "8.19.0-2",
-          "8.19.0-3",
-          "8.19.0-3+exp1",
-          "8.19.0-3+exp2",
-          "8.19.0~rc1-1~exp1",
-          "8.19.0~rc2-1",
-          "8.19.0~rc2-2",
-          "8.19.0~rc3-1",
-          "8.20.0-1",
-          "8.20.0-1+exp",
-          "8.20.0-2",
-          "8.20.0-2+exp1",
-          "8.20.0-2~bpo13+1",
-          "8.20.0-3",
-          "8.20.0-4",
-          "8.20.0-5",
-          "8.20.0-5~bpo13+1",
-          "8.20.0~rc1-1+exp1",
-          "8.20.0~rc1-1+exp2",
-          "8.20.0~rc1-1+exp3",
-          "8.20.0~rc2-1",
-          "8.20.0~rc2-1+exp1",
-          "8.20.0~rc3-1",
-          "8.20.0~rc3-1+exp1",
-          "8.21.0~rc1-1+exp1"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-10536.json"
-        }
-      }
-    ],
-    "schema_version": "1.9.0",
-    "severity": [
-      {
-        "type": "CVSS_V3",
-        "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
-      }
-    ],
-    "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
-      "source_package": "Debian/curl",
-      "distribution": "debian"
-    }
-  },
-  {
-    "id": "DEBIAN-CVE-2026-48142",
-    "details": "NGINX Plus and NGINX Open Source have a vulnerability in the ngx_http_charset_module module. When content is served or proxied through a location block with both source_charset utf-8; and a charset directive (for example, charset koi8-r;) configured, remote, unauthenticated attackers can send requests (in conjunction with conditions beyond their control) to cause a heap buffer over-read in the NGINX worker process, leading to limited disclosure of memory or a restart.    Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
-    "modified": "2026-10-01T03:03:15.865453794Z",
-    "published": "2026-06-17T15:16:59.040Z",
-    "upstream": [
-      "CVE-2026-48142"
-    ],
-    "references": [
-      {
-        "type": "ADVISORY",
-        "url": "https://security-tracker.debian.org/tracker/CVE-2026-48142"
-      }
-    ],
-    "affected": [
-      {
-        "package": {
-          "name": "nginx",
-          "ecosystem": "Debian:12",
-          "purl": "pkg:deb/debian/nginx?arch=source&distro=bookworm"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "1.22.1-9+deb12u9"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "1.22.1-9",
-          "1.22.1-9+deb12u1",
-          "1.22.1-9+deb12u2",
-          "1.22.1-9+deb12u3",
-          "1.22.1-9+deb12u4",
-          "1.22.1-9+deb12u5",
-          "1.22.1-9+deb12u6",
-          "1.22.1-9+deb12u7",
-          "1.22.1-9+deb12u8"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-48142.json"
-        }
-      },
-      {
-        "package": {
-          "name": "nginx",
-          "ecosystem": "Debian:13",
-          "purl": "pkg:deb/debian/nginx?arch=source&distro=trixie"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "1.26.3-3+deb13u7"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "1.26.3-3",
-          "1.26.3-3+deb13u1",
-          "1.26.3-3+deb13u2",
-          "1.26.3-3+deb13u3",
-          "1.26.3-3+deb13u4",
-          "1.26.3-3+deb13u5",
-          "1.26.3-3+deb13u6"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-48142.json"
-        }
-      },
-      {
-        "package": {
-          "name": "nginx",
-          "ecosystem": "Debian:14",
-          "purl": "pkg:deb/debian/nginx?arch=source&distro=forky"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "1.30.1-5"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "1.26.3-3",
-          "1.28.0-1",
-          "1.28.0-2",
-          "1.28.0-3",
-          "1.28.0-4",
-          "1.28.0-5",
-          "1.28.0-6",
-          "1.28.1-1",
-          "1.28.1-2",
-          "1.28.1-3",
-          "1.28.2-1",
-          "1.28.2-2",
-          "1.28.2-3",
-          "1.28.2-4",
-          "1.28.3-1",
-          "1.28.3-2",
-          "1.30.0-1",
-          "1.30.0-2",
-          "1.30.0-3",
-          "1.30.0-4",
-          "1.30.1-1",
-          "1.30.1-2",
-          "1.30.1-3",
-          "1.30.1-4"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-48142.json"
-        }
-      }
-    ],
-    "schema_version": "1.9.0",
-    "severity": [
-      {
-        "type": "CVSS_V4",
-        "score": "CVSS:4.0/AV:N/AC:H/AT:N/PR:N/UI:N/VC:L/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
-      }
-    ],
-    "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
-      "source_package": "Debian/nginx",
-      "distribution": "debian"
-    }
-  },
-  {
-    "id": "DEBIAN-CVE-2026-42055",
-    "details": "NGINX Plus and NGINX Open Source have a vulnerability in the ngx_http_proxy_v2_module and ngx_http_grpc_module modules. This vulnerability exists when the proxy_http_version to 2 or grpc_pass directives are used to proxy HTTP/2 traffic, the ignore_invalid_headers directive is set to off, and the large_client_header_buffers directive size is larger than 2 megabytes. A remote, unauthenticated attacker, along with conditions beyond their control, could send large headers while creating an upstream request. This may cause a heap-based buffer overflow in the NGINX worker process leading to a restart. Additionally, attackers can execute code on systems with Address Space Layout Randomization (ASLR) disabled or when the attacker can bypass ASLR.    Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
-    "modified": "2026-10-01T03:03:11.763983317Z",
-    "published": "2026-06-17T15:16:50.353Z",
-    "upstream": [
-      "CVE-2026-42055"
-    ],
-    "references": [
-      {
-        "type": "ADVISORY",
-        "url": "https://security-tracker.debian.org/tracker/CVE-2026-42055"
-      }
-    ],
-    "affected": [
-      {
-        "package": {
-          "name": "nginx",
-          "ecosystem": "Debian:12",
-          "purl": "pkg:deb/debian/nginx?arch=source&distro=bookworm"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "1.22.1-9+deb12u9"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "1.22.1-9",
-          "1.22.1-9+deb12u1",
-          "1.22.1-9+deb12u2",
-          "1.22.1-9+deb12u3",
-          "1.22.1-9+deb12u4",
-          "1.22.1-9+deb12u5",
-          "1.22.1-9+deb12u6",
-          "1.22.1-9+deb12u7",
-          "1.22.1-9+deb12u8"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-42055.json"
-        }
-      },
-      {
-        "package": {
-          "name": "nginx",
-          "ecosystem": "Debian:13",
-          "purl": "pkg:deb/debian/nginx?arch=source&distro=trixie"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "1.26.3-3+deb13u7"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "1.26.3-3",
-          "1.26.3-3+deb13u1",
-          "1.26.3-3+deb13u2",
-          "1.26.3-3+deb13u3",
-          "1.26.3-3+deb13u4",
-          "1.26.3-3+deb13u5",
-          "1.26.3-3+deb13u6"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-42055.json"
-        }
-      },
-      {
-        "package": {
-          "name": "nginx",
-          "ecosystem": "Debian:14",
-          "purl": "pkg:deb/debian/nginx?arch=source&distro=forky"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "1.30.1-5"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "1.26.3-3",
-          "1.28.0-1",
-          "1.28.0-2",
-          "1.28.0-3",
-          "1.28.0-4",
-          "1.28.0-5",
-          "1.28.0-6",
-          "1.28.1-1",
-          "1.28.1-2",
-          "1.28.1-3",
-          "1.28.2-1",
-          "1.28.2-2",
-          "1.28.2-3",
-          "1.28.2-4",
-          "1.28.3-1",
-          "1.28.3-2",
-          "1.30.0-1",
-          "1.30.0-2",
-          "1.30.0-3",
-          "1.30.0-4",
-          "1.30.1-1",
-          "1.30.1-2",
-          "1.30.1-3",
-          "1.30.1-4"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-42055.json"
-        }
-      }
-    ],
-    "schema_version": "1.9.0",
-    "severity": [
-      {
-        "type": "CVSS_V4",
-        "score": "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X"
-      }
-    ],
-    "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
-      "source_package": "Debian/nginx",
-      "distribution": "debian"
-    }
-  },
-  {
-    "id": "DEBIAN-CVE-2026-42306",
-    "details": "Moby is an open source container framework. In Docker Engine prior to version 29.5.1, Docker Daemon versions 28.5.2 and prior, and Moby Daemon prior to version 2.0.0-beta.14, a race condition during docker cp mount setup allows a malicious container to redirect a bind mount target to an arbitrary host path, potentially overwriting host files or causing denial of service. This issue has been patched in Docker Engine version 29.5.1 and Moby Daemon version 2.0.0-beta.14.",
-    "modified": "2026-10-01T03:03:22.943313986Z",
-    "published": "2026-06-12T19:16:27.490Z",
-    "upstream": [
-      "CVE-2026-42306"
-    ],
-    "references": [
-      {
-        "type": "ADVISORY",
-        "url": "https://security-tracker.debian.org/tracker/CVE-2026-42306"
-      }
-    ],
-    "affected": [
-      {
-        "package": {
-          "name": "docker.io",
-          "ecosystem": "Debian:12",
-          "purl": "pkg:deb/debian/docker.io?arch=source&distro=bookworm"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "20.10.24+dfsg1-1",
-          "20.10.24+dfsg1-1+deb12u1",
-          "20.10.25+dfsg1-1",
-          "20.10.25+dfsg1-2",
-          "20.10.25+dfsg1-3",
-          "20.10.25+dfsg1-4",
-          "26.1.4+dfsg1-1",
-          "26.1.4+dfsg1-2",
-          "26.1.4+dfsg1-3",
-          "26.1.4+dfsg1-4",
-          "26.1.4+dfsg1-5",
-          "26.1.4+dfsg1-6",
-          "26.1.4+dfsg1-7",
-          "26.1.4+dfsg1-8",
-          "26.1.4+dfsg1-9",
-          "26.1.4+dfsg2-1",
-          "26.1.4+dfsg3-1",
-          "26.1.5+dfsg1-1",
-          "26.1.5+dfsg1-10",
-          "26.1.5+dfsg1-2",
-          "26.1.5+dfsg1-3",
-          "26.1.5+dfsg1-4",
-          "26.1.5+dfsg1-5",
-          "26.1.5+dfsg1-6",
-          "26.1.5+dfsg1-7",
-          "26.1.5+dfsg1-8",
-          "26.1.5+dfsg1-9",
-          "27.5.1+dfsg1-1",
-          "27.5.1+dfsg1-2",
-          "27.5.1+dfsg2-1",
-          "27.5.1+dfsg3-1",
-          "27.5.1+dfsg3-2",
-          "27.5.1+dfsg3-3",
-          "27.5.1+dfsg3-4",
-          "27.5.1+dfsg3-5",
-          "27.5.1+dfsg3-6",
-          "27.5.1+dfsg4-1",
-          "27.5.1+dfsg4-2",
-          "28.5.2+dfsg1-1",
-          "28.5.2+dfsg2-1",
-          "28.5.2+dfsg3-1",
-          "28.5.2+dfsg3-2",
-          "28.5.2+dfsg4-1",
-          "28.5.2+dfsg4-2",
-          "28.5.2+dfsg4-3",
-          "28.5.2+dfsg4-4",
-          "28.5.2+dfsg4-5"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-42306.json"
-        }
-      },
-      {
-        "package": {
-          "name": "docker.io",
-          "ecosystem": "Debian:13",
-          "purl": "pkg:deb/debian/docker.io?arch=source&distro=trixie"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "26.1.5+dfsg1-9+deb13u1"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "26.1.5+dfsg1-9"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-42306.json"
-        }
-      },
-      {
-        "package": {
-          "name": "docker.io",
-          "ecosystem": "Debian:14",
-          "purl": "pkg:deb/debian/docker.io?arch=source&distro=forky"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "28.5.2+dfsg4-3"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "26.1.5+dfsg1-10",
-          "26.1.5+dfsg1-9",
-          "27.5.1+dfsg1-1",
-          "27.5.1+dfsg1-2",
-          "27.5.1+dfsg2-1",
-          "27.5.1+dfsg3-1",
-          "27.5.1+dfsg3-2",
-          "27.5.1+dfsg3-3",
-          "27.5.1+dfsg3-4",
-          "27.5.1+dfsg3-5",
-          "27.5.1+dfsg3-6",
-          "27.5.1+dfsg4-1",
-          "27.5.1+dfsg4-2",
-          "28.5.2+dfsg1-1",
-          "28.5.2+dfsg2-1",
-          "28.5.2+dfsg3-1",
-          "28.5.2+dfsg3-2",
-          "28.5.2+dfsg4-1",
-          "28.5.2+dfsg4-2"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-42306.json"
-        }
-      }
-    ],
-    "schema_version": "1.9.0",
-    "severity": [
-      {
-        "type": "CVSS_V3",
-        "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:R/S:C/C:N/I:H/A:H"
-      }
-    ],
-    "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
-      "source_package": "Debian/docker.io",
-      "distribution": "debian"
-    }
-  },
-  {
-    "id": "DEBIAN-CVE-2026-41568",
-    "details": "Moby is an open source container framework. In Docker Engine prior to version 29.5.1, Docker Daemon versions 28.5.2 and prior, and Moby Daemon prior to version 2.0.0-beta.14, a race condition during docker cp mount setup allows a malicious container to create empty files or directories at arbitrary absolute paths on the host filesystem. This issue has been patched in Docker Engine version 29.5.1 and Moby Daemon version 2.0.0-beta.14.",
-    "modified": "2026-10-01T03:03:22.727036495Z",
-    "published": "2026-06-12T19:16:26.907Z",
-    "upstream": [
-      "CVE-2026-41568"
-    ],
-    "references": [
-      {
-        "type": "ADVISORY",
-        "url": "https://security-tracker.debian.org/tracker/CVE-2026-41568"
-      }
-    ],
-    "affected": [
-      {
-        "package": {
-          "name": "docker.io",
-          "ecosystem": "Debian:12",
-          "purl": "pkg:deb/debian/docker.io?arch=source&distro=bookworm"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "20.10.24+dfsg1-1",
-          "20.10.24+dfsg1-1+deb12u1",
-          "20.10.25+dfsg1-1",
-          "20.10.25+dfsg1-2",
-          "20.10.25+dfsg1-3",
-          "20.10.25+dfsg1-4",
-          "26.1.4+dfsg1-1",
-          "26.1.4+dfsg1-2",
-          "26.1.4+dfsg1-3",
-          "26.1.4+dfsg1-4",
-          "26.1.4+dfsg1-5",
-          "26.1.4+dfsg1-6",
-          "26.1.4+dfsg1-7",
-          "26.1.4+dfsg1-8",
-          "26.1.4+dfsg1-9",
-          "26.1.4+dfsg2-1",
-          "26.1.4+dfsg3-1",
-          "26.1.5+dfsg1-1",
-          "26.1.5+dfsg1-10",
-          "26.1.5+dfsg1-2",
-          "26.1.5+dfsg1-3",
-          "26.1.5+dfsg1-4",
-          "26.1.5+dfsg1-5",
-          "26.1.5+dfsg1-6",
-          "26.1.5+dfsg1-7",
-          "26.1.5+dfsg1-8",
-          "26.1.5+dfsg1-9",
-          "27.5.1+dfsg1-1",
-          "27.5.1+dfsg1-2",
-          "27.5.1+dfsg2-1",
-          "27.5.1+dfsg3-1",
-          "27.5.1+dfsg3-2",
-          "27.5.1+dfsg3-3",
-          "27.5.1+dfsg3-4",
-          "27.5.1+dfsg3-5",
-          "27.5.1+dfsg3-6",
-          "27.5.1+dfsg4-1",
-          "27.5.1+dfsg4-2",
-          "28.5.2+dfsg1-1",
-          "28.5.2+dfsg2-1",
-          "28.5.2+dfsg3-1",
-          "28.5.2+dfsg3-2",
-          "28.5.2+dfsg4-1",
-          "28.5.2+dfsg4-2",
-          "28.5.2+dfsg4-3",
-          "28.5.2+dfsg4-4",
-          "28.5.2+dfsg4-5"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-41568.json"
-        }
-      },
-      {
-        "package": {
-          "name": "docker.io",
-          "ecosystem": "Debian:13",
-          "purl": "pkg:deb/debian/docker.io?arch=source&distro=trixie"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "26.1.5+dfsg1-9+deb13u1"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "26.1.5+dfsg1-9"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-41568.json"
-        }
-      },
-      {
-        "package": {
-          "name": "docker.io",
-          "ecosystem": "Debian:14",
-          "purl": "pkg:deb/debian/docker.io?arch=source&distro=forky"
-        },
-        "ranges": [
-          {
-            "type": "ECOSYSTEM",
-            "events": [
-              {
-                "introduced": "0"
-              },
-              {
-                "fixed": "28.5.2+dfsg4-3"
-              }
-            ]
-          }
-        ],
-        "versions": [
-          "26.1.5+dfsg1-10",
-          "26.1.5+dfsg1-9",
-          "27.5.1+dfsg1-1",
-          "27.5.1+dfsg1-2",
-          "27.5.1+dfsg2-1",
-          "27.5.1+dfsg3-1",
-          "27.5.1+dfsg3-2",
-          "27.5.1+dfsg3-3",
-          "27.5.1+dfsg3-4",
-          "27.5.1+dfsg3-5",
-          "27.5.1+dfsg3-6",
-          "27.5.1+dfsg4-1",
-          "27.5.1+dfsg4-2",
-          "28.5.2+dfsg1-1",
-          "28.5.2+dfsg2-1",
-          "28.5.2+dfsg3-1",
-          "28.5.2+dfsg3-2",
-          "28.5.2+dfsg4-1",
-          "28.5.2+dfsg4-2"
-        ],
-        "ecosystem_specific": {
-          "urgency": "not yet assigned"
-        },
-        "database_specific": {
-          "source": "https://storage.googleapis.com/debian-osv/debian-cve-osv/DEBIAN-CVE-2026-41568.json"
-        }
-      }
-    ],
-    "schema_version": "1.9.0",
-    "severity": [
-      {
-        "type": "CVSS_V3",
-        "score": "CVSS:3.1/AV:L/AC:H/PR:L/UI:R/S:C/C:N/I:L/A:H"
-      }
-    ],
-    "_metadata": {
-      "fetched_at": "2026-11-18T12:37:02.626063+00:00",
-      "source_package": "Debian/docker.io",
       "distribution": "debian"
     }
   }
